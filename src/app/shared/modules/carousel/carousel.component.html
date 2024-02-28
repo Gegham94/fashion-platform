@@ -1,0 +1,21 @@
+<div class="live-carousel">
+  <div
+    #carouselRef
+    class="carousel"
+    (mousemove)="onMouseMove($event)"
+    (mousedown)="onMouseDown($event)"
+    (mouseup)="onMouseUp($event)"
+    (mouseleave)="onMouseLeave($event)"
+    (touchstart)="onTouchStart($event)"
+    (touchmove)="onTouchMove($event)"
+    (touchend)="onTouchEnd($event)"
+    (mousewheel)="onMouseWheel($event)"
+  ></div>
+  <div class="pagination" *ngIf="pagination">
+    <span
+      (click)="onChangePagination(i)"
+      *ngFor="let item of data; index as i"
+      [ngClass]="{ active: i === activeIndex }"
+    ></span>
+  </div>
+</div>

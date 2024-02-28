@@ -1,0 +1,42 @@
+<app-loader *ngIf="isLoading; else contentModel"></app-loader>
+<ng-template #contentModel>
+  <div class="content">
+    <div class="verification">
+      <div class="cover">
+        <div class="header">
+          <span class="title">Verification</span>
+        </div>
+        <div class="body">
+          <div class="streight">
+            <span class="title">Protected:</span>
+            <div class="progress-bar">
+              <div class="cover-bar" [style.width.%]="barWidth"></div>
+            </div>
+          </div>
+          <ng-container>
+            <div class="row">
+              <app-change-password></app-change-password>
+              <app-link-your-phone></app-link-your-phone>
+            </div>
+            <div class="row">
+              <app-verification-by-document></app-verification-by-document>
+              <app-two-factor-authentication></app-two-factor-authentication>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+    <div class="protection">
+      <div class="cover">
+        <div class="header">
+          <span class="title">Protection</span>
+        </div>
+        <div class="body">
+          <app-active-session></app-active-session>
+          <app-session-history></app-session-history>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
+

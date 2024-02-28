@@ -1,0 +1,227 @@
+@import "src/mixins/styles-mixin";
+@import "src/styles/colors";
+:host{
+  width: 100%;
+  height: 100%;
+}
+
+.user-info-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: calc(100% - 5px);
+  position: relative;
+  margin-left: 1px;
+  .squad-edit {
+    @include squad-small;
+    display: flex;
+    position: absolute;
+    width: 28px;
+    height: 28px;
+    background: #dcb567;
+    padding: 1px;
+    right: 1%;
+    top: 3%;
+    z-index: 1;
+    &--cover {
+      @include squad-small;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-evenly;
+      width: 100%;
+      height: 100%;
+      background: $dark-gray;
+      svg {
+        width: 12px;
+        height: 12px;
+        fill: $white;
+      }
+    }
+  }
+  .diamond {
+    position: absolute;
+    top: -150px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 242px;
+    height: 196px;
+    min-width: 80px;
+    min-height: 60px;
+    .circule {
+      position: absolute;
+      width: 48px;
+      height: 48px;
+      border: 1px solid $yellow;
+      border-radius: 100%;
+      background: $dark-gray;
+      left: 3%;
+      top: 4%;
+      z-index: 1;
+    }
+    .squad-arrows {
+      @include squad-small;
+      display: flex;
+      position: absolute;
+      width: 32px;
+      height: 32px;
+      background: $yellow;
+      padding: 1px;
+      right: 8%;
+      top: 7%;
+      z-index: 1;
+      &--cover {
+        @include squad-small;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+        width: 100%;
+        height: 100%;
+        background: $dark-gray;
+        svg {
+          width: 16px;
+          height: 6px;
+          fill: $white;
+        }
+      }
+    }
+    .wrapper {
+      @include diamond;
+      background: $yellow;
+      width: 100%;
+      height: 100%;
+      padding: 1px;
+      &_cover {
+        @include diamond;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        background: $dark-gray;
+      }
+      &_inner {
+        @include diamond;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 90%;
+        height: 90%;
+        background: $light-gray;
+        span {
+          margin-bottom: 20px;
+          color: $white;
+          font-size: clamp(18px, 3vw, 42px);
+          font-weight: 500;
+        }
+      }
+    }
+  }
+  .info {
+    @include rt-side-squad-content;
+    margin-bottom: 10px;
+    background: $border-gradient-to-bottom;
+    min-height: 255px;
+    width: 100%;
+    height: 100%;
+    padding: 1px;
+    border-radius: 10px;
+    z-index: -1;
+    &--cover {
+      @include rt-side-squad-content;
+      display: grid;
+      position: relative;
+      background: $user-platform-section-gradient;
+      min-height: 235px;
+      height: 100%;
+      border-radius: 10px;
+      padding: 10px;
+      .data {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        color: $white;
+        font-weight: 500;
+        z-index: 1;
+        .title {
+          display: flex;
+          align-items: center;
+          svg {
+            width: 16px;
+            height: 16px;
+            margin-right: 10px;
+            fill: $white;
+          }
+        }
+      }
+      .user-id {
+        justify-content: flex-start;
+        font-size: 14px;
+        .title {
+          border-radius: 16px;
+          background: $lighter-gray;
+          padding: 5px 10px;
+        }
+      }
+      .user-points {
+        justify-content: center;
+        .title {
+          color: $smooth-white;
+          font-size: 12px;
+          font-weight: 400;
+          .text {
+            @include squad-small;
+            background: $light-gray;
+            padding: 5px 10px;
+            margin-left: 5px;
+          }
+        }
+      }
+      .user-name {
+        justify-content: center;
+        flex-direction: column;
+        gap: 10px;
+        .title {
+          &:first-child {
+            color: $white;
+            font-size: 24px;
+            font-weight: 500;
+          }
+          &:last-child {
+            color: $white;
+            font-size: 18px;
+            font-weight: 500;
+          }
+        }
+      }
+      .user-contact {
+        justify-content: center;
+        flex-wrap: nowrap;
+        column-gap: 5%;
+        .column {
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+          .text {
+            word-break: break-all;
+          }
+        }
+        .title {
+          color: $white;
+          font-size: 12px;
+          font-weight: 500;
+        }
+      }
+      img {
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+    }
+  }
+}

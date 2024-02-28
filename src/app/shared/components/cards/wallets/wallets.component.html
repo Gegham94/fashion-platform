@@ -1,0 +1,52 @@
+<div class="content">
+  <div class="wrapper">
+    <div class="cover">
+      <div class="header">
+        <span class="title">Wallets</span>
+      </div>
+      <div class="body" [class.mobile]="isMobile">
+        <span>Currency</span>
+        <div class="row">
+          <div class="col">
+            <div class="dropdown-wrapper">
+              <app-dropdown
+                dropdownButtonType="round"
+                (emitedItem)="getSelectedValue($event)"
+                [borderGradient]="true"
+                [disableKey_All]="true"
+              ></app-dropdown>
+            </div>
+            <div class="add" (click)="onAddWallet()">
+              <span class="add-vertical"></span>
+              <span class="add-horizontal"></span>
+            </div>
+          </div>
+          <div class="col">
+            <div
+              class="checkbox-wrapper"
+              (click)="showBalanceOnTop()"
+              [class.checked]="isShowBalanceOnTop"
+            >
+              <div class="checkbox-cover"></div>
+            </div>
+            <span class="balance-label">Show balance on top</span>
+          </div>
+        </div>
+        <div class="wallet-wrapper">
+          <div class="wallet-cover">
+            <div class="wallet-row" *ngFor="let data of walletData">
+              <div class="currency-wrapper">
+                <div class="currency-cover">
+                  {{ data.title }}
+                </div>
+              </div>
+              <label class="currency-remove" (click)="onRemoveCurrency()">
+                <span class="line"></span>
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

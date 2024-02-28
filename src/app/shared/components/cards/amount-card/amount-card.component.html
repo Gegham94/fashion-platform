@@ -1,0 +1,37 @@
+<div class="content">
+  <div class="wrapper">
+    <div class="cover">
+      <div class="header">
+        <span class="title">{{ data.title }}</span>
+        <div class="header-dropdown">
+          <app-dropdown
+            [dropdownButtonType]="dropdownButtonType"
+            (emitedItem)="getSelectedValue($event)"
+            [disableKey_All]="true"
+          ></app-dropdown>
+        </div>
+      </div>
+      <div class="data">
+        <div class="data__row">
+          <span class="data__row--title">{{data.amount}}</span>
+          <span class="data__row--value">{{selectedItem?.name}} {{formatNumber(data.amountValue)}}</span>
+        </div>
+        <div class="data__line"></div>
+        <div class="data__row">
+          <span class="data__row--title">{{data.played}}</span>
+          <span class="data__row--value">{{selectedItem?.name}} {{formatNumber(data.playedValue)}}</span>
+        </div>
+        <div class="data__line"></div>
+        <div class="data__row">
+          <span class="data__row--title">{{data.unplayed}}</span>
+          <span class="data__row--value">{{selectedItem?.name}} {{formatNumber(data.unplayedValue)}}</span>
+        </div>
+      </div>
+      <div class="button-row">
+        <div class="button-wrapper" [class.yellowBtn]="buttonColor === 'yellow'" [class.grayBtn]="buttonColor === 'gray'">
+          <button class="action">{{ buttonType }}</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

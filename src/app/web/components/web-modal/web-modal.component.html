@@ -1,0 +1,25 @@
+<div class="modal">
+  <div class="modal_content" [ngClass]="getSize">
+    <div class="modal_content_close-shadow">
+      <div class="modal_content_close-shadow_close_wrapper"
+        (click)="closeModal()"
+      >
+        <div class="modal_content_close-shadow_close_wrapper_cover">
+          <div
+            class="modal_content_close-shadow_close_wrapper_cover_cross"
+          ></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="body">
+      <div class="body-shadow">
+        <div class="body-wrapper">
+          <div class="body-wrapper-cover">
+            <ng-content></ng-content>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

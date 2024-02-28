@@ -1,0 +1,181 @@
+@import "src/mixins/styles-mixin";
+@import "src/styles/colors";
+:host {
+  width: 100%;
+  height: 100%;
+  min-height: 270px;
+}
+
+input {
+  -webkit-autofill: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  -o-appearance: none;
+  appearance: none;
+  border: none;
+  outline: none;
+  background: transparent;
+  width: 100%;
+  height: 100%;
+  text-align: left;
+  padding-left: 10px;
+  color: $white;
+  &::placeholder {
+    color: $white;
+    opacity: 0.7;
+    font-weight: 500;
+    font-size: 0.7em;
+  }
+}
+
+.content {
+  width: 100%;
+  height: 100%;
+  .wrapper {
+    @include squad-big;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: $yellow;
+    border-radius: 5px;
+    padding: 1px;
+    width: 100%;
+    height: 100%;
+    .cover {
+      @include squad-big;
+      display: flex;
+      flex-direction: column;
+      border-radius: 5px;
+      width: 100%;
+      height: 100%;
+      .header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 100%;
+        width: calc(100% - 25px);
+        height: 40px;
+        border-bottom: 1px solid $yellow;
+        border-radius: 5px 0px 0px 0px;
+        background: $darker-gray;
+        padding: 5px 15px;
+        .title {
+          color: $white;
+          font-size: 0.8em;
+          font-weight: 500;
+        }
+      }
+      .body {
+        display: flex;
+        flex-direction: column;
+        padding: 10px;
+        gap: 15px;
+        width: calc(100% - 20px);
+        height: 100%;
+        border-radius: 0px 0px 5px 0px;
+        background: $user-platform-section-gradient;
+        .info {
+          font-size: 0.65em;
+          color: $smooth-white;
+          font-weight: 400;
+        }
+        form {
+          width: 100%;
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          align-items: flex-end;
+          gap: 10px;
+          .form-fields {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            .number {
+              display: flex;
+              width: 100%;
+              align-items: center;
+              gap: 10px;
+              .phone-remove {
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 32px;
+                height: 28px;
+                background: $light-gray;
+                border: 1px solid $red;
+                border-top: 0;
+                border-radius: 100%;
+                filter: drop-shadow(4px 8px 16px rgba(0, 0, 0, 0.2));
+                transition: transform 0.5ms ease;
+                .line {
+                  width: 50%;
+                  height: 2px;
+                  background: $red;
+                  border-radius: 1px;
+                }
+                &:hover {
+                  transform: scale(1.02);
+                }
+              }
+            }
+            .input-wrapper {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              width: 100%;
+              height: 100%;
+              background: $border-gradient-to-left;
+              border-radius: 20px;
+              padding: 1px;
+              box-shadow: 2px 2px 4px 1px rgba(0, 0, 0, 0.5);
+              input {
+                width: 100%;
+                height: 100%;
+                border-radius: 20px;
+                min-height: 30px;
+                background: $light-gray;
+              }
+            }
+          }
+          button {
+            @include removed-styles-button;
+            @include squad-small;
+            filter: drop-shadow(3px 6px 3px #00000083);
+            padding: 1px;
+            background: $yellow;
+            max-width: 125px;
+            height: 30px;
+            width: 100%;
+            border-radius: 3px;
+            transition: transform 0.05s ease;
+            .cover {
+              @include squad-small;
+              width: 100%;
+              height: 100%;
+              background: $smooth-yellow;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              border-radius: 3px;
+              span {
+                width: 100%;
+                color: $smooth-white;
+                text-align: center;
+                font-size: 0.8em;
+                font-weight: 700;
+                padding: 4px 15px;
+              }
+            }
+            &:hover {
+              transform: scale(1.02);
+            }
+          }
+        }
+      }
+    }
+  }
+}

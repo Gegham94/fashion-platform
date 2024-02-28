@@ -1,0 +1,75 @@
+<div
+  #multiselectAutocomplate
+  class="app-multiselect-autocomplate"
+  [id]="uniqId"
+  [ngClass]="[cutSide, disabled ? 'disabled' : '']"
+>
+  <div
+    class="wrapper"
+    (click)="onChangeIsOpen($event)"
+    [class.error]="error"
+    [class.success]="success"
+  >
+    <div class="cover" [class]="inputColor">
+      <div class="placeholder">
+        <ng-container *ngIf="!selectetOptions[0]; else placeholderModel">{{
+          placeholder
+        }}</ng-container>
+        <ng-template #placeholderModel>
+          <ng-container *ngFor="let item of selectetOptions; let last = last">
+            {{ item.name }}{{ last ? "" : ",&nbsp;" }}
+          </ng-container>
+        </ng-template>
+      </div>
+      <svg [class.rotate]="isOpen">
+        <use xlink:href="assets/icons/global-sprint.svg#gb-arrow-down"></use>
+      </svg>
+    </div>
+  </div>
+
+  <ng-template #dropdownTemplate>
+    <div #dropdown id="app-multiselect-autocomplate-dropdown">
+      <div class="dropdown__list" @collapse *ngIf="isOpen">
+        <div class="header">
+          <div class="header--search">
+            <div
+              id="search-0"
+              class="wrapper"
+              (click)="$event.stopPropagation()"
+            >
+              <input
+                type="text"
+                class="cover"
+                placeholder="Search..."
+                (input)="searchAutocomplateFilter($event)"
+                autocomplete="off"
+              />
+            </div>
+          </div>
+          <div class="header--icon">
+            <div class="diamond"></div>
+            <div class="lens"></div>
+          </div>
+        </div>
+        <div class="options-wrapper">
+          <div
+            class="option"
+            *ngFor="let item of filteredData"
+            (click)="selectItem($event, item)"
+          >
+            <div class="checkbox--wrapper" [class.checked]="getSelected(item)">
+              <input type="checkbox" />
+            </div>
+            <img
+              *ngIf="item.short"
+              class="flag"
+              [src]="'assets/images/flags/' + item.short + '.svg'"
+              alt="{{ item.name }} Flag"
+            />
+            <span class="value">{{ item.name }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</div>

@@ -1,0 +1,17 @@
+<div class="actions">
+  <div class="actions__top">
+    <div *ngFor="let action of actionMobileTopButtons" [class]="'actions__top--btn--' + action.class" [ngStyle]="{ 'clip-path': action.clipPath }">
+      <div class="cover" [ngStyle]="{ 'clip-path': action.clipPath }">
+        <span class="title" [ngStyle]="{ color: action.color }">{{ action.text }}</span>
+      </div>
+    </div>
+  </div>
+  <div class="actions__bottom">
+    <div *ngFor="let action of actionMobileBottomButtons" [class]="'actions__bottom--btn--' + action.class" [ngStyle]="{ 'clip-path': action.clipPath }">
+      <div class="cover" [ngStyle]="{ 'clip-path': action.clipPath }">
+        <span class="title" [ngStyle]="{ color: action.color }">{{ action.text }}</span>
+      </div>
+    </div>
+  </div>
+</div>
+  

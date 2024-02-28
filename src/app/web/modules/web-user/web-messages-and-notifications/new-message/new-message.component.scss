@@ -1,0 +1,351 @@
+@import "src/mixins/styles-mixin";
+@import "src/styles/colors";
+
+:host {
+  width: 50%;
+  height: 100%;
+}
+@media screen and (max-width: 1144px) {
+  :host {
+    width: 100%;
+  }
+  .content {
+    margin-top: 15px !important;
+  }
+}
+input {
+  -webkit-autofill: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  -o-appearance: none;
+  appearance: none;
+  border: none;
+  outline: none;
+  width: 100%;
+  height: 100%;
+  text-align: left;
+  background: transparent;
+  color: $white;
+  font-size: 0.85em;
+  &::placeholder {
+    color: $smooth-white;
+    opacity: 0.7;
+    font-weight: 500;
+    user-select: none;
+  }
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: calc(100% - 60px);
+  margin-top: 45px;
+  gap: 20px;
+  .wrapper {
+    @include squad-small;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 8px;
+    background: $dark-gray;
+    width: calc(100% - 30px);
+    height: calc(100% - 30px);
+    padding: 15px;
+    gap: 20px;
+    .body {
+      width: 100%;
+      height: 100%;
+      form {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 100%;
+        height: 100%;
+        gap: 10px;
+        .subject {
+          display: flex;
+          align-items: center;
+          width: calc(100% - 22px);
+          height: 100%;
+          max-height: 30px;
+          background: $dark-gray;
+          border-radius: 5px;
+          border: solid 1px $yellow;
+          outline: none;
+          padding: 0 10px;
+          &.error {
+            border: solid 1px $red;
+          }
+        }
+        .feedback-error {
+          width: calc(100% - 22px);
+          display: flex;
+          align-items: center;
+          justify-content: flex-start;
+          color: $red;
+          font-size: 0.8em;
+          gap: 5px;
+          margin-bottom: 5px;
+          svg {
+            fill: $red;
+            width: 14px;
+            height: 14px;
+          }
+        }
+        .textarea-wrapper {
+          width: 100%;
+          height: 100%;
+          position: relative;
+          .textarea {
+            @include scroll;
+            overflow-y: auto;
+            background: $dark-gray;
+            border: solid 1px $yellow;
+            border-radius: 5px;
+            outline: none;
+            resize: none;
+            padding: 15px;
+            color: $white;
+            width: calc(100% - 32px);
+            height: calc(100% - 30px);
+          }
+          .character-count {
+            position: absolute;
+            color: $smooth-white;
+            font-size: 0.7em;
+            bottom: 5px;
+            right: 20px;
+          }
+        }
+        filter: drop-shadow(2px 3px 4px #000000c5);
+        .attach-files {
+          position: relative;
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          justify-content: flex-start;
+          width: 100%;
+          height: 60%;
+          gap: 10px;
+          .send-message {
+            @include removed-styles-button;
+            @include squad-small;
+            position: absolute;
+            top: 0;
+            right: 0;
+            padding: 1px;
+            background: $lighter-gray;
+            width: 100%;
+            height: 100%;
+            max-width: 124px;
+            max-height: 30px;
+            transition: background-color transform 0.1s ease;
+            transform: scale(1);
+            .cover {
+              @include squad-small;
+              width: 100%;
+              height: 100%;
+              background: $light-gray;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              transition: background-color 0.1s ease;
+              font-size: 0.8em;
+              transition: font-size 0.1s ease;
+              white-space: nowrap;
+              color: $smooth-white;
+            }
+            &:hover {
+              transform: scale(1.02);
+              background: $yellow;
+              .cover {
+                background: $smooth-yellow;
+              }
+            }
+          }
+          .upload {
+            display: flex;
+            gap: 10px;
+            height: 100%;
+            max-height: 30px;
+            .attach {
+              @include squad-small;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              background: $light-gray;
+              cursor: pointer;
+              position: relative;
+              input[type="file"] {
+                display: none;
+              }
+              .icon-label {
+                cursor: pointer;
+                display: block;
+                width: 30px;
+                height: 30px;
+                background-color: transparent;
+                border-radius: 5px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                svg {
+                  width: 50%;
+                  height: 50%;
+                  fill: $smooth-white;
+                }
+              }
+            }
+          }
+          .preview {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            max-height: 96px;
+            gap: 10px;
+            .file {
+              display: flex;
+              position: relative;
+              height: 80px;
+              width: 80px;
+              .wrapper {
+                @include squad-small;
+                background: $yellow;
+                padding: 1px;
+                width: 100%;
+                height: 100%;
+                border-radius: 5px;
+                .cover {
+                  @include squad-small;
+                  background: $light-gray;
+                  display: flex;
+                  flex-direction: column;
+                  align-items: center;
+                  justify-content: center;
+                  width: 100%;
+                  height: 100%;
+                  border-radius: 5px;
+                  gap: 10px;
+                  img {
+                    width: 100%;
+                    height: 100%;
+                    border-radius: 5px;
+                  }
+                  svg {
+                    width: 30px;
+                    height: 30px;
+                    fill: $lighter-gray;
+                  }
+                  .doc-name {
+                    text-align: center;
+                    color: $smooth-white;
+                    width: 100%;
+                    font-size: 0.7em;
+                  }
+                }
+              }
+              .remove-file {
+                @include squad-small;
+                position: absolute;
+                top: -5px;
+                right: -5px;
+                background: $red;
+                padding: 1px;
+                width: 100%;
+                height: 100%;
+                max-height: 20px;
+                max-width: 20px;
+                .remove-btn {
+                  @include squad-small;
+                  @include removed-styles-button;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  width: 100%;
+                  height: 100%;
+                  background: $dark-gray;
+                  .line {
+                    width: 50%;
+                    height: 1px;
+                    background: $red;
+                  }
+                }
+              }
+            }
+            .add-file-zone {
+              @include squad-small;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              justify-content: center;
+              height: 80px;
+              width: 80px;
+              border-radius: 5px;
+              background: $light-gray;
+              gap: 10px;
+              &.disabled {
+                cursor: not-allowed;
+                pointer-events: none;
+              }
+              &:hover {
+                .icon-label {
+                  svg {
+                    fill: $yellow;
+                  }
+                }
+              }
+
+              input[type="file"] {
+                display: none;
+              }
+              .icon-label {
+                cursor: pointer;
+                display: block;
+                width: 100%;
+                height: 100%;
+                background-color: transparent;
+                border-radius: 5px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                svg {
+                  transition: fill 0.1s ease;
+                  width: 50%;
+                  height: 50%;
+                  fill: $lighter-gray;
+                }
+              }
+            }
+          }
+        }
+        .info-attach {
+          width: 100%;
+          height: 100%;
+          max-height: 30px;
+          font-size: 0.8em;
+          color: $smooth-white;
+          font-weight: 500;
+          &.detect-count {
+            color: $red;
+          }
+        }
+      }
+    }
+    .footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      padding-top: 20px;
+      border-top: solid 1px $yellow;
+      span {
+        font-size: 0.8em;
+        color: $smooth-white;
+        width: 100%;
+      }
+    }
+  }
+}

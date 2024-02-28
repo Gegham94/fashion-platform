@@ -1,0 +1,120 @@
+<div class="content">
+  <form [formGroup]="form" [class]="inputColor" [ngStyle]="{ '--margin': '-15px', '--maxWidth': '125px'}">
+    <div class="row">
+      <label
+        class="label left"
+        [class.success]="userNameControl.touched && userNameControl.valid"
+        [class.error]="userNameControl.touched && userNameControl.invalid"
+      >
+        <input
+          class="input"
+          type="text"
+          placeholder="Username"
+          formControlName="userName"
+          (change)="emitFormValue()"
+        />
+      </label>
+      <app-multiselect-autocomplate
+        [data]="gender"
+        [keyName]="'id'"
+        placeholder="Gender"
+        cutSide="right"
+        [singleSelect]="true"
+        [className]="'multiselect-label'"
+        [inputColor]="inputColor"
+        (onSelect)="onSelectGenderFilter($event)"
+      ></app-multiselect-autocomplate>
+    </div>
+    <div class="row">
+      <label
+        class="label left"
+        [class.success]="passwordControl.touched && passwordControl.valid"
+        [class.error]="passwordControl.touched && passwordControl.invalid"
+      >
+        <input
+          class="input"
+          type="text"
+          placeholder="Password"
+          formControlName="password"
+          (change)="emitFormValue()"
+        />
+      </label>
+      <label
+        class="label right"
+        [class.success]="repeatPasswordControl.touched && repeatPasswordControl.valid"
+        [class.error]="repeatPasswordControl.touched && repeatPasswordControl.invalid"
+      >
+        <input
+          class="input"
+          type="text"
+          placeholder="Repeat password"
+          formControlName="repeatPassword"
+          (change)="emitFormValue()"
+        />
+      </label>
+    </div>
+    <div class="row">
+      <label
+        class="label squad-small"
+        [class.success]="referralBonusPromoCodeControl.touched && referralBonusPromoCodeControl.valid"
+        [class.error]="referralBonusPromoCodeControl.touched && referralBonusPromoCodeControl.invalid"
+      >
+        <input
+          class="input"
+          type="text"
+          placeholder="Referral/Bonus/Promo Code"
+          formControlName="referralBonusPromoCode"
+          (change)="emitFormValue()"
+        />
+      </label>
+      <div class="applyBtn">
+        <div class="applyBtn__shadow">
+          <div class="applyBtn__shadow__wrapper--squad" (click)="apply()">
+            <div class="applyBtn__shadow__wrapper--squad__cover">Apply</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="checkboxes">
+        <div class="checkboxes__shadow" (click)="handleCheckboxChange('1')">
+          <div class="checkboxes__shadow__wrapper">
+            <input
+              id="1"
+              type="checkbox"
+              class="checkboxes__shadow__wrapper--input"
+              formControlName="promotionalCommunications"
+            >
+          </div>
+          <span>I agree to receive promotional communications</span>
+        </div>
+        <div class="checkboxes__shadow" (click)="handleCheckboxChange('2')">
+          <div class="checkboxes__shadow__wrapper">
+            <input 
+              id="2" 
+              type="checkbox" 
+              class="checkboxes__shadow__wrapper--input"
+              formControlName="bonusesAndOffers"
+            >
+          </div>
+          <span>I would like to receive bonuses and offers by SMS,Email, Phone Call, Post</span>
+        </div>
+        <div class="checkboxes__shadow" (click)="handleCheckboxChange('3')">
+          <div class="checkboxes__shadow__wrapper">
+            <input 
+              id="3" 
+              type="checkbox" 
+              class="checkboxes__shadow__wrapper--input"
+              formControlName="termsAndConditions"
+            >
+          </div>
+          <span>I am over the age of 18 and I agree with Terms & Conditions</span>
+        </div>
+        <re-captcha class="g-recaptcha"
+          (resolved)="onCaptchaResolved($event)"
+          siteKey="RE_CAPTCHA_SITE_KEY"
+        ></re-captcha>
+      </div>
+    </div>
+  </form>
+</div>

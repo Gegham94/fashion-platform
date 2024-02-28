@@ -1,0 +1,71 @@
+@import "src/mixins/styles-mixin";
+@import "src/styles/colors";
+
+:host {
+  width: 100%;
+  height: 100%;
+}
+
+.content {
+  display: flex;
+  width: calc(100% - 20px);
+  height: 30px;
+  .text {
+    @include scroll;
+    overflow-x: hidden;
+    overflow-y: auto;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    span {
+      color: $white;
+      font-size: 0.9em;
+      font-weight: 500;
+      overflow: hidden;
+      color: $white;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      width: 100%;
+      margin-right: 5px;
+    }
+  }
+  .arrow {
+    svg {
+      width: 20px;
+      height: 15px;
+      transform: rotate(0deg);
+      fill: $yellow;
+      transition: transform 0.1s ease;
+    }
+  }
+
+  &.open-message {
+    flex-direction: column;
+    height: calc(100% - 20px);
+    width: 100%;
+    transition: height 0.2s ease;
+    .text {
+      span {
+        overflow: unset;
+        color: $white;
+        text-overflow: unset;
+        white-space: wrap;
+        margin-right: 20px;
+      }
+    }
+    .arrow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 20px;
+      svg {
+        margin-top: 15px;
+        min-height: 20px;
+        min-width: 25px;
+        fill: $white;
+        transform: rotate(180deg);
+      }
+    }
+  }
+}

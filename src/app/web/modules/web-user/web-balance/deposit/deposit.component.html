@@ -1,0 +1,46 @@
+<div class="content">
+  <div class="deposit-methods">
+    <div class="deposit-methods--cover">
+      <div class="header">
+        <span class="title">Deposit Methodes</span>
+        <div class="header-dropdown">
+          <app-dropdown
+            dropdownButtonType="round"
+            (emitedItem)="getSelectedValue($event)"
+            [disableKey_All]="false"
+          ></app-dropdown>
+        </div>
+        
+      </div>
+      <div class="body">
+        <app-deposit-method-card></app-deposit-method-card>
+        <app-deposit-method-card></app-deposit-method-card>
+        <app-deposit-method-card></app-deposit-method-card>
+        <app-deposit-method-card></app-deposit-method-card>
+        <app-deposit-method-card></app-deposit-method-card>
+      </div>
+    </div>
+  </div>
+  <div class="all-methods">
+    <div class="all-methods--cover">
+      <div class="header">
+        <span class="title">All Methodes</span>
+        <div class="header-dropdown">
+          <app-dropdown
+            dropdownButtonType="round"
+            (emitedItem)="getSelectedValue($event)"
+            [disableKey_All]="false"
+          ></app-dropdown>
+        </div>
+        
+      </div>
+      <div class="body">
+        <app-all-method-card></app-all-method-card>
+        <app-all-method-card></app-all-method-card>
+        <app-all-method-card></app-all-method-card>
+        <app-all-method-card></app-all-method-card>
+        <app-all-method-card></app-all-method-card>
+      </div>
+    </div>
+  </div>
+</div>

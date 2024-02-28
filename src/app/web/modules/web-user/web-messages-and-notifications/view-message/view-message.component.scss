@@ -1,0 +1,124 @@
+@import "src/mixins/styles-mixin";
+@import "src/styles/colors";
+
+:host {
+  width: 50%;
+  height: 100%;
+}
+@media screen and (max-width: 1144px) {
+  :host {
+    width: 100%;
+  }
+}
+.empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: calc(100% - 40px);
+  height: calc(100% - 40px);
+  padding: 20px;
+  gap: 20px;
+  .empty-title {
+    font-size: 1.6em;
+    font-weight: 600;
+    color: $light-gray;
+  }
+  svg {
+    width: 100%;
+    height: 100%;
+    max-width: 110px;
+    max-height: 110px;
+    fill: $light-gray;
+  }
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: calc(100% - 50px);
+  margin-top: 45px;
+  gap: 20px;
+  .msg-button {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 100%;
+    .reply-message {
+      @include removed-styles-button;
+      @include squad-small;
+      padding: 1px;
+      background: $lighter-gray;
+      width: 100%;
+      height: 100%;
+      max-width: 124px;
+      min-height: 30px;
+      transition: background-color transform 0.1s ease;
+      transform: scale(1);
+      .cover {
+        @include squad-small;
+        width: 100%;
+        height: 100%;
+        background: $light-gray;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: background-color 0.1s ease;
+        font-size: 0.8em;
+        color: $smooth-white;
+        transition: font-size 0.1s ease;
+        white-space: nowrap;
+      }
+      &:hover {
+        transform: scale(1.02);
+        background: $yellow;
+        .cover {
+          background: $smooth-yellow;
+        }
+      }
+    }
+  }
+
+  .wrapper {
+    @include squad-small;
+    border-radius: 8px;
+    width: 100%;
+    height: calc(100% - 60px);
+    padding: 1px;
+    background: $yellow;
+    .cover {
+      @include squad-small;
+      display: flex;
+      flex-direction: column;
+      border-radius: 8px;
+      background: $dark-gray;
+      width: calc(100% - 30px);
+      height: calc(100% - 30px);
+      padding: 15px;
+      gap: 20px;
+      .header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+      }
+      .body {
+        @include scroll;
+        width: 100%;
+        height: 100%;
+        overflow-x: hidden;
+        overflow-y: auto;
+        .text {
+          height: 100%;
+          text-align: justify;
+          color: $smooth-white;
+          font-size: 0.8em;
+          font-weight: 400;
+          line-height: 20px;
+          margin-right: 10px;
+        }
+      }
+    }
+  }
+}

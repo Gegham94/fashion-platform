@@ -1,0 +1,30 @@
+<div class="content">
+  <div class="wrapper">
+    <div class="cover">
+      <div class="header">
+        <span class="title">Active Session</span>
+      </div>
+      <div class="body">
+        <div class="row" *ngFor="let item of data">
+          <div class="row-cover">
+            <div class="round line"></div>
+            <div class="item line">
+              <span>{{item.devicetype}}</span>
+              <span>{{item.date}} / {{item.time}}</span>
+            </div>
+            <div class="item line">
+              <span>{{item.location}}</span>
+              <span>IP : {{item.ipAddress}}</span>
+            </div>
+            <div class="item">
+              <span class="status">{{item.status}}</span>
+            </div>
+            <div class="remove" (click)="onRemoveSession()">
+              <span class="remove-line"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

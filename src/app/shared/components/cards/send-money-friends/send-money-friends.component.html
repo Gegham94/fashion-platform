@@ -1,0 +1,63 @@
+<div class="content">
+  <div class="wrapper">
+    <div class="cover">
+      <div class="header">
+        <span class="title">Send money to your Friend</span>
+      </div>
+      <div class="body" [class.mobile]="isMobile">
+        <form [formGroup]="sendMoneyForm" class="row">
+          <div class="amount-wrapper">
+            <input type="text" placeholder="Amount" formControlName="amount" />
+          </div>
+          <div class="dropdown-wrapper">
+            <app-dropdown
+              dropdownButtonType="round"
+              (emitedItem)="getSelectedValue($event)"
+              [borderGradient]="true"
+              [disableKey_All]="true"
+            ></app-dropdown>
+          </div>
+          <div class="id-wrapper">
+            <div class="col">
+              <span class="id-title" *ngIf="sendMoneyForm.get('id')?.value">ID</span>
+              <div class="id">
+                <input type="text" placeholder="ID" formControlName="id" />
+              </div>
+            </div>
+            <div class="message" (click)="sendMessage()">
+              <svg>
+                <use xlink:href="assets/icons/global-sprint.svg#gb-send"></use>
+              </svg>
+            </div>
+          </div>
+        </form>
+        <div class="table">
+          <div class="table-wrapper">
+            <div class="table-cover">
+              <div class="table-header" *ngIf="!isMobile">
+                <span *ngFor="let item of tableHeader">{{ item.name }}</span>
+              </div>
+              <div class="table-body">
+                <div *ngFor="let data of tableData" class="row">
+                  <div class="row--cover">
+                    <span>{{ data.dateAndTime }}</span>
+                    <span>{{ data.type }}</span>
+                    <span>{{ data.id }}</span>
+                    <span
+                      class="amount-status"
+                      [ngClass]="{
+                        red: data.type === 'Sent',
+                        green: data.type === 'Recive'
+                      }"
+                      >{{ data.amount }}</span
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

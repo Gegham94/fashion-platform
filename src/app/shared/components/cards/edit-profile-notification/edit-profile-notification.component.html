@@ -1,0 +1,136 @@
+<div class="content">
+  <form [formGroup]="notificationForm">
+    <div class="notify-content" [class.mobile]="isMobile">
+        <div class="row">
+          <label class="label" [class.checked]="newBonusesControl.value">
+            <input
+              type="checkbox"
+              formControlName="newBonuses"
+              [checked]="newBonusesControl.value"
+            />
+          </label>
+          <span>Notify me about new bonuses</span>
+        </div>
+        <div class="row">
+          <label class="label" [class.checked]="favoriteGamesControl.value">
+            <input
+              type="checkbox"
+              formControlName="favoriteGames"
+              (change)="onSubmitChanges()"
+              [checked]="favoriteGamesControl.value"
+            />
+          </label>
+          <span>Notify me about started favorite games</span>
+        </div>
+        <div class="row">
+          <label
+            class="label"
+            [class.checked]="withdrawalStatusesControl.value"
+          >
+            <input
+              type="checkbox"
+              formControlName="withdrawalStatuses"
+              (change)="onSubmitChanges()"
+              [checked]="withdrawalStatusesControl.value"
+            />
+          </label>
+          <span>Notify me about all withdrawal statuses</span>
+        </div>
+        <div class="row">
+          <label class="label" [class.checked]="typeOfBetControl.value">
+            <input
+              type="checkbox"
+              formControlName="typeOfBet"
+              (change)="onSubmitChanges()"
+              [checked]="typeOfBetControl.value"
+            />
+          </label>
+          <span>Notify me about all type of bet</span>
+        </div>
+        <div class="row">
+          <label class="label" [class.checked]="bonusAchievementControl.value">
+            <input
+              type="checkbox"
+              formControlName="bonusAchievement"
+              (change)="onSubmitChanges()"
+              [checked]="bonusAchievementControl.value"
+            />
+          </label>
+          <span>Notify me about last step of bonus achievement</span>
+        </div>
+        <div class="row">
+          <label
+            class="label"
+            [class.checked]="allDepositStatusesControl.value"
+          >
+            <input
+              type="checkbox"
+              formControlName="allDepositStatuses"
+              (change)="onSubmitChanges()"
+              [checked]="allDepositStatusesControl.value"
+            />
+          </label>
+          <span>Notify me about all deposit statuses</span>
+        </div>
+    </div>
+    <div class="text-content">Notify me about news and offers by</div>
+    <div class="news-offers-content">
+      <div class="row" [class.mobile]="isMobile">
+        <div class="wrapper" [class.checked]="emailControl.value">
+          <div class="cover">
+            <input
+              type="checkbox"
+              formControlName="email"
+              (change)="onSubmitChanges()"
+            />
+            <svg>
+              <use xlink:href="assets/icons/global-sprint.svg#gb-mail"></use>
+            </svg>
+            <span>Email</span>
+          </div>
+        </div>
+        <div class="wrapper" [class.checked]="smsControl.value">
+          <div class="cover">
+            <input
+              type="checkbox"
+              formControlName="sms"
+              (change)="onSubmitChanges()"
+            />
+            <svg>
+              <use xlink:href="assets/icons/global-sprint.svg#gb-message"></use>
+            </svg>
+            <span>SMS</span>
+          </div>
+        </div>
+        <div class="wrapper" [class.checked]="notificationsControl.value">
+          <div class="cover">
+            <input
+              type="checkbox"
+              formControlName="notofocations"
+              (change)="onSubmitChanges()"
+            />
+            <svg>
+              <use
+                xlink:href="assets/icons/global-sprint.svg#gb-notification"
+              ></use>
+            </svg>
+            <span>Notifications</span>
+          </div>
+        </div>
+        <div class="wrapper" [class.checked]="phoneCallControl.value">
+          <div class="cover">
+            <input
+              type="checkbox"
+              formControlName="phoneCall"
+              (change)="onSubmitChanges()"
+            />
+            <svg class="call">
+              <use xlink:href="assets/icons/global-sprint.svg#gb-phone"></use>
+            </svg>
+            <span>Phone Call</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

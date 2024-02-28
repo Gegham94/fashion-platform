@@ -1,0 +1,21 @@
+<div class="content">
+  <div class="shadow">
+    <div class="wrapper">
+      <div class="cover">
+        <div class="tab-buttons">
+          <button
+            *ngFor="let tab of helpType"
+            [routerLink]="tab.router"
+            (click)="selectHelpType(tab.id)"
+            [class.active]="tab.isActive"
+          >
+            <div class="button-cover">
+              <span>{{ tab.title }}</span>
+            </div>
+          </button>
+        </div>
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,78 @@
+<div class="content">
+  <div class="header">
+    <div class="msg-type">
+      <button
+        (click)="showType('inbox')"
+        [class.active]="selectedType === 'inbox'"
+      >
+        <div class="cover">
+          <span class="name">Inbox</span>
+          <span class="count">{{ inboxMsgCount }}</span>
+        </div>
+      </button>
+      <button
+        (click)="showType('sent')"
+        [class.active]="selectedType === 'sent'"
+      >
+        <div class="cover">
+          <span class="name">Sent</span>
+          <span class="count">{{ sentMsgCount }}</span>
+        </div>
+      </button>
+    </div>
+  </div>
+  <div class="body">
+    <div class="row-wrapper" *ngFor="let message of filteredMessages">
+      <div class="row-cover">
+        <div class="row-header">
+          <div class="first">
+            <div class="checkbox-wrapper" [class.checked]="setClass(message)">
+              <input
+                type="checkbox"
+                class="cover"
+                (click)="selectItem($event, message)"
+              />
+            </div>
+            <div class="star-shadow">
+              <svg *ngIf="false; else favoriteModel">
+                <use
+                  xlink:href="assets/icons/global-sprint.svg#gb-star-fill"
+                ></use>
+              </svg>
+              <ng-template #favoriteModel>
+                <svg>
+                  <use
+                    xlink:href="assets/icons/global-sprint.svg#gb-star-stroke"
+                  ></use>
+                </svg>
+              </ng-template>
+            </div>
+            <span>{{ message.title }}</span>
+          </div>
+          <div class="last">
+            <span>{{ message.date }}</span>
+          </div>
+        </div>
+        <div class="row-body">
+          <app-view-message
+            [message]="message"
+            [isOpen]="message.id === currentlyOpenMessageId"
+            (click)="openMessage(message.id)"
+          ></app-view-message>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+    <div class="msg-action">
+      <button (click)="clearAll()">
+        <div class="cover">
+          Clear All
+        </div>
+      </button>
+      <button routerLink="../new_message">
+        <div class="cover">New Message</div>
+      </button>
+    </div>
+  </div>
+</div>

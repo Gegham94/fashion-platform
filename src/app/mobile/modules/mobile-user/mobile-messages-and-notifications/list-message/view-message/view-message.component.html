@@ -1,0 +1,10 @@
+<div class="content" [class.open-message]="isOpen" (click)="toggleMessage()">
+  <div class="text">
+    <span>{{ message.text }}</span>
+  </div>
+  <div class="arrow">
+    <svg>
+      <use xlink:href="assets/icons/global-sprint.svg#gb-arrow-down"></use>
+    </svg>
+  </div>
+</div>

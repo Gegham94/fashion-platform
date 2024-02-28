@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="row" (click)="collapseRow()">
+    <div class="row--cover" [class.open]="isCollapse">
+      <span>{{ item.title }}</span>
+      <svg [class.rotate]="isCollapse">
+        <use xlink:href="assets/icons/global-sprint.svg#gb-arrow-down"></use>
+      </svg>
+    </div>
+  </div>
+
+  <div #frameContainerRef class="collapse-info">
+    <div class="collapse-row" *ngIf="isCollapse">
+      <div class="collapse-cover">{{item.text}}</div>
+    </div>
+  </div>
+</div>

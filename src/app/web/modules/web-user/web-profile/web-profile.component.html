@@ -1,0 +1,18 @@
+<app-loader *ngIf="isLoading; else contentModel"></app-loader>
+<ng-template #contentModel>
+  <div class="content">
+    <div class="content__shadowLive">
+      <app-live-casino-events></app-live-casino-events>
+    </div>
+    <div class="content__shadowBody">
+      <div class="content__shadowBody--body">
+        <app-web-user-info-card [userData]="userData"></app-web-user-info-card>
+        <app-slot-games-active-bets></app-slot-games-active-bets>
+      </div>
+    </div>
+
+    <div class="content__shadowSport">
+      <app-sport-events></app-sport-events>
+    </div>
+  </div>
+</ng-template>

@@ -1,0 +1,74 @@
+<div class="user-info-content">
+  <div class="squad-edit">
+    <div class="squad-edit--cover">
+      <svg>
+        <use xlink:href="assets/icons/global-sprint.svg#gb-edit"></use>
+      </svg>
+    </div>
+  </div>
+  <div class="diamond">
+    <div class="circule"></div>
+    <div class="squad-arrows">
+      <div class="squad-arrows--cover">
+        <svg>
+          <use xlink:href="assets/icons/global-sprint.svg#gb-arrow-to-left"></use>
+        </svg>
+        <svg>
+          <use xlink:href="assets/icons/global-sprint.svg#gb-arrow-to-right"></use>
+        </svg>
+      </div>
+    </div>
+    <div class="wrapper">
+      <div class="wrapper_cover">
+        <div class="wrapper_inner">
+          <span>{{ displayNameLetters() }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="info" *ngIf="userData">
+    <div class="info--cover">
+      <div class="data user-id">
+        <span class="title">ID {{ userData.id }}</span>
+      </div>
+      <div class="data user-points">
+        <span class="title">Loyal Points: <span class="text">{{ userData.loyalPoints }}</span></span>
+      </div>
+      <div class="data user-name">
+        <span class="title">{{ userData.userName }}</span>
+        <span class="title">{{ userData.firstName }} {{userData.lastName}}</span>
+      </div>
+      <div class="data user-contact">
+        <div class="column">
+          <span class="title">
+            <svg>
+              <use xlink:href="assets/icons/global-sprint.svg#gb-phone"></use>
+            </svg>
+            <span class="text"> + {{ userData.phoneNumber }}</span>
+          </span>
+          <span class="title">
+            <svg>
+              <use xlink:href="assets/icons/global-sprint.svg#gb-location"></use>
+            </svg>
+            <span class="text">{{ userData.location }}</span>
+          </span>
+        </div>
+        <div class="column">
+          <span class="title">
+            <svg>
+              <use xlink:href="assets/icons/global-sprint.svg#gb-mail"></use>
+            </svg>
+            <span class="text">{{ userData.email }}</span>
+          </span>
+          <span class="title">
+            <svg>
+              <use xlink:href="assets/icons/global-sprint.svg#gb-date-of-birth"></use>
+            </svg>
+            <span class="text">{{ userData.dateOfBirth }}</span>
+          </span>
+        </div>
+      </div>
+      <img src="../../../../../assets/images/user-info-card-bg.svg" />
+    </div>
+  </div>
+</div>

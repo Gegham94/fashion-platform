@@ -1,0 +1,118 @@
+@import "src/mixins/styles-mixin";
+@import "src/styles/colors";
+
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  &__user {
+    &:hover {
+      opacity: 0.9;
+    }
+    position: relative;
+    @include diamond;
+    min-height: 50px;
+    min-width: 60px;
+    height: 3.5%;
+    z-index: 1;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: $yellow;
+    &::before {
+      content: "";
+      @include diamond;
+      width: calc(100% - 20px);
+      height: calc(100% - 18px);
+      position: absolute;
+      background: $layout-bg;
+    }
+    &--head {
+      border-radius: 100%;
+      background: $white;
+      width: 12%;
+      height: 12%;
+      z-index: 1;
+    }
+    &--body {
+      @include logo-user-body;
+      background: $white;
+      width: 25%;
+      height: 32%;
+    }
+  }
+  &__auth {
+    @include auth-wrapper;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    white-space: nowrap;
+    transition: all 0.15s ease;
+    background: $dark-gray;
+    width: 0;
+    height: 50%;
+    &.active {
+      width: 100%;
+      margin-left: -14%;
+      padding: 2% 2% 2% 0;
+    }
+    &::before {
+      content: "";
+      display: flex;
+      min-width: 40px;
+      height: 3.5vh;
+    }
+    &--signup {
+      @include auth-signup-signin-button;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: 600;
+      color: $layout-bg;
+      background: $yellow;
+      width: 100%;
+      height: 100%;
+      min-width: 72px;
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+    &--signin {
+      @include auth-signup-signin-button;
+      transform: scale(-1);
+      position: relative;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: 600;
+      color: $layout-bg;
+      background: $yellow;
+      width: 100%;
+      height: 100%;
+      margin-left: -15px;
+      min-width: 72px;
+      span {
+        color: $yellow;
+        transform: scale(-1);
+      }
+      &:hover {
+        opacity: 0.8;
+      }
+      &--cover {
+        @include auth-signup-signin-button;
+        width: calc(100% - 2px);
+        height: calc(100% - 1px);
+        margin-right: 1px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: $dark-gray;
+      }
+    }
+  }
+}

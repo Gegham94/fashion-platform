@@ -1,0 +1,53 @@
+<div
+  #multiselect
+  class="app-multiselect"
+  [id]="uniqId"
+  [ngClass]="[cutSide, disabled ? 'disabled' : '', error ? 'error' : '']"
+>
+  <div class="wrapper" (click)="onChangeIsOpen($event)">
+    <div class="cover">
+      <div class="placeholder">
+        <ng-container *ngIf="isShowIcon; else placeholderModel">
+          <div class="currency">
+            <div class="currency-cover">
+              <svg class="letter">
+                <use xlink:href="assets/icons/global-sprint.svg#gb-currency-letter"></use>
+              </svg>
+            </div>
+          </div>
+        </ng-container>
+        <ng-template #placeholderModel>
+          <ng-container *ngIf="!selectetOptions[0]; else selectedPlaceholderModel">
+            {{ placeholder }}
+          </ng-container>
+          <ng-template #selectedPlaceholderModel>
+            <ng-container *ngFor="let item of selectetOptions; let last = last">
+              {{ item.name }}{{ last ? "" : ",&nbsp;" }}
+            </ng-container>
+          </ng-template>
+        </ng-template>
+      </div>
+
+      <svg class="arrow" [class.rotate]="isOpen">
+        <use xlink:href="assets/icons/global-sprint.svg#gb-arrow-down"></use>
+      </svg>
+    </div>
+  </div>
+
+  <ng-template #dropdownTemplate>
+    <div #dropdown id="app-multiselect-dropdown">
+      <div class="dropdown__list" @collapse *ngIf="isOpen">
+        <div
+          class="option"
+          *ngFor="let item of data"
+          (click)="selectItem($event, item)"
+        >
+          <div class="checkbox--wrapper" [class.checked]="getSelected(item)">
+            <input type="checkbox" />
+          </div>
+          <span class="value">{{ item.name }}</span>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</div>

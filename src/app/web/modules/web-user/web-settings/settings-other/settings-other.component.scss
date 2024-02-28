@@ -1,0 +1,86 @@
+@import "src/mixins/styles-mixin";
+@import "src/styles/colors";
+
+:host {
+  width: 100%;
+  height: calc(100% - 50px);
+}
+
+.content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 20px;
+  .self-exclusion,
+  .bet-deposit-limits {
+    background: $border-gradient-to-bottom;
+    width: calc(100% - 2px);
+    height: calc(100% - 2px);
+    padding: 1px;
+    border-radius: 10px;
+    .cover {
+      display: flex;
+      flex-direction: column;
+      background: $user-platform-section-gradient;
+      width: 100%;
+      height: 100%;
+      border-radius: 10px;
+      .header {
+        width: calc(100% - 30px);
+        padding: 5px 15px;
+        min-height: 45px;
+        background: $user-platform-section-header-bg;
+        border-bottom: 1px solid $yellow;
+        border-radius: 10px 10px 0 0;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        gap: 5px;
+        .title {
+          color: $yellow;
+          font-size: 0.85em;
+          font-weight: 800;
+          white-space: nowrap;
+        }
+        .sub-title {
+          color: $smooth-white;
+          font-size: 0.65em;
+          font-weight: 400;
+        }
+      }
+      .body {
+        @include scroll;
+        overflow-y: auto;
+        overflow-x: hidden;
+        width: calc(100% - 30px);
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        padding: 15px;
+        gap: 10px;
+        height: 100%;
+      }
+    }
+  }
+  .self-exclusion {
+    @include lb-side-squad-content;
+    .cover {
+      @include lb-side-squad-content;
+    }
+  }
+  .bet-deposit-limits {
+    @include rt-side-squad-content;
+    .cover {
+      @include rt-side-squad-content;
+    }
+  }
+}
+
+@media (max-width: 1124px) {
+  .content {
+    flex-direction: column;
+  }
+}

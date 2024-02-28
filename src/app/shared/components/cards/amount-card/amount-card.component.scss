@@ -1,0 +1,115 @@
+@import "src/mixins/styles-mixin";
+@import "src/styles/colors";
+
+.content {
+  width: 100%;
+  height: 100%;
+  min-width: 235px;
+  min-height: 190px;
+  filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.25));
+  .wrapper {
+    @include squad-big;
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    padding: 1px;
+    background: $border-gradient-to-bottom;
+    .cover {
+      @include squad-big;
+      display: flex;
+      flex-direction: column;
+      padding: 10px;
+      border-radius: 5px;
+      width: calc(100% - 20px);
+      height: calc(100% - 20px);
+      background: $info-card-bg;
+      row-gap: 10px;
+      .header {
+        display: flex;
+        justify-content: space-between;
+        .title {
+          color: $yellow;
+          font-size: 1.2em;
+          font-weight: 800;
+        }
+        .header-dropdown {
+          width: 60px;
+          height: 24px;
+        }
+      }
+      .data {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        &:last-child {
+          justify-content: flex-end;
+        }
+        &__row {
+          width: 100%;
+          height: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          &--title {
+            color: $smooth-white;
+            font-size: 0.75em;
+          }
+          &--value {
+            font-size: 0.85em;
+            font-weight: 800;
+          }
+        }
+        &__line {
+          height: 3px;
+          width: 100%;
+          background: linear-gradient(
+            to right,
+            rgba(0, 0, 0, 0) 0%,
+            #dcb567 40%,
+            #dcb567 60%,
+            rgba(0, 0, 0, 0) 100%
+          );
+        }
+      }
+      .button-row {
+        display: flex;
+        justify-content: flex-end;
+        .button-wrapper {
+          @include squad-small;
+          width: 110px;
+          height: 32px;
+          padding: 1px;
+          border-radius: 2px;
+          button {
+            @include removed-styles-button;
+            @include squad-small;
+            color: $white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+            border-radius: 2px;
+            font-size: 0.9em;
+            font-weight: 500;
+          }
+        }
+        .yellowBtn {
+          background: $yellow;
+          button {
+            background: $smooth-yellow;
+          }
+        }
+        .grayBtn {
+          background: $lighter-gray;
+          button {
+            background: $dark-gray;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,18 @@
+<div class="header">
+  <div class="header--search">
+    <div class="wrapper">
+      <input
+        #searchRef
+        type="text"
+        class="cover"
+        placeholder="Search..."
+        autocomplete="off"
+        (keydown.enter)="onEnterKey()"
+      />
+    </div>
+  </div>
+  <div class="header--icon" (click)="searchFilter()">
+    <div class="diamond"></div>
+    <div class="lens"></div>
+  </div>
+</div>

@@ -1,0 +1,39 @@
+<div class="content" [class.mobile]="isMobile">
+  <div class="wrapper">
+    <div class="cover">
+      <div class="header">
+        <span class="title">Casino</span>
+        <div class="header-dropdown">
+          <app-dropdown
+            dropdownButtonType="squad"
+            (emitedItem)="getSelectedValue($event)"
+            [disableKey_All]="true"
+          ></app-dropdown>
+        </div>
+      </div>
+      <div class="body">
+        <form [formGroup]="casinoForm" (ngSubmit)="submitForm()">
+          <div class="form-fields">
+            <div class="input-wrapper">
+              <input type="text" formControlName="minAmount" placeholder="Min amount" />
+            </div>
+            <div class="input-wrapper">
+              <input
+                type="text"
+                formControlName="maxAmount"
+                placeholder="Max amount"
+              />
+            </div>
+          </div>
+          <div class="action-btn">
+            <button type="submit">
+              <div class="cover">
+                <span>Save</span>
+              </div>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

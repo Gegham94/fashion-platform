@@ -1,0 +1,15 @@
+<div class="content">
+  <div class="content__buttons">
+    <button
+      *ngFor="let tab of settingsType"
+      (click)="selectSettingsType(tab.id)"
+      [routerLink]="tab.router"
+      [class.active]="tab.isActive"
+    >
+      <div class="cover">
+        <span>{{ tab.title }}</span>
+      </div>
+    </button>
+  </div>
+  <router-outlet></router-outlet>
+</div>

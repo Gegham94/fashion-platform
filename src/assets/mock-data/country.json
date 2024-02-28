@@ -1,0 +1,57 @@
+[
+  {
+    "isSelected": false,
+    "value": "Armenia",
+    "short": "am"
+  },
+  {
+    "isSelected": false,
+    "value": "Argentina",
+    "short": "ag"
+  },
+  {
+    "isSelected": false,
+    "value": "Brazil",
+    "short": "br"
+  },
+  {
+    "isSelected": false,
+    "value": "China",
+    "short": "cn"
+  },
+  {
+    "isSelected": false,
+    "value": "Canada",
+    "short": "ca"
+  },
+  {
+    "isSelected": false,
+    "value": "Spain",
+    "short": "es"
+  },
+  {
+    "isSelected": false,
+    "value": "Georgia",
+    "short": "ge"
+  },
+  {
+    "isSelected": false,
+    "value": "Italy",
+    "short": "it"
+  },
+  {
+    "isSelected": false,
+    "value": "Germany",
+    "short": "gm"
+  },
+  {
+    "isSelected": false,
+    "value": "Columbia",
+    "short": "co"
+  },
+  {
+    "isSelected": false,
+    "value": "Russia",
+    "short": "ru"
+  }
+]

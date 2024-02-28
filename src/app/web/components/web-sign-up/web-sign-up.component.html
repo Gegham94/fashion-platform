@@ -1,0 +1,80 @@
+<div class="container">
+  <div class="container__header">
+    <div class="container__header--info">
+      <span>?</span>
+    </div>
+    <div class="container__header--title">
+      <span class="container__header--title__text">Sign Up</span>
+      <div class="container__header--title__wrapper"></div>
+      <div class="container__header--title__decor"></div>
+    </div>
+  </div>
+
+  <div class="container__tabs">
+    <div class="container__tabs__numbers">
+      <span class="container__tabs__numbers--number">1</span>
+      <span class="container__tabs__numbers--line"></span>
+      <span class="container__tabs__numbers--number">2</span>
+    </div>
+
+    <div class="container__tabs__rectangles">
+      <div class="container__tabs__rectangles__stroke">
+        <div class="container__tabs__rectangles__stroke--cover">
+          <div
+            class="container__tabs__rectangles__stroke--cover--inner"
+            [class.active]="stepId === 1"
+          ></div>
+        </div>
+      </div>
+
+      <span class="container__tabs__rectangles--line"></span>
+
+      <div class="container__tabs__rectangles__stroke">
+        <div class="container__tabs__rectangles__stroke--cover">
+          <div
+            class="container__tabs__rectangles__stroke--cover--inner"
+            [class.active]="stepId === 2"
+          ></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <form [formGroup]="signupForm" class="container--form" (ngSubmit)="submitForm()">
+    <div
+      formGroupName="firstStepForm"
+      class="container--form__firstStepForm"
+      *ngIf="stepId === 1"
+    >
+      <app-web-profile-form inputColor="dark" (formValue)="getFormValue($event)"></app-web-profile-form>
+        <div class="container--form__firstStepForm__footer">
+          <span class="container--form__firstStepForm__footer--have-account">Already have Account?</span>
+          <div class="container--form__firstStepForm__footer--nextBtn">
+            <div class="container--form__firstStepForm__footer--nextBtn__wrapper" (click)="nextStep()">
+              <div class="container--form__firstStepForm__footer--nextBtn__wrapper--cover">
+                Next
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        formGroupName="secondStepForm"
+        class="container--form__secondStepForm"
+        *ngIf="stepId === 2"
+      >
+      <app-web-profile-form-step-2 inputColor="dark" (formValue)="getFormStep2Value($event)"></app-web-profile-form-step-2>
+      <div class="container--form__secondStepForm__footer">
+        <div class="container--form__secondStepForm__footer--prevBtn">
+          <div class="container--form__secondStepForm__footer--prevBtn__wrapper" (click)="previousStep()">
+            <div class="container--form__secondStepForm__footer--prevBtn__wrapper--cover">Back</div>
+          </div>
+        </div>
+        <div class="container--form__secondStepForm__footer--nextBtn">
+          <div class="container--form__secondStepForm__footer--nextBtn__wrapper">
+            <button type="submit" class="container--form__secondStepForm__footer--nextBtn__wrapper--cover">Sign Up</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

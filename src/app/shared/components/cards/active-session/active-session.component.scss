@@ -1,0 +1,149 @@
+@import "src/mixins/styles-mixin";
+@import "src/styles/colors";
+:host {
+  width: 100%;
+  height: 100%;
+  min-height: 190px;
+}
+
+.content {
+  width: 100%;
+  height: 100%;
+  .wrapper {
+    @include squad-big;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: $yellow;
+    border-radius: 5px;
+    padding: 1px;
+    width: calc(100% - 2px);
+    height: calc(100% - 2px);
+    .cover {
+      @include squad-big;
+      display: flex;
+      flex-direction: column;
+      border-radius: 5px;
+      width: 100%;
+      height: 100%;
+      background: $user-platform-section-gradient;
+      .header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 100%;
+        width: calc(100% - 30px);
+        height: 40px;
+        border-bottom: 1px solid $yellow;
+        border-radius: 5px 0px 0px 0px;
+        background: $darker-gray;
+        padding: 5px 15px;
+        gap: 10px;
+        .title {
+          color: $white;
+          font-size: 0.8em;
+          font-weight: 500;
+        }
+      }
+      .body {
+        @include scroll;
+        overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+        padding: 10px;
+        gap: 10px;
+        width: calc(100% - 25px);
+        height: 100%;
+        max-height: 240px;
+        border-radius: 0px 0px 5px 0px;
+        margin-right: 5px;
+        .row {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          width: calc(100% - 2px);
+          height: 50px;
+          background: $border-gradient-to-right-success;
+          border-radius: 25px;
+          padding: 1px;
+          .row-cover {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: calc(100% - 14px);
+            height: calc(100% - 14px);
+            background: $light-gray;
+            border-radius: 23px;
+            padding: 7px;
+            .round {
+              display: flex;
+              width: 38px;
+              height: 38px;
+              border-radius: 100%;
+              background: $lighter-gray;
+              box-shadow: 1px 2px 4px 1px rgba(0, 0, 0, 0.2);
+              flex-shrink: 0;
+            }
+            .line {
+              position: relative;
+              &::after {
+                content: "";
+                position: absolute;
+                display: flex;
+                align-items: center;
+                width: 2px;
+                height: 23px;
+                background: $lighter-gray;
+                left: calc(100% + 5px);
+                top: 50%;
+                transform: translateY(-50%);
+              }
+            }
+            .item {
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              text-align: center;
+              width: 100%;
+              height: 100%;
+              gap: 5px;
+              span {
+                font-size: 0.6em;
+                color: $white;
+              }
+              .status {
+                color: $green;
+                font-size: 0.8em;
+                font-weight: 600;
+              }
+            }
+            .remove {
+              cursor: pointer;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              flex-shrink: 0;
+              width: 38px;
+              height: 38px;
+              background: $light-gray;
+              border: 1px solid $red;
+              border-top: 0;
+              border-radius: 100%;
+              filter: drop-shadow(4px 8px 16px rgba(0, 0, 0, 0.2));
+              transition: transform 0.5ms ease;
+              .remove-line {
+                width: 50%;
+                height: 2px;
+                background: $red;
+                border-radius: 1px;
+              }
+              &:hover {
+                transform: scale(1.02);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

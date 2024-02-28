@@ -1,0 +1,36 @@
+<div class="content">
+  <div class="wrapper">
+    <div class="cover">
+      <div class="header">
+        <span class="title">Two-factor authentication</span>
+      </div>
+      <div class="body">
+        <span class="info"
+          >Protect your account from break-in by 2 step authentication</span
+        >
+        <form [formGroup]="twoFactorAuthForm" (ngSubmit)="submitForm()">
+          <div class="qr-fields">
+            <div class="qr-code"></div>
+            <div class="qr-apps">
+              <span class="qr-title">Two scan QR code please use either of the following apps</span>
+              <div class="apps">
+                <div class="app"></div>
+                <div class="app"></div>
+              </div>
+            </div>
+          </div>
+          <div class="form-fields">
+            <div class="input-wrapper">
+              <input type="text" formControlName="code" placeholder="Code" />
+            </div>
+          </div>
+          <button type="submit">
+            <div class="cover">
+              <span>Save Changes</span>
+            </div>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

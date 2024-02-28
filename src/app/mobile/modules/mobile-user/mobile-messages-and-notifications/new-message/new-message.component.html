@@ -1,0 +1,88 @@
+<div class="content">
+  <div class="wrapper">
+    <div class="body">
+      <form [formGroup]="messageForm">
+        <label class="subject" [class.error]="subjectControl.touched && subjectControl.invalid">
+          <input type="text" placeholder="Subject" formControlName="subject"/>
+        </label>
+        <div class="feedback-error" *ngIf="subjectControl.touched && subjectControl.invalid">
+          <svg>
+            <use xlink:href="assets/icons/global-sprint.svg#gb-error"></use>
+          </svg>
+          Please fill Subject
+        </div>
+        <div class="textarea-wrapper">
+          <textarea class="textarea" (input)="updateCharacterCount($event)" [maxlength]="maxCharacterCount" formControlName="description"></textarea>
+          <span class="character-count">{{characterCount}}/{{maxCharacterCount}}</span>
+        </div>
+        
+        <div class="attach-files">
+          <div class="upload">
+            <div class="attach">
+              <label  class="icon-label">
+                <svg>
+                  <use xlink:href="assets/icons/global-sprint.svg#gb-file-upload"></use>
+                </svg>
+                <input type="file" (change)="onSelectFiles($event)" [accept]="acceptFileTypes" multiple />
+              </label>
+            </div>
+  
+            <div class="attach">
+              <label class="icon-label">
+                <svg>
+                  <use xlink:href="assets/icons/global-sprint.svg#gb-image-upload"></use>
+                </svg>
+                <input type="file" (change)="onSelectFiles($event)" [accept]="acceptImageTypes" multiple />
+              </label>
+            </div>
+          </div>
+
+          <div class="preview">
+            <div  class="file" *ngFor="let file of files; let i = index">
+              <div class="wrapper">
+                <div class="cover">
+                  <img [src]="file.dataURL" *ngIf="file.fileType.startsWith('image'); else docModel">
+                  <ng-template #docModel>
+                    <svg>
+                      <use xlink:href="assets/icons/global-sprint.svg#gb-doc"></use>
+                    </svg>
+                    <span class="doc-name">{{file.name}}</span>
+                  </ng-template>
+                </div>
+              </div>
+              <div class="remove-file" (click)="onRemove(i)">
+                <button class="remove-btn"><span class="line"></span></button>
+              </div>
+            </div>
+            <div class="add-file-zone" [class.disabled]="attachedFileCountError">
+              <label class="icon-label">
+                <svg><use xlink:href="assets/icons/global-sprint.svg#gb-plus"></use></svg>
+              <input type="file" (change)="onSelectFiles($event)" [accept]="acceptImageTypes" multiple [disabled]="attachedFileCountError"/>
+            </label>
+
+            </div>
+          </div>
+          
+        </div>
+        <span class="info-attach" [class.detect-count]="attachedFileCountError">You can Attach no more than 5 images</span>
+      </form>
+    </div>
+    <div class="footer">
+      <div class="msg-action">
+        <button routerLink="../message_list">
+          <div class="cover">
+            <svg>
+              <use xlink:href="assets/icons/global-sprint.svg#gb-arrow-to-left"></use>
+            </svg>
+            Back
+          </div>
+        </button>
+        <button (click)="sendMessage()">
+          <div class="cover">
+            Send Message
+          </div>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

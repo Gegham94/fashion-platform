@@ -1,0 +1,81 @@
+<app-loader *ngIf="isLoading; else contentModel"></app-loader>
+<ng-template #contentModel>
+  <div class="content">
+    <div class="content__filters">
+      <div class="date filter">
+        <div class="wrapper-content">
+          <label class="label left">
+            <div class="cover">
+              <span>From:</span>
+              <input
+                type="date"
+                autocomplete="off"
+                (change)="onSelectDateFrom($event)"
+              />
+              <svg>
+                <use
+                  xlink:href="assets/icons/global-sprint.svg#gb-calendar-date"
+                ></use>
+              </svg>
+            </div>
+          </label>
+        </div>
+        <div class="wrapper-content">
+          <label class="label right">
+            <div class="cover">
+              <span>To:</span>
+              <input
+                type="date"
+                autocomplete="off"
+                (change)="onSelectDateTo($event)"
+              />
+              <svg>
+                <use
+                  xlink:href="assets/icons/global-sprint.svg#gb-calendar-date"
+                ></use>
+              </svg>
+            </div>
+          </label>
+        </div>
+      </div>
+      <div class="options filter">
+        <app-multiselect
+          [data]="status"
+          [keyName]="'id'"
+          placeholder="Status"
+          [className]="'form-filed'"
+          (onSelect)="onSelectStatusFilter($event)"
+        >
+        </app-multiselect>
+        <app-multiselect
+          [cutSide]="'right'"
+          [data]="method"
+          [keyName]="'id'"
+          placeholder="Method"
+          [className]="'form-filed method'"
+          (onSelect)="onSelectMethodFilter($event)"
+        >
+        </app-multiselect>
+        <div class="currency-wrapper">
+          <app-multiselect
+            [cutSide]="'round'"
+            [data]="currency"
+            [keyName]="'id'"
+            placeholder="Currency"
+            [isCurrencyIcon]="true"
+            [className]="'form-filed'"
+            (onSelect)="onSelectCurrencyFilter($event)"
+          >
+          </app-multiselect>
+        </div>
+      </div>
+    </div>
+    <div class="content__table">
+      <div class="content__table--cover">
+        <div class="table-body">
+          <!-- HERE GOING TO BE ACTIVE BET IFRAME -->
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>

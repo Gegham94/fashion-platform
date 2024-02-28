@@ -1,0 +1,247 @@
+@import "src/mixins/styles-mixin";
+@import "src/styles/colors";
+
+:host {
+  width: 100%;
+  height: 100%;
+}
+input {
+  -webkit-autofill: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  -o-appearance: none;
+  appearance: none;
+  border: none;
+  outline: none;
+  width: 100%;
+  height: 100%;
+  text-align: left;
+  background: transparent;
+  color: $smooth-white;
+  font-size: 0.85em;
+  &::placeholder {
+    color: $white;
+    opacity: 0.7;
+    font-weight: 500;
+    user-select: none;
+  }
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  .header,
+  .footer {
+    padding: 10px 0;
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    max-height: 30px;
+    gap: 10px;
+    button {
+      @include removed-styles-button;
+      padding: 1px;
+      background: $lighter-gray;
+      width: 100%;
+      height: 100%;
+      transition: background-color transform 0.1s ease;
+      transform: scale(1);
+      .cover {
+        width: 100%;
+        height: 100%;
+        background: $light-gray;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: background-color 0.1s ease;
+        span {
+          width: 100%;
+          color: $smooth-white;
+          text-align: center;
+          transition: font-size 0.1s ease;
+          white-space: nowrap;
+        }
+      }
+      &.active,
+      &:active {
+        transform: scale(1.03);
+        background: $yellow;
+        .cover {
+          background: $smooth-yellow;
+        }
+      }
+    }
+    .msg-type {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      border-radius: 20px;
+      button {
+        border-radius: 20px;
+        max-width: 104px;
+        .cover {
+          border-radius: 20px;
+          .name {
+            font-size: 0.8em;
+            padding: 4px 0 4px 10px;
+            font-weight: 400;
+          }
+          .count {
+            font-size: 0.8em;
+            padding: 4px 10px 4px 0;
+            font-weight: 400;
+          }
+        }
+      }
+    }
+    .msg-action {
+      width: 100%;
+      height: 100%;
+      padding: 0 10px;
+      display: flex;
+      justify-content: space-between;
+      button {
+        @include squad-small;
+        border-radius: 3px;
+        max-width: 104px;
+        height: 30px;
+        .cover {
+          @include squad-small;
+          border-radius: 3px;
+          height: 100%;
+          font-size: 0.75em;
+          font-weight: 500;
+          color: $white;
+        }
+      }
+    }
+  }
+  .footer {
+    border-top: 1px solid $light-gray;
+  }
+  .body {
+    @include scroll;
+    overflow-y: auto;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    padding: 0 5px;
+    width: calc(100% - 15px);
+    height: 100%;
+    padding-right: 5px;
+    gap: 5px;
+    .row-wrapper {
+      @include squad-small;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      padding: 1px;
+      background: $light-gray;
+      .row-cover {
+        @include squad-small;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        width: calc(100% - 12px);
+        height: calc(100% - 12px);
+        padding: 1px;
+        background: $darker-gray;
+        transition: background-color 0.1s ease;
+        padding: 5px;
+        min-height: 60px;
+        gap: 10px;
+        .row-header {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          width: 100%;
+          .first {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            height: 100%;
+            width: 100%;
+            gap: 10px;
+            .checkbox-wrapper {
+              @include squad-small;
+              width: 100%;
+              height: 100%;
+              max-width: 24px;
+              max-height: 24px;
+              padding: 1px;
+              background: $lighter-gray;
+              aspect-ratio: 1/1;
+              .cover {
+                @include squad-small;
+                cursor: pointer;
+                width: 100%;
+                height: 100%;
+                background: $light-gray;
+                padding: 0;
+              }
+              &.checked {
+                background: $yellow;
+                input {
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                }
+                input[type="checkbox"]:after {
+                  content: "\2713";
+                  display: flex;
+                  color: $yellow;
+                }
+              }
+            }
+            .star-shadow {
+              filter: drop-shadow(0 0 3px $yellow);
+              margin-top: 2px;
+              svg {
+                width: 18px;
+                height: 18px;
+                fill: $yellow;
+              }
+            }
+            span {
+              color: $white;
+              font-size: 0.9em;
+              font-weight: 500;
+              white-space: nowrap;
+            }
+          }
+          .last {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            height: 100%;
+            width: 100%;
+            span {
+              color: $white;
+              font-size: 0.9em;
+              font-weight: 500;
+              white-space: nowrap;
+            }
+          }
+        }
+        .row-body {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          width: 100%;
+          height: auto;
+          max-height: 240px;
+        }
+      }
+    }
+  }
+}

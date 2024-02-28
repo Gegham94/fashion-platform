@@ -1,0 +1,265 @@
+@import "src/mixins/styles-mixin";
+@import "src/styles/colors";
+:host {
+  width: 100%;
+  height: 100%;
+}
+input {
+  -webkit-autofill: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  -o-appearance: none;
+  appearance: none;
+  border: none;
+  outline: none;
+  width: 100%;
+  height: 100%;
+  text-align: left;
+  background: transparent;
+  color: $smooth-white;
+  font-size: 0.7em;
+  &::placeholder {
+    color: $white;
+    opacity: 0.7;
+    font-weight: 500;
+    user-select: none;
+  }
+}
+input[type="date"]::-webkit-calendar-picker-indicator {
+  background: transparent;
+  color: transparent;
+  width: 30px;
+  height: 100%;
+  position: absolute;
+  right: 0;
+  cursor: pointer;
+  z-index: 1;
+  color: $smooth-white;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+  width: 100%;
+  height: 100%;
+  &__filters {
+    height: 100%;
+    width: 100%;
+    max-height: 65px;
+    gap: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    .date {
+      .wrapper-content {
+        &:last-child {
+          margin-left: -20px;
+        }
+        .left {
+          span {
+            margin: 0 5px;
+          }
+        }
+        .right {
+          span {
+            margin: 0 5px 0 20px;
+          }
+        }
+      }
+    }
+    .options {
+      input {
+        cursor: pointer;
+      }
+      .left {
+        input {
+          margin: 0 25px 0 10px;
+        }
+      }
+      .right {
+        input {
+          margin: 0 10px 0 25px;
+        }
+      }
+    }
+    .filter {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      height: 100%;
+      width: 100%;
+      gap: 5px;
+      filter: drop-shadow(2px 2px 2px #00000083);
+      .wrapper-content {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        .label {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: $yellow;
+          width: 100%;
+          padding: 1px;
+          height: 30px;
+          .cover {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            span {
+              font-size: 0.7em;
+              font-weight: 700;
+            }
+            svg {
+              position: absolute;
+              width: 15px;
+              height: 15px;
+              fill: $yellow;
+              right: 25px;
+            }
+            .multiselect {
+              position: absolute;
+              width: 100%;
+              height: 100%;
+            }
+          }
+          &.left {
+            @include input-left;
+            border-radius: 20px 0 0 20px;
+            .cover {
+              @include input-left;
+              background: linear-gradient(#1c1c23 0%, #2d2d37 100%);
+              border-radius: 20px 0 0 20px;
+            }
+          }
+          &.right {
+            @include input-right;
+            border-radius: 0 20px 20px 0;
+            .cover {
+              @include input-right;
+              background: linear-gradient(#1c1c23 0%, #2d2d37 100%);
+              border-radius: 0 20px 20px 0;
+            }
+          }
+        }
+      }
+      .currency-wrapper {
+        width: 100%;
+        max-width: 80px;
+      }
+    }
+    .form-filed {
+      max-height: 30px;
+    }
+    .method {
+      margin-left: -20px;
+    }
+  }
+  &__table {
+    @include squad-big;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: calc(100% - 75px);
+    border-radius: 10px;
+    background: $border-gradient-to-bottom;
+    padding: 1px;
+    &--cover {
+      @include squad-big;
+      width: 100%;
+      height: 100%;
+      background: $darker-gray;
+      border-radius: 10px;
+      position: relative;
+      .table-body {
+        @include scroll;
+        display: flex;
+        flex-direction: column;
+        border-radius: 0 0 10px 10px;
+        width: calc(100% - 24px);
+        padding: 10px;
+        height: calc(100% - 20px);
+        overflow-y: auto;
+        overflow-x: hidden;
+        gap: 10px;
+        .row {
+          @include squad-small;
+          display: flex;
+          flex-direction: column;
+          width: 100%;
+          padding: 1px;
+          border-radius: 5px;
+          background: linear-gradient(to top, #dcb567 0% rgba(45, 45, 55, 0.5) 100%);
+          &--cover {
+            @include squad-small;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: nowrap;
+            width: 100%;
+            height: 100%;
+            border-radius: 5px;
+            background: $dark-gray;
+            overflow: hidden;
+            .item-row {
+              width: calc(100% - 20px);
+              height: calc(100% - 20px);
+              padding: 10px;
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+              &:nth-child(even) {
+                background: $light-gray;
+              }
+              &:nth-child(odd) {
+                background: $dark-gray;
+              }
+              .title {
+                text-align: left;
+                width: 100%;
+                height: 100%;
+              }
+              .value {
+                text-align: right;
+                width: 100%;
+                height: 100%;
+                &.red {
+                  color: $red;
+                }
+                &.green {
+                  color: $green;
+                }
+                &.yellow {
+                  color: $yellow;
+                }
+              }
+            }
+          }
+          &.red {
+            background: linear-gradient(to top, #f64c55 0%, rgba(45, 45, 55, 0.5) 100%);
+          }
+          &.green {
+            background: linear-gradient(to top, #19aa85 0%, rgba(45, 45, 55, 0.5) 100%);
+          }
+          &.yellow {
+            background: linear-gradient(to top, #dcb567 0%, rgba(45, 45, 55, 0.5) 100%);
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,48 @@
+// SOLID COLORS
+$layout-bg: #000000;
+$light-gray: #3A3A4A;
+$lighter-gray: #6E6E7D;
+$dark-gray: #2D2D37;
+$darker-gray: #1C1C23;
+
+$red: #F64C55;
+$dark-red: #ff0000;
+$white: #ffffff;
+$smooth-white: rgba(255, 255, 255, 0.8);
+$yellow: #DCB567;
+$smooth-yellow: #7e6129;
+$green: #19AA85;
+$smooth-green: #0d6650;
+
+$desktop-blur: rgba(0, 0, 0, 0.85);
+$mobile-blur: #000000;
+
+// GRADIENT COLORS
+$border-gradient-to-bottom: linear-gradient(#dcb567 0%, #3A3A4A 100%);
+
+$border-gradient-to-right: linear-gradient(to left, #dcb567 0%, rgba(45, 45, 55, 0.5) 100%);
+$border-gradient-middle: linear-gradient(to right, #dcb567 0%, rgba(148, 128, 92, 0.445) 100%);
+$border-gradient-to-left: linear-gradient(to right, #dcb567 0%, rgba(45, 45, 55, 0.5) 100%);
+
+$border-gradient-to-right-error: linear-gradient(to left, #F64C55 0%, rgba(45, 45, 55, 0.5) 100%);
+$border-gradient-middle-error: linear-gradient(to right, #F64C55 0%, rgba(253, 110, 110, 0.425)100%);
+$border-gradient-to-left-error: linear-gradient(to right, #F64C55 0%, rgba(45, 45, 55, 0.5) 100%);
+
+$border-gradient-to-right-success: linear-gradient(to left, #19AA85 0%, rgba(45, 45, 55, 0.5) 100%);
+$border-gradient-middle-success: linear-gradient(to right, #19AA85 0%, rgba(52, 175, 144, 0.411)100%);
+$border-gradient-to-left-success: linear-gradient(to right, #19AA85 0%, rgba(45, 45, 55, 0.5) 100%);
+
+$user-platform-section-gradient: linear-gradient(#2D2D37 0%, #1C1C23 100%);
+$user-platform-section-header-bg:  rgba(58, 58, 74, 0.8);
+
+$info-card-bg: linear-gradient(112deg, #2D2D37 0.8%, #1C1C23 102%);
+
+$table-row-gradient-yellow: linear-gradient(to left, #dcb567 0%, #dcb567 50%, #2D2D37 100%);
+$table-row-gradient-red: linear-gradient(to left, #F64C55 0%, #F64C55 50%, #2D2D37 100%);
+$table-row-gradient-green: linear-gradient(to left, #19AA85 0%, #19AA85 50%, #2D2D37 100%);
+$table-row-gradient-gray: linear-gradient(to left, #6E6E7D 0%, #6E6E7D 50%, #2D2D37 100%);
+
+$table-row-gradient-yellow-bg: linear-gradient(to left, #dcb567 0%, #2D2D37 15%, #2D2D37 100%);
+$table-row-gradient-red-bg: linear-gradient(to left, #F64C55 0%, #2D2D37 15%, #2D2D37 100%);
+$table-row-gradient-green-bg: linear-gradient(to left, #19AA85 0%, #2D2D37 15%, #2D2D37 100%);
+$table-row-gradient-gray-bg: linear-gradient(to left, #6E6E7D 0%, #2D2D37 15%, #2D2D37 100%);

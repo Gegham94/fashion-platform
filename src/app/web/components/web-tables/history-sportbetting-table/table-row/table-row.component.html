@@ -1,0 +1,50 @@
+<div class="container">
+  <div
+    class="row"
+    (click)="collapseRow()"
+    [ngClass]="{
+      red: ['Faild', 'Lose'].includes(rowData.status),
+      green: ['Paid', 'Win', 'Cash-Out'].includes(rowData.status),
+      yellow: rowData.status === 'Pending',
+      gray: rowData.status === 'Returned'
+    }"
+  >
+    <div
+      class="row--cover"
+      [ngClass]="{
+        red: ['Faild', 'Lose'].includes(rowData.status),
+        green: ['Paid', 'Win', 'Cash-Out'].includes(rowData.status),
+        yellow: rowData.status === 'Pending',
+        gray: rowData.status === 'Returned'
+      }"
+    >
+      <span>{{ rowData.dateAndTime }}</span>
+      <span>{{ rowData.betId }}</span>
+      <span>{{ rowData.betType }}</span>
+      <span>{{ rowData.betAmount }}</span>
+      <span>{{ rowData.possibleWin }}</span>
+      <span>{{ rowData.winAmount }}</span>
+      <div class="odd">
+        <div class="wrapper">
+          <span class="cover">{{ rowData.odd }}</span>
+        </div>
+      </div>
+      <span>{{ rowData.status }}</span>
+      <svg [class.rotate]="isCollapse">
+        <use xlink:href="assets/icons/global-sprint.svg#gb-arrow-down"></use>
+      </svg>
+    </div>
+  </div>
+
+  <div #frameContainerRef class="collapse-frame">
+    <app-loader *ngIf="isLoading; else contentModel"></app-loader>
+    <ng-template #contentModel>
+      <iframe
+        *ngIf="isCollapse"
+        class="iframe"
+        src="http://192.168.0.143:4200/recommendedSportEvents"
+        frameborder="0"
+      ></iframe>
+    </ng-template>
+  </div>
+</div>

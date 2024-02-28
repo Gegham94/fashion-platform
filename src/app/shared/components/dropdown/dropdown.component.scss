@@ -1,0 +1,201 @@
+@import "src/mixins/styles-mixin";
+@import "src/styles/colors";
+
+:host {
+  width: 100%;
+  height: 100%;
+}
+
+.content {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background: transparent;
+  z-index: 99;
+  cursor: pointer;
+  min-height: 28px;
+  .squad {
+    @include squad-small;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: calc(100% - 2px);
+    height: calc(100% - 2px);
+    padding: 1px;
+    background: $green;
+    border-radius: 2px;
+    font-size: 0.8em;
+    font-weight: 700;
+    .dropdown-cover {
+      @include squad-small;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: $smooth-green;
+      border-radius: 2px;
+      padding: 0 5%;
+      gap: 5px;
+      svg {
+        width: 15px;
+        height: 15px;
+        flex-shrink: 0;
+        fill: $white;
+        transition: transform 0.1s ease;
+        &.rotate {
+          transform: rotate(180deg);
+        }
+      }
+    }
+    &.opened {
+      clip-path: polygon(
+        0% 0%,
+        calc(100% - 6px) 0%,
+        100% 6px,
+        100% 100%,
+        0% 100%,
+        0% 0%
+      );
+      .dropdown-cover {
+        clip-path: polygon(
+          0% 0%,
+          calc(100% - 6px) 0%,
+          100% 6px,
+          100% 100%,
+          0% 100%,
+          0% 0%
+        );
+      }
+    }
+  }
+
+  .round {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: calc(100% - 2px);
+    height: calc(100% - 2px);
+    background: $yellow;
+    border-radius: 15px;
+    padding: 1px;
+    font-size: 0.8em;
+    font-weight: 700;
+    transition: border-radius 0.1s ease;
+    &.gradient {
+      background: $border-gradient-to-left;
+    }
+    .dropdown-cover {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      transition: border-radius 0.1s ease;
+      justify-content: space-between;
+      background: $light-gray;
+      border-radius: 15px;
+      padding: 0 5%;
+      gap: 5px;
+      svg {
+        width: 15px;
+        height: 15px;
+        flex-shrink: 0;
+        fill: $white;
+        transition: transform 0.1s ease;
+        &.rotate {
+          transform: rotate(180deg);
+        }
+      }
+    }
+    &.opened {
+      border-radius: 5px 5px 0px 0px;
+      .dropdown-cover {
+        border-radius: 4px 4px 0px 0px;
+      }
+    }
+  }
+
+  .list-squad {
+    position: absolute;
+    top: calc(100% - 1px);
+    height: 95px;
+    width: calc(100% - 2px);
+    border-radius: 0px 0px 5px 5px;
+    background: $green;
+    z-index: 999;
+    padding: 1px;
+    clip-path: polygon(
+      0% 0%,
+      100% 0%,
+      100% 100%,
+      6px 100%,
+      0% calc(100% - 6px)
+    );
+    .list-cover {
+      @include scroll;
+      overflow-y: auto;
+      overflow-x: hidden;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      background: $smooth-green;
+      border-radius: 0px 0px 5px 5px;
+      clip-path: polygon(
+        0% 0%,
+        100% 0%,
+        100% 100%,
+        6px 100%,
+        0% calc(100% - 6px)
+      );
+      .option {
+        width: 100%;
+        height: 100%;
+        padding: 5px;
+        cursor: pointer;
+        font-size: 0.7em;
+        &:hover {
+          background: $green;
+        }
+      }
+    }
+  }
+
+  .list-round {
+    position: absolute;
+    top: calc(100% - 1px);
+    height: 95px;
+    width: calc(100% - 2px);
+    border-radius: 0px 0px 5px 5px;
+    background: $yellow;
+    z-index: 999;
+    padding: 1px;
+    &.gradient {
+      background: $border-gradient-to-left;
+    }
+    .list-cover {
+      @include scroll;
+      overflow-y: auto;
+      overflow-x: hidden;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      background: $light-gray;
+      border-radius: 0px 0px 5px 5px;
+      .option {
+        width: 100%;
+        height: 100%;
+        background: $light-gray;
+        padding: 5px;
+        cursor: pointer;
+        font-size: 0.7em;
+        &:hover {
+          background: $lighter-gray;
+        }
+      }
+    }
+  }
+}

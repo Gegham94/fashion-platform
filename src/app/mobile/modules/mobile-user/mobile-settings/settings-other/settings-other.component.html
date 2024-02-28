@@ -1,0 +1,32 @@
+<app-loader *ngIf="isLoading; else contentModel"></app-loader>
+<ng-template #contentModel>
+  <div class="content">
+    <div class="cover">
+      <div class="header">
+        <span
+          class="title"
+          [class.active]="selectedTab === 'self_exclusion'"
+          (click)="selectTab('self_exclusion')"
+          >Self-Exclusion</span
+        >
+        <span
+          class="title"
+          [class.active]="selectedTab === 'bet_deposit_limits'"
+          (click)="selectTab('bet_deposit_limits')"
+          >Bet and Deposit limits</span
+        >
+      </div>
+      <div class="body">
+        <ng-container *ngIf="selectedTab === 'self_exclusion'">
+          <app-time-out [isMobile]="true"></app-time-out>
+          <app-self-exclusion [isMobile]="true"></app-self-exclusion>
+        </ng-container>
+        <ng-container *ngIf="selectedTab === 'bet_deposit_limits'">
+          <app-deposit-card [isMobile]="true"></app-deposit-card>
+          <app-casino-card [isMobile]="true"></app-casino-card>
+          <app-sportsbook-card [isMobile]="true"></app-sportsbook-card>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</ng-template>

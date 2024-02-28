@@ -1,0 +1,238 @@
+@import "src/mixins/styles-mixin";
+@import "src/styles/colors";
+
+:host {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50vh;
+  height: 100%;
+  max-height: 80vh;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  .shadow-content {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    border-radius: 10px;
+    width: calc(100% - 20px);
+    height: calc(100% - 20px);
+    filter: drop-shadow(0 0 5px $yellow);
+    position: relative;
+    .decor_left_bottom {
+      @include decor-left-bottom;
+      position: absolute;
+      background: $yellow;
+      width: 10%;
+      height: 18%;
+      left: -2%;
+      top: 42.5%;
+    }
+    .decor_left_top {
+      @include decor-left-top;
+      position: absolute;
+      background: $yellow;
+      width: 18%;
+      height: 6%;
+      left: 61%;
+      top: -1.2%;
+    }
+    .decor_right_top {
+      @include decor-right-top;
+      position: absolute;
+      background: $yellow;
+      width: 11%;
+      height: 7%;
+      right: -2%;
+      top: -1.3%;
+    }
+    .decor_right_bottom {
+      @include decor-right-bottom;
+      position: absolute;
+      background: $yellow;
+      width: 18%;
+      height: 12%;
+      right: -2%;
+      bottom: -1.2%;
+    }
+    .game-image {
+      width: 100%;
+      height: 73%;
+      position: absolute;
+      z-index: 1;
+      user-select: none;
+      img {
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        user-select: none;
+        transform: rotate(35deg);
+      }
+    }
+    .card-wrapper {
+      @include bonuses-card;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 10px;
+      width: 100%;
+      height: 100%;
+      padding: 1px;
+      background: $yellow;
+      .card-cover {
+        @include bonuses-card-cover;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 100%;
+        background: $darker-gray;
+        border-radius: 10px;
+        .body {
+          background: $light-gray;
+          width: 100%;
+          height: 73%;
+          border-radius: 0 10px 0 0;
+          position: relative;
+          svg {
+            position: absolute;
+            right: 2%;
+            top: 2%;
+            width: 18%;
+            height: 12%;
+            fill: $yellow;
+          }
+          .img {
+            width: 100%;
+            height: 100%;
+            background-image: url(../../../../../assets/images/bonuses-card-bg.svg);
+            background-repeat: no-repeat;
+            background-size: cover;
+          }
+        }
+        .footer {
+          position: absolute;
+          bottom: 0;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-around;
+          align-items: center;
+          width: calc(100% - 20px);
+          height: 27%;
+          padding: 5px 10px;
+          border-top: 1px solid $yellow;
+          border-radius: 0 0 0 10px;
+          background: $darker-gray;
+          text-align: center;
+          .title {
+            font-size: 1.1em;
+            font-weight: 500;
+            color: $white;
+            user-select: none;
+          }
+          .sub-title {
+            font-size: 0.95em;
+            font-weight: 500;
+            color: $white;
+            user-select: none;
+          }
+          .actions {
+            height: 100%;
+            width: 100%;
+            gap: 20px;
+            max-height: 30px;
+            min-height: 10px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            user-select: none;
+            button {
+              @include removed-styles-button;
+              @include squad-small;
+              padding: 1px;
+              background: $lighter-gray;
+              max-width: 110px;
+              width: 100%;
+              height: 100%;
+              border-radius: 3px;
+              transition: background-color 0.1s ease;
+              .cover {
+                @include squad-small;
+                width: 100%;
+                height: 100%;
+                background: $light-gray;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 3px;
+                transition: background-color 0.1s ease;
+                span {
+                  width: 100%;
+                  color: $smooth-white;
+                  text-align: center;
+                  font-size: 0.8em;
+                  font-weight: 700;
+                  padding: 4px 15px;
+                  transition: font-size 0.1s ease;
+                }
+              }
+              &:hover {
+                background: $yellow;
+                .cover {
+                  background: $smooth-yellow;
+                  span {
+                    font-size: 0.85em;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 1200px) {
+  .container {
+    .shadow-content {
+      .card-wrapper {
+        .card-cover {
+          .footer {
+            .title {
+              font-size: 0.9em;
+            }
+            .sub-title {
+              font-size: 0.8em;
+            }
+            .actions {
+              gap: 10px;
+              button {
+                max-width: 88px;
+                .cover {
+                  span {
+                    font-size: 0.7em;
+                    padding: 2px 10px;
+                  }
+                }
+                &:hover {
+                  .cover {
+                    span {
+                      font-size: 0.75em;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

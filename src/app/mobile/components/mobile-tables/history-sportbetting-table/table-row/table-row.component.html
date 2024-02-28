@@ -1,0 +1,73 @@
+<div
+  (click)="collapseRow()"
+  [ngClass]="{
+    red: ['Faild', 'Lose'].includes(rowData.status),
+    green: ['Paid', 'Win', 'Cash-Out'].includes(rowData.status),
+    yellow: rowData.status === 'Pending',
+    gray: rowData.status === 'Returned'
+  }"
+  class="row"
+>
+  <div class="row--cover">
+    <div class="item-row">
+      <span class="title">Date and Time</span>
+      <span class="value">{{ rowData.dateAndTime }}</span>
+    </div>
+    <div class="item-row">
+      <span class="title">Bet ID</span>
+      <span class="value">{{ rowData.betId }}</span>
+    </div>
+    <div class="item-row">
+      <span class="title">Bet Type</span>
+      <span class="value">{{ rowData.betType }}</span>
+    </div>
+    <div class="item-row">
+      <span class="title">Bet Amount</span>
+      <span class="value">{{ rowData.betAmount }}</span>
+    </div>
+    <div class="item-row">
+      <span class="title">Possible Win</span>
+      <span class="value">{{ rowData.possibleWin }}</span>
+    </div>
+    <div class="item-row">
+      <span class="title">Win Amount</span>
+      <span class="value">{{ rowData.winAmount }}</span>
+    </div>
+    <div class="item-row odd">
+      <span class="title">Odd</span>
+      <div class="wrapper">
+        <span class="cover">{{ rowData.odd }}</span>
+      </div>
+    </div>
+    <div
+      class="item-row"
+      [ngClass]="{
+        red: ['Faild', 'Lose'].includes(rowData.status),
+        green: ['Paid', 'Win', 'Cash-Out'].includes(rowData.status),
+        yellow: rowData.status === 'Pending',
+        gray: rowData.status === 'Returned'
+      }"
+    >
+      <span class="title">Status</span>
+      <span class="value">{{ rowData.status }}</span>
+    </div>
+    <div class="item-row arrow">
+      <span *ngIf="isCollapse" class="arrow-title">Close</span>
+      <span *ngIf="!isCollapse" class="arrow-title">See More</span>
+      <svg class="arrow" [class.rotate]="isCollapse">
+        <use xlink:href="assets/icons/global-sprint.svg#gb-arrow-down"></use>
+      </svg>
+    </div>
+    <div #frameContainerRef class="collapse-frame">
+      <app-loader *ngIf="isLoading; else contentModel"></app-loader>
+      <ng-template #contentModel>
+        <iframe
+          *ngIf="isCollapse"
+          class="iframe"
+          src="http://192.168.0.143:4200/recommendedSportEvents"
+          frameborder="0"
+        ></iframe>
+      </ng-template>
+    </div>
+  </div>
+</div>

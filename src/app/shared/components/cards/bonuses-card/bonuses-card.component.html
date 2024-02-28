@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="shadow-content">
+    <div class="game-image">
+      <img src="../../../../../assets/images/bonus-card.svg" alt="Game image" />
+    </div>
+    <div class="card-wrapper">
+      <div class="card-cover">
+        <div class="body">
+          <svg>
+            <use xlink:href="assets/icons/global-sprint.svg#gb-diamond"></use>
+          </svg>
+          <div class="img"></div>
+        </div>
+        <div class="footer">
+          <span class="title">{{ option.title }}</span>
+          <span class="sub-title">{{ option.subTitle }}</span>
+          <div class="actions">
+            <app-read-more-button-popup
+              [option]="option"
+              [isMobile]="isMobile"
+            ></app-read-more-button-popup>
+            <button>
+              <div class="cover">
+                <span>Take</span>
+              </div>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="decor_left_bottom"></div>
+    <div class="decor_left_top"></div>
+    <div class="decor_right_top"></div>
+    <div class="decor_right_bottom"></div>
+  </div>
+</div>

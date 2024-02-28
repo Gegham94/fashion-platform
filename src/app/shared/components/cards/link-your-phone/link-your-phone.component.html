@@ -1,0 +1,35 @@
+<div class="content">
+  <div class="wrapper">
+    <div class="cover">
+      <div class="header">
+        <span class="title">Link your phone</span>
+      </div>
+      <div class="body">
+        <span class="info"
+          >This will enable you to restore access to your account</span
+        >
+        <form [formGroup]="linkPhoneForm" (ngSubmit)="submitForm()">
+          <div class="form-fields">
+            <div class="number">
+              <div class="input-wrapper">
+                <input type="text" formControlName="currentPhoneNumber" placeholder="+374 00 000000" />
+              </div>
+              <label class="phone-remove" (click)="onRemoveNumber()">
+                <span class="line"></span>
+              </label>
+            </div>
+            
+            <div class="input-wrapper">
+              <input type="text" formControlName="updatePhoneNumber" placeholder="Update Phone Number" />
+            </div>
+          </div>
+          <button type="submit">
+            <div class="cover">
+              <span>Save Changes</span>
+            </div>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

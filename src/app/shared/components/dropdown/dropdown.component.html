@@ -1,0 +1,30 @@
+<div class="content">
+  <div
+    [ngClass]="[dropdownButtonType, showDropdown ? 'opened' : '']"
+    [class.gradient]="borderGradient"
+    (click)="toggleDropdown($event)"
+  >
+    <div class="dropdown-cover">
+      {{ selectedOption.name }}
+      <svg [class.rotate]="showDropdown">
+        <use xlink:href="assets/icons/global-sprint.svg#gb-arrow-down"></use>
+      </svg>
+    </div>
+  </div>
+
+  <div
+    [class]="'list-' + dropdownButtonType"
+    [class.gradient]="borderGradient"
+    @collapse
+    *ngIf="showDropdown"
+  >
+    <div class="list-cover">
+      <span
+        class="option"
+        *ngFor="let item of OPTIONS"
+        (click)="setCurrentSelection(item)"
+        >{{ item?.name }}
+      </span>
+    </div>
+  </div>
+</div>

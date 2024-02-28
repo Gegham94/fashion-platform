@@ -1,0 +1,102 @@
+<app-loader *ngIf="isLoading; else contentModel"></app-loader>
+<ng-template #contentModel>
+  <div class="content">
+    <div class="content__filters">
+      <div class="date filter">
+        <div class="wrapper-content">
+          <label class="label left">
+            <div class="cover">
+              <span>From:</span>
+              <input
+                type="date"
+                autocomplete="off"
+                (change)="onSelectDateFrom($event)"
+              />
+              <svg>
+                <use
+                  xlink:href="assets/icons/global-sprint.svg#gb-calendar-date"
+                ></use>
+              </svg>
+            </div>
+          </label>
+        </div>
+        <div class="wrapper-content">
+          <label class="label right">
+            <div class="cover">
+              <span>To:</span>
+              <input
+                type="date"
+                autocomplete="off"
+                (change)="onSelectDateTo($event)"
+              />
+              <svg>
+                <use
+                  xlink:href="assets/icons/global-sprint.svg#gb-calendar-date"
+                ></use>
+              </svg>
+            </div>
+          </label>
+        </div>
+      </div>
+      <div class="options filter">
+        <app-multiselect
+          [ngStyle]="{ '--index': 0 }"
+          [data]="status"
+          [keyName]="'id'"
+          placeholder="Status"
+          [className]="'form-filed'"
+          (onSelect)="onSelectStatusFilter($event)"
+        >
+        </app-multiselect>
+        <app-multiselect
+          [ngStyle]="{ '--index': 2 }"
+          [cutSide]="'right'"
+          [data]="currency"
+          [keyName]="'id'"
+          placeholder="Currency"
+          [className]="'form-filed'"
+          (onSelect)="onSelectCurrencyFilter($event)"
+        >
+        </app-multiselect>
+      </div>
+      <div class="search filter">
+        <app-search
+          (getSearchedText)="getSearchedText($event)"
+          class="search-component"
+        ></app-search>
+      </div>
+    </div>
+    <div class="content__table">
+      <div class="content__table--cover">
+        <div class="table-header">
+          <span *ngFor="let item of tableHeader">{{ item.name }}</span>
+        </div>
+        <div class="table-body" >
+          <div
+            *ngFor="let data of tableData"
+            class="row"
+            [ngClass]="{
+              red: data.status === 'Lose',
+              green: data.status === 'Win',
+            }"
+          >
+            <div
+              class="row--cover"
+              [ngClass]="{
+                red: data.status === 'Lose',
+                green: data.status === 'Win',
+              }"
+            >
+              <span>{{ data.dateAndTime }}</span>
+              <span>{{ data.gameType }}</span>
+              <span>{{ data.name }}</span>
+              <span>{{ data.spinAmount }}</span>
+              <span>{{ data.winAmount }}</span>
+              <span>{{ data.status }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>

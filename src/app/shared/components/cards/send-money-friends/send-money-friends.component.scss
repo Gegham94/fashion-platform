@@ -1,0 +1,334 @@
+@import "src/mixins/styles-mixin";
+@import "src/styles/colors";
+:host {
+  width: 100%;
+  height: 100%;
+  min-height: 240px;
+}
+input {
+  -webkit-autofill: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  -o-appearance: none;
+  appearance: none;
+  border: none;
+  outline: none;
+  background: $light-gray;
+  width: 100%;
+  height: 100%;
+  text-align: left;
+  color: $white;
+  font-size: 0.8em;
+  margin: 0;
+  padding: 0;
+  &::placeholder {
+    color: $white;
+    opacity: 0.7;
+    font-weight: 500;
+  }
+}
+
+.content {
+  width: 100%;
+  height: 100%;
+  .wrapper {
+    @include squad-big;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: $yellow;
+    border-radius: 5px;
+    padding: 1px;
+    width: calc(100% - 2px);
+    height: calc(100% - 2px);
+    .cover {
+      @include squad-big;
+      display: flex;
+      flex-direction: column;
+      border-radius: 5px;
+      width: 100%;
+      height: 100%;
+      background: $user-platform-section-gradient;
+      .header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 100%;
+        width: calc(100% - 30px);
+        height: 40px;
+        border-bottom: 1px solid $yellow;
+        border-radius: 5px 0px 0px 0px;
+        background: $darker-gray;
+        padding: 5px 15px;
+        gap: 10px;
+        .title {
+          color: $white;
+          font-size: 0.8em;
+          font-weight: 500;
+        }
+      }
+      .body {
+        @include scroll;
+        overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+        padding: 10px;
+        gap: 10px;
+        width: calc(100% - 25px);
+        height: 100%;
+        border-radius: 0px 0px 5px 0px;
+        margin-right: 5px;
+        .row {
+          display: flex;
+          align-items: flex-end;
+          justify-content: space-between;
+          width: 100%;
+          height: 100%;
+          max-height: 45px;
+          gap: 10px;
+          .amount-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: calc(100% - 2px);
+            height: 100%;
+            max-height: 28px;
+            border-radius: 15px;
+            background: $border-gradient-to-left;
+            padding: 1px;
+            input {
+              border-radius: 15px;
+              width: 100%;
+              height: 100%;
+              padding-left: 10px;
+            }
+          }
+          .dropdown-wrapper {
+            width: 100%;
+            height: 100%;
+            max-height: 28px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
+          .id-wrapper {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: flex-start;
+            align-items: flex-end;
+            max-height: 28px;
+            gap: 5px;
+            .col {
+              display: flex;
+              flex-direction: column;
+              align-items: flex-start;
+              justify-content: flex-end;
+              width: 100%;
+              height: 100%;
+              gap: 5px;
+              .id-title {
+                font-size: 0.7em;
+                color: $white;
+                font-weight: 500;
+                margin-left: 10px;
+              }
+              .id {
+                min-height: 25px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 100%;
+                height: 100%;
+                padding: 1px;
+                background: $border-gradient-to-left;
+                border-radius: 15px;
+                input {
+                  border-radius: 15px;
+                  width: 100%;
+                  height: 100%;
+                  padding-left: 10px;
+                }
+              }
+            }
+            .message {
+              cursor: pointer;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              flex-shrink: 0;
+              width: 30px;
+              height: 30px;
+              background: $light-gray;
+              border: 1px solid $green;
+              border-top: 0;
+              border-radius: 100%;
+              filter: drop-shadow(4px 8px 16px rgba(0, 0, 0, 0.2));
+              transition: transform 0.5ms ease;
+              svg {
+                width: 50%;
+                height: 50%;
+                fill: $green;
+              }
+              &:hover {
+                transform: scale(1.02);
+              }
+            }
+          }
+        }
+        .table {
+          display: flex;
+          width: 100%;
+          height: calc(100% - 55px);
+          .table-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+            border-radius: 10px;
+            background: $light-gray;
+            padding: 1px;
+            .table-cover {
+              width: 100%;
+              height: 100%;
+              background: $darker-gray;
+              border-radius: 10px;
+              position: relative;
+              .table-header {
+                display: flex;
+                justify-content: space-evenly;
+                position: absolute;
+                top: 0;
+                border-radius: 10px 10px 0 0;
+                height: 30px;
+                width: calc(100% - 20px);
+                background: $darker-gray;
+                padding: 0 10px;
+                border-bottom: 1px solid $light-gray;
+                span {
+                  display: flex;
+                  flex-direction: row;
+                  flex-wrap: nowrap;
+                  align-items: center;
+                  justify-content: center;
+                  width: 100%;
+                  height: 100%;
+                  color: $smooth-white;
+                  width: 100%;
+                  height: 100%;
+                  font-size: 0.9em;
+                  font-weight: 500;
+                }
+              }
+              .table-body {
+                @include scroll;
+                display: flex;
+                flex-direction: column;
+                margin-top: 31px;
+                border-radius: 0 0 10px 10px;
+                width: calc(100% - 24px);
+                padding: 10px;
+                height: calc(100% - 55px);
+                overflow-y: auto;
+                overflow-x: hidden;
+                gap: 5px;
+                .row {
+                  @include squad-small;
+                  width: 100%;
+                  min-height: 25px;
+                  padding: 1px;
+                  background: $lighter-gray;
+                  &--cover {
+                    @include squad-small;
+                    display: flex;
+                    flex-direction: row;
+                    flex-wrap: nowrap;
+                    width: 100%;
+                    height: 100%;
+                    background: $dark-gray;
+                    span {
+                      display: flex;
+                      align-items: center;
+                      justify-content: center;
+                      width: 100%;
+                      height: 100%;
+                      font-size: 0.9em;
+                      font-weight: 500;
+                    }
+                    .amount-status {
+                      &.red {
+                        color: $red;
+                        &::before {
+                          content: "-";
+                          display: flex;
+                          align-items: center;
+                          justify-content: center;
+                          margin-right: 5px;
+                          width: 5px;
+                          height: 5px;
+                        }
+                      }
+                      &.green {
+                        color: $green;
+                        &::before {
+                          content: "+";
+                          display: flex;
+                          align-items: center;
+                          justify-content: center;
+                          margin-right: 5px;
+                          width: 5px;
+                          height: 5px;
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+        &.mobile {
+          .row {
+            flex-direction: column;
+            width: 100%;
+            gap: 10px;
+            max-height: unset;
+            .amount-wrapper {
+              min-height: 28px;
+            }
+            .id-wrapper {
+              max-height: 35px;
+            }
+          }
+          .table {
+            max-height: 275px;
+            .table-wrapper {
+              @include squad-big;
+              .table-cover {
+                @include squad-big;
+                .table-body {
+                  margin-top: 0;
+                  height: calc(100% - 27px);
+                  gap: 10px;
+                  .row {
+                    clip-path: unset;
+                    min-height: unset;
+                    border-radius: 15px;
+                    &--cover {
+                      clip-path: unset;
+                      border-radius: 15px;
+                      padding: 8px 10px;
+                      width: calc(100% - 20px);
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

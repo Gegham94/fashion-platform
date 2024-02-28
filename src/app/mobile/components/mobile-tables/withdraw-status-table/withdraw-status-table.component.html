@@ -1,0 +1,146 @@
+<div class="content">
+  <div class="content__filters">
+    <div class="date filter">
+      <div class="wrapper-content">
+        <label class="label left">
+          <div class="cover">
+            <span>From:</span>
+            <input
+              type="date"
+              autocomplete="off"
+              (change)="onSelectDateFrom($event)"
+            />
+            <svg>
+              <use
+                xlink:href="assets/icons/global-sprint.svg#gb-calendar-date"
+              ></use>
+            </svg>
+          </div>
+        </label>
+      </div>
+      <div class="wrapper-content">
+        <label class="label right">
+          <div class="cover">
+            <span>To:</span>
+            <input
+              type="date"
+              autocomplete="off"
+              (change)="onSelectDateTo($event)"
+            />
+            <svg>
+              <use
+                xlink:href="assets/icons/global-sprint.svg#gb-calendar-date"
+              ></use>
+            </svg>
+          </div>
+        </label>
+      </div>
+    </div>
+    <div class="options filter">
+      <app-multiselect
+        [data]="status"
+        [keyName]="'id'"
+        placeholder="Status"
+        [className]="'form-filed'"
+        (onSelect)="onSelectStatusFilter($event)"
+      >
+      </app-multiselect>
+
+      <app-multiselect
+        [cutSide]="'right'"
+        [data]="method"
+        [keyName]="'id'"
+        placeholder="Method"
+        [className]="'form-filed method'"
+        (onSelect)="onSelectMethodFilter($event)"
+      >
+      </app-multiselect>
+      <div class="currency-wrapper">
+        <app-multiselect
+          [cutSide]="'round'"
+          [data]="currency"
+          [keyName]="'id'"
+          placeholder="Currency"
+          [isCurrencyIcon]="true"
+          [className]="'form-filed'"
+          (onSelect)="onSelectCurrencyFilter($event)"
+        >
+        </app-multiselect>
+      </div>
+    </div>
+  </div>
+  <div class="content__table">
+    <div class="content__table--cover">
+      <div class="table-body">
+        <div
+          *ngFor="let data of tableData"
+          [ngClass]="{
+            red: data.status === 'Faild',
+            green: data.status === 'Paid',
+            yellow: data.status === 'Pending'
+          }"
+          class="row"
+        >
+          <div class="row--cover">
+            <div class="item-row">
+              <span class="title">Date and Time</span>
+              <span class="value">{{ data.dateAndTime }}</span>
+            </div>
+            <div class="item-row">
+              <span class="title">ID</span>
+              <span class="value">{{ data.id }}</span>
+            </div>
+            <div class="item-row">
+              <span class="title">Payment Method</span>
+              <span class="value">{{ data.paymentMethod }}</span>
+            </div>
+            <div class="item-row">
+              <span class="title">Amount</span>
+              <span class="value">{{ data.amount }}</span>
+            </div>
+            <div class="item-row">
+              <span class="title">Status</span>
+              <span
+                class="value"
+                [ngClass]="{
+                  red: data.status === 'Faild',
+                  green: data.status === 'Paid',
+                  yellow: data.status === 'Pending'
+                }"
+                >{{ data.status }}</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <div class="app-error-wrapper">
+  <app-multiselect
+  [cutSide]="'right'"
+    [error]="
+      !!(
+        filterForm.get('status')?.hasError('required') &&
+        filterForm.get('status')?.touched &&
+        filterForm.get('status')?.dirty
+      )
+    "
+    formControlName="status"
+    style="width: 200px"
+    placeholder="Status"
+    [data]="status"
+    [keyName]="'id'"
+  >
+  </app-multiselect>
+  <span
+    class="app-error"
+    *ngIf="
+      filterForm.get('status')?.hasError('required') &&
+      filterForm.get('status')?.touched &&
+      filterForm.get('status')?.dirty
+    "
+    >Error
+  </span>
+</div> -->

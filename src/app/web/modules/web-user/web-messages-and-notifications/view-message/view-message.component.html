@@ -1,0 +1,28 @@
+<div class="content" *ngIf="message; else emptyDataModel">
+  <div class="wrapper">
+    <div class="cover">
+      <div class="header">
+        <span>{{ message.title }}</span>
+        <span>{{ message.date }}</span>
+      </div>
+      <div class="body">
+        <div class="text">
+          {{ message.text }}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="msg-button">
+    <button class="reply-message" (click)="replyMessage()">
+      <div class="cover">Reply Message</div>
+    </button>
+  </div>
+</div>
+<ng-template #emptyDataModel>
+  <div class="empty">
+    <span class="empty-title">No Selected Message!</span>
+    <svg>
+      <use xlink:href="assets/icons/global-sprint.svg#gb-message"></use>
+    </svg>
+  </div>
+</ng-template>

@@ -1,0 +1,42 @@
+<div class="content">
+  <div class="wrapper">
+    <div class="cover">
+      <div class="header">
+        <span class="title">Verify by Document</span>
+      </div>
+      <div class="body">
+        <span class="info"
+          >This will enable you to restore access to your account</span
+        >
+        <form [formGroup]="verifyDocumentForm">
+          <div class="form-fields">
+            <div class="doc">
+              <div class="input-wrapper">
+                <input type="text" formControlName="currentDocument" placeholder="AA88009922" />
+              </div>
+              <label class="doc-remove" (click)="onRemoveDocument()">
+                <span class="line"></span>
+              </label>
+            </div>
+            <div class="doc">
+              <div class="input-wrapper">
+                <input type="text" formControlName="newDocument" placeholder="New Document Number" />
+              </div>
+              <label class="upload-file" (click)="onUploadDocument()">
+                <svg>
+                  <use xlink:href="assets/icons/global-sprint.svg#gb-file-upload-arrow"></use>
+                </svg>
+                <input type="file" formControlName="uploadedDocument" />
+              </label>
+            </div>
+          </div>
+          <button type="submit">
+            <div class="cover">
+              <span>Save Changes</span>
+            </div>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

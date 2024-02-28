@@ -1,0 +1,24 @@
+<div class="content">
+  <div class="content__user" (click)="toggleAuth()">
+    <div class="content__user--head"></div>
+    <div class="content__user--body"></div>
+  </div>
+  <div class="content__auth" [ngClass]="isAuthOpen ? 'active' : ''">
+    <div class="content__auth--signup" (click)="openModal('sign-up')">
+      <span>Sign Up</span>
+    </div>
+    <div class="content__auth--signin" (click)="openModal('sign-in')">
+      <div class="content__auth--signin--cover">
+        <span>Sign In</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-mobile-modal *ngIf="(display$ | async) && isOpenSignUpModal">
+  <app-mobile-sign-up></app-mobile-sign-up>
+</app-mobile-modal>
+
+<app-mobile-modal *ngIf="(display$ | async) && isOpenSignInModal">
+  <app-mobile-sign-in></app-mobile-sign-in>
+</app-mobile-modal>

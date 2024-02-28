@@ -1,0 +1,90 @@
+<button #popupButton class="popup-button" (click)="openPopup()">
+  <div class="cover">
+    <span>Read More</span>
+  </div>
+</button>
+<ng-template #popupTemplate>
+  <div id="read-more-popup">
+    <div class="content" [class.mobile]="isMobile">
+      <div class="close-wrapper" (click)="closePopup()">
+        <div class="cover">
+          <div class="cross"></div>
+        </div>
+      </div>
+
+      <div class="body">
+        <div class="header-shadow">
+          <div class="wrapper">
+            <div class="cover">
+              <div class="inner-background"></div>
+              <div class="info">
+                <div class="title">
+                  <span class="top">{{option.title}}</span>
+                  <span class="bottom">{{option.subTitle}}</span>
+                </div>
+                <div class="action">
+                  <button>
+                    <div class="button-cover">
+                      <span>Text Here</span>
+                    </div>
+                  </button>
+                </div>
+              </div>
+              <img
+                src="../../../../../../assets/images/bonus-card.svg"
+                alt="Game image"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="footer-shadow">
+          <div class="wrapper">
+            <div class="cover">
+              <div class="cover-content">
+                <div class="text">
+                  They are big, bold and beautiful. Billboards have been around
+                  for quite a while. In almost all places nowadays you can find
+                  billboards of just about every product there is in the market.
+                  No matter how you see it, billboard advertising is on the
+                  rise. Compared to other forms of advertising, billboards are a
+                  more affordable way of getting your message across to the
+                  public. If newspaper advertising lasts only for a day and a
+                  television advertisement last for only about forty seconds,
+                  billboard adverting last 24/7. Billboards can connect easily
+                  with potential markets because more people are mobile nowadays
+                  – referring to the increasing number of commuters and more
+                  time spent outside of the house. Advances in technology have
+                  also made billboards more cost effective. Advances in digital
+                  printing have also allowed billboards to be printed cheaply
+                  and quickly on canvas. Lately, billboards have been getting
+                  pocket-friendly as well.
+                </div>
+                <div class="text">
+                  But before you get your creative juices flowing and before you
+                  plunge into the exciting world of billboard advertising there
+                  things you need to understand. First, don’t expect the
+                  billboard to contain a lot of information. This is not just
+                  possible. The number one rule in billboard advertising is
+                  simplicity. This rule simply means that you need to use only a
+                  few words to get your message across. But this doesn’t mean
+                  that you can no longer make complex, intelligent and
+                  intriguing statements. You still can but in the simplest way
+                  you can. But before you get your creative juices flowing and
+                  before you plunge into the exciting world of billboard
+                  advertising there things you need to understand. First, don’t
+                  expect the billboard to contain a lot of information. This is
+                  not just possible. The number one rule in billboard
+                  advertising is simplicity. This rule simply means that you
+                  need to use only a few words to get your message across. But
+                  this doesn’t mean that you can no longer make complex,
+                  intelligent and intriguing statements. You still can but in
+                  the simplest way you can.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>

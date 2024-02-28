@@ -1,0 +1,39 @@
+<div class="content" [class.mobile]="isMobile">
+  <div class="wrapper">
+    <div class="cover">
+      <div class="header">
+        <span class="title">Self-Exclusion</span>
+      </div>
+      <div class="body">
+        <form [formGroup]="selfExclusionForm" (ngSubmit)="submitForm()">
+          <div class="form-fields">
+            <div class="input-wrapper">
+              <input type="text" formControlName="hours" placeholder="Hours" />
+            </div>
+            <div class="input-wrapper">
+              <input
+                type="text"
+                formControlName="password"
+                placeholder="Password"
+              />
+            </div>
+            <div class="input-wrapper">
+              <input
+                type="text"
+                formControlName="repeatPassword"
+                placeholder="Repeat Password"
+              />
+            </div>
+          </div>
+          <div class="action-btn">
+            <button type="submit">
+              <div class="cover">
+                <span>Save</span>
+              </div>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

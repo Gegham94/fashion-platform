@@ -1,0 +1,132 @@
+<app-loader *ngIf="isLoading; else contentModel"></app-loader>
+<ng-template #contentModel>
+  <div class="content">
+    <div class="content__filters">
+      <div class="date filter">
+        <div class="wrapper-content">
+          <label class="label left">
+            <div class="cover">
+              <span>From:</span>
+              <input
+                type="date"
+                autocomplete="off"
+                (change)="onSelectDateFrom($event)"
+              />
+              <svg>
+                <use
+                  xlink:href="assets/icons/global-sprint.svg#gb-calendar-date"
+                ></use>
+              </svg>
+            </div>
+          </label>
+        </div>
+        <div class="wrapper-content">
+          <label class="label right">
+            <div class="cover">
+              <span>To:</span>
+              <input
+                type="date"
+                autocomplete="off"
+                (change)="onSelectDateTo($event)"
+              />
+              <svg>
+                <use
+                  xlink:href="assets/icons/global-sprint.svg#gb-calendar-date"
+                ></use>
+              </svg>
+            </div>
+          </label>
+        </div>
+      </div>
+      <div class="options filter">
+        <app-multiselect
+          [data]="state"
+          [keyName]="'id'"
+          placeholder="State"
+          [className]="'form-filed'"
+          (onSelect)="onSelectStateFilter($event)"
+        >
+        </app-multiselect>
+  
+        <app-multiselect
+          [cutSide]="'right'"
+          [data]="type"
+          [keyName]="'id'"
+          placeholder="Type"
+          [className]="'form-filed type'"
+          (onSelect)="onSelectTypeFilter($event)"
+        >
+        </app-multiselect>
+        <div class="currency-wrapper">
+          <app-multiselect
+            [cutSide]="'round'"
+            [data]="currency"
+            [keyName]="'id'"
+            placeholder="Currency"
+            [isCurrencyIcon]="true"
+            [className]="'form-filed'"
+            (onSelect)="onSelectCurrencyFilter($event)"
+          >
+          </app-multiselect>
+        </div>
+      </div>
+    </div>
+    <div class="content__table">
+      <div class="content__table--cover">
+        <div class="table-body">
+          <div
+            *ngFor="let data of tableData"
+            [ngClass]="{
+              red: data.state === 'Expired',
+              green: data.state === 'Active',
+              yellow: data.state === 'Used',
+              gray: data.state === 'Canceled'
+            }"
+            class="row"
+          >
+            <div class="row--cover">
+              <div class="item-row">
+                <span class="title">Date and Time</span>
+                <span class="value">{{ data.dateAndTime }}</span>
+              </div>
+              <div class="item-row">
+                <span class="title">Bonus ID</span>
+                <span class="value">{{ data.bonusId }}</span>
+              </div>
+              <div class="item-row">
+                <span class="title">Bonus Name</span>
+                <span class="value">{{ data.bonusName }}</span>
+              </div>
+              <div class="item-row">
+                <span class="title">Amount</span>
+                <span class="value">{{ data.amount }}</span>
+              </div>
+              <div class="item-row">
+                <span class="title">Currency</span>
+                <span class="value">{{ data.currency }}</span>
+              </div>
+              <div class="item-row">
+                <span class="title">Currency</span>
+                <span class="value">{{ data.turnoverAmount }}</span>
+              </div>
+              <div class="item-row">
+                <span class="title">State</span>
+                <span
+                  class="value"
+                  [ngClass]="{
+                    red: data.state === 'Expired',
+                    green: data.state === 'Active',
+                    yellow: data.state === 'Used',
+                    gray: data.state === 'Canceled'
+                  }"
+                  >{{ data.state }}</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</ng-template>

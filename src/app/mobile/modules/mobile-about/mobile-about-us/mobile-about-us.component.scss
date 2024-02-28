@@ -1,0 +1,178 @@
+@import "src/mixins/styles-mixin";
+@import "src/styles/colors";
+:host {
+  width: 100%;
+  height: 100%;
+}
+
+.content {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(3px 6px 3px #00000083);
+  .shadow {
+    @include lb-side-squad-content;
+    background: $lighter-gray;
+    height: calc(100% - 22px);
+    border-radius: 10px;
+    padding: 1px;
+    width: calc(100% - 2px);
+    .wrapper {
+      @include lb-side-squad-content;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      border-radius: 10px;
+      min-height: 325px;
+      background: linear-gradient(to top, #1C1C23 0%, #3D404D 100%);;
+      .cover {
+        @include lb-side-squad-content;
+        @include scroll;
+        overflow-y: auto;
+        overflow-x: hidden;
+        border-radius: 10px;
+        width: calc(100% - 60px);
+        height: calc(100% - 60px);
+        padding: 30px;
+        margin-right: 5px;
+        background-image: url(/assets/images/about-background.svg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        display: flex;
+        align-items: center;
+        gap: 3%;
+        .col-1,
+        .col-2 {
+          display: flex;
+          flex-direction: column;
+          height: 100%;
+        }
+        .col-1 {
+          align-items: flex-start;
+          justify-content: flex-start;
+          width: 100%;
+          max-width: 55%;
+          gap: 3%;
+          .title {
+            color: $white;
+            font-size: clamp(32px, 1vw, 76px);
+            font-weight: 700;
+          }
+          .subtitle {
+            color: $white;
+            font-size: clamp(24px, 1vw, 76px);
+            font-weight: 500;
+          }
+          .text {
+            color: $smooth-white;
+            font-size: clamp(14px, 1vw, 68px);
+            width: 100%;
+            height: 100%;
+          }
+        }
+        .col-2 {
+          justify-content: center;
+          align-items: center;
+          width: 100%;
+          max-width: 45%;
+          gap: 4%;
+          .about-card {
+            @include squad-big;
+            background: linear-gradient(to right, #dcb567 0%, #44381f 100%);
+            min-width: 325px;
+            min-height: 125px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 70%;
+            height: 18%;
+            padding: 1px;
+            .card-cover {
+              @include squad-big;
+              background: $dark-gray;
+              border-radius: 10px;
+              display: flex;
+              align-items: center;
+              justify-content: flex-start;
+              width: calc(100% - 40px);
+              height: calc(100% - 40px);
+              padding: 20px;
+              gap: 5%;
+              .icon-wrapper-1,
+              .icon-wrapper-2,
+              .icon-wrapper-3 {
+                background: $lighter-gray;
+                border-radius: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                min-width: 40px;
+                min-height: 40px;
+                height: 60%;
+                padding: 1px;
+                aspect-ratio: 1/1;
+                .icon-cover {
+                  background: $light-gray;
+                  border-radius: 100%;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  width: calc(100% - 2px);
+                  height: calc(100% - 2px);
+                  svg {
+                    width: 45%;
+                    height: 45%;
+                    fill: $white;
+                    &.call {
+                      transform: scaleX(-1);
+                    }
+                  }
+                }
+              }
+              .info {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                height: 100%;
+                gap: 15%;
+                .name {
+                  color: $smooth-white;
+                  font-size: clamp(14px, 1vw, 76px);
+                  font-weight: 400;
+                }
+                .value {
+                  color: $white;
+                  font-size: clamp(16px, 1vw, 76px);
+                  font-weight: 600;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 1200px) {
+  .content {
+    .cover {
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+      .col-1,
+      .col-2 {
+        width: 100% !important;
+        max-width: 100% !important;
+      }
+      .col-2 {
+        .about-card {
+          width: 100% !important;
+          height: 20% !important;
+        }
+      }
+    }
+  }
+}
