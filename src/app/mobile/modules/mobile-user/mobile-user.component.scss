@@ -1,22 +1,6 @@
 @import "src/assets/fonts/fonts.scss";
 @import "src/mixins/styles-mixin";
 @import "src/styles/colors";
-@mixin scroll {
-  &::-webkit-scrollbar-track {
-    background-color: transparent;
-    border-radius: 3px;
-  }
-  &::-webkit-scrollbar {
-    height: 3px;
-    width: 3px;
-    background-color: transparent;
-    border-radius: 3px;
-  }
-  &::-webkit-scrollbar-thumb {
-    border-radius: 3px;
-    background-color: $lighter-gray;
-  }
-}
 
 .platform {
   top: 0;
@@ -33,7 +17,7 @@
   &__content {
     position: relative;
     width: 95%;
-    height: calc(100% - 52px);
+    height: calc(100% - 50px);
     .close__shadow {
       position: absolute;
       z-index: 1;
@@ -107,7 +91,7 @@
             max-height: 70px;
             overflow-x: auto;
             -webkit-overflow-scrolling: touch;
-            border-radius: 10px 0 0 0;
+            border-radius: 15px 0 0 0;
             height: 100%;
             width: 100%;
             scrollbar-width: none;

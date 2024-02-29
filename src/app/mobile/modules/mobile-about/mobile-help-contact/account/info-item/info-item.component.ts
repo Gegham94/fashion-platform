@@ -17,7 +17,7 @@ export class InfoItemComponent {
     if (frameContainer) {
       this.isCollapse = !this.isCollapse;
       if (this.isCollapse) {
-        frameContainer.style.setProperty('min-height', '125px');
+        frameContainer.style.setProperty('min-height', '175px');
       } else {
         frameContainer.style.setProperty('min-height', '0px');
       }

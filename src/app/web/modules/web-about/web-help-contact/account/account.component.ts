@@ -1,11 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-account',
   templateUrl: './account.component.html',
   styleUrl: './account.component.scss',
 })
-export class AccountComponent {
+export class AccountComponent implements OnInit {
   public infoList = [
     {
       title: 'How can I register an account ?',
@@ -36,4 +36,16 @@ export class AccountComponent {
       text: 'Test text to help how to fix problems and get currect result us expected.',
     },
   ];
+  public isLoading = false;
+
+  public ngOnInit(): void {
+    this.showLoader();
+  }
+
+  public showLoader() {
+    this.isLoading = true;
+    setTimeout(() => {
+      this.isLoading = false;
+    }, 500);
+  }
 }

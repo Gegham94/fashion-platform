@@ -7,6 +7,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrl: './mobile-contact-us.component.scss',
 })
 export class MobileContactUsComponent {
+  public isLoading = false;
   public maxCharacterCount: number = 500;
   public characterCount: number = 0;
 
@@ -18,6 +19,10 @@ export class MobileContactUsComponent {
     subject: new FormControl('', [Validators.required]),
     description: new FormControl('', [Validators.required]),
   });
+
+  public ngOnInit(): void {
+    this.showLoader();
+  }
 
   public get nameControl(): FormControl {
     return this.messageForm.get('name') as FormControl;
@@ -42,5 +47,12 @@ export class MobileContactUsComponent {
 
   public updateCharacterCount(event: any): void {
     this.characterCount = event.target.value.length;
+  }
+
+  public showLoader() {
+    this.isLoading = true;
+    setTimeout(() => {
+      this.isLoading = false;
+    }, 500);
   }
 }

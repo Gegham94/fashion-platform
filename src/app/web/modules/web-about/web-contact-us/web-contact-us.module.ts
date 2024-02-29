@@ -2,13 +2,13 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { WebContactUsComponent } from './web-contact-us.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   declarations: [WebContactUsComponent],
   imports: [
     CommonModule,
-    ReactiveFormsModule,
+    SharedModule,
     RouterModule.forChild([{ path: '', component: WebContactUsComponent }]),
   ],
 })

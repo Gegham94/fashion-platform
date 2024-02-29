@@ -1,156 +1,123 @@
 @import "src/mixins/styles-mixin";
 @import "src/styles/colors";
-:host {
-  width: 100%;
-  height: 100%;
-}
 
-.content {
+.rules-notifications-wrapper {
+  @include scroll;
+  overflow-y: auto;
+  overflow-x: hidden;
   width: 100%;
   height: 100%;
-  filter: drop-shadow(3px 6px 3px #00000083);
-  .shadow {
-    @include lb-side-squad-content;
-    background: $lighter-gray;
-    height: calc(100% - 22px);
-    border-radius: 10px;
-    padding: 1px;
-    width: calc(100% - 2px);
-    .wrapper {
-      @include lb-side-squad-content;
+  padding-right: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  .col-1 {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    gap: 10px;
+    .title {
+      width: 100%;
+      color: $white;
+      font-size: clamp(32px, 1vw, 76px);
+      font-weight: 700;
+    }
+    .subtitle {
+      width: 100%;
+      color: $white;
+      font-size: clamp(24px, 1vw, 76px);
+      font-weight: 500;
+    }
+    .text {
+      color: $smooth-white;
+      font-size: clamp(14px, 1vw, 68px);
+      width: 100%;
+    }
+  }
+  .col-2 {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    height: calc(100% - 30px);
+    .table-wrapper {
+      background: $lighter-gray;
+      min-height: 215px;
+      width: calc(100% - 10px);
+      height: 100%;
+      padding: 1px;
+      border-radius: 10px;
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 100%;
-      height: 100%;
-      border-radius: 10px;
-      background: linear-gradient(to top, #1C1C23 0%, #3D404D 100%);;
-      .cover {
-        @include lb-side-squad-content;
-        @include scroll;
-        overflow-y: auto;
-        overflow-x: hidden;
+      .table-cover {
+        background: $light-gray;
         border-radius: 10px;
-        width: calc(100% - 40px);
-        height: calc(100% - 40px);
-        padding: 20px 15px 20px 20px;
-        margin-right: 5px;
-        background-image: url(/assets/images/about-background.svg);
-        background-repeat: no-repeat;
-        background-size: cover;
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-        .col-1,
-        .col-2 {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        .table-header {
           display: flex;
-          flex-direction: column;
-          height: 100%;
-        }
-        .col-1 {
-          align-items: flex-start;
-          justify-content: flex-start;
-          width: 100%;
-          gap: 10px;
-          min-height: 3765x;
-          .title {
-            color: $white;
-            font-size: clamp(32px, 1vw, 72px);
-            font-weight: 700;
-          }
-          .subtitle {
-            color: $white;
-            font-size: clamp(24px, 1vw, 72px);
-            font-weight: 500;
-          }
-          .text {
-            color: $smooth-white;
-            font-size: clamp(16px, 1vw, 72px);
-            width: 100%;
-            height: 100%;
-          }
-        }
-        .col-2 {
-          width: 100%;
-          min-height: 195px;
-          .table-wrapper {
-            background: $lighter-gray;
-            width: 100%;
-            height: 100%;
-            padding: 1px;
-            border-radius: 10px;
+          justify-content: space-evenly;
+          position: absolute;
+          top: 0;
+          border-radius: 10px 10px 0 0;
+          height: 50px;
+          width: calc(100% - 10px);
+          background: $light-gray;
+          padding: 0 5px;
+          border-bottom: 1px solid $lighter-gray;
+          span {
             display: flex;
+            flex-wrap: nowrap;
             align-items: center;
             justify-content: center;
-            .table-cover {
-              background: $light-gray;
-              border-radius: 10px;
+            color: $smooth-white;
+            width: 100%;
+            height: 100%;
+            font-size: 0.9em;
+            font-weight: 500;
+          }
+        }
+        .table-body {
+          @include scroll;
+          overflow-y: auto;
+          overflow-x: hidden;
+          display: flex;
+          flex-direction: column;
+          background: #1c1c23;
+          margin-top: 51px;
+          border-radius: 0 0 10px 10px;
+          width: calc(100% - 10px);
+          margin-right: 5px;
+          padding: 5px 5px 10px 5px;
+          height: calc(100% - 66px);
+          gap: 5px;
+          .row {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            width: 100%;
+            height: 100%;
+            min-height: 30px;
+            border-radius: 5px;
+            overflow: hidden;
+            span {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              text-align: center;
               width: 100%;
               height: 100%;
-              position: relative;
-              .table-header {
-                display: flex;
-                justify-content: space-evenly;
-                position: absolute;
-                top: 0;
-                border-radius: 10px 10px 0 0;
-                height: 50px;
-                width: calc(100% - 10px);
+              font-size: clamp(9px, 1vw, 14px);
+              font-weight: 500;
+              &:nth-child(even) {
                 background: $light-gray;
-                padding: 0 5px;
-                border-bottom: 1px solid $lighter-gray;
-                span {
-                  display: flex;
-                  flex-wrap: nowrap;
-                  align-items: center;
-                  justify-content: center;
-                  color: $smooth-white;
-                  width: 100%;
-                  height: 100%;
-                  font-size: 0.9em;
-                  font-weight: 500;
-                }
               }
-              .table-body {
-                @include scroll;
-                overflow-y: auto;
-                overflow-x: hidden;
-                display: flex;
-                flex-direction: column;
-                background: #1c1c23;
-                margin-top: 51px;
-                border-radius: 0 0 10px 10px;
-                width: calc(100% - 10px);
-                margin-right: 5px;
-                padding: 5px 5px 10px 5px;
-                height: calc(100% - 66px);
-                gap: 5px;
-                .row {
-                  display: flex;
-                  flex-direction: row;
-                  flex-wrap: nowrap;
-                  width: 100%;
-                  height: 100%;
-                  min-height: 40px;
-                  border-radius: 5px;
-                  overflow: hidden;
-                  span {
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    text-align: center;
-                    width: 100%;
-                    height: 100%;
-                    font-size: clamp(9px, 1vw, 14px);
-                    font-weight: 500;
-                    &:nth-child(even) {
-                      background: $light-gray;
-                    }
-                    &:nth-child(odd) {
-                      background: $dark-gray;
-                    }
-                  }
-                }
+              &:nth-child(odd) {
+                background: $dark-gray;
               }
             }
           }

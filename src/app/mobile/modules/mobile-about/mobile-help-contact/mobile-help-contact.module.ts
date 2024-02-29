@@ -8,4 +8,4 @@ import { MobileHelpContactRoutingModule } from './mobile-help-contact-routing.mo
   declarations: [MobileHelpContactComponent],
   imports: [CommonModule, RouterModule, MobileHelpContactRoutingModule],
 })
-export class WebHelpContactModule {}
+export class MobileHelpContactModule {}

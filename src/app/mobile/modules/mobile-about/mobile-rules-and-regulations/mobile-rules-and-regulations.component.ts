@@ -6,6 +6,8 @@ import { Component } from '@angular/core';
   styleUrl: './mobile-rules-and-regulations.component.scss',
 })
 export class MobileRulesAndRegulationsComponent {
+  public isLoading = false;
+
   public tableData: any[] = [
     {
       no: 1,
@@ -24,96 +26,6 @@ export class MobileRulesAndRegulationsComponent {
       total: 2.5,
       over: 1.85,
       under: 1.85,
-    },
-    {
-      no: 2,
-      data: '2024-02-17',
-      event: 'Team1',
-      one: 2.0,
-      x: 3.5,
-      two: 1.8,
-      oneX: 2.2,
-      twelve: 3.5,
-      twoX: 1.95,
-      handicap1: -5,
-      coefficient1: 1.85,
-      handicap2: 5,
-      coefficient2: 1.95,
-      total: 200,
-      over: 1.9,
-      under: 1.9,
-    },
-    {
-      no: 3,
-      data: '2024-02-17',
-      event: 'Team1',
-      one: 2.0,
-      x: 3.5,
-      two: 1.8,
-      oneX: 2.2,
-      twelve: 3.5,
-      twoX: 1.95,
-      handicap1: -5,
-      coefficient1: 1.85,
-      handicap2: 5,
-      coefficient2: 1.95,
-      total: 200,
-      over: 1.9,
-      under: 1.9,
-    },
-    {
-      no: 4,
-      data: '2024-02-17',
-      event: 'Team1',
-      one: 2.0,
-      x: 3.5,
-      two: 1.8,
-      oneX: 2.2,
-      twelve: 3.5,
-      twoX: 1.95,
-      handicap1: -5,
-      coefficient1: 1.85,
-      handicap2: 5,
-      coefficient2: 1.95,
-      total: 200,
-      over: 1.9,
-      under: 1.9,
-    },
-    {
-      no: 5,
-      data: '2024-02-17',
-      event: 'Team1',
-      one: 2.0,
-      x: 3.5,
-      two: 1.8,
-      oneX: 2.2,
-      twelve: 3.5,
-      twoX: 1.95,
-      handicap1: -5,
-      coefficient1: 1.85,
-      handicap2: 5,
-      coefficient2: 1.95,
-      total: 200,
-      over: 1.9,
-      under: 1.9,
-    },
-    {
-      no: 6,
-      data: '2024-02-17',
-      event: 'Team1',
-      one: 2.0,
-      x: 3.5,
-      two: 1.8,
-      oneX: 2.2,
-      twelve: 3.5,
-      twoX: 1.95,
-      handicap1: -5,
-      coefficient1: 1.85,
-      handicap2: 5,
-      coefficient2: 1.95,
-      total: 200,
-      over: 1.9,
-      under: 1.9,
     },
   ];
 
@@ -135,4 +47,15 @@ export class MobileRulesAndRegulationsComponent {
     { header: 'Over', field: 'over' },
     { header: 'Under', field: 'under' },
   ];
+
+  public ngOnInit(): void {
+    this.showLoader();
+  }
+
+  public showLoader() {
+    this.isLoading = true;
+    setTimeout(() => {
+      this.isLoading = false;
+    }, 500);
+  }
 }

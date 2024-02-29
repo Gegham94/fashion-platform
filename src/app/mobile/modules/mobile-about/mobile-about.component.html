@@ -7,36 +7,49 @@
         </div>
       </div>
     </div>
-    <div appResizeEnd (resizeEnd)="onResizeEnd()" #tooltipAboutRef class="about__content__wrapper">
+    <div class="about__content__wrapper">
       <div class="about__content__wrapper--cover">
         <div class="tabs">
-          
-          <div class="tabs__header">
-            <div #haederAboutRef class="tabs__header--space">
-              <div class="space--cover"></div>
-            </div>
+          <div class="tabs__header" #headerRef>
             <div class="tabs__header--items">
               <ng-container *ngFor="let tab of tabs">
-                <div #tabElementAboutRef class="item" [routerLink]="tab.router" [id]="tab.id" [class.active]="tab.isActive" (click)="selectTab($event.target, tab.id)">
+                <div
+                  #tabElementRef
+                  class="item"
+                  [routerLink]="tab.router"
+                  [class.active]="tab.isActive"
+                  (click)="selectTab(tab.id)"
+                >
                   <span class="title">{{ tab.title }}</span>
-                  <div *ngIf="!tab.isActive; else decorAboutModel" class="decor-default">
+                  <div *ngIf="!tab.isActive" class="decor-default">
                     <span class="decor-default--vector"></span>
                     <span class="decor-default--dot"></span>
                   </div>
-                  <img class="toz" src="/assets/images/user-platform-tabs-bg.svg">
-                  <ng-template #decorAboutModel>
-                    <div class="decor"></div>
-                  </ng-template>
+                  <img
+                    class="toz"
+                    src="/assets/images/user-platform-tabs-bg.svg"
+                  />
+                  <div
+                    class="decor"
+                    [ngStyle]="{
+                      visibility: tab.isActive ? 'visible' : 'hidden'
+                    }"
+                  ></div>
                 </div>
               </ng-container>
             </div>
           </div>
           <div class="tabs__content">
-            <router-outlet></router-outlet>
+            <div class="wrapper">
+              <div class="cover">
+                <div class="background-cover">
+                  <router-outlet></router-outlet>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
-  

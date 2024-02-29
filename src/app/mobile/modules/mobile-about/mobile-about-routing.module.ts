@@ -20,7 +20,7 @@ const routes: Routes = [
       },
       {
         path: "help",
-        loadChildren: () => import("./mobile-help-contact/mobile-help-contact.module").then(m => m.WebHelpContactModule),
+        loadChildren: () => import("./mobile-help-contact/mobile-help-contact.module").then(m => m.MobileHelpContactModule),
       },
       {
         path: "contact_us",

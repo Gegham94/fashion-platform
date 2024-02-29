@@ -1,6 +1,4 @@
-import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
-import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
-import { filter } from 'rxjs';
+import { AfterViewInit, Component, ElementRef, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { AboutTabs } from 'src/app/shared/enum/EAboutTabs';
 
 @Component({
@@ -9,66 +7,30 @@ import { AboutTabs } from 'src/app/shared/enum/EAboutTabs';
   styleUrls: ['./mobile-about.component.scss'],
 })
 export class MobileAboutComponent implements AfterViewInit {
-  @ViewChild('tabElementAboutRef') tabElementAboutRef!: ElementRef;
-  @ViewChild('tooltipAboutRef') tooltipAboutRef!: ElementRef;
-  @ViewChild('haederAboutRef') haederAboutRef!: ElementRef;
+  @ViewChildren('tabElementRef') tabElementRef!: QueryList<any>;
+  @ViewChild('headerRef') headerRef!: ElementRef;
 
   public tabs = AboutTabs;
+  public isLoading = false;
 
-  constructor(private router: Router, private activatedRoute: ActivatedRoute) {}
-
-  public ngOnInit(): void {
-    this.router.events
-      .pipe(filter((e) => e instanceof NavigationEnd))
-      .subscribe(() => {
-        const childRoute = this.activatedRoute.firstChild;
-        if (childRoute) {
-          const currentChildRoute = childRoute.snapshot.url.join('/');
-          const matchingTab = this.tabs.find(
-            (tab) => tab.router === currentChildRoute
-          );
-          if (matchingTab) {
-            const selectedTab = document.getElementById(`${matchingTab.id}`);
-            this.selectTab(selectedTab, matchingTab.id);
-          } else {
-            this.selectTab(document.getElementById('0'), 0);
-          }
-        }
-      });
-  }
-
+  constructor() {}
   public ngAfterViewInit() {
-    const element = this.tabElementAboutRef.nativeElement as HTMLElement;
-    this.getElementPositionHandler(element);
+    this.tabElementRef.toArray()[0].nativeElement.scrollIntoView({ behavior: "smooth", inline: "center" });
   }
 
-  public selectTab(event: any, tabId: number) {
-    this.tabs.forEach((tab: any) => (tab.isActive = false));
+  public selectTab(tabId: number) {
+    this.showLoader();
+    this.tabs.forEach((tab) => (tab.isActive = false));
     this.tabs[tabId].isActive = true;
-    const elemTab = event as HTMLElement;
-    this.tabElementAboutRef.nativeElement = event;
-    this.getElementPositionHandler(elemTab);
+    const tabElement = this.tabElementRef.toArray();
+    const selectedTabElement = tabElement[tabId].nativeElement;
+    selectedTabElement.scrollIntoView({ behavior: "smooth", inline: "center" });
   }
 
-  public getElementPositionHandler(element: HTMLElement) {
-    const rect = element.getBoundingClientRect();
-    let rectContainer =
-      this.tooltipAboutRef.nativeElement.getBoundingClientRect();
-    const elemPosition = {
-      left: ((rect.left - rectContainer.left) / rectContainer.width) * 100,
-      width: (element.offsetWidth / rectContainer.width) * 100,
-    };
-    this.haederAboutRef.nativeElement.style.setProperty(
-      '--elemLeft',
-      elemPosition.left + '%'
-    );
-    this.haederAboutRef.nativeElement.style.setProperty(
-      '--elemWidth',
-      elemPosition.width + '%'
-    );
-  }
-
-  public onResizeEnd() {
-    this.getElementPositionHandler(this.tabElementAboutRef.nativeElement);
+  public showLoader() {
+    this.isLoading = true;
+    setTimeout(() => {
+      this.isLoading = false;
+    }, 500);
   }
 }

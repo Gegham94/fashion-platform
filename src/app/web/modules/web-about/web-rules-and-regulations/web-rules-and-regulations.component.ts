@@ -1,11 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-web-rules-and-regulations',
   templateUrl: './web-rules-and-regulations.component.html',
   styleUrl: './web-rules-and-regulations.component.scss',
 })
-export class WebRulesAndRegulationsComponent {
+export class WebRulesAndRegulationsComponent implements OnInit {
+  public isLoading = false;
   public tableData: any[] = [
     {
       no: 1,
@@ -135,4 +136,15 @@ export class WebRulesAndRegulationsComponent {
     { header: 'Over', field: 'over' },
     { header: 'Under', field: 'under' },
   ];
+
+  public ngOnInit(): void {
+    this.showLoader();
+  }
+
+  public showLoader() {
+    this.isLoading = true;
+    setTimeout(() => {
+      this.isLoading = false;
+    }, 500);
+  }
 }

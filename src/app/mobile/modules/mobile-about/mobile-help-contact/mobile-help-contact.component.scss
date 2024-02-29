@@ -1,93 +1,48 @@
 @import "src/mixins/styles-mixin";
 @import "src/styles/colors";
-:host {
-  width: 100%;
-  height: 100%;
-}
 
-.content {
+.help-wrapper {
   width: 100%;
   height: 100%;
-  filter: drop-shadow(3px 6px 3px #00000083);
-  .shadow {
-    @include lb-side-squad-content;
-    background: $lighter-gray;
-    height: calc(100% - 22px);
-    border-radius: 10px;
-    padding: 1px;
-    width: calc(100% - 2px);
-    .wrapper {
-      @include lb-side-squad-content;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 100%;
-      height: 100%;
-      border-radius: 10px;
-      min-height: 325px;
-      background: linear-gradient(to top, #1C1C23 0%, #3D404D 100%);;
-      .cover {
-        @include lb-side-squad-content;
-        border-radius: 10px;
-        width: calc(100% - 30px);
-        height: calc(100% - 60px);
-        padding: 30px 10px 30px 20px;
-        background-image: url(/assets/images/about-background.svg);
+  display: flex;
+  flex-direction: column;
+  .tab-buttons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    filter: drop-shadow(3px 6px 3px #00000083);
+    gap: 20px;
+    margin-bottom: 15px;
+    button {
+      @include removed-styles-button;
+      @include squad-small;
+      padding: 1px;
+      background: $lighter-gray;
+      max-width: 168px;
+      border-radius: 3px;
+      transition: transform 0.05s ease;
+      .button-cover {
+        @include squad-small;
+        background: $light-gray;
         display: flex;
-        flex-direction: column;
         align-items: center;
-        gap: 10px;
-        .tab-buttons {
+        justify-content: center;
+        border-radius: 3px;
+        padding: 5px 20px;
+        span {
           width: 100%;
-          gap: 20px;
-          min-height: 30px;
-          display: flex;
-          flex-direction: row;
-          align-items: center;
-          justify-content: center;
-          filter: drop-shadow(3px 6px 3px #00000083);
-          button {
-            @include removed-styles-button;
-            @include squad-small;
-            padding: 1px;
-            background: $lighter-gray;
-            max-width: 168px;
-            width: 100%;
-            height: 100%;
-            border-radius: 3px;
-            transition: transform 0.05s ease;
-            .button-cover {
-              @include squad-small;
-              width: 100%;
-              height: 100%;
-              background: $light-gray;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              border-radius: 3px;
-              span {
-                width: 100%;
-                color: $smooth-white;
-                text-align: center;
-                font-size: 0.8em;
-                font-weight: 700;
-                padding: 4px 15px;
-              }
-            }
-            &:hover {
-              background: $yellow;
-              transform: scale(1.02);
-              .button-cover {
-                background: $smooth-yellow;
-              }
-            }
-            &.active {
-              background: $yellow;
-              .button-cover {
-                background: $smooth-yellow;
-              }
-            }
-          }
+          color: $smooth-white;
+          text-align: center;
+          font-size: 0.8em;
+          font-weight: 700;
+          padding: 4px 15px;
+        }
+      }
+      &.active {
+        background: $yellow;
+        .button-cover {
+          background: $smooth-yellow;
         }
       }
     }

@@ -13,8 +13,6 @@ export class MobileUserComponent implements AfterViewInit {
   public tabs = UserPlatformTabs;
   public isLoading = false;
 
-  constructor() {}
-
   public ngAfterViewInit() {
     this.tabElementRef.toArray()[0].nativeElement.scrollIntoView({ behavior: "smooth", inline: "center" });
   }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -6,7 +6,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   templateUrl: './web-contact-us.component.html',
   styleUrl: './web-contact-us.component.scss',
 })
-export class WebContactUsComponent {
+export class WebContactUsComponent implements OnInit {
+  public isLoading = false;
   public maxCharacterCount: number = 500;
   public characterCount: number = 0;
 
@@ -38,9 +39,21 @@ export class WebContactUsComponent {
     return this.messageForm.get('description') as FormControl;
   }
 
+
+  public ngOnInit(): void {
+    this.showLoader();
+  }
+
   public sendMessage() {}
 
   public updateCharacterCount(event: any): void {
     this.characterCount = event.target.value.length;
+  }
+
+  public showLoader() {
+    this.isLoading = true;
+    setTimeout(() => {
+      this.isLoading = false;
+    }, 500);
   }
 }
