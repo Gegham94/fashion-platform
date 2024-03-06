@@ -54,7 +54,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     @include scroll;
     height: 100%;
     width: 100%;
-    gap: 20px;
+    gap: 10px;
     max-height: 80px;
     min-height: 60px;
     display: flex;
@@ -117,13 +117,8 @@ input[type="date"]::-webkit-calendar-picker-indicator {
       }
     }
     .options {
+      gap: 10px;
       .wrapper-content {
-        &:first-child {
-          margin-right: -10px;
-        }
-        &:last-child {
-          margin-left: -10px;
-        }
         svg {
           pointer-events: none;
         }
@@ -140,17 +135,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
             margin: 0 10px 0 25px;
           }
         }
-      }
-    }
-
-    .search {
-      .search-component {
-        max-height: 40px;
-        height: 100%;
-        width: 100%;
-        border-radius: 20px;
-        background: $dark-gray;
-        margin-right: 5px;
       }
     }
     .filter {
@@ -221,13 +205,25 @@ input[type="date"]::-webkit-calendar-picker-indicator {
           }
         }
       }
+      .search-component {
+        max-height: 40px;
+        height: 100%;
+        width: 100%;
+        border-radius: 20px;
+        background: $dark-gray;
+        margin-left: 10px;
+      }
     }
     .form-filed {
-      $index: var(--index);
       flex-shrink: 0;
       min-width: 232px;
-      width: 33.3%;
-      transform: translateX(calc(-12px * $index));
+      width: 33%;
+      &.margin-right {
+        margin-right: -10px;
+      }
+      &.margin-left {
+        margin-right: -10px;
+      }
     }
   }
   &__table {

@@ -4,21 +4,15 @@
     <div class="content__user--body"></div>
   </div>
   <div class="content__auth" [ngClass]="isAuthOpen ? 'active' : ''">
-    <div class="content__auth--signup" (click)="openModal('sign-up')">
-      <span>Sign Up</span>
-    </div>
-    <div class="content__auth--signin" (click)="openModal('sign-in')">
-      <div class="content__auth--signin--cover">
-        <span>Sign In</span>
-      </div>
-    </div>
+    <app-forms-modal
+      [isMobile]="false"
+      formType="signUp"
+      title="Sign Up"
+    ></app-forms-modal>
+    <app-forms-modal
+      [isMobile]="false"
+      formType="signIn"
+      title="Sign In"
+    ></app-forms-modal>
   </div>
 </div>
-
-<app-web-modal *ngIf="(isDisplay$ | async) && isOpenSignUpModal" [size]="'big'">
-  <app-web-sign-up></app-web-sign-up>
-</app-web-modal>
-
-<app-web-modal *ngIf="(isDisplay$ | async) && isOpenSignInModal" [size]="'small'">
-  <app-web-sign-in></app-web-sign-in>
-</app-web-modal>

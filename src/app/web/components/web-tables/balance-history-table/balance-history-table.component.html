@@ -42,7 +42,7 @@
         [data]="status"
         [keyName]="'id'"
         placeholder="Status"
-        [className]="'form-filed'"
+        class="form-filed margin-right"
         (onSelect)="onSelectStatusFilter($event)"
       >
       </app-multiselect>
@@ -53,7 +53,7 @@
         [data]="method"
         [keyName]="'id'"
         placeholder="Method"
-        [className]="'form-filed'"
+        class="form-filed"
         (onSelect)="onSelectMethodFilter($event)"
       >
       </app-multiselect>
@@ -64,12 +64,11 @@
         [data]="currency"
         [keyName]="'id'"
         placeholder="Currency"
-        [className]="'form-filed'"
+        class="form-filed margin-left"
         (onSelect)="onSelectCurrencyFilter($event)"
       >
       </app-multiselect>
-    </div>
-    <div class="search filter">
+
       <app-search
         (getSearchedText)="getSearchedText($event)"
         class="search-component"

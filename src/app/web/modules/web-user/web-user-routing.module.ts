@@ -8,7 +8,7 @@ const routes: Routes = [
     component: WebUserComponent,
     children: [
       {
-        path: "", pathMatch: "full", redirectTo: "settings",
+        path: "", pathMatch: "full", redirectTo: "profile",
       },
       {
         path: "profile",

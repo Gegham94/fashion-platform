@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, TemplateRef, ViewChild, ViewContainerRef } from '@angular/core';
 import { CURRENCY, METHOD, STATUS, TYPE_FILTER } from 'src/app/shared/constants/contstants';
 
 @Component({
@@ -7,6 +7,9 @@ import { CURRENCY, METHOD, STATUS, TYPE_FILTER } from 'src/app/shared/constants/
   styleUrls: ['./mobile-active-bets.component.scss']
 })
 export class MobileActiveBetsComponent {
+  @ViewChild('modalTemplate') modalTemplate!: TemplateRef<any>;
+
+  private modalElement: any;
   public status: TYPE_FILTER[] = STATUS;
   public method: TYPE_FILTER[] = METHOD;
   public currency: TYPE_FILTER[] = CURRENCY;
@@ -19,7 +22,7 @@ export class MobileActiveBetsComponent {
     method: [],
     currency: [],
   };
-  constructor() {}
+  constructor(private viewContainerRef: ViewContainerRef) {}
 
   public ngOnInit(): void {
     this.showLoader();
@@ -60,5 +63,34 @@ export class MobileActiveBetsComponent {
     setTimeout(() => {
       this.isLoading = false;
     }, 500);
+  }
+
+  
+  //CASH OUT MODAL
+  public destroyCashOutModal() {
+    if (document.body.contains(this.modalElement?.rootNodes?.[0])) {
+      document.body.removeChild(this.modalElement.rootNodes[0]);
+    }
+  }
+
+  public closeCashOutModal() {
+    this.destroyCashOutModal();
+  }
+
+  public openCashOutModal() {
+    this.createCashOutModal();
+  }
+
+  public createCashOutModal() {
+    this.modalElement = this.viewContainerRef.createEmbeddedView(
+      this.modalTemplate
+    );
+    document.body.appendChild(this.modalElement.rootNodes[0]);
+    const popup = this.modalElement.rootNodes[0];
+    popup.style.setProperty('position', 'fixed');
+    popup.style.setProperty('top', '0px');
+    popup.style.setProperty('left', '0px');
+    popup.style.setProperty('height', '100%');
+    popup.style.setProperty('width', '100%');
   }
 }

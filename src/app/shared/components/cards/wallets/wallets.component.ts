@@ -23,20 +23,6 @@ export class WalletsComponent {
     { title: 'XOF West Africa CFE franc' },
     { title: 'XOF West Africa CFE franc' },
     { title: 'XOF West Africa CFE franc' },
-    { title: 'XOF West Africa CFE franc' },
-    { title: 'XOF West Africa CFE franc' },
-    { title: 'XOF West Africa CFE franc' },
-    { title: 'XOF West Africa CFE franc' },
-    { title: 'XOF West Africa CFE franc' },
-    { title: 'XOF West Africa CFE franc' },
-    { title: 'XOF West Africa CFE franc' },
-    { title: 'XOF West Africa CFE franc' },
-    { title: 'XOF West Africa CFE franc' },
-    { title: 'XOF West Africa CFE franc' },
-    { title: 'XOF West Africa CFE franc' },
-    { title: 'XOF West Africa CFE franc' },
-    { title: 'XOF West Africa CFE franc' },
-    { title: 'XOF West Africa CFE franc' },
   ];
 
   public getSelectedValue(event: any) {

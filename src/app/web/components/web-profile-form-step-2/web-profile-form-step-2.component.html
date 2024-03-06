@@ -2,7 +2,7 @@
   <form [formGroup]="form" [class]="inputColor">
     <div class="row">
       <label
-        class="label left"
+        class="label left margin-right"
         [class.success]="userNameControl.touched && userNameControl.valid"
         [class.error]="userNameControl.touched && userNameControl.invalid"
       >
@@ -20,6 +20,7 @@
         [keyName]="'id'"
         placeholder="Gender"
         cutSide="right"
+        class="margin-left"
         [singleSelect]="true"
         [inputColor]="inputColor"
         (onSelect)="onSelectGenderFilter($event)"
@@ -27,7 +28,7 @@
     </div>
     <div class="row">
       <label
-        class="label left"
+        class="label left margin-right"
         [class.success]="passwordControl.touched && passwordControl.valid"
         [class.error]="passwordControl.touched && passwordControl.invalid"
       >
@@ -40,7 +41,7 @@
         />
       </label>
       <label
-        class="label right"
+        class="label right margin-left"
         [class.success]="repeatPasswordControl.touched && repeatPasswordControl.valid"
         [class.error]="repeatPasswordControl.touched && repeatPasswordControl.invalid"
       >
@@ -75,7 +76,7 @@
         </div>
       </div>
     </div>
-    <div class="row">
+    <div class="row selections">
       <div class="checkboxes">
         <div class="checkboxes__shadow" (click)="handleCheckboxChange('1')">
           <div class="checkboxes__shadow__wrapper">

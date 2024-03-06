@@ -1,5 +1,9 @@
 @import "src/mixins/styles-mixin";
 @import "src/styles/colors";
+:host {
+  width: 100%;
+  height: 100%;
+}
 
 input {
   -webkit-autofill: none;
@@ -27,9 +31,9 @@ input {
   align-items: center;
   justify-items: center;
   padding: 20px;
-  row-gap: 3%;
-  width: calc(100% - 30px);
-  height: calc(100% - 30px);
+  gap: 10px;
+  width: calc(100% - 40px);
+  height: calc(100% - 40px);
   &__header {
     position: relative;
     display: flex;
@@ -62,16 +66,16 @@ input {
       justify-content: center;
       position: relative;
       &__text {
-        font-size: clamp(12px, 1.2vw, 30px);
+        font-size: clamp(12px, 1.4vw, 28px);
         position: absolute;
         font-weight: 700;
         color: $yellow;
         margin-bottom: 15px;
       }
       &__wrapper {
-        @include modal-title-vector;
+        clip-path: polygon(0% 0%, 15% 0%, 25% calc(100% - 1px), 75% calc(100% - 1px), 85% 0%, 100% 0%, 100% 1px, 85% 1px, 75% 100%, 25% 100%, 15% 1px, 0% 1px, 0% 0%);
         background: $yellow;
-        width: 60%;
+        width: 70%;
         height: 100%;
       }
       &__decor {
@@ -106,6 +110,7 @@ input {
         justify-content: center;
         flex-wrap: nowrap;
         .content {
+          position: relative;
           filter: drop-shadow(4px 8px 16px rgba(0, 0, 0, 0.3));
           width: 100%;
           .success-left {
@@ -120,48 +125,23 @@ input {
           .error-right {
             background: $border-gradient-to-left-error;
           }
-          &__label {
-            display: flex;
-            width: 100%;
-            margin-left: 7%;
-            margin-top: 3px;
-            &--text {
-              width: 100%;
-              height: 100%;
-              font-size: 12px;
-              font-style: normal;
-              font-weight: 400;
-              line-height: normal;
-              display: flex;
-              color: $white;
-              opacity: 0.8;
-            }
+          &.margin-right {
+            margin-right: -5px;
           }
-          &__forgot-password {
+          .recover {
+            position: absolute;
             display: flex;
-            white-space: nowrap;
-            align-items: center;
-            height: 100%;
-            font-size: clamp(14px, 0vw, 18px);
-            font-weight: 500;
-            line-height: normal;
-            color: $white;
-            margin-top: 25px;
-            cursor: pointer;
-            &:hover {
-              text-shadow: 1px 1px 2px $layout-bg, 0 0 1em $layout-bg,
-                0 0 0.2em $layout-bg;
-            }
+            margin-top: 20px;
           }
           &__wrapper--left,
           &__wrapper--right {
             padding: 1px;
             display: flex;
             align-items: center;
-            justify-content: center;
+            justify-content: space-between;
             width: 100%;
             height: 100%;
-            margin-top: 1%;
+            position: relative;
             &--input {
               color: $white;
               font-size: 14px;
@@ -171,6 +151,21 @@ input {
               min-height: 40px;
               padding-left: 20px;
               padding-right: 15px;
+            }
+            .password-visibility {
+              position: absolute;
+              right: 10px;
+              top: 50%;
+              right: 8%;
+              width: 20px;
+              height: 20px;
+              transform: translateY(-50%);
+              svg {
+                cursor: pointer;
+                width: 100%;
+                height: 100%;
+                fill: $yellow;
+              }
             }
           }
           &__wrapper--left {
@@ -196,8 +191,7 @@ input {
             }
           }
           &__feedback-error {
-            position: absolute;
-            left: 15px;
+            margin: 5px 0 0 15px;
             font-size: clamp(9px, 1vw, 12px);
             color: $red;
             margin-top: 5px;
@@ -213,9 +207,9 @@ input {
             justify-content: flex-start;
             align-items: center;
             flex-wrap: nowrap;
-            width: 100%;
+            width: 40%;
             height: 100%;
-            min-height: 21px;
+            min-height: 20px;
             max-height: 60px;
             filter: drop-shadow(4px 8px 16px rgba(0, 0, 0, 0.3));
             .remember-title {
@@ -224,7 +218,6 @@ input {
               font-size: clamp(14px, 1vw, 18px);
               font-style: normal;
               font-weight: 500;
-              line-height: normal;
               white-space: nowrap;
             }
             &__wrapper {
@@ -236,6 +229,7 @@ input {
               max-height: 20px;
               background: $lighter-gray;
               padding: 1px;
+              aspect-ratio: 1/1;
               &.checked {
                 background: $yellow;
               }
@@ -256,16 +250,16 @@ input {
             }
           }
         }
-        
       }
     }
-    &__footer {
+    .footer {
       display: flex;
       align-items: center;
+      justify-content: space-between;
       width: 100%;
       height: 15%;
       min-height: 30px;
-      &--create-account {
+      .create-account {
         font-family: "Roboto", sans-serif;
         display: flex;
         white-space: nowrap;
@@ -284,38 +278,31 @@ input {
             0 0 0.2em $layout-bg;
         }
       }
-      &--signinBtn {
+      .send-btn-wrapper {
+        @include squad-small;
         display: flex;
         align-items: center;
-        justify-content: flex-end;
+        justify-content: center;
+        background: $yellow;
         height: 100%;
-        width: 100%;
         max-height: 30px;
+        width: 30%;
+        padding: 1px;
         &:hover {
-          opacity: 0.8;
+          transform: scale(1.02);
         }
-        &__wrapper {
+        .send-btn-cover {
           @include squad-small;
           display: flex;
           align-items: center;
           justify-content: center;
-          background: $yellow;
+          width: 100%;
           height: 100%;
-          width: 50%;
-          padding: 1px;
-          &--cover {
-            @include squad-small;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-            height: 100%;
-            position: relative;
-            background: rgba($layout-bg, 0.5);
-            border: none;
-            color: $white;
-            cursor: pointer;
-          }
+          position: relative;
+          background: rgba($layout-bg, 0.5);
+          border: none;
+          color: $white;
+          cursor: pointer;
         }
       }
     }

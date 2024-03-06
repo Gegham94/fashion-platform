@@ -1,0 +1,60 @@
+@import "src/mixins/styles-mixin";
+@import "src/styles/colors";
+
+:host {
+  height: 100%;
+  width: 100%;
+  min-width: 80px
+}
+
+.forms-popup-button {
+  @include removed-styles-button;
+  padding: 1px;
+  background: $yellow;
+  width: 100%;
+  height: 100%;
+  max-height: 30px;
+  &.signIn {
+    @include auth-signin-button;
+    margin-left: -10px;
+    border-radius: 0 15px 15px 0;
+    .forms-cover {
+      @include auth-signin-button;
+      border-radius: 0 15px 15px 0;
+    }
+  }
+  &.signUp {
+    @include auth-signup-button;
+    margin-right: -10px;
+    border-radius: 15px 0 0 15px;
+    .forms-cover {
+      @include auth-signup-button;
+      border-radius: 15px 0 0 15px;
+    }
+  }
+  .forms-cover {
+    width: 100%;
+    height: 100%;
+    background: $dark-gray;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.1s ease;
+    span {
+      width: 100%;
+      color: $yellow;
+      text-align: center;
+      font-size: 0.8em;
+      font-weight: 700;
+      padding: 4px 15px;
+    }
+  }
+  &:hover {
+    .forms-cover {
+      background: $yellow;
+      span {
+        color: $darker-gray;
+      }
+    }
+  }
+}

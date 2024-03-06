@@ -2,7 +2,7 @@
   <form [formGroup]="form" [class]="inputColor" [ngStyle]="{ '--margin': '-15px', '--maxWidth': '125px'}">
     <div class="row">
       <label
-        class="label left"
+        class="label left margin-right"
         [class.success]="userNameControl.touched && userNameControl.valid"
         [class.error]="userNameControl.touched && userNameControl.invalid"
       >
@@ -20,14 +20,14 @@
         placeholder="Gender"
         cutSide="right"
         [singleSelect]="true"
-        [className]="'multiselect-label'"
+        class="margin-left"
         [inputColor]="inputColor"
         (onSelect)="onSelectGenderFilter($event)"
       ></app-multiselect-autocomplate>
     </div>
     <div class="row">
       <label
-        class="label left"
+        class="label left margin-right"
         [class.success]="passwordControl.touched && passwordControl.valid"
         [class.error]="passwordControl.touched && passwordControl.invalid"
       >
@@ -40,7 +40,7 @@
         />
       </label>
       <label
-        class="label right"
+        class="label right margin-left"
         [class.success]="repeatPasswordControl.touched && repeatPasswordControl.valid"
         [class.error]="repeatPasswordControl.touched && repeatPasswordControl.invalid"
       >
@@ -75,7 +75,7 @@
         </div>
       </div>
     </div>
-    <div class="row">
+    <div class="row selections">
       <div class="checkboxes">
         <div class="checkboxes__shadow" (click)="handleCheckboxChange('1')">
           <div class="checkboxes__shadow__wrapper">
@@ -110,11 +110,11 @@
           </div>
           <span>I am over the age of 18 and I agree with Terms & Conditions</span>
         </div>
-        <re-captcha class="g-recaptcha"
+      </div>
+      <re-captcha class="g-recaptcha"
           (resolved)="onCaptchaResolved($event)"
           siteKey="RE_CAPTCHA_SITE_KEY"
         ></re-captcha>
-      </div>
     </div>
   </form>
 </div>

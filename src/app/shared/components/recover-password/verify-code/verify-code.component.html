@@ -1,0 +1,40 @@
+<div class="verify-code-content" [class.mobile]="isMobile">
+  <div class="header">
+    <div class="info">
+      <span>?</span>
+    </div>
+    <div class="title">
+      <span class="text">Recover Password</span>
+      <div class="wrapper"></div>
+      <div class="decor"></div>
+    </div>
+  </div>
+  <form [formGroup]="verifyForm">
+    <div class="content">
+      <div class="verification-title">
+        <span>Ender 6 digits code sent to +374****827</span>
+      </div>
+      <div class="digit-content">
+        <div class="digit-wrapper" *ngFor="let input of inputs; let i = index">
+          <input
+            class="input"
+            type="text"
+            formControlName="code"
+            (input)="onInputChange(i, $event)"
+            (keydown)="onInputRemove(i, $event)"
+            [maxlength]="1"
+            autocomplete="off"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+      <div class="resend-btn-wrapper">
+        <button (click)="onResend()" class="resend-btn-cover">Resend</button>
+      </div>
+      <div class="verify-btn-wrapper">
+        <button (click)="onSend()" class="verify-btn-cover">Verify</button>
+      </div>
+    </div>
+  </form>
+</div>

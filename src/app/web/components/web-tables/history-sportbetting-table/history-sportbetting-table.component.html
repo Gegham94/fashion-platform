@@ -40,38 +40,34 @@
       </div>
       <div class="options filter">
         <app-multiselect
-          [ngStyle]="{ '--index': 0 }"
           [data]="status"
           [keyName]="'id'"
           placeholder="Status"
-          [className]="'form-filed'"
+          class="form-filed margin-right"
           (onSelect)="onSelectStatusFilter($event)"
         >
         </app-multiselect>
   
         <app-multiselect
-          [ngStyle]="{ '--index': 1 }"
           [cutSide]="'both'"
           [data]="betType"
           [keyName]="'id'"
           placeholder="Bet Type"
-          [className]="'form-filed'"
+          class="form-filed"
           (onSelect)="onSelectBetTypeFilter($event)"
         >
         </app-multiselect>
   
         <app-multiselect
-          [ngStyle]="{ '--index': 2 }"
           [cutSide]="'right'"
           [data]="currency"
           [keyName]="'id'"
           placeholder="Currency"
-          [className]="'form-filed'"
+          class="form-filed margin-left"
           (onSelect)="onSelectCurrencyFilter($event)"
         >
         </app-multiselect>
-      </div>
-      <div class="search filter">
+        
         <app-search
           (getSearchedText)="getSearchedText($event)"
           class="search-component"

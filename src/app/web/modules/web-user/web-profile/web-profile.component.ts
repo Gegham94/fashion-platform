@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { IUserInfo } from 'src/app/shared/interfaces/IUserInfo';
-import { UserInfoService } from 'src/app/shared/services/user-info.service';
 
 @Component({
   selector: 'app-web-profile',
@@ -17,16 +15,22 @@ export class WebProfileComponent implements OnInit {
   //   );
   // }
   public isLoading = false;
-  public userData!: IUserInfo;
+  public userData: IUserInfo = {
+    id: 88234560,
+    firstName: 'Melanie',
+    lastName: 'Wernon',
+    userName: 'Username8888',
+    email: 'melanie.wernon1998@gmail.com',
+    phoneNumber: '374 00 000000',
+    dateOfBirth: '02/20/1998',
+    location: 'Armenia, 88 Hanrapetutyan Str',
+    loyalPoints: '7656 / 8888',
+  };
 
-  constructor(private userInfoService: UserInfoService, private router: Router) {}
+  constructor() {}
 
   public ngOnInit(): void {
-    // this.router.navigate(['1/about']);
     this.showLoader();
-    this.userInfoService.getUserInfo().subscribe((data) => {
-      this.userData = data;
-    });
   }
 
   public showLoader() {

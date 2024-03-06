@@ -1,5 +1,9 @@
 @import "src/mixins/styles-mixin";
 @import "src/styles/colors";
+:host {
+  width: 100%;
+  height: 100%;
+}
 
 input {
   -webkit-autofill: none;
@@ -26,10 +30,14 @@ input {
   flex-direction: column;
   align-items: center;
   justify-items: center;
-  padding: 20px;
-  row-gap: 3%;
-  width: calc(100% - 30px);
-  height: calc(100% - 30px);
+  padding: 10px;
+  gap: 10px;
+  width: calc(100% - 20px);
+  height: calc(100% - 20px);
+  .recover{
+    display: flex;
+    margin-top: 20px;
+  }
   &__header {
     position: relative;
     display: flex;
@@ -72,7 +80,7 @@ input {
       &__wrapper {
         @include modal-title-vector;
         background: $yellow;
-        width: 60%;
+        width: 70%;
         height: 100%;
       }
       &__decor {
@@ -115,23 +123,6 @@ input {
           .error-round {
             background: $border-gradient-to-right-error;
           }
-          &__label {
-            display: flex;
-            width: 100%;
-            margin-left: 7%;
-            margin-top: 3px;
-            &--text {
-              width: 100%;
-              height: 100%;
-              font-size: 12px;
-              font-style: normal;
-              font-weight: 400;
-              line-height: normal;
-              display: flex;
-              color: $white;
-              opacity: 0.8;
-            }
-          }
           &__forgot-password {
             display: flex;
             white-space: nowrap;
@@ -169,10 +160,23 @@ input {
               padding-left: 20px;
               padding-right: 15px;
             }
+            .password-visibility {
+              position: absolute;
+              right: 10px;
+              top: 50%;
+              width: 20px;
+              height: 20px;
+              transform: translateY(-50%);
+              svg {
+                cursor: pointer;
+                width: 100%;
+                height: 100%;
+                fill: $yellow;
+              }
+            }
           }
           &__feedback-error {
-            position: absolute;
-            left: 15px;
+            margin-left: 15px;
             font-size: clamp(9px, 1vw, 12px);
             color: $red;
             margin-top: 5px;
@@ -188,7 +192,7 @@ input {
             justify-content: flex-start;
             align-items: center;
             flex-wrap: nowrap;
-            width: 100%;
+            width: 40%;
             height: 100%;
             min-height: 21px;
             max-height: 60px;
@@ -210,6 +214,7 @@ input {
               max-height: 20px;
               background: $lighter-gray;
               padding: 1px;
+              aspect-ratio: 1/1;
               &.checked {
                 background: $yellow;
               }
@@ -233,13 +238,14 @@ input {
         }
       }
     }
-    &__footer {
+    .footer {
       display: flex;
       align-items: center;
+      justify-content: space-between;
       width: 100%;
       height: 15%;
       min-height: 30px;
-      &--create-account {
+      .create-account {
         font-family: "Roboto", sans-serif;
         display: flex;
         white-space: nowrap;
@@ -258,38 +264,28 @@ input {
             0 0 0.2em $layout-bg;
         }
       }
-      &--signinBtn {
+      .send-btn-wrapper {
+        @include squad-small;
         display: flex;
         align-items: center;
-        justify-content: flex-end;
+        justify-content: center;
+        background: $yellow;
         height: 100%;
-        width: 100%;
         max-height: 30px;
-        &:hover {
-          opacity: 0.8;
-        }
-        &__wrapper {
+        width: 30%;
+        padding: 1px;
+        .send-btn-cover {
           @include squad-small;
           display: flex;
           align-items: center;
           justify-content: center;
-          background: $yellow;
+          width: 100%;
           height: 100%;
-          width: 50%;
-          padding: 1px;
-          &--cover {
-            @include squad-small;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-            height: 100%;
-            position: relative;
-            background: rgba($layout-bg, 0.5);
-            border: none;
-            color: $white;
-            cursor: pointer;
-          }
+          position: relative;
+          background: rgba($layout-bg, 0.5);
+          border: none;
+          color: $white;
+          cursor: pointer;
         }
       }
     }

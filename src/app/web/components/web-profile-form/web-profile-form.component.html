@@ -28,7 +28,7 @@
         />
       </label>
       <label
-        class="label right"
+        class="label right margin-left"
         [class.success]="lastNameControl.touched && lastNameControl.valid"
         [class.error]="lastNameControl.touched && lastNameControl.invalid"
       >
@@ -74,6 +74,7 @@
         [data]="country"
         [keyName]="'id'"
         placeholder="Country"
+        class="margin-right"
         [inputColor]="inputColor"
         [singleSelect]="true"
         (onSelect)="onSelectCountryFilter($event)"
@@ -88,7 +89,7 @@
         (onSelect)="onSelectCityFilter($event)"
       ></app-multiselect-autocomplate>
       <label
-        class="label right"
+        class="label right margin-left"
         [class.success]="zipCodeControl.touched && zipCodeControl.valid"
         [class.error]="zipCodeControl.touched && zipCodeControl.invalid"
       >
@@ -106,6 +107,7 @@
         [data]="currency"
         [keyName]="'id'"
         placeholder="Currency"
+        class="margin-right"
         [inputColor]="inputColor"
         (onSelect)="onSelectCurrencyFilter($event)"
       ></app-multiselect-autocomplate>
@@ -138,6 +140,7 @@
         [data]="typeOfDocument"
         [keyName]="'id'"
         placeholder="Doc. Type"
+        class="margin-right"
         [inputColor]="inputColor"
         (onSelect)="onSelectTypeOfDocumentFilter($event)"
       ></app-multiselect-autocomplate>

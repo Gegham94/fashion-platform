@@ -32,6 +32,10 @@ import { TimeOutComponent } from './components/cards/time-out/time-out.component
 import { CasinoCardComponent } from './components/cards/casino-card/casino-card.component';
 import { DepositCardComponent } from './components/cards/deposit-card/deposit-card.component';
 import { SportsbookCardComponent } from './components/cards/sportsbook-card/sportsbook-card.component';
+import { RecoverPasswordComponent } from './components/recover-password/recover-password.component';
+import { EmailNumberSenderComponent } from './components/recover-password/email-number-sender/email-number-sender.component';
+import { VerifyCodeComponent } from './components/recover-password/verify-code/verify-code.component';
+import { CreateNewPasswordComponent } from './components/recover-password/create-new-password/create-new-password.component';
 
 @NgModule({
   declarations: [
@@ -64,6 +68,10 @@ import { SportsbookCardComponent } from './components/cards/sportsbook-card/spor
     CasinoCardComponent,
     DepositCardComponent,
     SportsbookCardComponent,
+    RecoverPasswordComponent,
+    EmailNumberSenderComponent,
+    VerifyCodeComponent,
+    CreateNewPasswordComponent,
   ],
   imports: [CommonModule, FormsModule, ReactiveFormsModule],
   exports: [
@@ -95,6 +103,10 @@ import { SportsbookCardComponent } from './components/cards/sportsbook-card/spor
     CasinoCardComponent,
     DepositCardComponent,
     SportsbookCardComponent,
+    RecoverPasswordComponent,
+    EmailNumberSenderComponent,
+    VerifyCodeComponent,
+    CreateNewPasswordComponent,
   ],
 })
 export class SharedModule {}

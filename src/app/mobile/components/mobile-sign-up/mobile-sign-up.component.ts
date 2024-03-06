@@ -1,4 +1,11 @@
-import { Component } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Output,
+  TemplateRef,
+  ViewChild,
+  ViewContainerRef,
+} from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import {
   ICountry,
@@ -12,7 +19,6 @@ import Validation from 'src/app/shared/password-validation/validation';
 import { ISignup } from 'src/app/shared/interfaces/IAuth';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { switchMap } from 'rxjs';
-import { ModalService } from 'src/app/shared/services/modal.service';
 
 @Component({
   selector: 'app-mobile-sign-up',
@@ -21,6 +27,10 @@ import { ModalService } from 'src/app/shared/services/modal.service';
   animations: [collapse],
 })
 export class MobileSignUpComponent {
+  @ViewChild('modalTemplate') modalTemplate!: TemplateRef<any>;
+  @Output('openRegistrationDone') openRegistrationDone: EventEmitter<any> = new EventEmitter();
+
+  private modalElement: any;
   public stepId: number = 1;
   public isSelectBoxOpen: boolean[] = Array(5).fill(false);
   public countries!: ICountry[];
@@ -80,7 +90,7 @@ export class MobileSignUpComponent {
 
   constructor(
     private authService: AuthService,
-    private modalService: ModalService
+    private viewContainerRef: ViewContainerRef
   ) {}
 
   public getFormValue(event: any) {}
@@ -222,13 +232,13 @@ export class MobileSignUpComponent {
   public nextStep() {
     // if (this.firstStepForm.valid) {
       this.stepId++;
-      // this.secondStepForm.markAsUntouched();
+    //   this.secondStepForm.markAsUntouched();
     // } else {
-      // this.firstStepForm.markAllAsTouched();
+    //   this.firstStepForm.markAllAsTouched();
     // }
   }
 
-  previousStep() {
+  public previousStep() {
     this.stepId--;
   }
 
@@ -241,6 +251,7 @@ export class MobileSignUpComponent {
   }
 
   public submitForm() {
+    this.openRegistrationDoneModal();
     let formData: ISignup;
     if (this.signupForm.valid) {
       formData = {
@@ -251,7 +262,6 @@ export class MobileSignUpComponent {
         .signUp(formData)
         .pipe(
           switchMap((data) => {
-            this.modalService.close();
             return data;
           })
         )
@@ -259,5 +269,34 @@ export class MobileSignUpComponent {
     } else {
       this.signupForm.markAllAsTouched();
     }
+  }
+
+  //REGISTRATION DONE MODAL
+  public destroyRegistrationDoneModal() {
+    if (document.body.contains(this.modalElement?.rootNodes?.[0])) {
+      document.body.removeChild(this.modalElement.rootNodes[0]);
+    }
+  }
+
+  public closeRegistrationDoneModal() {
+    this.destroyRegistrationDoneModal();
+  }
+
+  public openRegistrationDoneModal() {
+    this.openRegistrationDone.emit(true);
+    this.createRegistrationDoneModal();
+  }
+
+  public createRegistrationDoneModal() {
+    this.modalElement = this.viewContainerRef.createEmbeddedView(
+      this.modalTemplate
+    );
+    document.body.appendChild(this.modalElement.rootNodes[0]);
+    const popup = this.modalElement.rootNodes[0];
+    popup.style.setProperty('position', 'fixed');
+    popup.style.setProperty('top', '0px');
+    popup.style.setProperty('left', '0px');
+    popup.style.setProperty('height', '100%');
+    popup.style.setProperty('width', '100%');
   }
 }

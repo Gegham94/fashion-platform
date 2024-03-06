@@ -26,7 +26,7 @@
               />
             </div>
             <span class="content__feedback-error" *ngIf="emailControl.touched && emailControl.invalid">Error text</span>
-            <span class="content__forgot-password" (click)="forgotPassword()">Forgot your Password?</span>
+            <app-recover-password class="recover" (openRecoverPassword)="closeSignInModal($event)" [isMobile]="true"></app-recover-password>
           </div>
         </div>
         <div class="container--form__state--row">
@@ -36,11 +36,28 @@
               [class.error-round]="passwordControl.touched && passwordControl.invalid"
             >
               <input class="content__wrapper--round--input" 
-                type="text" 
+                type="{{isPasswordVisible ? 'text' : 'password'}}"
                 autocomplete="off" 
                 formControlName="password"
                 placeholder="Password"
               />
+              <div
+              class="password-visibility"
+              (click)="handlePasswordVisibility()"
+            >
+              <svg *ngIf="isPasswordVisible; else hideContent">
+                <use
+                  xlink:href="assets/icons/global-sprint.svg#gb-show-password"
+                ></use>
+              </svg>
+              <ng-template #hideContent>
+                <svg>
+                  <use
+                    xlink:href="assets/icons/global-sprint.svg#gb-hide-password"
+                  ></use>
+                </svg>
+              </ng-template>
+            </div>
             </div>
             <span class="content__feedback-error" *ngIf="passwordControl.touched && passwordControl.invalid">Error text</span>
           </div>
@@ -62,12 +79,12 @@
         </div>
       </div>
 
-      <div class="container--form__footer">
-        <span href="#" class="container--form__footer--create-account">Create Account</span>
-        <div class="container--form__footer--signinBtn">
-          <div class="container--form__footer--signinBtn__wrapper">
-            <button type="submit" class="container--form__footer--signinBtn__wrapper--cover">Sign In</button>
-          </div>
+      <div class="footer">
+        <span class="create-account">Create Account</span>
+        <div class="send-btn-wrapper">
+          <button type="submit" class="send-btn-cover">
+            Send
+          </button>
         </div>
       </div>
     </form>

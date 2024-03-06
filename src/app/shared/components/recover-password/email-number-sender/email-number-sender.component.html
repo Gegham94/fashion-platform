@@ -1,0 +1,49 @@
+<div class="email-number-content" [class.mobile]="isMobile">
+  <div class="header">
+    <div class="info">
+      <span>?</span>
+    </div>
+    <div class="title">
+      <span class="text">Recover Password</span>
+      <div class="wrapper"></div>
+      <div class="decor"></div>
+    </div>
+  </div>
+  <form [formGroup]="recoverForm" (ngSubmit)="submitForm()">
+    <div class="content">
+      <div class="verification-title">
+        <span>Please write your Email or Phone Number for verification Code</span>
+      </div>
+      <div
+        class="content__wrapper--round"
+        [class.success-round]="
+          emailNumberControl.touched && emailNumberControl.valid
+        "
+        [class.error-round]="
+          emailNumberControl.touched && emailNumberControl.invalid
+        "
+      >
+        <input
+          class="content__wrapper--round--input"
+          type="text"
+          autocomplete="off"
+          formControlName="emailNumber"
+          placeholder="Email / Number"
+        />
+      </div>
+      <span
+        class="content__feedback-error"
+        *ngIf="emailNumberControl.touched && emailNumberControl.invalid"
+        >Error text</span
+      >
+    </div>
+    <div class="footer">
+      <span class="create-account">Create Account</span>
+      <div class="send-btn-wrapper">
+        <button type="submit" class="send-btn-cover">
+          Send
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

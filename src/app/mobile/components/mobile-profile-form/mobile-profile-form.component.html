@@ -2,7 +2,7 @@
   <form [formGroup]="form" [class]="inputColor">
     <div class="row">
       <label
-        class="label left"
+        class="label left margin-right"
         [class.success]="firstNameControl.touched && firstNameControl.valid"
         [class.error]="firstNameControl.touched && firstNameControl.invalid"
       >
@@ -15,7 +15,7 @@
         />
       </label>
       <label
-        class="label right"
+        class="label right margin-left"
         [class.success]="lastNameControl.touched && lastNameControl.valid"
         [class.error]="lastNameControl.touched && lastNameControl.invalid"
       >
@@ -30,7 +30,7 @@
     </div>
     <div class="row">
       <label
-        class="label left"
+        class="label left margin-right"
         [class.success]="emailControl.touched && emailControl.valid"
         [class.error]="emailControl.touched && emailControl.invalid"
       >
@@ -43,7 +43,7 @@
         />
       </label>
       <label
-        class="label right"
+        class="label right margin-left"
         [class.success]="dateOfBirthControl.touched && dateOfBirthControl.valid"
         [class.error]="dateOfBirthControl.touched && dateOfBirthControl.invalid"
       >
@@ -61,7 +61,7 @@
         [data]="country"
         [keyName]="'id'"
         placeholder="Country"
-        [className]="'multiselect-label'"
+        class="margin-right"
         [inputColor]="inputColor"
         [singleSelect]="true"
         (onSelect)="onSelectCountryFilter($event)"
@@ -71,7 +71,7 @@
         cutSide="right"
         [keyName]="'id'"
         placeholder="City"
-        [className]="'multiselect-label'"
+        class="margin-left"
         [singleSelect]="true"
         [inputColor]="inputColor"
         (onSelect)="onSelectCityFilter($event)"
@@ -82,12 +82,12 @@
         [data]="currency"
         [keyName]="'id'"
         placeholder="Currency"
-        [className]="'multiselect-label'"
+        class="margin-right"
         [inputColor]="inputColor"
         (onSelect)="onSelectCurrencyFilter($event)"
       ></app-multiselect-autocomplate>
       <label
-        class="label right"
+        class="label right margin-left"
         [class.success]="zipCodeControl.touched && zipCodeControl.valid"
         [class.error]="zipCodeControl.touched && zipCodeControl.invalid"
       >
@@ -106,13 +106,13 @@
         [keyName]="'id'"
         cutSide="left"
         placeholder="+61789"
-        [className]="'phone-code multiselect-label'"
+        class="phone-code margin-right"
         [inputColor]="inputColor"
         [singleSelect]="true"
         (onSelect)="onSelectPhoneCodeFilter($event)"
       ></app-multiselect-autocomplate>
       <label
-        class="label right"
+        class="label right margin-left"
         [class.success]="phoneNumberControl.touched && phoneNumberControl.valid"
         [class.error]="phoneNumberControl.touched && phoneNumberControl.invalid"
       >
@@ -130,13 +130,13 @@
         [data]="typeOfDocument"
         [keyName]="'id'"
         placeholder="Doc. Type"
-        [className]="'multiselect-label'"
         [inputColor]="inputColor"
+        class="margin-right"
         (onSelect)="onSelectTypeOfDocumentFilter($event)"
       ></app-multiselect-autocomplate>
       <div class="upload-wrapper">
         <label
-          class="upload-wrapper-label label right"
+          class="upload-wrapper-label label right margin-left"
           [class.success]="docNumberControl.touched && docNumberControl.valid"
           [class.error]="docNumberControl.touched && docNumberControl.invalid"
         >

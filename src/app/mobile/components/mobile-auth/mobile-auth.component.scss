@@ -65,54 +65,5 @@
       min-width: 40px;
       height: 3.5vh;
     }
-    &--signup {
-      @include auth-signup-signin-button;
-      cursor: pointer;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-weight: 600;
-      color: $layout-bg;
-      background: $yellow;
-      width: 100%;
-      height: 100%;
-      min-width: 72px;
-      &:hover {
-        opacity: 0.8;
-      }
-    }
-    &--signin {
-      @include auth-signup-signin-button;
-      transform: scale(-1);
-      position: relative;
-      cursor: pointer;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-weight: 600;
-      color: $layout-bg;
-      background: $yellow;
-      width: 100%;
-      height: 100%;
-      margin-left: -15px;
-      min-width: 72px;
-      span {
-        color: $yellow;
-        transform: scale(-1);
-      }
-      &:hover {
-        opacity: 0.8;
-      }
-      &--cover {
-        @include auth-signup-signin-button;
-        width: calc(100% - 2px);
-        height: calc(100% - 1px);
-        margin-right: 1px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background: $dark-gray;
-      }
-    }
   }
 }

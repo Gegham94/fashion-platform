@@ -28,7 +28,7 @@ export interface IUserInfo {
   phoneNumber: string;
   dateOfBirth: string;
   location: string;
-  loyalPoints: number;
+  loyalPoints: string;
 }
 export interface IUserAmountInfo {
   title: string;

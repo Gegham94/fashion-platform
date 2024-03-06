@@ -49,16 +49,17 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   height: 100%;
   &__filters {
     @include scroll;
+    overflow-x: auto;
+    overflow-y: hidden;
     height: 100%;
     width: 100%;
-    gap: 15px;
+    gap: 10px;
     max-height: 80px;
     min-height: 60px;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    overflow-x: auto;
     .date {
       .wrapper-content {
         &:last-child {
@@ -77,13 +78,8 @@ input[type="date"]::-webkit-calendar-picker-indicator {
       }
     }
     .options {
+      gap: 10px;
       .wrapper-content {
-        &:first-child {
-          margin-right: -10px;
-        }
-        &:last-child {
-          margin-left: -10px;
-        }
         svg {
           pointer-events: none;
         }
@@ -107,22 +103,11 @@ input[type="date"]::-webkit-calendar-picker-indicator {
         }
       }
     }
-
-    .search {
-      .search-component {
-        max-height: 40px;
-        height: 100%;
-        width: 100%;
-        border-radius: 20px;
-        background: $dark-gray;
-        margin-right: 5px;
-      }
-    }
     .filter {
       display: flex;
       flex-direction: row;
       align-items: center;
-      justify-content: center;
+      justify-content: space-between;
       height: 100%;
       width: 100%;
       filter: drop-shadow(2px 2px 2px #00000083);
@@ -193,13 +178,24 @@ input[type="date"]::-webkit-calendar-picker-indicator {
           }
         }
       }
+      .search-component {
+        max-height: 40px;
+        height: 100%;
+        width: 100%;
+        border-radius: 20px;
+        background: $dark-gray;
+      }
     }
     .form-filed {
-      $index: var(--index);
       flex-shrink: 0;
       min-width: 232px;
-      width: 33.3%;
-      transform: translateX(calc(-12px * $index));
+      width: 33%;
+      &.margin-right {
+        margin-right: -20px;
+      }
+      &.margin-left {
+        margin-left: -20px;
+      }
     }
   }
   &__table {

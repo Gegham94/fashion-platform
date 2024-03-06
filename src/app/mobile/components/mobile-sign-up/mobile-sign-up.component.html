@@ -40,41 +40,104 @@
     </div>
   </div>
 
-  <form [formGroup]="signupForm" class="container--form" (ngSubmit)="submitForm()">
-      <div
-        formGroupName="firstStepForm"
-        class="container--form__firstStepForm"
-        *ngIf="stepId === 1"
-      >
-      <app-mobile-profile-form inputColor="dark" (formValue)="getFormValue($event)"></app-mobile-profile-form>
+  <form
+    [formGroup]="signupForm"
+    class="container--form"
+    (ngSubmit)="submitForm()"
+  >
+    <div
+      formGroupName="firstStepForm"
+      class="container--form__firstStepForm"
+      *ngIf="stepId === 1"
+    >
+      <app-mobile-profile-form
+        inputColor="dark"
+        (formValue)="getFormValue($event)"
+      ></app-mobile-profile-form>
       <div class="container--form__firstStepForm__footer">
-        <span href="#" class="container--form__firstStepForm__footer--have-account">Already have Account?</span>
+        <span
+          href="#"
+          class="container--form__firstStepForm__footer--have-account"
+          >Already have Account?</span
+        >
         <div class="container--form__firstStepForm__footer--nextBtn">
-          <div class="container--form__firstStepForm__footer--nextBtn__wrapper" (click)="nextStep()">
-            <div class="container--form__firstStepForm__footer--nextBtn__wrapper--cover" >Next</div>
+          <div
+            class="container--form__firstStepForm__footer--nextBtn__wrapper"
+            (click)="nextStep()"
+          >
+            <div
+              class="container--form__firstStepForm__footer--nextBtn__wrapper--cover"
+            >
+              Next
+            </div>
           </div>
         </div>
       </div>
-      </div>
+    </div>
 
-      <div
-        formGroupName="secondStepForm"
-        class="container--form__secondStepForm"
-        *ngIf="stepId === 2"
-      >
-      <app-mobile-profile-form-step-2 inputColor="dark" (formValue)="getFormStep2Value($event)"></app-mobile-profile-form-step-2>
+    <div
+      formGroupName="secondStepForm"
+      class="container--form__secondStepForm"
+      *ngIf="stepId === 2"
+    >
+      <app-mobile-profile-form-step-2
+        inputColor="dark"
+        (formValue)="getFormStep2Value($event)"
+      ></app-mobile-profile-form-step-2>
       <div class="container--form__secondStepForm__footer">
         <div class="container--form__secondStepForm__footer--prevBtn">
-          <div class="container--form__secondStepForm__footer--prevBtn__wrapper" (click)="previousStep()">
-            <div class="container--form__secondStepForm__footer--prevBtn__wrapper--cover">Back</div>
+          <div
+            class="container--form__secondStepForm__footer--prevBtn__wrapper"
+            (click)="previousStep()"
+          >
+            <div
+              class="container--form__secondStepForm__footer--prevBtn__wrapper--cover"
+            >
+              Back
+            </div>
           </div>
         </div>
         <div class="container--form__secondStepForm__footer--nextBtn">
-          <div class="container--form__secondStepForm__footer--nextBtn__wrapper">
-            <button type="submit" class="container--form__secondStepForm__footer--nextBtn__wrapper--cover">Sign Up</button>
+          <div
+            class="container--form__secondStepForm__footer--nextBtn__wrapper"
+          >
+            <button
+              type="submit"
+              class="container--form__secondStepForm__footer--nextBtn__wrapper--cover"
+            >
+              Sign Up
+            </button>
           </div>
         </div>
       </div>
     </div>
   </form>
 </div>
+
+<ng-template #modalTemplate>
+  <div id="registration-done-modal">
+    <div class="registration-done-content mobile">
+      <app-logo class="logo"></app-logo>
+      <div class="registration-done-body">
+        <div class="registration-done-shadow">
+          <div class="registration-done-wrapper">
+            <div class="registration-done-cover">
+              <div class="title">Thanks for the Registration!</div>
+              <div class="congrat">
+                Enjoy your time by Placing Bets and Spinning Slots!
+              </div>
+              <div class="registration-done-btn">
+                <button (click)="closeRegistrationDoneModal()">
+                  <div class="cover">
+                    <span>Done</span>
+                  </div>
+                </button>
+              </div>
+              <router-outlet></router-outlet>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>

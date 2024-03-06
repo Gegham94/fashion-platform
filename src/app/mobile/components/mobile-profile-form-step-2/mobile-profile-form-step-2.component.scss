@@ -69,12 +69,19 @@ input[type="file"] {
       width: 100%;
       height: 100%;
       flex: 1;
-      &:last-child {
+      &.selections {
         flex-direction: column;
         justify-content: flex-start;
         align-items: flex-start;
-        position: relative;
+        gap: 5px;
         flex: 2;
+        margin-bottom: 10px;
+      }
+      .margin-left {
+        margin-left: -5px;
+      }
+      .margin-right {
+        margin-right: -5px;
       }
       .label {
         display: flex;
@@ -84,12 +91,6 @@ input[type="file"] {
         width: 100%;
         height: 100%;
         padding: 1px;
-        &:first-child {
-          margin-right: -5px;
-        }
-        &:last-child {
-          margin-left: -5px;
-        }
         &.left {
           @include input-left;
           background: $border-gradient-to-right;
@@ -178,7 +179,7 @@ input[type="file"] {
         align-items: center;
         width: 100%;
         height: 100%;
-        position: relative;
+        gap: 10px;
         &__shadow {
           display: flex;
           align-items: center;
@@ -199,8 +200,9 @@ input[type="file"] {
             margin-right: 5px;
             width: 100%;
             height: 100%;
-            max-width: 20px;
-            max-height: 20px;
+            width: 25px;
+            height: 25px;
+            aspect-ratio: 1/1;
             background: $lighter-gray;
             padding: 1px;
             &.checked {
@@ -214,7 +216,6 @@ input[type="file"] {
               justify-content: center;
               width: 100%;
               height: 100%;
-              position: relative;
               cursor: pointer;
             }
             &--input[type="checkbox"]:checked:after {
@@ -230,19 +231,6 @@ input[type="file"] {
               box-shadow: none;
             }
           }
-        }
-      }
-      .g-recaptcha {
-        transform: scale(0.7);
-        -webkit-transform: scale(0.7);
-        transform-origin: 0% 100%;
-      }
-      .multiselect-label {
-        &:first-child {
-          margin-right: -5px;
-        }
-        &:last-child {
-          margin-left: -5px;
         }
       }
     }

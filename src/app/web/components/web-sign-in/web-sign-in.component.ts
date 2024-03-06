@@ -1,9 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { switchMap } from 'rxjs';
 import { ISignin } from 'src/app/shared/interfaces/IAuth';
 import { AuthService } from 'src/app/shared/services/auth.service';
-import { ModalService } from 'src/app/shared/services/modal.service';
 
 @Component({
   selector: 'app-web-sign-in',
@@ -11,7 +10,9 @@ import { ModalService } from 'src/app/shared/services/modal.service';
   styleUrls: ['./web-sign-in.component.scss'],
 })
 export class WebSignInComponent {
+  @Output('openRecoverPassword') openRecoverPassword: EventEmitter<any> = new EventEmitter();
   public isRememberMe: boolean = false;
+  public isPasswordVisible: boolean = false;
 
   public readonly signinForm = new FormGroup({
     email: new FormControl('', [
@@ -26,9 +27,7 @@ export class WebSignInComponent {
     rememberMe: new FormControl(''),
   });
 
-  constructor(private authService: AuthService, private modalService: ModalService) {}
-
-  public ngOnInit(): void {}
+  constructor(private authService: AuthService) {}
 
   public get emailControl(): FormControl {
     return this.signinForm.get('email') as FormControl;
@@ -37,11 +36,17 @@ export class WebSignInComponent {
     return this.signinForm.get('password') as FormControl;
   }
 
+  public closeSignInModal(event: Event){
+    this.openRecoverPassword.emit(event);
+  }
+
   public handleCheckboxChange() {
     this.isRememberMe = !this.isRememberMe;
   }
 
-  public forgotPassword() {}
+  public handlePasswordVisibility() {
+    this.isPasswordVisible = !this.isPasswordVisible;
+  }
 
   public submitForm() {
     let formData: ISignin;
@@ -49,13 +54,14 @@ export class WebSignInComponent {
       formData = {
         ...this.signinForm.value,
       } as ISignin;
-      this.authService.signIn(formData)
-      .pipe(
-        switchMap((data) => {
-          this.modalService.close();
-          return data;
-        })
-      ).subscribe();
+      this.authService
+        .signIn(formData)
+        .pipe(
+          switchMap((data) => {
+            return data;
+          })
+        )
+        .subscribe();
     } else {
       this.signinForm.markAllAsTouched();
     }

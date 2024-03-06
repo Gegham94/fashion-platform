@@ -1,4 +1,13 @@
-import { Component } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnDestroy,
+  Output,
+  TemplateRef,
+  ViewChild,
+  ViewContainerRef,
+} from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import Validation from 'src/app/shared/password-validation/validation';
 import { collapse } from 'src/app/shared/animations/animations';
@@ -12,7 +21,6 @@ import {
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { ISignup } from 'src/app/shared/interfaces/IAuth';
 import { switchMap } from 'rxjs';
-import { ModalService } from 'src/app/shared/services/modal.service';
 
 @Component({
   selector: 'app-web-sign-up',
@@ -20,7 +28,11 @@ import { ModalService } from 'src/app/shared/services/modal.service';
   styleUrls: ['./web-sign-up.component.scss'],
   animations: [collapse],
 })
-export class WebSignUpComponent {
+export class WebSignUpComponent implements OnDestroy {
+  @ViewChild('modalTemplate') modalTemplate!: TemplateRef<any>;
+  @Output('openRegistrationDone') openRegistrationDone: EventEmitter<any> = new EventEmitter();
+
+  private modalElement: any;
   public stepId: number = 1;
   public countries!: ICountry[];
   public cities!: ICity[];
@@ -74,13 +86,17 @@ export class WebSignUpComponent {
 
   constructor(
     private authService: AuthService,
-    private modalService: ModalService
+    private viewContainerRef: ViewContainerRef
   ) {}
 
   public getFormValue(event: any) {}
   public getFormStep2Value(event: any) {}
 
   public ngOnInit(): void {}
+
+  public ngOnDestroy(): void {
+    this.destroyRegistrationDoneModal();
+  }
 
   public get userNameControl(): FormControl {
     return this.secondStepForm.get('userName') as FormControl;
@@ -175,19 +191,15 @@ export class WebSignUpComponent {
     });
   }
 
-  public closeModal() {
-    this.modalService.close();
-  }
-
   public apply(): void {}
 
   public nextStep(): void {
-    if (this.firstStepForm.valid) {
+    // if (this.firstStepForm.valid) {
       this.stepId++;
-      this.secondStepForm.markAsUntouched();
-    } else {
-      this.firstStepForm.markAllAsTouched();
-    }
+      // this.secondStepForm.markAsUntouched();
+    // } else {
+      // this.firstStepForm.markAllAsTouched();
+    // }
   }
 
   public previousStep(): void {
@@ -203,6 +215,7 @@ export class WebSignUpComponent {
   }
 
   public submitForm(): void {
+    this.openRegistrationDoneModal();
     let formData: ISignup;
     if (this.signupForm.valid) {
       formData = {
@@ -213,7 +226,7 @@ export class WebSignUpComponent {
         .signUp(formData)
         .pipe(
           switchMap((data) => {
-            this.modalService.close();
+            
             return data;
           })
         )
@@ -221,5 +234,34 @@ export class WebSignUpComponent {
     } else {
       this.signupForm.markAllAsTouched();
     }
+  }
+
+  //REGISTRATION DONE MODAL
+  public destroyRegistrationDoneModal() {
+    if (document.body.contains(this.modalElement?.rootNodes?.[0])) {
+      document.body.removeChild(this.modalElement.rootNodes[0]);
+    }
+  }
+
+  public closeRegistrationDoneModal() {
+    this.destroyRegistrationDoneModal();
+  }
+
+  public openRegistrationDoneModal() {
+    this.openRegistrationDone.emit(true);
+    this.createRegistrationDoneModal();
+  }
+
+  public createRegistrationDoneModal() {
+    this.modalElement = this.viewContainerRef.createEmbeddedView(
+      this.modalTemplate
+    );
+    document.body.appendChild(this.modalElement.rootNodes[0]);
+    const popup = this.modalElement.rootNodes[0];
+    popup.style.setProperty('position', 'fixed');
+    popup.style.setProperty('top', '0px');
+    popup.style.setProperty('left', '0px');
+    popup.style.setProperty('height', '100%');
+    popup.style.setProperty('width', '100%');
   }
 }

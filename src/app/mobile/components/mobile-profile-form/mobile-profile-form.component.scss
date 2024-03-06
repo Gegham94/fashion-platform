@@ -70,6 +70,13 @@ input[type="file"] {
       height: 100%;
       .phone-code {
         max-width: 35%;
+
+      }
+      .margin-left {
+        margin-left: -5px;
+      }
+      .margin-right {
+        margin-right: -5px;
       }
       .upload-wrapper {
         display: flex;
@@ -92,12 +99,6 @@ input[type="file"] {
         width: calc(100% - 40px);
         height: 100%;
         padding: 1px;
-        &:first-child {
-          margin-right: -5px;
-        }
-        &:last-child {
-          margin-left: -5px;
-        }
         &.left {
           @include input-left;
           background: $border-gradient-to-right;
@@ -165,14 +166,6 @@ input[type="file"] {
         }
         &:hover {
           transform: scale(1.02);
-        }
-      }
-      .multiselect-label {
-        &:first-child {
-          margin-right: -5px;
-        }
-        &:last-child {
-          margin-left: -5px;
         }
       }
     }

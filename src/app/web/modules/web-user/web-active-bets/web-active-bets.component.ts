@@ -1,4 +1,13 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  OnDestroy,
+  OnInit,
+  Output,
+  TemplateRef,
+  ViewChild,
+  ViewContainerRef,
+} from '@angular/core';
 import {
   BET_TYPE,
   CURRENCY,
@@ -12,6 +21,9 @@ import {
   styleUrls: ['./web-active-bets.component.scss'],
 })
 export class WebActiveBetsComponent implements OnInit, OnDestroy {
+  @ViewChild('modalTemplate') modalTemplate!: TemplateRef<any>;
+
+  private modalElement: any;
   public status: TYPE_FILTER[] = STATUS;
   public betType: TYPE_FILTER[] = BET_TYPE;
   public currency: TYPE_FILTER[] = CURRENCY;
@@ -24,7 +36,7 @@ export class WebActiveBetsComponent implements OnInit, OnDestroy {
     betType: [],
     currency: [],
   };
-  constructor() {}
+  constructor(private viewContainerRef: ViewContainerRef) {}
 
   public ngOnInit(): void {
     this.showLoader();
@@ -65,5 +77,33 @@ export class WebActiveBetsComponent implements OnInit, OnDestroy {
     setTimeout(() => {
       this.isLoading = false;
     }, 500);
+  }
+
+  //CASH OUT MODAL
+  public destroyCashOutModal() {
+    if (document.body.contains(this.modalElement?.rootNodes?.[0])) {
+      document.body.removeChild(this.modalElement.rootNodes[0]);
+    }
+  }
+
+  public closeCashOutModal() {
+    this.destroyCashOutModal();
+  }
+
+  public openCashOutModal() {
+    this.createCashOutModal();
+  }
+
+  public createCashOutModal() {
+    this.modalElement = this.viewContainerRef.createEmbeddedView(
+      this.modalTemplate
+    );
+    document.body.appendChild(this.modalElement.rootNodes[0]);
+    const popup = this.modalElement.rootNodes[0];
+    popup.style.setProperty('position', 'fixed');
+    popup.style.setProperty('top', '0px');
+    popup.style.setProperty('left', '0px');
+    popup.style.setProperty('height', '100%');
+    popup.style.setProperty('width', '100%');
   }
 }
