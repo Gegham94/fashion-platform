@@ -11,6 +11,11 @@
   height: 100%;
   min-height: 300px;
   min-width: 240px;
+  .language-switcher {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+  }
   &__auth {
     width: 100%;
     min-height: 32px;
