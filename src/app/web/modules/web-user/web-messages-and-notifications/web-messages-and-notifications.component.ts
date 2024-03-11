@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { STATUS, TYPE, TYPE_FILTER } from 'src/app/shared/constants/contstants';
+import { STATUS, TYPE, TYPE_FILTER } from 'src/app/shared/constants/filters';
 
 @Component({
   selector: 'app-web-messages-and-notifications',

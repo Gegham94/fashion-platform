@@ -8,12 +8,7 @@ import {
   ViewChild,
   ViewContainerRef,
 } from '@angular/core';
-import {
-  BET_TYPE,
-  CURRENCY,
-  STATUS,
-  TYPE_FILTER,
-} from 'src/app/shared/constants/contstants';
+import { TYPE_FILTER, STATUS, BET_TYPE, CURRENCY } from 'src/app/shared/constants/filters';
 
 @Component({
   selector: 'app-web-active-bets',

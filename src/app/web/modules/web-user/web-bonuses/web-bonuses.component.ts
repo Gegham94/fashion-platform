@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { UserPlatformBonuses } from 'src/app/shared/enum/EUserPlatformBonuses';
+import { UserPlatformBonuses } from 'src/app/shared/constants/user-platform-bonuses';
 import { CarouselService } from 'src/app/shared/services/carousel.service';
 
 const data = [

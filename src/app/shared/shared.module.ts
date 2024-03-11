@@ -36,6 +36,7 @@ import { RecoverPasswordComponent } from './components/recover-password/recover-
 import { EmailNumberSenderComponent } from './components/recover-password/email-number-sender/email-number-sender.component';
 import { VerifyCodeComponent } from './components/recover-password/verify-code/verify-code.component';
 import { CreateNewPasswordComponent } from './components/recover-password/create-new-password/create-new-password.component';
+import { LanguageSwitcherComponent } from './components/language-switcher/language-switcher.component';
 
 @NgModule({
   declarations: [
@@ -72,6 +73,7 @@ import { CreateNewPasswordComponent } from './components/recover-password/create
     EmailNumberSenderComponent,
     VerifyCodeComponent,
     CreateNewPasswordComponent,
+    LanguageSwitcherComponent,
   ],
   imports: [CommonModule, FormsModule, ReactiveFormsModule],
   exports: [
@@ -107,6 +109,7 @@ import { CreateNewPasswordComponent } from './components/recover-password/create
     EmailNumberSenderComponent,
     VerifyCodeComponent,
     CreateNewPasswordComponent,
+    LanguageSwitcherComponent,
   ],
 })
 export class SharedModule {}

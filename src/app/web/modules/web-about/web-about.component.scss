@@ -17,6 +17,7 @@
     position: relative;
     width: 85%;
     height: calc(100% - 125px);
+    margin-right: 50px;
     .close__shadow {
       position: absolute;
       z-index: 1;
@@ -59,6 +60,11 @@
           }
         }
       }
+    }
+    .language-switcher {
+      position: absolute;
+      top: 17px;
+      right: -82px;
     }
     &__wrapper {
       @include user-platform;

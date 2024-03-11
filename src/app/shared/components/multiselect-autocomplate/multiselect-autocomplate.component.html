@@ -28,8 +28,8 @@
   </div>
 
   <ng-template #dropdownTemplate>
-    <div #dropdown id="app-multiselect-autocomplate-dropdown">
-      <div class="dropdown__list" @collapse *ngIf="isOpen">
+    <div #dropdown id="app-multiselect-autocomplate">
+      <div class="dropdown__list" [class.rotate-content]="isRotate" @collapse *ngIf="isOpen">
         <div class="header">
           <div class="header--search">
             <div

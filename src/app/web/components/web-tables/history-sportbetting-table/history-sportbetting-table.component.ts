@@ -1,14 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import {
-  BET_TYPE,
-  CURRENCY,
-  HISTORY_SPORTBETTING_TABLE_DATA,
-  HISTORY_SPORTBETTING_TABLE_HEADER,
-  STATUS,
-  TYPE_FILTER,
-  TYPE_HISTORY_SPORTBETTING_TABLE_DATA,
-  TYPE_TABLE_HEADER,
-} from 'src/app/shared/constants/contstants';
+import { TYPE_FILTER, STATUS, BET_TYPE, CURRENCY } from 'src/app/shared/constants/filters';
+import { TYPE_HISTORY_SPORTBETTING_TABLE_DATA, HISTORY_SPORTBETTING_TABLE_DATA, TYPE_TABLE_HEADER, HISTORY_SPORTBETTING_TABLE_HEADER } from 'src/app/shared/constants/tables';
+
 
 @Component({
   selector: 'app-history-sportbetting-table',

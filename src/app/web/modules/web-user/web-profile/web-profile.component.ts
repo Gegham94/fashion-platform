@@ -25,6 +25,7 @@ export class WebProfileComponent implements OnInit {
     dateOfBirth: '02/20/1998',
     location: 'Armenia, 88 Hanrapetutyan Str',
     loyalPoints: '7656 / 8888',
+    api_token: '',
   };
 
   constructor() {}

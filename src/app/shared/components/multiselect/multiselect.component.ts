@@ -29,9 +29,7 @@ let uuid = 0;
     },
   ],
 })
-export class MultiselectComponent
-  implements OnDestroy, OnInit, ControlValueAccessor
-{
+export class MultiselectComponent implements OnDestroy, OnInit, ControlValueAccessor {
   @Input() data: any[] = [];
   @Input() placeholder: string = '';
   @Input() isCurrencyIcon: boolean = false;
@@ -51,6 +49,7 @@ export class MultiselectComponent
   private dropdownElement: any;
   public isOpen: boolean = false;
   public isShowIcon: boolean = false;
+  public isRotate: boolean = false;
 
   public selectetOptions: any[] = [];
   public disabled: boolean = false;
@@ -74,23 +73,33 @@ export class MultiselectComponent
 
   @HostListener('window:resize', ['$event'])
   public onResize(event: Event) {
+    this.isRotate = false;
     const selectList = this.dropdownElement?.rootNodes?.[0];
     if (selectList) {
       const rect = this.multiselect.nativeElement.getBoundingClientRect();
-      selectList.style.setProperty('top', rect.bottom + 3 + 'px');
+      const windowHeight = window.innerHeight;
+      const dropdownHeight = 225;
+      let topPosition = rect.bottom;
+      if (windowHeight - rect.bottom < dropdownHeight + 10) {
+        topPosition = rect.top - dropdownHeight - 6;
+        this.isRotate = true;
+        selectList.style.setProperty('transform', 'rotate(180deg)');
+      } else {
+        selectList.style.setProperty('transform', 'rotate(0deg)');
+      }
+      selectList.style.setProperty('top', topPosition + 3 + 'px');
       selectList.style.setProperty('left', rect.left + 'px');
+      selectList.style.setProperty('max-height', '225px');
     }
   }
 
+  @HostListener('document:touchmove', ['$event'])
   @HostListener('document:click', ['$event'])
-  public closeDropdown(event: MouseEvent) {
+  public closeDropdown(event: Event) {
     const multiselectRef = this.multiselect?.nativeElement;
-    const dropdownRef = this.dropdown?.nativeElement;
     if (!multiselectRef?.contains(event.target)) {
-      if (this.isOpen && !dropdownRef?.contains(event.target)) {
-        this.isOpen = false;
-        setTimeout(() => this.destroyDropDown(), 100);
-      }
+      this.isOpen = false;
+      setTimeout(() => this.destroyDropDown(), 100);
     }
   }
 
@@ -130,19 +139,32 @@ export class MultiselectComponent
   }
 
   public createDropDown() {
+    this.isRotate = false;
     const rect = this.multiselect.nativeElement.getBoundingClientRect();
+    const windowHeight = window.innerHeight;
+    const dropdownHeight = 225;
 
     if (rect) {
       this.dropdownElement = this.viewContainerRef.createEmbeddedView(
         this.dropdownTemplate
       );
+
       document.body.appendChild(this.dropdownElement.rootNodes[0]);
       const selectList = this.dropdownElement.rootNodes[0];
+
+      let topPosition = rect.bottom;
+      if (windowHeight - rect.bottom < dropdownHeight + 10) {
+        topPosition = rect.top - dropdownHeight - 6;
+        this.isRotate = true;
+        selectList.style.setProperty('transform', 'rotate(180deg)');
+      } else {
+        selectList.style.setProperty('transform', 'rotate(0deg)');
+      }
       selectList.style.setProperty('position', 'fixed');
-      selectList.style.setProperty('top', rect.bottom + 3 + 'px');
+      selectList.style.setProperty('top', topPosition + 3 + 'px');
       selectList.style.setProperty('left', rect.left + 'px');
       selectList.style.setProperty('height', '100%');
-      selectList.style.setProperty('max-height', '205px');
+      selectList.style.setProperty('max-height', '225px');
       selectList.style.setProperty('width', rect.width + 'px');
       selectList.style.setProperty('z-index', 999);
     }

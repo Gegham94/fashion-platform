@@ -1,14 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import {
-  ACTIVE_BONUSES_TABLE_DATA,
-  ACTIVE_BONUSES_TABLE_HEADER,
-  CURRENCY,
-  STATE,
-  TYPE,
-  TYPE_ACTIVE_BONUSES_TABLE_DATA,
-  TYPE_FILTER,
-  TYPE_TABLE_HEADER,
-} from 'src/app/shared/constants/contstants';
+import { TYPE_FILTER, STATE, TYPE, CURRENCY } from 'src/app/shared/constants/filters';
+import { TYPE_ACTIVE_BONUSES_TABLE_DATA, ACTIVE_BONUSES_TABLE_DATA, TYPE_TABLE_HEADER, ACTIVE_BONUSES_TABLE_HEADER } from 'src/app/shared/constants/tables';
 
 @Component({
   selector: 'app-active-bonuses-table',

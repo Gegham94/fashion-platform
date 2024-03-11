@@ -1,7 +1,7 @@
 import { NgStyle } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { GENDER, TYPE_FILTER } from 'src/app/shared/constants/contstants';
+import { TYPE_FILTER, GENDER } from 'src/app/shared/constants/filters';
 import Validation from 'src/app/shared/password-validation/validation';
 import { SharedModule } from 'src/app/shared/shared.module';
 

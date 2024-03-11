@@ -1,0 +1,55 @@
+<div class="content" [class.mobile]="isMobile">
+  <div
+    class="round"
+    [ngClass]="[showDropdown ? 'opened' : '']"
+    [class.gradient]="borderGradient"
+    (click)="toggleDropdown($event)"
+  >
+    <div class="dropdown-cover">
+      <div class="selected-flag">
+        <svg class="left-arrow">
+          <use xlink:href="assets/icons/global-sprint.svg#gb-arrow-down"></use>
+        </svg>
+        <div class="selected-flag-cover">
+          <img
+            *ngIf="selectedLang.short"
+            class="flag"
+            [src]="'assets/images/flags/' + selectedLang.short + '.svg'"
+            alt="{{ selectedLang.name }} Flag"
+          />
+        </div>
+        <svg class="right-arrow">
+          <use xlink:href="assets/icons/global-sprint.svg#gb-arrow-down"></use>
+        </svg>
+      </div>
+      <svg [class.rotate]="showDropdown">
+        <use xlink:href="assets/icons/global-sprint.svg#gb-arrow-down"></use>
+      </svg>
+    </div>
+  </div>
+
+  <div
+    class="list-round"
+    [class.gradient]="borderGradient"
+    @collapse
+    *ngIf="showDropdown"
+  >
+    <div class="list-cover">
+      <ng-container *ngFor="let item of LANGUAGES">
+        <div class="option" [class.active]="item.isActive" (click)="changeLanguage(item)">
+          <div class="selected-flag">
+            <div class="selected-flag-cover">
+              <img
+                *ngIf="item.short"
+                class="flag"
+                [src]="'assets/images/flags/' + item.short + '.svg'"
+                alt="{{ item.name }} Flag"
+              />
+            </div>
+          </div>
+          <span class="value">{{ item.title }}</span>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</div>

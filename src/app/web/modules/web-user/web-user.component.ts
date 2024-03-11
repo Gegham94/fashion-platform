@@ -7,7 +7,7 @@ import {
 } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs';
-import { UserPlatformTabs } from 'src/app/shared/enum/EUserPlatformTabs';
+import { UserPlatformTabs } from 'src/app/shared/constants/user-platform-tabs';
 
 @Component({
   selector: 'app-web-user',

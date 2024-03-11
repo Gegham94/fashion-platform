@@ -1,14 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import {
-  CURRENCY,
-  METHOD,
-  STATUS,
-  TYPE_FILTER,
-  TYPE_WITHDRAW_STATUS_TABLE_DATA,
-  TYPE_TABLE_HEADER,
-  WITHDRAW_STATUS_TABLE_DATA,
-  WITHDRAW_STATUS_TABLE_HEADER,
-} from 'src/app/shared/constants/contstants';
+import { TYPE_FILTER, STATUS, METHOD, CURRENCY } from 'src/app/shared/constants/filters';
+import { TYPE_WITHDRAW_STATUS_TABLE_DATA, WITHDRAW_STATUS_TABLE_DATA, TYPE_TABLE_HEADER, WITHDRAW_STATUS_TABLE_HEADER } from 'src/app/shared/constants/tables';
 
 @Component({
   selector: 'app-withdraw-status-table',

@@ -1,14 +1,7 @@
 import { NgStyle } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import {
-  CITY,
-  COUNTRY,
-  CURRENCY,
-  PHONE_CODE,
-  TYPE_FILTER,
-  TYPE_OF_DOCUMENT,
-} from 'src/app/shared/constants/contstants';
+import { TYPE_FILTER, COUNTRY, CITY, CURRENCY, PHONE_CODE, TYPE_OF_DOCUMENT } from 'src/app/shared/constants/filters';
 import { SharedModule } from 'src/app/shared/shared.module';
 
 @Component({

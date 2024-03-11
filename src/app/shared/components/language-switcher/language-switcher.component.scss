@@ -1,0 +1,173 @@
+@import "src/mixins/styles-mixin";
+@import "src/styles/colors";
+
+:host {
+  width: 100%;
+  height: 100%;
+}
+
+.content {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background: transparent;
+  z-index: 999;
+  cursor: pointer;
+  user-select: none;
+  min-height: 28px;
+  &.mobile {
+    .round,
+    .list-round {
+      background: $yellow;
+    }
+  }
+  .round {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+    padding: 1px;
+    font-size: 0.8em;
+    font-weight: 700;
+    transition: border-radius 0.1s ease;
+    .dropdown-cover {
+      width: calc(100% - 6px);
+      height: calc(100% - 6px);
+      display: flex;
+      align-items: center;
+      transition: border-radius 0.1s ease;
+      justify-content: space-between;
+      background: $light-gray;
+      border-radius: 15px;
+      padding: 3px;
+      .selected-flag {
+        @include small-diamond;
+        position: relative;
+        width: 30px;
+        height: 25px;
+        padding: 8px;
+        background: $dark-gray;
+        .selected-flag-cover {
+          @include small-diamond;
+          width: 100%;
+          height: 100%;
+          margin-top: -1px;
+          .flag {
+            position: fixed;
+            width: 30px;
+            height: 30px;
+            margin-top: -4px;
+          }
+        }
+        .left-arrow,
+        .right-arrow {
+          width: 20px;
+          height: 15px;
+          position: absolute;
+          fill: $yellow;
+        }
+        .left-arrow {
+          transform: rotate(90deg);
+          left: -4px;
+          top: 8px;
+        }
+        .right-arrow {
+          transform: rotate(-90deg);
+          right: -4px;
+          top: 8px;
+        }
+      }
+      svg {
+        width: 15px;
+        height: 15px;
+        flex-shrink: 0;
+        fill: $yellow;
+        transition: transform 0.1s ease;
+        &.rotate {
+          transform: rotate(180deg);
+        }
+      }
+      &:hover {
+        background: $dark-gray;
+      }
+    }
+    &.opened {
+      border-radius: 7px 7px 0px 0px;
+      .dropdown-cover {
+        border-radius: 7px 7px 0px 0px;
+      }
+    }
+  }
+  .list-round {
+    position: absolute;
+    top: calc(100% - 2px);
+    height: 95px;
+    width: 100%;
+    border-radius: 0px 0px 5px 5px;
+    z-index: 999;
+    padding: 1px;
+    .list-cover {
+      @include scroll;
+      overflow-y: auto;
+      overflow-x: hidden;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      background: $light-gray;
+      border-radius: 0px 0px 5px 5px;
+      .option {
+        display: flex;
+        justify-content: space-evenly;
+        flex-wrap: nowrap;
+        width: calc(100% - 10px);
+        height: calc(100% - 10px);
+        background: $light-gray;
+        padding: 5px;
+        cursor: pointer;
+        font-size: 0.7em;
+        gap: 5px;
+        &.active,
+        &:hover {
+          background: $darker-gray;
+        }
+
+        .value {
+          height: 100%;
+          display: flex;
+          font-size: 0.9em;
+          font-weight: 600;
+          align-items: center;
+          user-select: none;
+          color: $smooth-white;
+        }
+        .selected-flag {
+          @include small-diamond;
+          min-width: 25px;
+          min-height: 23px;
+          padding: 1px;
+          background: $yellow;
+          .selected-flag-cover {
+            @include small-diamond;
+            position: relative;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            .flag {
+              @include small-diamond;
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+              margin-top: -1px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

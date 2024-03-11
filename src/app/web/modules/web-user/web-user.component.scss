@@ -17,6 +17,7 @@
     position: relative;
     width: 85%;
     height: calc(100vh - 125px);
+    margin-right: 50px;
     .close__shadow {
       position: absolute;
       z-index: 1;
@@ -60,6 +61,11 @@
         }
       }
     }
+    .language-switcher {
+      position: absolute;
+      top: 17px;
+      right: -82px;
+    }
     &__wrapper {
       @include user-platform;
       width: 100%;
@@ -69,7 +75,7 @@
       border-radius: 15px 0 15px 0;
       &--cover {
         @include user-platform;
-        background: linear-gradient(to top, #1C1C23 0%, #3D404D 100%);;
+        background: linear-gradient(to top, #1c1c23 0%, #3d404d 100%);
         display: flex;
         flex-direction: column;
         width: 100%;

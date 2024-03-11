@@ -63,6 +63,11 @@
         }
       }
     }
+    .language-switcher {
+      position: absolute;
+      top: -20px;
+      left: -2px;
+    }
     &__wrapper {
       @include rt-side-squad-content;
       width: 100%;
@@ -72,7 +77,7 @@
       border-radius: 10px;
       &--cover {
         @include rt-side-squad-content;
-        background: linear-gradient(to top, #1C1C23 0%, #3D404D 100%);
+        background: linear-gradient(to top, #1c1c23 0%, #3d404d 100%);
         display: flex;
         flex-direction: column;
         width: 100%;
@@ -178,13 +183,13 @@
           }
           &__content {
             @include scroll;
+            overflow-y: auto;
+            overflow-x: hidden;
             color: $white;
             height: calc(100% - 90px);
             flex: 1;
             margin-right: 5px;
             padding: 10px;
-            overflow-y: auto;
-            overflow-x: hidden;
           }
         }
       }

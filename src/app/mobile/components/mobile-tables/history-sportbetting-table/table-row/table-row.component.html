@@ -1,5 +1,4 @@
 <div
-  (click)="collapseRow()"
   [ngClass]="{
     red: ['Faild', 'Lose'].includes(rowData.status),
     green: ['Paid', 'Win', 'Cash-Out'].includes(rowData.status),
@@ -51,7 +50,7 @@
       <span class="title">Status</span>
       <span class="value">{{ rowData.status }}</span>
     </div>
-    <div class="item-row arrow">
+    <div class="item-row arrow" (click)="collapseRow()">
       <span *ngIf="isCollapse" class="arrow-title">Close</span>
       <span *ngIf="!isCollapse" class="arrow-title">See More</span>
       <svg class="arrow" [class.rotate]="isCollapse">

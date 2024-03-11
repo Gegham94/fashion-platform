@@ -1,8 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  MENU_BALANCE,
-  TYPE_MENU_BALANCE,
-} from 'src/app/shared/constants/contstants';
+import { TYPE_MENU_BALANCE, MENU_BALANCE } from 'src/app/shared/constants/menu-balance';
 import { IUserAmountInfo } from 'src/app/shared/interfaces/IUserInfo';
 
 @Component({

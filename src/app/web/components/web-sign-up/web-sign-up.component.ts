@@ -30,7 +30,8 @@ import { switchMap } from 'rxjs';
 })
 export class WebSignUpComponent implements OnDestroy {
   @ViewChild('modalTemplate') modalTemplate!: TemplateRef<any>;
-  @Output('openRegistrationDone') openRegistrationDone: EventEmitter<any> = new EventEmitter();
+  @Output('openRegistrationDone') openRegistrationDone: EventEmitter<any> =
+    new EventEmitter();
 
   private modalElement: any;
   public stepId: number = 1;
@@ -194,12 +195,12 @@ export class WebSignUpComponent implements OnDestroy {
   public apply(): void {}
 
   public nextStep(): void {
-    // if (this.firstStepForm.valid) {
+    if (this.firstStepForm.valid) {
       this.stepId++;
-      // this.secondStepForm.markAsUntouched();
-    // } else {
-      // this.firstStepForm.markAllAsTouched();
-    // }
+      this.secondStepForm.markAsUntouched();
+    } else {
+      this.firstStepForm.markAllAsTouched();
+    }
   }
 
   public previousStep(): void {
@@ -226,7 +227,6 @@ export class WebSignUpComponent implements OnDestroy {
         .signUp(formData)
         .pipe(
           switchMap((data) => {
-            
             return data;
           })
         )

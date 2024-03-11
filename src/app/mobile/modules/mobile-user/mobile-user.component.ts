@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, ElementRef, QueryList, ViewChild, ViewChildren } from '@angular/core';
-import { UserPlatformTabs } from 'src/app/shared/enum/EUserPlatformTabs';
+import { UserPlatformTabs } from 'src/app/shared/constants/user-platform-tabs';
 
 @Component({
   selector: 'app-mobile-user',

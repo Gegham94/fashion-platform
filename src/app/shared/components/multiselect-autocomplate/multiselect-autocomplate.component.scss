@@ -85,7 +85,7 @@
       background: $border-gradient-middle;
       .cover {
         @include input-middle-cover;
-        padding: 0 28px;
+        padding: 0 20px;
       }
       &.error {
         background: $border-gradient-middle-error;

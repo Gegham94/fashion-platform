@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs';
-import { AboutTabs } from 'src/app/shared/enum/EAboutTabs';
+import { AboutTabs } from 'src/app/shared/constants/about-tabs';
 
 @Component({
   selector: 'app-web-about',

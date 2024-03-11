@@ -1,6 +1,6 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { STATUS, TYPE, TYPE_FILTER } from 'src/app/shared/constants/contstants';
+import { TYPE_FILTER, STATUS, TYPE } from 'src/app/shared/constants/filters';
 
 @Component({
   selector: 'app-mobile-messages-and-notifications',

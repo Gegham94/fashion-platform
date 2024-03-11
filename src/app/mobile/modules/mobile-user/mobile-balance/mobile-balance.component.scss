@@ -93,6 +93,8 @@
         }
         .body {
           @include scroll;
+          overflow-x: auto;
+          overflow-y: hidden;
           display: flex;
           flex-direction: row;
           justify-content: space-between;
@@ -100,7 +102,6 @@
           width: calc(100% - 20px);
           height: 100%;
           margin: 10px;
-          overflow-x: auto;
           padding: 3px;
           gap: 15px;
           .bank-card-component,

@@ -28,7 +28,8 @@ import { switchMap } from 'rxjs';
 })
 export class MobileSignUpComponent {
   @ViewChild('modalTemplate') modalTemplate!: TemplateRef<any>;
-  @Output('openRegistrationDone') openRegistrationDone: EventEmitter<any> = new EventEmitter();
+  @Output('openRegistrationDone') openRegistrationDone: EventEmitter<any> =
+    new EventEmitter();
 
   private modalElement: any;
   public stepId: number = 1;
@@ -230,12 +231,12 @@ export class MobileSignUpComponent {
   public apply() {}
 
   public nextStep() {
-    // if (this.firstStepForm.valid) {
+    if (this.firstStepForm.valid) {
       this.stepId++;
-    //   this.secondStepForm.markAsUntouched();
-    // } else {
-    //   this.firstStepForm.markAllAsTouched();
-    // }
+      this.secondStepForm.markAsUntouched();
+    } else {
+      this.firstStepForm.markAllAsTouched();
+    }
   }
 
   public previousStep() {

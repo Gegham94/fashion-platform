@@ -12,7 +12,7 @@ import {
   forwardRef,
 } from '@angular/core';
 import { collapse } from '../../animations/animations';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { NG_VALUE_ACCESSOR } from '@angular/forms';
 
 let uuid = 0;
 
@@ -50,6 +50,7 @@ export class MultiselectAutocomplateComponent implements OnInit {
 
   private dropdownElement: any;
   public isOpen: boolean = false;
+  public isRotate: boolean = false;
 
   public selectetOptions: any[] = [];
   public disabled: boolean = false;
@@ -71,12 +72,24 @@ export class MultiselectAutocomplateComponent implements OnInit {
 
   @HostListener('window:resize', ['$event'])
   public onResize(event: Event) {
+    this.isRotate = false;
     const selectList = this.dropdownElement?.rootNodes?.[0];
     if (selectList) {
       const rect =
         this.multiselectAutocomplate.nativeElement.getBoundingClientRect();
-      selectList.style.setProperty('top', rect.bottom + 3 + 'px');
+      const windowHeight = window.innerHeight;
+      const dropdownHeight = 225;
+      let topPosition = rect.bottom;
+      if (windowHeight - rect.bottom < dropdownHeight + 10) {
+        topPosition = rect.top - dropdownHeight - 6;
+        this.isRotate = true;
+        selectList.style.setProperty('transform', 'rotate(180deg)');
+      } else {
+        selectList.style.setProperty('transform', 'rotate(0deg)');
+      }
+      selectList.style.setProperty('top', topPosition + 3 + 'px');
       selectList.style.setProperty('left', rect.left + 'px');
+      selectList.style.setProperty('max-height', '225px');
     }
   }
 
@@ -146,17 +159,30 @@ export class MultiselectAutocomplateComponent implements OnInit {
   }
 
   public createDropDown() {
+    this.isRotate = false;
     const rect =
       this.multiselectAutocomplate.nativeElement.getBoundingClientRect();
+    const windowHeight = window.innerHeight;
+    const dropdownHeight = 225;
 
     if (rect) {
       this.dropdownElement = this.viewContainerRef.createEmbeddedView(
         this.dropdownTemplate
       );
+
       document.body.appendChild(this.dropdownElement.rootNodes[0]);
       const selectList = this.dropdownElement.rootNodes[0];
+
+      let topPosition = rect.bottom;
+      if (windowHeight - rect.bottom < dropdownHeight + 10) {
+        topPosition = rect.top - dropdownHeight - 6;
+        this.isRotate = true;
+        selectList.style.setProperty('transform', 'rotate(180deg)');
+      } else {
+        selectList.style.setProperty('transform', 'rotate(0deg)');
+      }
       selectList.style.setProperty('position', 'fixed');
-      selectList.style.setProperty('top', rect.bottom + 3 + 'px');
+      selectList.style.setProperty('top', topPosition + 3 + 'px');
       selectList.style.setProperty('left', rect.left + 'px');
       selectList.style.setProperty('height', '100%');
       selectList.style.setProperty('max-height', '225px');

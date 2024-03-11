@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AboutHelpTabs } from 'src/app/shared/enum/EAboutHelp copy';
+import { AboutHelpTabs } from 'src/app/shared/constants/about-help';
 
 @Component({
   selector: 'app-web-help-contact',

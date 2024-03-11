@@ -1,13 +1,6 @@
 import { Component } from '@angular/core';
-import {
-  CURRENCY,
-  HISTORY_CASINO_TABLE_DATA,
-  HISTORY_CASINO_TABLE_HEADER,
-  STATUS,
-  TYPE_FILTER,
-  TYPE_HISTORY_CASINO_TABLE_DATA,
-  TYPE_TABLE_HEADER,
-} from 'src/app/shared/constants/contstants';
+import { TYPE_FILTER, STATUS, CURRENCY } from 'src/app/shared/constants/filters';
+import { TYPE_HISTORY_CASINO_TABLE_DATA, HISTORY_CASINO_TABLE_DATA, TYPE_TABLE_HEADER, HISTORY_CASINO_TABLE_HEADER } from 'src/app/shared/constants/tables';
 
 @Component({
   selector: 'app-history-casino-table',

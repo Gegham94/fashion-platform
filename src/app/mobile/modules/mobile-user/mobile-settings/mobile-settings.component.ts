@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { UserPlatformSettings } from 'src/app/shared/enum/EUserPlatformSettings';
+import { UserPlatformSettings } from 'src/app/shared/constants/user-platform-settings';
 
 @Component({
   selector: 'app-mobile-settings',

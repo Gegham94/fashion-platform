@@ -7,7 +7,7 @@ import {
   Output,
 } from '@angular/core';
 import { collapse } from '../../animations/animations';
-import { CURRENCY, TYPE_FILTER } from '../../constants/contstants';
+import { TYPE_FILTER, CURRENCY } from '../../constants/filters';
 
 @Component({
   selector: 'app-dropdown',

@@ -1,5 +1,5 @@
 import { Component, TemplateRef, ViewChild, ViewContainerRef } from '@angular/core';
-import { CURRENCY, METHOD, STATUS, TYPE_FILTER } from 'src/app/shared/constants/contstants';
+import { TYPE_FILTER, STATUS, METHOD, CURRENCY } from 'src/app/shared/constants/filters';
 
 @Component({
   selector: 'app-mobile-active-bets',

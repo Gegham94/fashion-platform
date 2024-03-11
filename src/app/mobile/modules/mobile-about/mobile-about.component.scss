@@ -62,6 +62,11 @@
         }
       }
     }
+    .language-switcher {
+      position: absolute;
+      top: -20px;
+      left: -2px;
+    }
     &__wrapper {
       @include rt-side-squad-content;
       width: 100%;

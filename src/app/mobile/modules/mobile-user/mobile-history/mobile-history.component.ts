@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { UserPlatformHistory } from 'src/app/shared/enum/EUserPlatformHistory';
+import { UserPlatformHistory } from 'src/app/shared/constants/user-platform-history';
 
 @Component({
   selector: 'app-mobile-history',

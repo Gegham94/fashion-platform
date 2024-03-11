@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, ElementRef, QueryList, ViewChild, ViewChildren } from '@angular/core';
-import { AboutTabs } from 'src/app/shared/enum/EAboutTabs';
+import { AboutTabs } from 'src/app/shared/constants/about-tabs';
 
 @Component({
   selector: 'app-mobile-about',
