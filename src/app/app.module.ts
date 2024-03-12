@@ -5,10 +5,16 @@ import { CommonModule } from '@angular/common';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
+import {
+  HttpClient,
+  HttpClientModule,
+  provideHttpClient,
+  withInterceptors,
+} from '@angular/common/http';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { HttpLoaderFactory } from './shared/language-loaders/translate-browser.loader';
-import { AuthInterceptor } from './shared/interceptors/authInterceptor';
+import { headersInterceptor } from './shared/interceptors/headers-interceptor';
+import { errorInterceptor } from './shared/interceptors/error-interceptor';
 
 @NgModule({
   declarations: [AppComponent],
@@ -28,7 +34,7 @@ import { AuthInterceptor } from './shared/interceptors/authInterceptor';
   ],
   exports: [],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    provideHttpClient(withInterceptors([headersInterceptor, errorInterceptor])),
   ],
   bootstrap: [AppComponent],
 })
