@@ -12,16 +12,18 @@
 // CONTENT SCROLL
 @mixin scroll {
   &::-webkit-scrollbar-track {
-    background-color: transparent;
+    background-color: $darker-gray;
     border-radius: 3px;
+    cursor: pointer;
   }
   &::-webkit-scrollbar {
-    height: 4px;
-    width: 4px;
+    height: 3px;
+    width: 3px;
     background-color: transparent;
     border-radius: 3px;
   }
   &::-webkit-scrollbar-thumb {
+    cursor: pointer;
     border-radius: 3px;
     background-color: $lighter-gray;
   }
