@@ -8,7 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { HttpLoaderFactory } from './shared/language-loaders/translate-browser.loader';
-import { Interceptor } from './shared/interceptors/interceptor';
+import { AuthInterceptor } from './shared/interceptors/authInterceptor';
 
 @NgModule({
   declarations: [AppComponent],
@@ -28,7 +28,7 @@ import { Interceptor } from './shared/interceptors/interceptor';
   ],
   exports: [],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
   ],
   bootstrap: [AppComponent],
 })

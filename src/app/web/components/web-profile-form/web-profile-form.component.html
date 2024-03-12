@@ -117,12 +117,12 @@
         cutSide="both"
         placeholder="+61789"
         [inputColor]="inputColor"
-        [className]="'phone-code'"
+        class="phone-code"
         [singleSelect]="true"
         (onSelect)="onSelectPhoneCodeFilter($event)"
       ></app-multiselect-autocomplate>
       <label
-        class="label right"
+        class="label right margin-left"
         [class.success]="phoneNumberControl.touched && phoneNumberControl.valid"
         [class.error]="phoneNumberControl.touched && phoneNumberControl.invalid"
       >
