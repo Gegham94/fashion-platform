@@ -21,9 +21,11 @@
             {{ placeholder }}
           </ng-container>
           <ng-template #selectedPlaceholderModel>
-            <ng-container *ngFor="let item of selectetOptions; let last = last">
-              {{ item.name }}{{ last ? "" : ",&nbsp;" }}
-            </ng-container>
+            <span>
+              <ng-container *ngFor="let item of selectetOptions; let last = last">
+                {{ item.name }}{{ last ? "" : "," }}
+              </ng-container>
+            </span>
           </ng-template>
         </ng-template>
       </div>

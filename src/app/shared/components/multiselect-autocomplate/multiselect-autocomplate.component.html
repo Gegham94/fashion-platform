@@ -17,7 +17,7 @@
         }}</ng-container>
         <ng-template #placeholderModel>
           <ng-container *ngFor="let item of selectetOptions; let last = last">
-            {{ item.name }}{{ last ? "" : ",&nbsp;" }}
+            {{ item.name }}{{ last ? "" : "," }}
           </ng-container>
         </ng-template>
       </div>

@@ -43,23 +43,16 @@
         justify-content: center;
         background: $lighter-gray;
         input {
+          @include form-checkbox;
+          aspect-ratio: 1/1;
           width: 100%;
           height: 100%;
+          cursor: pointer;
           display: flex;
           position: relative;
           align-items: center;
+          justify-content: center;
           background: $dark-gray;
-          justify-content: center;
-          @include form-checkbox;
-          cursor: pointer;
-          aspect-ratio: 1/1;
-        }
-        input[type="checkbox"] {
-          display: flex;
-          appearance: none;
-          box-shadow: none;
-          align-items: center;
-          justify-content: center;
         }
         &.checked {
           background: $yellow;
@@ -107,6 +100,7 @@
       align-items: center;
       justify-content: center;
       padding: 5px;
+      border-bottom: solid 1px $yellow;
       &--search {
         display: flex;
         align-items: center;
@@ -131,8 +125,8 @@
             background: linear-gradient(#2d2d37 0%, #3a3a4a 100%);
             border-top-left-radius: 20px;
             border-bottom-left-radius: 20px;
-            width: 100%;
-            height: 100%;
+            width: calc(100% - 2px);
+            height: calc(100% - 2px);
             color: $white;
             padding-left: 10px;
             font-size: 11px;
@@ -200,23 +194,16 @@
           justify-content: center;
           background: $lighter-gray;
           input {
+            @include form-checkbox;
+            aspect-ratio: 1/1;
             width: 100%;
             height: 100%;
+            cursor: pointer;
             display: flex;
             position: relative;
             align-items: center;
+            justify-content: center;
             background: $dark-gray;
-            justify-content: center;
-            @include form-checkbox;
-            cursor: pointer;
-            aspect-ratio: 1 / 1;
-          }
-          input[type="checkbox"] {
-            display: flex;
-            appearance: none;
-            box-shadow: none;
-            align-items: center;
-            justify-content: center;
           }
           &.checked {
             background: $yellow;
