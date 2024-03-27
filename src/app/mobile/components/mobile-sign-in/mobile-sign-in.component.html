@@ -15,8 +15,8 @@
         <div class="container--form__state--row">
           <div class="content">
             <div class="content__wrapper--round"
-              [class.success-round]="emailControl.touched && emailControl.valid"
-              [class.error-round]="emailControl.touched && emailControl.invalid"
+              [class.success-round]="signinForm.get('email')?.touched && signinForm.get('email')?.valid"
+              [class.error-round]="signinForm.get('email')?.touched && signinForm.get('email')?.invalid"
             >
               <input class="content__wrapper--round--input" 
                 type="email" 
@@ -25,15 +25,15 @@
                 placeholder="Email"
               />
             </div>
-            <span class="content__feedback-error" *ngIf="emailControl.touched && emailControl.invalid">Error text</span>
-            <app-recover-password class="recover" (openRecoverPassword)="closeSignInModal($event)" [isMobile]="true"></app-recover-password>
+            <span class="content__feedback-error" *ngIf="signinForm.get('email')?.touched && signinForm.get('email')?.invalid">Error text</span>
+            <gb-recover-password class="recover" (openRecoverPassword)="closeSignInModal($event)" [isMobile]="true"></gb-recover-password>
           </div>
         </div>
         <div class="container--form__state--row">
           <div class="content">
             <div class="content__wrapper--round"
-              [class.success-round]="passwordControl.touched && passwordControl.valid"
-              [class.error-round]="passwordControl.touched && passwordControl.invalid"
+              [class.success-round]="signinForm.get('password')?.touched && signinForm.get('password')?.valid"
+              [class.error-round]="signinForm.get('password')?.touched && signinForm.get('password')?.invalid"
             >
               <input class="content__wrapper--round--input" 
                 type="{{isPasswordVisible ? 'text' : 'password'}}"
@@ -59,7 +59,7 @@
               </ng-template>
             </div>
             </div>
-            <span class="content__feedback-error" *ngIf="passwordControl.touched && passwordControl.invalid">Error text</span>
+            <span class="content__feedback-error" *ngIf="signinForm.get('password')?.touched && signinForm.get('password')?.invalid">Error text</span>
           </div>
         </div>
         <div class="container--form__state--row">

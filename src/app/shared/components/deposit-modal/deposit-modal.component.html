@@ -1,0 +1,57 @@
+<div class="deposit-btn" (click)="openModal()"></div>
+<ng-template #modalTemplate>
+  <div id="deposit-modal">
+    <div class="deposit-content" [class.mobile]="isMobile">
+      <div class="deposit-close-wrapper" (click)="closeModal()">
+        <div class="deposit-cover">
+          <div class="deposit-cross"></div>
+        </div>
+      </div>
+      <div class="deposit-body">
+        <div class="deposit-shadow">
+          <div class="deposit-wrapper">
+            <div class="deposit-cover" [ngSwitch]="tab">
+              <div class="content">
+                <div class="header">
+                  <div class="title">
+                    <span class="text">Deposit</span>
+                    <div class="wrapper"></div>
+                    <div class="decor"></div>
+                  </div>
+                </div>
+                <div class="content__buttons">
+                  <button
+                    (click)="selectDepositType(1)"
+                    [class.active]="tab === 1"
+                  >
+                    <div class="cover">
+                      <span>Bank Card</span>
+                    </div>
+                  </button>
+                  <button
+                    (click)="selectDepositType(2)"
+                    [class.active]="tab === 2"
+                  >
+                    <div class="cover">
+                      <span>E-Wallet</span>
+                    </div>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <gb-bank-card
+                    *ngSwitchCase="1"
+                    [isMobile]="isMobile"
+                    (closeDepositModal)="closeDepositModal($event)"
+                  ></gb-bank-card>
+                  <gb-e-wallet
+                    *ngSwitchCase="2"
+                  ></gb-e-wallet>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>

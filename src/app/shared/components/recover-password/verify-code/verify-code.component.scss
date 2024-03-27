@@ -6,26 +6,6 @@
   height: 100%;
 }
 
-input {
-  -webkit-autofill: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  -ms-appearance: none;
-  -o-appearance: none;
-  appearance: none;
-  border: none;
-  outline: none;
-  background: linear-gradient(#1c1c23 0%, #2d2d37 100%);
-  width: 100%;
-  height: 100%;
-  text-align: left;
-  &::placeholder {
-    color: $white;
-    opacity: 0.7;
-    font-weight: 500;
-  }
-}
-
 .verify-code-content {
   width: 100%;
   height: 100%;
@@ -55,7 +35,6 @@ input {
     .title {
       width: 100%;
       height: 100%;
-      margin-left: -10%;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -117,12 +96,8 @@ input {
         gap: 10px;
         .digit-wrapper {
           font-family: "Roboto", sans-serif;
-          cursor: pointer;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          max-width: 50px;
-          max-height: 50px;
+          width: 50px;
+          height: 50px;
           background: $lighter-gray;
           border: 1px solid $yellow;
           border-radius: 100%;
@@ -130,7 +105,7 @@ input {
           color: $yellow;
           font-size: 16px;
           aspect-ratio: 1/1;
-          filter: drop-shadow(1px 4px 5px #00000076);
+          filter: drop-shadow(1px 3px 4px #00000054);
           .input {
             text-align: center;
             background: $darker-gray;
@@ -138,6 +113,14 @@ input {
             font-size: 1.1em;
             color: $white;
             font-weight: 700;
+            padding: 0;
+            appearance: textfield;
+            -webkit-appearance: textfield;
+            &::-webkit-outer-spin-button,
+            &::-webkit-inner-spin-button {
+              -webkit-appearance: none;
+              margin: 0;
+            }
           }
         }
       }
@@ -146,6 +129,7 @@ input {
       display: flex;
       align-items: center;
       justify-content: space-between;
+      flex-direction: row-reverse;
       width: 100%;
       height: 15%;
       min-height: 30px;

@@ -1,0 +1,17 @@
+<div
+  [ngStyle]="{ 'column-gap.%': actionButtons.length === 4 ? '3' : '5' }"
+  class="content"
+>
+  <div
+    *ngFor="let action of actionButtons"
+    [class]="'content__btn--' + action.class"
+    [ngStyle]="{ 'clip-path': action.clipPath }"
+    (click)="onAction({ type: action.type, value: action.value })"
+  >
+    <div class="cover" [ngStyle]="{ 'clip-path': action.clipPath }">
+      <span class="title" [ngStyle]="{ color: action.color }">{{
+        action.title
+      }}</span>
+    </div>
+  </div>
+</div>

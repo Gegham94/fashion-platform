@@ -4,7 +4,7 @@ import { TYPE_HISTORY_SPORTBETTING_TABLE_DATA, HISTORY_SPORTBETTING_TABLE_DATA, 
 
 
 @Component({
-  selector: 'app-history-sportbetting-table',
+  selector: 'gb-history-sportbetting-table',
   templateUrl: './history-sportbetting-table.component.html',
   styleUrl: './history-sportbetting-table.component.scss',
 })

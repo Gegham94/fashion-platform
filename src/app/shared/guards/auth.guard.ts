@@ -7,7 +7,7 @@ export const AuthGuard: CanActivateFn = () => {
   const router = inject(Router);
   const deviceDetectorService = inject(DeviceDetectorService);
   const device = EDeviceNumber[deviceDetectorService.deviceType];
-  // router.navigate([`${device}/home`]);
+  // router.navigate([`${device}/first-page`]);
   // return false;
   return true;
 };

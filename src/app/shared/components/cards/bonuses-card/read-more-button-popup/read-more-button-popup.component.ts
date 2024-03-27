@@ -10,14 +10,13 @@ import {
 } from '@angular/core';
 
 @Component({
-  selector: 'app-read-more-button-popup',
+  selector: 'gb-read-more-button-popup',
   templateUrl: './read-more-button-popup.component.html',
   styleUrl: './read-more-button-popup.component.scss',
 })
 export class ReadMoreButtonPopupComponent implements OnInit, OnDestroy {
   @Input('option') option: any;
   @Input('isMobile') isMobile: boolean = false;
-  @ViewChild('popupButton') popupButton!: ElementRef<any>;
   @ViewChild('popupTemplate') popupTemplate!: TemplateRef<any>;
   public isOpen: boolean = false;
 

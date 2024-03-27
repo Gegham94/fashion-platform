@@ -1,0 +1,692 @@
+@import "src/mixins/styles-mixin";
+@import "src/styles/colors";
+
+:host {
+  width: 100%;
+  height: 100%;
+}
+
+.content {
+  width: 100%;
+  height: 100%;
+  min-width: 240px;
+  background-color: $layout-bg;
+  position: relative;
+  .header-container {
+    padding: 0 6%;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 16px;
+    position: relative;
+    &__wrapper {
+      width: 100%;
+      height: 96px;
+      display: flex;
+      flex-direction: column;
+      .row,
+      .row-btns {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        z-index: 1;
+      }
+      .row {
+        justify-content: space-between;
+        .games-type-diamond {
+          display: flex;
+          align-items: center;
+          justify-content: flex-start;
+          width: 100%;
+          height: 100%;
+          .diamond-wrapper {
+            @include diamond;
+            filter: drop-shadow(2px 2px 2px #00000083);
+            width: 46px;
+            height: 38px;
+            padding: 5px;
+            box-sizing: border-box;
+            background: $light-gray;
+            .diamond-cover {
+              @include diamond;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              justify-content: center;
+              transform: translateY(-1px);
+              margin-bottom: 1px;
+              width: 100%;
+              height: 100%;
+              background: $darker-gray;
+              gap: 2px;
+              .big-line,
+              .short-line {
+                transform: translateY(-2px);
+                background: $yellow;
+                height: 2px;
+                border-radius: 2px;
+              }
+              .big-line {
+                width: 50%;
+              }
+              .short-line {
+                width: 30%;
+              }
+            }
+          }
+        }
+        .games-modal {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          border-radius: 0 0 8px 8px;
+          padding: 2px;
+          box-sizing: border-box;
+          background: $border-gradient-to-top;
+          z-index: 99;
+          .games-modal-cover {
+            width: 100%;
+            height: 100%;
+            background: $light-gray;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            border-radius: 0 0 8px 8px;
+            .game-type-btns {
+              display: flex;
+              align-items: center;
+              gap: 20px;
+              .wrapper {
+                @include squad-small;
+                width: 126px;
+                height: 26px;
+                padding: 1px;
+                background: $dark-gray;
+                transform: scale(1);
+                cursor: pointer;
+                .cover {
+                  @include squad-small;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  font-weight: 600;
+                  width: 100%;
+                  height: 100%;
+                  color: $lighter-gray;
+                  font-size: 0.8em;
+                  white-space: nowrap;
+                  padding: 5px 10px;
+                  box-sizing: border-box;
+                }
+                &.active {
+                  background: $yellow;
+                  .cover {
+                    background: $home-left-button-active-gradient;
+                    color: $yellow;
+                  }
+                }
+              }
+            }
+            .close-wrapper {
+              @include small-diamond;
+              background: $yellow;
+              padding: 1px;
+              cursor: pointer;
+              z-index: 1;
+              width: 50px;
+              height: 36px;
+              .close-cover {
+                @include small-diamond;
+                background: $dark-gray;
+                width: 100%;
+                height: 100%;
+                .cross {
+                  width: 100%;
+                  height: 100%;
+                  position: relative;
+                  &::before,
+                  &::after {
+                    content: "";
+                    position: absolute;
+                    width: 2px;
+                    height: 35%;
+                    top: 25%;
+                    left: 47%;
+                    background-color: $yellow;
+                  }
+                  &::before {
+                    transform: rotate(45deg);
+                  }
+                  &::after {
+                    transform: rotate(-45deg);
+                  }
+                }
+              }
+            }
+          }
+        }
+        .fashion-tv-wrapper {
+          width: 100%;
+          height: 100%;
+          .fashion-tv {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border-radius: 0px 0 8px 8px;
+            padding: 8px 24px;
+            gap: 2px;
+            font-size: 12px;
+            font-weight: 700;
+            color: $yellow;
+            background: linear-gradient(100deg, #131313 7.2%, #111 92.69%);
+            box-shadow: 3px -4px 16px 0px rgba(0, 0, 0, 0.5) inset;
+            img {
+              width: 40px;
+              height: 32px;
+            }
+          }
+        }
+        .profile-information {
+          display: flex;
+          align-items: center;
+          justify-content: flex-end;
+          height: 100%;
+          width: 100%;
+          gap: 10px;
+          z-index: 0;
+          .notifications {
+            position: relative;
+            background: transparent;
+            z-index: 999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            .notifications-count {
+              position: absolute;
+              top: 2px;
+              right: 1px;
+              background: $red;
+              border-radius: 100%;
+              width: 10px;
+              height: 10px;
+              z-index: 1;
+            }
+            .notifications-wrapper {
+              @include diamond;
+              background: $notifications-border-gradient;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              cursor: pointer;
+              width: 40px;
+              height: 32px;
+              padding: 1px;
+              .notifications-cover {
+                @include diamond;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background: $dark-gray;
+                width: calc(100% - 1px);
+                height: calc(100% - 1px);
+                .svg-notifications {
+                  width: 50%;
+                  height: 50%;
+                  fill: $white;
+                  margin-bottom: 10%;
+                }
+              }
+            }
+          }
+          .profile {
+            .auth-content {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              &__user {
+                position: relative;
+                @include diamond;
+                width: 40px;
+                height: 32px;
+                z-index: 1;
+                cursor: pointer;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                background: $yellow;
+                &::before {
+                  content: "";
+                  @include diamond;
+                  width: calc(100% - 10px);
+                  height: calc(100% - 8px);
+                  position: absolute;
+                  background: $layout-bg;
+                }
+                &--head {
+                  border-radius: 100%;
+                  background: $white;
+                  width: 12%;
+                  height: 12%;
+                  z-index: 1;
+                }
+                &--body {
+                  @include logo-user-body;
+                  background: $white;
+                  width: 25%;
+                  height: 32%;
+                }
+              }
+            }
+          }
+        }
+      }
+      .row-btns {
+        justify-content: center;
+        gap: 10px;
+        z-index: 0;
+        .button {
+          align-items: center;
+          justify-content: center;
+          display: flex;
+          margin-top: auto;
+          width: 144px;
+          height: 24px;
+          cursor: pointer;
+          color: $white;
+          transition: transform 0.1s;
+          transform: scale(1);
+          .button-body {
+            width: 100%;
+            height: calc(100% - 2px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+          }
+          &.left {
+            @include left-button-mobile;
+            background: $border-gradient-to-left;
+            .button-body {
+              @include left-button-body-mobile;
+              transform: translateX(1px);
+              background: $home-left-button-gradient;
+            }
+            &.active {
+              .button-body {
+                background: $home-left-button-active-gradient;
+              }
+            }
+          }
+          &.right {
+            @include right-button-mobile;
+            background: $border-gradient-to-right;
+            .button-body {
+              @include right-button-body-mobile;
+              transform: translateX(-1px);
+              background: $home-right-button-gradient;
+            }
+            &.active {
+              .button-body {
+                background: $home-right-button-active-gradient;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  .auth-modal {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    max-height: 104px;
+    border-radius: 0 0 8px 8px;
+    padding: 1px;
+    box-sizing: border-box;
+    background: $border-gradient-to-top;
+    z-index: 999;
+    &.user-signed{
+      max-height: 325px;
+    }
+    .auth-modal-cover {
+      width: 100%;
+      height: 100%;
+      background: $darker-gray;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      border-radius: 0 0 8px 8px;
+      .auth-btns {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        &.signed {
+          width: 100%;
+          height: 100%;
+          .user-profile {
+            flex-direction: column;
+            .profile-header,
+            .profile-row {
+              box-sizing: border-box;
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+              width: 100%;
+              height: 100%;
+              padding: 15px;
+              gap: 5px;
+              z-index: 0;
+              filter: drop-shadow(2px 2px 2px #00000083);
+              .wallet {
+                @include squad-small;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                box-sizing: border-box;
+                background: $light-gray;
+                max-width: 160px;
+                max-height: 32px;
+                width: 100%;
+                height: 100%;
+                color: $white;
+                padding: 5px 10px;
+                svg {
+                  width: 18px;
+                  height: 18px;
+                  fill: $white;
+                }
+              }
+              .wallet-dropdown,
+              .decimal-dropdown {
+                position: relative;
+                background: transparent;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                max-width: 160px;
+                max-height: 32px;
+                width: 100%;
+                height: 100%;
+                .squad {
+                  @include squad-small;
+                  width: 100%;
+                  width: 100%;
+                  height: 100%;
+                  padding: 1px;
+                  background: $light-gray;
+                  border-radius: 2px;
+                  font-size: 0.9em;
+                  font-weight: 700;
+                  box-sizing: border-box;
+                  cursor: pointer;
+                  .dropdown-cover {
+                    @include squad-small;
+                    width: 100%;
+                    height: 100%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    background: $light-gray;
+                    border-radius: 2px;
+                    padding: 10px;
+                    gap: 5px;
+                    color: $smooth-white;
+                    box-sizing: border-box;
+                    svg {
+                      width: 15px;
+                      height: 15px;
+                      flex-shrink: 0;
+                      fill: $yellow;
+                      transition: transform 0.1s ease;
+                      &.rotate {
+                        transform: rotate(180deg);
+                      }
+                    }
+                  }
+                  &.opened {
+                    clip-path: polygon(
+                      0% 0%,
+                      calc(100% - 6px) 0%,
+                      100% 6px,
+                      100% 100%,
+                      0% 100%,
+                      0% 0%
+                    );
+                    .dropdown-cover {
+                      clip-path: polygon(
+                        0% 0%,
+                        calc(100% - 6px) 0%,
+                        100% 6px,
+                        100% 100%,
+                        0% 100%,
+                        0% 0%
+                      );
+                    }
+                  }
+                }
+                .list-squad {
+                  position: absolute;
+                  top: 100%;
+                  max-width: 160px;
+                  width: calc(100% - 2px);
+                  height: 95px;
+                  border-radius: 0px 0px 5px 5px;
+                  background: $light-gray;
+                  z-index: 999;
+                  padding: 1px;
+                  clip-path: polygon(
+                    0% 0%,
+                    100% 0%,
+                    100% 100%,
+                    6px 100%,
+                    0% calc(100% - 6px)
+                  );
+                  .list-cover {
+                    @include scroll;
+                    overflow-y: auto;
+                    overflow-x: hidden;
+                    width: 100%;
+                    height: 100%;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: flex-start;
+                    background: $light-gray;
+                    border-radius: 0px 0px 5px 5px;
+                    clip-path: polygon(
+                      0% 0%,
+                      100% 0%,
+                      100% 100%,
+                      6px 100%,
+                      0% calc(100% - 6px)
+                    );
+                    .option {
+                      width: 100%;
+                      height: 100%;
+                      padding: 5px;
+                      cursor: pointer;
+                      font-size: 0.7em;
+                      color: $smooth-white;
+                      &:hover {
+                        background: $lighter-gray;
+                      }
+                    }
+                  }
+                }
+              }
+              .user{
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                z-index: 0;
+                .user-image {
+                  @include squad-small;
+                  border-radius: 5px;
+                  width: 40px;
+                  height: 40px;
+                  padding: 1px;
+                  background: $yellow;
+                  .img-cover {
+                    @include squad-small;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    border-radius: 5px;
+                    width: 100%;
+                    height: 100%;
+                    background: $dark-gray;
+                    .letters {
+                      font-size: 100%;
+                      color: $white;
+                      font-weight: 600;
+                    }
+                  }
+                }
+                .username {
+                  font-size: 1em;
+                  color: $white;
+                  font-weight: 600;
+                }
+              }
+              .user-id {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                box-sizing: border-box;
+                padding: 5px;
+                max-width: 128px;
+                width: 100%;
+                height: 40px;
+                border-radius: calc(infinity * 1px);
+                background: $lighter-gray;
+                color: $white;
+                font-weight: 500;
+              }
+              .unverified-error {
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+                color: $white;
+                font-size: 0.8em;
+                gap: 5px;
+                margin-bottom: 5px;
+                svg {
+                  fill: $red;
+                  width: 18px;
+                  height: 18px;
+                }
+              }
+              .profile-btn {
+                width: 100%;
+                height: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: flex-end;
+                max-height: 32px;
+                button {
+                  @include removed-styles-button;
+                  @include squad-small;
+                  padding: 1px;
+                  background: $yellow;
+                  max-width: 132px;
+                  width: 100%;
+                  height: 100%;
+                  border-radius: 3px;
+                  transition: transform 0.05s ease;
+                  .cover {
+                    @include squad-small;
+                    width: 100%;
+                    height: 100%;
+                    background: $smooth-yellow;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    border-radius: 3px;
+                    span {
+                      width: 100%;
+                      color: $smooth-white;
+                      text-align: center;
+                      font-size: 0.9em;
+                      font-weight: 500;
+                      padding: 4px 15px;
+                      box-sizing: border-box;
+                    }
+                  }
+                }
+              }
+              &.dropdown {
+                z-index: 1;
+              }
+              &.header {
+                z-index: 1;
+                height: unset;
+                padding-bottom: 0;
+                margin-bottom: 15px;
+              }
+            }
+          }
+        }
+        .user-profile {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          justify-content: space-around;
+          width: 100%;
+          height: 100%;
+          min-height: 325px;
+          .auth-button {
+            width: 126px;
+            height: 26px;
+          }
+        }
+        .close-wrapper {
+          @include small-diamond;
+          background: $yellow;
+          cursor: pointer;
+          width: 46px;
+          height: 36px;
+          padding: 1px;
+          z-index: 1;
+          .close-cover {
+            @include small-diamond;
+            background: $dark-gray;
+            width: 100%;
+            height: 100%;
+            .cross {
+              width: 100%;
+              height: 100%;
+              position: relative;
+              &::before,
+              &::after {
+                content: "";
+                position: absolute;
+                width: 2px;
+                height: 35%;
+                top: 25%;
+                left: 47%;
+                background-color: $yellow;
+              }
+              &::before {
+                transform: rotate(45deg);
+              }
+              &::after {
+                transform: rotate(-45deg);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+.iframe {
+  width: 100%;
+  height: calc(100% - 120px);
+  z-index: 0;
+}

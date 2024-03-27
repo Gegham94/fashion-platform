@@ -4,11 +4,11 @@
       <div class="header">
         <span class="title">{{ data.title }}</span>
         <div class="header-dropdown">
-          <app-dropdown
+          <gb-dropdown
             [dropdownButtonType]="dropdownButtonType"
             (emitedItem)="getSelectedValue($event)"
             [disableKey_All]="true"
-          ></app-dropdown>
+          ></gb-dropdown>
         </div>
       </div>
       <div class="data">
@@ -29,7 +29,10 @@
       </div>
       <div class="button-row">
         <div class="button-wrapper" [class.yellowBtn]="buttonColor === 'yellow'" [class.grayBtn]="buttonColor === 'gray'">
-          <button class="action">{{ buttonType }}</button>
+          <button>
+            <gb-deposit-modal *ngIf="buttonType==='Deposit'" [isMobile]="isMobile" class="deposit-btn-modal"></gb-deposit-modal>
+            {{ buttonType }}
+          </button>
         </div>
       </div>
     </div>

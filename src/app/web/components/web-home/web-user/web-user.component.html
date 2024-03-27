@@ -1,0 +1,58 @@
+<div class="platform">
+  <div class="platform__content">
+    <div class="close__shadow">
+      <div class="close__shadow__wrapper" routerLink="../../home">
+        <div class="close__shadow__wrapper--cover">
+          <div class="cross"></div>
+        </div>
+      </div>
+    </div>
+    <div
+      appResizeEnd
+      (resizeEnd)="onResizeEnd()"
+      #tooltipRef
+      class="platform__content__wrapper"
+    >
+      <div class="platform__content__wrapper--cover">
+        <div class="tabs">
+          <div class="tabs__header">
+            <div #haederRef class="tabs__header--space">
+              <div class="space--cover"></div>
+            </div>
+            <div class="tabs__header--items">
+              <ng-container *ngFor="let tab of tabs">
+                <div
+                  #tabElementRef
+                  class="item"
+                  [routerLink]="tab.router"
+                  [id]="tab.id"
+                  [class.active]="tab.isActive"
+                  (click)="selectTab($event.target, tab.id)"
+                >
+                  <span class="title">{{ tab.title }}</span>
+                  <div
+                    *ngIf="!tab.isActive; else decorModel"
+                    class="decor-default"
+                  >
+                    <span class="decor-default--vector"></span>
+                    <span class="decor-default--dot"></span>
+                  </div>
+                  <img
+                    class="toz"
+                    src="/assets/images/user-platform-tabs-bg.svg"
+                  />
+                  <ng-template #decorModel>
+                    <div class="decor"></div>
+                  </ng-template>
+                </div>
+              </ng-container>
+            </div>
+          </div>
+          <div class="tabs__content">
+            <router-outlet></router-outlet>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

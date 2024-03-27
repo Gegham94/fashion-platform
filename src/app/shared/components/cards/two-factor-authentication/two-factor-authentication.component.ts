@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-two-factor-authentication',
+  selector: 'gb-two-factor-authentication',
   templateUrl: './two-factor-authentication.component.html',
   styleUrl: './two-factor-authentication.component.scss',
 })

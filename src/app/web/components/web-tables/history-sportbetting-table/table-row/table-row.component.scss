@@ -98,7 +98,7 @@
     min-height: 0px;
     transition: min-height 0.3s ease;
     .iframe {
-      height: calc(100% - 5px);
+      height: 100%;
       width: 100%;
     }
   }

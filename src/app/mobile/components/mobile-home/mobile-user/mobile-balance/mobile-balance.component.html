@@ -1,0 +1,67 @@
+<div class="content">
+  <div class="cards">
+      <gb-amount-card
+        class="amount-cards-component"
+        buttonType="Deposit"
+        buttonColor="yellow"
+        dropdownButtonType="squad"
+        [isMobile]="true"
+        [data]="balance"
+      ></gb-amount-card>
+      <gb-amount-card
+        class="amount-cards-component"
+        buttonType="My Bonuses"
+        buttonColor="gray"
+        dropdownButtonType="squad"
+        [data]="bonus"
+      ></gb-amount-card>
+    <div class="plastic-cards">
+      <div class="plastic-cards--cover">
+        <div class="header">
+          <span class="title">Your Cards</span>
+          <div class="card-count">
+            <div class="card-count--cover">2</div>
+          </div>
+        </div>
+        <div class="body">
+          <gb-plastic-card
+            *ngFor="let card of cards"
+            class="bank-card-component"
+            [cardType]="card.type"
+            [cardNumber]="card.cardNumber"
+            [isDeposit]="false"
+          ></gb-plastic-card>
+          <div class="add-card-zone">
+            <svg>
+              <use xlink:href="assets/icons/global-sprint.svg#gb-plus"></use>
+            </svg>
+            <span>ADD CARD</span>
+            <gb-attach-new-card class="attach-new-card" [isMobile]="true"></gb-attach-new-card>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="methods">
+    <div appResizeEnd (resizeEnd)="onResizeEnd()" #tooltipRef class="wrapper">
+      <div class="tabs-header">
+        <div #haederRef class="header-space"></div>
+        <div class="header-items">
+          <ng-container *ngFor="let option of OPTIONS">
+            <div #tabElementRef class="item" [class.active]="option.isActive" (click)="selectTab($event.target, option)">
+              <span class="title">{{ option.name }}</span>
+              <div *ngIf="option.isActive" class="background"></div>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+
+      <div class="body" [ngSwitch]="selectedOption.id">
+        <gb-deposit *ngSwitchCase="0"></gb-deposit>
+        <gb-withdraw *ngSwitchCase="1"></gb-withdraw>
+        <gb-withdraw-status *ngSwitchCase="2"></gb-withdraw-status>
+        <gb-balance-history *ngSwitchCase="3"></gb-balance-history>
+      </div>
+    </div>
+  </div>
+</div>

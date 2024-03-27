@@ -1,56 +1,96 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+} from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-verify-code',
+  selector: 'gb-verify-code',
   templateUrl: './verify-code.component.html',
   styleUrl: './verify-code.component.scss',
 })
-export class VerifyCodeComponent {
+export class VerifyCodeComponent implements AfterViewInit {
   @Output('emitTabValue') emitTabValue: EventEmitter<any> = new EventEmitter();
   @Input('isMobile') isMobile: boolean = false;
+  public lastDigit: string = '';
 
-  inputs: string[] = ['', '', '', '', '', ''];
+  public ngAfterViewInit() {
+    const inputsList = document.getElementById('inputs_list');
+    if (inputsList) inputsList.children[0].querySelector('input')?.focus();
+  }
 
   public readonly verifyForm = new FormGroup({
-    code: new FormControl('', [
+    digit_1: new FormControl({ value: '', disabled: false }, [
       Validators.required,
-      Validators.minLength(6),
-      Validators.maxLength(6),
+      Validators.pattern('^\d{1}$'),
+    ]),
+    digit_2: new FormControl({ value: '', disabled: true }, [
+      Validators.required,
+      Validators.pattern('^\d{1}$'),
+    ]),
+    digit_3: new FormControl({ value: '', disabled: true }, [
+      Validators.required,
+      Validators.pattern('^\d{1}$'),
+    ]),
+    digit_4: new FormControl({ value: '', disabled: true }, [
+      Validators.required,
+      Validators.pattern('^\d{1}$'),
+    ]),
+    digit_5: new FormControl({ value: '', disabled: true }, [
+      Validators.required,
+      Validators.pattern('^\d{1}$'),
+    ]),
+    digit_6: new FormControl({ value: '', disabled: true }, [
+      Validators.required,
+      Validators.pattern('^\d{1}$'),
     ]),
   });
 
-  public onInputChange(index: number, event: any) {
+  public onInputChange(value: number, event: any) {
     const inputLength = event.target.value.length;
-    const inputValue = event.target.value;
-    const regex = /^\d*$/;
-    
-    if (regex.test(inputValue)) {
-      if (inputLength === 1 && index < 5) {
-        const nextInput = event.target.parentElement.nextElementSibling.querySelector('input');
-        if (nextInput) {
-          nextInput.focus();
-        }
+    if (inputLength === 1 && value < 6) {
+      const nextInput =
+        event.target.parentElement.nextElementSibling?.querySelector('input');
+      if (nextInput) {
+        nextInput.disabled = false;
+        nextInput.focus();
       }
-    } else {
-      event.target.value = '';
+    } else if (value === 6) {
+      event.target.value = event.target.value[0];
     }
   }
 
-  public onInputRemove(index: number, event: any) {
-    if ((event.code === 'Backspace' || event.keyCode === 8) && index > 0) {
+  public onInputRemove(value: number, event: any) {
+    if (
+      (event.code === 'Backspace' ||
+        event.keyCode === 8 ||
+        event.code === 'ArrowLeft') &&
+      value > 1
+    ) {
       const inputLength = event.target.value.length;
-      if (inputLength === 0 && index > 0) {
-        const prevInput = event.target.parentElement.previousElementSibling.querySelector('input');
+      if (inputLength === 0 && value > 1) {
+        const prevInput =
+          event.target.parentElement.previousElementSibling?.querySelector(
+            'input'
+          );
         if (prevInput) {
+          event.target.parentElement.querySelector('input').disabled = true;
+          prevInput.value = '';
           prevInput.focus();
         }
+      } else if (value === 1) {
+        event.target.value = '';
       }
     }
   }
 
-  public onSend() {
-    this.emitTabValue.emit(3);
+  public onVerify() {
+    if (this.verifyForm.valid) {
+      this.emitTabValue.emit(3);
+    }
   }
 
   public onResend() {

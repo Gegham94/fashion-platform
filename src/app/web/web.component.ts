@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-web',
+  selector: 'gb-web',
   templateUrl: './web.component.html',
   styleUrls: ['./web.component.scss'],
 })

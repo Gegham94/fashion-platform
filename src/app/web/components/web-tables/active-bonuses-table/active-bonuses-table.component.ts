@@ -3,7 +3,7 @@ import { TYPE_FILTER, STATE, TYPE, CURRENCY } from 'src/app/shared/constants/fil
 import { TYPE_ACTIVE_BONUSES_TABLE_DATA, ACTIVE_BONUSES_TABLE_DATA, TYPE_TABLE_HEADER, ACTIVE_BONUSES_TABLE_HEADER } from 'src/app/shared/constants/tables';
 
 @Component({
-  selector: 'app-active-bonuses-table',
+  selector: 'gb-active-bonuses-table',
   templateUrl: './active-bonuses-table.component.html',
   styleUrl: './active-bonuses-table.component.scss',
 })

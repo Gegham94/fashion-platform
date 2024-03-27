@@ -1,0 +1,213 @@
+<gb-loader *ngIf="isLoading; else contentModel"></gb-loader>
+<ng-template #contentModel>
+  <div class="content">
+    <div class="cover">
+      <div class="header">
+        <span
+          class="title"
+          [class.active]="selectedTab === 'profile_info'"
+          (click)="selectTab('profile_info')"
+          >Profile Info</span
+        >
+        <span
+          class="title"
+          [class.active]="selectedTab === 'notifications'"
+          (click)="selectTab('notifications')"
+          >Notification</span
+        >
+        <span
+          class="title"
+          [class.active]="selectedTab === 'protection'"
+          (click)="selectTab('protection')"
+          >Protection</span
+        >
+      </div>
+      <div class="body">
+        <ng-container *ngIf="selectedTab === 'profile_info'">
+          <div class="row">
+            <div class="form-content">
+              <form [formGroup]="form" class="dark">
+                <div class="row">
+                  <label
+                    class="label left margin-right"
+                    [class.success]="firstNameControl.touched && firstNameControl.valid"
+                    [class.error]="firstNameControl.touched && firstNameControl.invalid"
+                  >
+                    <input
+                      class="input"
+                      type="text"
+                      placeholder="First Name"
+                      formControlName="firstName"
+                    />
+                  </label>
+                  <label
+                    class="label right margin-left"
+                    [class.success]="lastNameControl.touched && lastNameControl.valid"
+                    [class.error]="lastNameControl.touched && lastNameControl.invalid"
+                  >
+                    <input
+                      class="input"
+                      type="text"
+                      placeholder="Last Name"
+                      formControlName="lastName"
+                    />
+                  </label>
+                </div>
+                <div class="row">
+                  <label
+                    class="label left margin-right"
+                    [class.success]="emailControl.touched && emailControl.valid"
+                    [class.error]="emailControl.touched && emailControl.invalid"
+                  >
+                    <input
+                      class="input"
+                      type="text"
+                      placeholder="Email"
+                      formControlName="email"
+                    />
+                  </label>
+                  <label
+                    class="label right margin-left"
+                    [class.success]="dateOfBirthControl.touched && dateOfBirthControl.valid"
+                    [class.error]="dateOfBirthControl.touched && dateOfBirthControl.invalid"
+                  >
+                    <input
+                      class="input"
+                      type="text"
+                      placeholder="MM/DD/YYYY"
+                      formControlName="dateOfBirth"
+                    />
+                  </label>
+                </div>
+                <div class="row">
+                  <gb-multiselect-autocomplate
+                    [data]="country"
+                    [keyName]="'id'"
+                    placeholder="Country"
+                    class="margin-right"
+                    inputColor="dark"
+                    [singleSelect]="true"
+                    (onSelect)="onSelectValue('country', $event)"
+                  ></gb-multiselect-autocomplate>
+                  <gb-multiselect-autocomplate
+                    [data]="city"
+                    cutSide="right"
+                    [keyName]="'id'"
+                    placeholder="City"
+                    class="margin-left"
+                    [singleSelect]="true"
+                    inputColor="dark"
+                    (onSelect)="onSelectValue('city', $event)"
+                  ></gb-multiselect-autocomplate>
+                </div>
+                <div class="row">
+                  <gb-multiselect-autocomplate
+                    [data]="currency"
+                    [keyName]="'id'"
+                    placeholder="Currency"
+                    class="margin-right"
+                    inputColor="dark"
+                    (onSelect)="onSelectValue('currency', $event)"
+                  ></gb-multiselect-autocomplate>
+                  <label
+                    class="label right margin-left"
+                    [class.success]="zipCodeControl.touched && zipCodeControl.valid"
+                    [class.error]="zipCodeControl.touched && zipCodeControl.invalid"
+                  >
+                    <input
+                      class="input"
+                      type="text"
+                      placeholder="Zip Code"
+                      formControlName="zipCode"
+                    />
+                  </label>
+                </div>
+                <div class="row">
+                  <gb-multiselect-autocomplate
+                    [data]="phoneCode"
+                    [keyName]="'id'"
+                    cutSide="left"
+                    placeholder="+61789"
+                    class="phone-code margin-right"
+                    inputColor="dark"
+                    [singleSelect]="true"
+                    (onSelect)="onSelectValue('phoneCode', $event)"
+                  ></gb-multiselect-autocomplate>
+                  <label
+                    class="label right margin-left"
+                    [class.success]="phoneNumberControl.touched && phoneNumberControl.valid"
+                    [class.error]="phoneNumberControl.touched && phoneNumberControl.invalid"
+                  >
+                    <input
+                      class="input"
+                      type="text"
+                      placeholder="Phone Number"
+                      formControlName="phoneNumber"
+                    />
+                  </label>
+                </div>
+                <div class="row">
+                  <gb-multiselect-autocomplate
+                    [data]="typeOfDocument"
+                    [keyName]="'id'"
+                    placeholder="Doc. Type"
+                    inputColor="dark"
+                    class="margin-right"
+                    (onSelect)="onSelectValue('typeOfDocument', $event)"
+                  ></gb-multiselect-autocomplate>
+                  <div class="upload-wrapper">
+                    <label
+                      class="upload-wrapper-label label right margin-left"
+                      [class.success]="docNumberControl.touched && docNumberControl.valid"
+                      [class.error]="docNumberControl.touched && docNumberControl.invalid"
+                    >
+                      <input
+                        class="input"
+                        type="text"
+                        placeholder="Document Number"
+                        formControlName="documentNumber"
+                      />
+                    </label>
+                    <label
+                      class="upload-file dark"
+                      (click)="onUploadDocument()"
+                    >
+                      <svg>
+                        <use
+                          xlink:href="assets/icons/global-sprint.svg#gb-file-upload-arrow"
+                        ></use>
+                      </svg>
+                      <input type="file" formControlName="uploadedDocument" />
+                    </label>
+                  </div>
+                </div>
+              </form>
+            </div>
+            
+          </div>
+          <div class="submit">
+            <button type="submit">
+              <div class="cover">
+                <span>Change</span>
+              </div>
+            </button>
+          </div>
+        </ng-container>
+        <ng-container *ngIf="selectedTab === 'notifications'">
+          <div class="row">
+            <gb-edit-profile-notification [isMobile]="true"></gb-edit-profile-notification>
+          </div>
+        </ng-container>
+        <ng-container *ngIf="selectedTab === 'protection'">
+          <div class="row">
+            <gb-wallets [isMobile]="true"></gb-wallets>
+          </div>
+          <div class="row">
+            <gb-send-money-friends [isMobile]="true"></gb-send-money-friends>
+          </div>
+        </ng-container>
+        
+      </div>
+    </div>
+  </div>
+</ng-template>

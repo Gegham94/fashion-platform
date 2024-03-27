@@ -1,25 +1,20 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { WebComponent } from './web.component';
-import { AuthGuard } from '../shared/guards/auth.guard';
 
 const routes: Routes = [
   {
     path: '',
     component: WebComponent,
     children: [
+      {path: '', redirectTo: 'first_page', pathMatch: 'full'},
       {
-        path: '',
-        canActivate: [AuthGuard],
-        loadChildren: () => import("./modules/web-user/web-user.module").then(m => m.WebUserModule),
+        path: 'first_page',
+        loadChildren: () => import("./components/web-first-page/web-first-page.module").then(m => m.WebFirstPageModule),
       },
       {
         path: 'home',
-        loadChildren: () => import("./modules/web-home/web-home.module").then(m => m.WebHomeModule),
-      },
-      {
-        path: 'about',
-        loadChildren: () => import("./modules/web-about/web-about.module").then(m => m.WebAboutModule),
+        loadChildren: () => import("./components/web-home/web-home.module").then(m => m.WebHomeModule),
       },
     ],
   },

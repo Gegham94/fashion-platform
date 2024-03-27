@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import { IUserInfo } from 'src/app/shared/interfaces/IUserInfo';
 
 @Component({
-  selector: 'app-mobile-user-info-card',
+  selector: 'gb-mobile-user-info-card',
   templateUrl: './mobile-user-info-card.component.html',
   styleUrls: ['./mobile-user-info-card.component.scss']
 })

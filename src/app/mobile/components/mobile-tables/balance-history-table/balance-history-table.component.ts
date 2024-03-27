@@ -4,7 +4,7 @@ import { TYPE_FILTER, STATUS, METHOD, CURRENCY } from 'src/app/shared/constants/
 import { TYPE_BALANCE_HISTORY_TABLE_DATA, BALANCE_HISTORY_TABLE_DATA, TYPE_TABLE_HEADER, BALANCE_HISTORY_TABLE_HEADER } from 'src/app/shared/constants/tables';
 
 @Component({
-  selector: 'app-balance-history-table',
+  selector: 'gb-balance-history-table',
   templateUrl: './balance-history-table.component.html',
   styleUrls: ['./balance-history-table.component.scss'],
   animations: [collapse],

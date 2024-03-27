@@ -6,7 +6,6 @@
   align-items: center;
   justify-content: center;
   height: 100%;
-  z-index: 999;
   &__user {
     &:hover {
       opacity: 0.9;
@@ -55,11 +54,10 @@
     transition: all 0.15s ease;
     background: $dark-gray;
     width: 0;
-    height: 50%;
     &.active {
       width: 100%;
-      margin-left: -14%;
-      padding: 2% 2% 2% 0;
+      margin-left: -13%;
+      padding: 1% 1% 1% 0;
     }
     &::before {
       content: "";

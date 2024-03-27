@@ -1,0 +1,72 @@
+<gb-loader *ngIf="isLoading; else contentModel"></gb-loader>
+<ng-template #contentModel>
+  <div class="content">
+    <div class="cards">
+      <div class="amount-cards">
+        <gb-amount-card
+          class="amount-cards-component"
+          buttonType="Deposit"
+          buttonColor="yellow"
+          dropdownButtonType="squad"
+          [data]="balance"
+        ></gb-amount-card>
+        <gb-amount-card
+          class="amount-cards-component"
+          buttonType="My Bonuses"
+          buttonColor="gray"
+          dropdownButtonType="squad"
+          [data]="bonus"
+        ></gb-amount-card>
+      </div>
+      <div class="plastic-cards">
+        <div class="plastic-cards--cover">
+          <div class="header">
+            <span class="title">Your Cards</span>
+            <div class="card-count">
+              <div class="card-count--cover">2</div>
+            </div>
+          </div>
+          <div class="body">
+            <gb-plastic-card
+              *ngFor="let card of cards"
+              class="bank-card-component"
+              [cardType]="card.type"
+              [cardNumber]="card.cardNumber"
+              [isDeposit]="false"
+            ></gb-plastic-card>
+            <div class="add-card-zone">
+              <svg>
+                <use xlink:href="assets/icons/global-sprint.svg#gb-plus"></use>
+              </svg>
+              <span>ADD CARD</span>
+              <gb-attach-new-card class="attach-new-card" [isMobile]="false"></gb-attach-new-card>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="methods">
+      <div class="wrapper">
+        <div class="menu" [ngStyle]="{ '--idx': selectedOption.index }">
+          <div class="border_top"></div>
+          <div
+            *ngFor="let option of OPTIONS"
+            class="menu_item"
+            (click)="onSelectItemHandler(option)"
+            [ngClass]="{ menu_item_active: selectedOption.id === option.id }"
+          >
+            <span>{{ option.name }}</span>
+          </div>
+          <div class="background"></div>
+          <div class="border_bottom"></div>
+        </div>
+        <div class="body" [ngSwitch]="selectedOption.id">
+          <gb-deposit *ngSwitchCase="0"></gb-deposit>
+          <gb-withdraw *ngSwitchCase="1"></gb-withdraw>
+          <gb-withdraw-status *ngSwitchCase="2"></gb-withdraw-status>
+          <gb-balance-history *ngSwitchCase="3"></gb-balance-history>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>

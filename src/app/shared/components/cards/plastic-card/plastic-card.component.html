@@ -1,13 +1,14 @@
-<div class="content">
+<div class="content" *ngIf="!isDeposit; else cardModel">
   <div class="header">
-    <svg><use xlink:href="assets/icons/global-sprint.svg#gb-visa-card"></use></svg>
+    <svg *ngIf="cardType === 'visa'"><use xlink:href="assets/icons/global-sprint.svg#gb-visa-card"></use></svg>
+    <svg *ngIf="cardType === 'master'"><use xlink:href="assets/icons/global-sprint.svg#gb-master-card"></use></svg>
     <div class="actions">
       <span class="edit"></span>
       <span class="delete"></span>
     </div>
   </div>
-  <div class="body">
-    {{plasticCardNumber | cardNumber }}
+  <div class="body" *ngIf="cardNumber">
+    {{cardNumber | cardNumber }}
   </div>
   <div class="footer">
     <div class="button-wrapper">
@@ -15,3 +16,16 @@
     </div>
   </div>
 </div>
+<ng-template #cardModel>
+  <div class="card-info-content">
+    <div class="card-info-wrapper">
+      <div class="card-info-header">
+        <svg *ngIf="option.type === 'visa'"><use xlink:href="assets/icons/global-sprint.svg#gb-visa-card"></use></svg>
+        <svg *ngIf="option.type === 'master'"><use xlink:href="assets/icons/global-sprint.svg#gb-master-card"></use></svg>
+      </div>
+      <div class="card-info-body">
+        {{option.cardNumber | cardNumber }}
+      </div>
+    </div>
+  </div>
+</ng-template>

@@ -10,7 +10,7 @@ import {
 } from '@angular/core';
 
 @Component({
-  selector: 'app-recover-password',
+  selector: 'gb-recover-password',
   templateUrl: './recover-password.component.html',
   styleUrl: './recover-password.component.scss',
 })

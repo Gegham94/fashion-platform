@@ -1,7 +1,6 @@
 import {
   Component,
   EventEmitter,
-  Input,
   OnDestroy,
   Output,
   TemplateRef,
@@ -9,21 +8,23 @@ import {
   ViewContainerRef,
 } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import Validation from 'src/app/shared/password-validation/validation';
+import { switchMap } from 'rxjs';
 import { collapse } from 'src/app/shared/animations/animations';
 import {
-  ICountry,
-  ICity,
-  ICurrency,
-  IPhoneCode,
-  ITypeOfDocument,
-} from 'src/app/shared/interfaces/IUserInfo';
-import { AuthService } from 'src/app/shared/services/auth.service';
+  CITY,
+  COUNTRY,
+  CURRENCY,
+  GENDER,
+  PHONE_CODE,
+  TYPE_FILTER,
+  TYPE_OF_DOCUMENT,
+} from 'src/app/shared/constants/filters';
 import { ISignup } from 'src/app/shared/interfaces/IAuth';
-import { switchMap } from 'rxjs';
+import Validation from 'src/app/shared/password-validation/validation';
+import { AuthService } from 'src/app/shared/services/auth.service';
 
 @Component({
-  selector: 'app-web-sign-up',
+  selector: 'gb-web-sign-up',
   templateUrl: './web-sign-up.component.html',
   styleUrls: ['./web-sign-up.component.scss'],
   animations: [collapse],
@@ -35,11 +36,13 @@ export class WebSignUpComponent implements OnDestroy {
 
   private modalElement: any;
   public stepId: number = 1;
-  public countries!: ICountry[];
-  public cities!: ICity[];
-  public currencies!: ICurrency[];
-  public phoneCodes!: IPhoneCode[];
-  public typeOfDocuments!: ITypeOfDocument[];
+
+  public country: TYPE_FILTER[] = COUNTRY;
+  public city: TYPE_FILTER[] = CITY;
+  public currency: TYPE_FILTER[] = CURRENCY;
+  public phoneCode: TYPE_FILTER[] = PHONE_CODE;
+  public typeOfDocument: TYPE_FILTER[] = TYPE_OF_DOCUMENT;
+  public gender: TYPE_FILTER[] = GENDER;
 
   public readonly firstStepForm = new FormGroup({
     firstName: new FormControl('', [Validators.required]),
@@ -59,6 +62,7 @@ export class WebSignUpComponent implements OnDestroy {
     phoneNumber: new FormControl('', [Validators.required]),
     typeOfDocument: new FormControl('', [Validators.required]),
     documentNumber: new FormControl('', [Validators.required]),
+    uploadedDocument: new FormControl([], [Validators.required]),
   });
 
   public readonly secondStepForm = new FormGroup(
@@ -90,132 +94,11 @@ export class WebSignUpComponent implements OnDestroy {
     private viewContainerRef: ViewContainerRef
   ) {}
 
-  public getFormValue(event: any) {}
-  public getFormStep2Value(event: any) {}
-
-  public ngOnInit(): void {}
-
   public ngOnDestroy(): void {
     this.destroyRegistrationDoneModal();
   }
 
-  public get userNameControl(): FormControl {
-    return this.secondStepForm.get('userName') as FormControl;
-  }
-  public get genderControl(): FormControl {
-    return this.secondStepForm.get('gender') as FormControl;
-  }
-  public get passwordControl(): FormControl {
-    return this.secondStepForm.get('password') as FormControl;
-  }
-  public get repeatPasswordControl(): FormControl {
-    return this.secondStepForm.get('repeatPassword') as FormControl;
-  }
-  public get referralBonusPromoCodeControl(): FormControl {
-    return this.secondStepForm.get('referralBonusPromoCode') as FormControl;
-  }
-
-  public set countryControlSetter(newValue: string) {
-    this.firstStepForm.get('country')?.setValue(newValue);
-  }
-  public set cityControlSetter(newValue: string) {
-    this.firstStepForm.get('city')?.setValue(newValue);
-  }
-  public set currencyControlSetter(newValue: string) {
-    this.firstStepForm.get('currency')?.setValue(newValue);
-  }
-  public set phoneCodeControlSetter(newValue: string) {
-    this.firstStepForm.get('phoneCode')?.setValue(newValue);
-  }
-  public set typeOfDocumentControlSetter(newValue: string) {
-    this.firstStepForm.get('typeOfDocument')?.setValue(newValue);
-  }
-
-  public handleCheckboxChange(checkboxId: string): void {
-    const checkbox = document.getElementById(checkboxId) as HTMLInputElement;
-    if (checkbox.checked) {
-      checkbox.parentElement?.classList.add('checked');
-    } else {
-      checkbox.parentElement?.classList.remove('checked');
-    }
-  }
-
-  public selectCountry(data: ICountry): void {
-    this.countries.forEach((country) => {
-      if (country.value === data.value) {
-        country.isSelected = true;
-        this.countryControlSetter = country.value;
-      } else {
-        country.isSelected = false;
-      }
-    });
-  }
-
-  public selectCity(data: ICity): void {
-    this.cities.forEach((city) => {
-      if (city.value === data.value) {
-        city.isSelected = true;
-        this.cityControlSetter = city.value;
-      } else {
-        city.isSelected = false;
-      }
-    });
-  }
-  public selectCurrency(data: ICurrency): void {
-    this.currencies.forEach((currency) => {
-      if (currency.value === data.value) {
-        currency.isSelected = true;
-        this.currencyControlSetter = currency.value;
-      } else {
-        currency.isSelected = false;
-      }
-    });
-  }
-  public selectPhoneCode(data: IPhoneCode): void {
-    this.phoneCodes.forEach((code) => {
-      if (code.value === data.value) {
-        code.isSelected = true;
-        this.phoneCodeControlSetter = code.value;
-      } else {
-        code.isSelected = false;
-      }
-    });
-  }
-  public selectTypeOfDocument(data: ITypeOfDocument): void {
-    this.typeOfDocuments.forEach((type) => {
-      if (type.value === data.value) {
-        type.isSelected = true;
-        this.typeOfDocumentControlSetter = type.value;
-      } else {
-        type.isSelected = false;
-      }
-    });
-  }
-
-  public apply(): void {}
-
-  public nextStep(): void {
-    if (this.firstStepForm.valid) {
-      this.stepId++;
-      this.secondStepForm.markAsUntouched();
-    } else {
-      this.firstStepForm.markAllAsTouched();
-    }
-  }
-
-  public previousStep(): void {
-    this.stepId--;
-  }
-
-  public captchaResolved(): boolean {
-    return true;
-  }
-
-  public onCaptchaResolved(event: any): void {
-    console.log('reCAPTCHA resolved with response:', event);
-  }
-
-  public submitForm(): void {
+  public signUp(): void {
     this.openRegistrationDoneModal();
     let formData: ISignup;
     if (this.signupForm.valid) {
@@ -231,9 +114,45 @@ export class WebSignUpComponent implements OnDestroy {
           })
         )
         .subscribe();
-    } else {
-      this.signupForm.markAllAsTouched();
     }
+  }
+
+  public onSelectValue(controlName: string, options: any) {
+    this.firstStepForm.get(`${controlName}`)?.setValue(options);
+  }
+
+  public nextStep(): void {
+    if (this.firstStepForm && this.firstStepForm.valid) {
+      this.stepId++;
+      this.secondStepForm.markAsUntouched();
+    } else {
+      this.firstStepForm.markAllAsTouched();
+    }
+  }
+
+  public previousStep(): void {
+    this.stepId--;
+  }
+
+  public apply(): void {}
+
+  public onUploadDocument() {}
+
+  public handleCheckboxChange(checkboxId: string): void {
+    const checkbox = document.getElementById(checkboxId) as HTMLInputElement;
+    if (checkbox.checked) {
+      checkbox.parentElement?.classList.add('checked');
+    } else {
+      checkbox.parentElement?.classList.remove('checked');
+    }
+  }
+
+  public captchaResolved(): boolean {
+    return true;
+  }
+
+  public onCaptchaResolved(event: any): void {
+    console.log('reCAPTCHA resolved with response:', event);
   }
 
   //REGISTRATION DONE MODAL

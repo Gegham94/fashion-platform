@@ -1,0 +1,211 @@
+<gb-loader *ngIf="isLoading; else contentModel"></gb-loader>
+<ng-template #contentModel>
+  <div class="content">
+    <div class="first-col">
+      <div class="profile-info">
+        <div class="cover">
+          <div class="header">
+            <span class="title">Profile info</span>
+            <button (click)="onSaveChange()">
+              <div class="cover">
+                <span>Save Change</span>
+              </div>
+            </button>
+          </div>
+          <div class="body">
+            <div class="form-content">
+              <form [formGroup]="form" class="light">
+                <div class="row">
+                  <label
+                    class="label left"
+                    [class.success]="firstNameControl.touched && firstNameControl.valid"
+                    [class.error]="firstNameControl.touched && firstNameControl.invalid"
+                  >
+                    <input
+                      class="input"
+                      type="text"
+                      placeholder="First Name"
+                      formControlName="firstName"
+                    />
+                  </label>
+                  <label
+                    class="label middle"
+                    [class.success]="optionalControl.touched && optionalControl.valid"
+                    [class.error]="optionalControl.touched && optionalControl.invalid"
+                  >
+                    <input
+                      class="input"
+                      type="text"
+                      placeholder="Optional"
+                      formControlName="optional"
+                    />
+                  </label>
+                  <label
+                    class="label right margin-left"
+                    [class.success]="lastNameControl.touched && lastNameControl.valid"
+                    [class.error]="lastNameControl.touched && lastNameControl.invalid"
+                  >
+                    <input
+                      class="input"
+                      type="text"
+                      placeholder="Last Name"
+                      formControlName="lastName"
+                    />
+                  </label>
+                </div>
+                <div class="row">
+                  <label
+                    class="label left"
+                    [class.success]="emailControl.touched && emailControl.valid"
+                    [class.error]="emailControl.touched && emailControl.invalid"
+                  >
+                    <input
+                      class="input"
+                      type="text"
+                      placeholder="Email"
+                      formControlName="email"
+                    />
+                  </label>
+                  <label
+                    class="label right"
+                    [class.success]="dateOfBirthControl.touched && dateOfBirthControl.valid"
+                    [class.error]="dateOfBirthControl.touched && dateOfBirthControl.invalid"
+                  >
+                    <input
+                      class="input"
+                      type="text"
+                      placeholder="MM/DD/YYYY"
+                      formControlName="dateOfBirth"
+                    />
+                  </label>
+                </div>
+                <div class="row">
+                  <gb-multiselect-autocomplate
+                    [data]="country"
+                    [keyName]="'id'"
+                    placeholder="Country"
+                    class="margin-right"
+                    inputColor="light"
+                    [singleSelect]="true"
+                    (onSelect)="onSelectValue('country', $event)"
+                  ></gb-multiselect-autocomplate>
+                  <gb-multiselect-autocomplate
+                    [data]="city"
+                    cutSide="both"
+                    [keyName]="'id'"
+                    placeholder="City"
+                    [singleSelect]="true"
+                    inputColor="light"
+                    (onSelect)="onSelectValue('city', $event)"
+                  ></gb-multiselect-autocomplate>
+                  <label
+                    class="label right margin-left"
+                    [class.success]="zipCodeControl.touched && zipCodeControl.valid"
+                    [class.error]="zipCodeControl.touched && zipCodeControl.invalid"
+                  >
+                    <input
+                      class="input"
+                      type="number"
+                      placeholder="Zip Code"
+                      formControlName="zipCode"
+                    />
+                  </label>
+                </div>
+                <div class="row">
+                  <gb-multiselect-autocomplate
+                    [data]="currency"
+                    [keyName]="'id'"
+                    placeholder="Currency"
+                    class="margin-right"
+                    inputColor="light"
+                    (onSelect)="onSelectValue('currency', $event)"
+                  ></gb-multiselect-autocomplate>
+                  <gb-multiselect-autocomplate
+                    [data]="phoneCode"
+                    [keyName]="'id'"
+                    cutSide="both"
+                    placeholder="+61789"
+                    inputColor="light"
+                    class="phone-code"
+                    [singleSelect]="true"
+                    (onSelect)="onSelectValue('phoneCode', $event)"
+                  ></gb-multiselect-autocomplate>
+                  <label
+                    class="label right margin-left"
+                    [class.success]="phoneNumberControl.touched && phoneNumberControl.valid"
+                    [class.error]="phoneNumberControl.touched && phoneNumberControl.invalid"
+                  >
+                    <input
+                      class="input"
+                      type="number"
+                      placeholder="Phone Number"
+                      formControlName="phoneNumber"
+                    />
+                  </label>
+                </div>
+                <div class="row">
+                  <gb-multiselect-autocomplate
+                    [data]="typeOfDocument"
+                    [keyName]="'id'"
+                    placeholder="Doc. Type"
+                    class="margin-right"
+                    inputColor="light"
+                    (onSelect)="onSelectValue('typeOfDocument', $event)"
+                  ></gb-multiselect-autocomplate>
+                  <div class="upload-wrapper">
+                    <label
+                      class="label right"
+                      [class.success]="docNumberControl.touched && docNumberControl.valid"
+                      [class.error]="docNumberControl.touched && docNumberControl.invalid"
+                    >
+                      <input
+                        class="input"
+                        type="number"
+                        placeholder="Document Number"
+                        formControlName="documentNumber"
+                      />
+                    </label>
+                    <label
+                      class="upload-file light"
+                      (click)="onUploadDocument()"
+                    >
+                      <svg>
+                        <use
+                          xlink:href="assets/icons/global-sprint.svg#gb-file-upload-arrow"
+                        ></use>
+                      </svg>
+                      <input type="file" formControlName="uploadedDocument" />
+                    </label>
+                  </div>
+                </div>
+              </form>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+      <div class="notification">
+        <div class="cover">
+          <div class="header">
+            <span class="title">Notification</span>
+          </div>
+          <div class="body">
+            <gb-edit-profile-notification></gb-edit-profile-notification>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="protection">
+      <div class="cover">
+        <div class="header">
+          <span class="title">Protection</span>
+        </div>
+        <div class="body">
+          <gb-wallets></gb-wallets>
+          <gb-send-money-friends></gb-send-money-friends>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>

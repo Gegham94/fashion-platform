@@ -1,0 +1,36 @@
+<gb-loader *ngIf="isLoading; else contentModel"></gb-loader>
+<ng-template #contentModel>
+  <div class="content">
+    <div class="self-exclusion">
+      <div class="cover">
+        <div class="header">
+          <span class="title">Self-Exclusion</span>
+          <span class="sub-title"
+            >If you think that you are spending too much time or money on
+            gambling, then you can ask to be self-excluded.</span
+          >
+        </div>
+        <div class="body">
+          <gb-time-out></gb-time-out>
+          <gb-self-exclusion></gb-self-exclusion>
+        </div>
+      </div>
+    </div>
+    <div class="bet-deposit-limits">
+      <div class="cover">
+        <div class="header">
+          <span class="title">Bet and Deposit limits</span>
+          <span class="sub-title"
+            >If you think that you are spending too much time or money on
+            gambling, then you can set Bet and Deposit limits.</span
+          >
+        </div>
+        <div class="body">
+          <gb-deposit-card></gb-deposit-card>
+          <gb-casino-card></gb-casino-card>
+          <gb-sportsbook-card></gb-sportsbook-card>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>

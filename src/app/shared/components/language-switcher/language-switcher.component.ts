@@ -9,11 +9,10 @@ import {
 } from '@angular/core';
 import { TYPE_LANGUAGES, LANGUAGES } from '../../constants/languages';
 import { collapse } from '../../animations/animations';
-import { Subject } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({
-  selector: 'app-language-switcher',
+  selector: 'gb-language-switcher',
   templateUrl: './language-switcher.component.html',
   styleUrl: './language-switcher.component.scss',
   animations: [collapse],

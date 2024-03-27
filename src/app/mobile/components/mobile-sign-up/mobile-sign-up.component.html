@@ -40,20 +40,168 @@
     </div>
   </div>
 
-  <form
-    [formGroup]="signupForm"
+  <div
     class="container--form"
-    (ngSubmit)="submitForm()"
   >
-    <div
-      formGroupName="firstStepForm"
-      class="container--form__firstStepForm"
-      *ngIf="stepId === 1"
-    >
-      <app-mobile-profile-form
-        inputColor="dark"
-        (formValue)="getFormValue($event)"
-      ></app-mobile-profile-form>
+    <div class="container--form__firstStepForm" *ngIf="stepId === 1">
+      <div class="form-1-content">
+        <form [formGroup]="firstStepForm" class="dark">
+          <div class="row">
+            <label
+              class="label left margin-right"
+              [class.success]="firstStepForm.get('firstName')?.touched && firstStepForm.get('firstName')?.valid"
+              [class.error]="firstStepForm.get('firstName')?.touched && firstStepForm.get('firstName')?.invalid"
+            >
+              <input
+                class="input"
+                type="text"
+                placeholder="First Name"
+                formControlName="firstName"
+              />
+            </label>
+            <label
+              class="label right margin-left"
+              [class.success]="firstStepForm.get('lastName')?.touched && firstStepForm.get('lastName')?.valid"
+              [class.error]="firstStepForm.get('lastName')?.touched && firstStepForm.get('lastName')?.invalid"
+            >
+              <input
+                class="input"
+                type="text"
+                placeholder="Last Name"
+                formControlName="lastName"
+              />
+            </label>
+          </div>
+          <div class="row">
+            <label
+              class="label left margin-right"
+              [class.success]="firstStepForm.get('email')?.touched && firstStepForm.get('email')?.valid"
+              [class.error]="firstStepForm.get('email')?.touched && firstStepForm.get('email')?.invalid"
+            >
+              <input
+                class="input"
+                type="text"
+                placeholder="Email"
+                formControlName="email"
+              />
+            </label>
+            <label
+              class="label right margin-left"
+              [class.success]="firstStepForm.get('dateOfBirth')?.touched && firstStepForm.get('dateOfBirth')?.valid"
+              [class.error]="firstStepForm.get('dateOfBirth')?.touched && firstStepForm.get('dateOfBirth')?.invalid"
+            >
+              <input
+                class="input"
+                type="text"
+                placeholder="MM/DD/YYYY"
+                formControlName="dateOfBirth"
+              />
+            </label>
+          </div>
+          <div class="row">
+            <gb-multiselect-autocomplate
+              [data]="country"
+              [keyName]="'id'"
+              placeholder="Country"
+              class="margin-right"
+              inputColor="dark"
+              [singleSelect]="true"
+              (onSelect)="onSelectValue('country', $event)"
+            ></gb-multiselect-autocomplate>
+            <gb-multiselect-autocomplate
+              [data]="city"
+              cutSide="right"
+              [keyName]="'id'"
+              placeholder="City"
+              class="margin-left"
+              [singleSelect]="true"
+              inputColor="dark"
+              (onSelect)="onSelectValue('city', $event)"
+            ></gb-multiselect-autocomplate>
+          </div>
+          <div class="row">
+            <gb-multiselect-autocomplate
+              [data]="currency"
+              [keyName]="'id'"
+              placeholder="Currency"
+              class="margin-right"
+              inputColor="dark"
+              (onSelect)="onSelectValue('currency', $event)"
+            ></gb-multiselect-autocomplate>
+            <label
+              class="label right margin-left"
+              [class.success]="firstStepForm.get('zipCode')?.touched && firstStepForm.get('zipCode')?.valid"
+              [class.error]="firstStepForm.get('zipCode')?.touched && firstStepForm.get('zipCode')?.invalid"
+            >
+              <input
+                class="input"
+                type="text"
+                placeholder="Zip Code"
+                formControlName="zipCode"
+              />
+            </label>
+          </div>
+          <div class="row">
+            <gb-multiselect-autocomplate
+              [data]="phoneCode"
+              [keyName]="'id'"
+              cutSide="left"
+              placeholder="+61789"
+              class="phone-code margin-right"
+              inputColor="dark"
+              [singleSelect]="true"
+              (onSelect)="onSelectValue('phoneCode', $event)"
+            ></gb-multiselect-autocomplate>
+            <label
+              class="label right margin-left"
+              [class.success]="firstStepForm.get('phoneNumber')?.touched && firstStepForm.get('phoneNumber')?.valid"
+              [class.error]="firstStepForm.get('phoneNumber')?.touched && firstStepForm.get('phoneNumber')?.invalid"
+            >
+              <input
+                class="input"
+                type="text"
+                placeholder="Phone Number"
+                formControlName="phoneNumber"
+              />
+            </label>
+          </div>
+          <div class="row">
+            <gb-multiselect-autocomplate
+              [data]="typeOfDocument"
+              [keyName]="'id'"
+              placeholder="Doc. Type"
+              inputColor="dark"
+              class="margin-right"
+              (onSelect)="onSelectValue('typeOfDocument', $event)"
+            ></gb-multiselect-autocomplate>
+            <div class="upload-wrapper">
+              <label
+                class="upload-wrapper-label label right margin-left"
+                [class.success]="firstStepForm.get('documentNumber')?.touched && firstStepForm.get('documentNumber')?.valid"
+                [class.error]="firstStepForm.get('documentNumber')?.touched && firstStepForm.get('documentNumber')?.invalid"
+              >
+                <input
+                  class="input"
+                  type="text"
+                  placeholder="Document Number"
+                  formControlName="documentNumber"
+                />
+              </label>
+              <label
+                class="upload-file dark"
+                (click)="onUploadDocument()"
+              >
+                <svg>
+                  <use
+                    xlink:href="assets/icons/global-sprint.svg#gb-file-upload-arrow"
+                  ></use>
+                </svg>
+                <input type="file" formControlName="uploadedDocument" />
+              </label>
+            </div>
+          </div>
+        </form>
+      </div>
       <div class="container--form__firstStepForm__footer">
         <span
           href="#"
@@ -75,15 +223,124 @@
       </div>
     </div>
 
-    <div
-      formGroupName="secondStepForm"
-      class="container--form__secondStepForm"
-      *ngIf="stepId === 2"
-    >
-      <app-mobile-profile-form-step-2
-        inputColor="dark"
-        (formValue)="getFormStep2Value($event)"
-      ></app-mobile-profile-form-step-2>
+    <div class="container--form__secondStepForm" *ngIf="stepId === 2">
+      <div class="form-2-content">
+        <form [formGroup]="secondStepForm" class="dark" [ngStyle]="{ '--margin': '-15px', '--maxWidth': '125px'}">
+          <div class="row">
+            <label
+              class="label left margin-right"
+              [class.success]="secondStepForm.get('userName')?.touched && secondStepForm.get('userName')?.valid"
+              [class.error]="secondStepForm.get('userName')?.touched && secondStepForm.get('userName')?.invalid"
+            >
+              <input
+                class="input"
+                type="text"
+                placeholder="Username"
+                formControlName="userName"
+              />
+            </label>
+            <gb-multiselect-autocomplate
+              [data]="gender"
+              [keyName]="'id'"
+              placeholder="Gender"
+              cutSide="right"
+              [singleSelect]="true"
+              class="margin-left"
+              inputColor="dark"
+              (onSelect)="onSelectValue('gender', $event)"
+            ></gb-multiselect-autocomplate>
+          </div>
+          <div class="row">
+            <label
+              class="label left margin-right"
+              [class.success]="secondStepForm.get('password')?.touched && secondStepForm.get('password')?.valid"
+              [class.error]="secondStepForm.get('password')?.touched && secondStepForm.get('password')?.invalid"
+            >
+              <input
+                class="input"
+                type="text"
+                placeholder="Password"
+                formControlName="password"
+              />
+            </label>
+            <label
+              class="label right margin-left"
+              [class.success]="secondStepForm.get('repeatPassword')?.touched && secondStepForm.get('repeatPassword')?.valid"
+              [class.error]="secondStepForm.get('repeatPassword')?.touched && secondStepForm.get('repeatPassword')?.invalid"
+            >
+              <input
+                class="input"
+                type="text"
+                placeholder="Repeat password"
+                formControlName="repeatPassword"
+              />
+            </label>
+          </div>
+          <div class="row">
+            <label
+              class="label squad-small"
+              [class.success]="secondStepForm.get('referralBonusPromoCode')?.touched && secondStepForm.get('referralBonusPromoCode')?.valid"
+              [class.error]="secondStepForm.get('referralBonusPromoCode')?.touched && secondStepForm.get('referralBonusPromoCode')?.invalid"
+            >
+              <input
+                class="input"
+                type="text"
+                placeholder="Referral/Bonus/Promo Code"
+                formControlName="referralBonusPromoCode"
+              />
+            </label>
+            <div class="applyBtn">
+              <div class="applyBtn__shadow">
+                <div class="applyBtn__shadow__wrapper--squad" (click)="apply()">
+                  <div class="applyBtn__shadow__wrapper--squad__cover">Apply</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row selections">
+            <div class="checkboxes">
+              <div class="checkboxes__shadow" (click)="handleCheckboxChange('1')">
+                <div class="checkboxes__shadow__wrapper">
+                  <input
+                    id="1"
+                    type="checkbox"
+                    class="checkboxes__shadow__wrapper--input"
+                    formControlName="promotionalCommunications"
+                  >
+                </div>
+                <span>I agree to receive promotional communications</span>
+              </div>
+              <div class="checkboxes__shadow" (click)="handleCheckboxChange('2')">
+                <div class="checkboxes__shadow__wrapper">
+                  <input 
+                    id="2" 
+                    type="checkbox" 
+                    class="checkboxes__shadow__wrapper--input"
+                    formControlName="bonusesAndOffers"
+                  >
+                </div>
+                <span>I would like to receive bonuses and offers by SMS,Email, Phone Call, Post</span>
+              </div>
+              <div class="checkboxes__shadow" (click)="handleCheckboxChange('3')">
+                <div class="checkboxes__shadow__wrapper">
+                  <input 
+                    id="3" 
+                    type="checkbox" 
+                    class="checkboxes__shadow__wrapper--input"
+                    formControlName="termsAndConditions"
+                  >
+                </div>
+                <span>I am over the age of 18 and I agree with Terms & Conditions</span>
+              </div>
+            </div>
+            <re-captcha class="g-recaptcha"
+                (resolved)="onCaptchaResolved($event)"
+                siteKey="RE_CAPTCHA_SITE_KEY"
+              ></re-captcha>
+          </div>
+        </form>
+      </div>
+      
       <div class="container--form__secondStepForm__footer">
         <div class="container--form__secondStepForm__footer--prevBtn">
           <div
@@ -102,8 +359,8 @@
             class="container--form__secondStepForm__footer--nextBtn__wrapper"
           >
             <button
-              type="submit"
               class="container--form__secondStepForm__footer--nextBtn__wrapper--cover"
+              (click)="signUp()"
             >
               Sign Up
             </button>
@@ -111,13 +368,13 @@
         </div>
       </div>
     </div>
-  </form>
+  </div>
 </div>
 
 <ng-template #modalTemplate>
   <div id="registration-done-modal">
     <div class="registration-done-content mobile">
-      <app-logo class="logo"></app-logo>
+      <gb-logo class="logo"></gb-logo>
       <div class="registration-done-body">
         <div class="registration-done-shadow">
           <div class="registration-done-wrapper">

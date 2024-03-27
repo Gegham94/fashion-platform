@@ -4,15 +4,15 @@
     <div class="content__user--body"></div>
   </div>
   <div class="content__auth" [ngClass]="isAuthOpen ? 'active' : ''">
-    <app-forms-modal
+    <gb-web-forms-modal
       [isMobile]="false"
       formType="signUp"
       title="Sign Up"
-    ></app-forms-modal>
-    <app-forms-modal
+    ></gb-web-forms-modal>
+    <gb-web-forms-modal
       [isMobile]="false"
       formType="signIn"
       title="Sign In"
-    ></app-forms-modal>
+    ></gb-web-forms-modal>
   </div>
 </div>

@@ -1,0 +1,254 @@
+@import "src/mixins/styles-mixin";
+@import "src/styles/colors";
+
+:host {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.card-carousel-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 40%;
+  width: 100%;
+  gap: 5px;
+  .card-carousel{
+    width: 100%;
+    height: 100%;
+  }
+  .add-card-zone {
+    position: relative;
+    height: 40%;
+    width: 15%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    background: $light-gray;
+    gap: 10px;
+    flex-shrink: 0;
+    cursor: pointer;
+    background-position: 0 0, 0 0, 100% 0, 0 100%;
+    background-size: 2px 100%, 100% 2px, 2px 100%, 100% 2px;
+    background-repeat: no-repeat;
+    margin-bottom: 3%;
+    background-image: repeating-linear-gradient(
+        0deg,
+        $lighter-gray,
+        $lighter-gray 10px,
+        transparent 10px,
+        transparent 15px
+      ),
+      repeating-linear-gradient(
+        90deg,
+        $lighter-gray,
+        $lighter-gray 10px,
+        transparent 10px,
+        transparent 15px
+      ),
+      repeating-linear-gradient(
+        180deg,
+        $lighter-gray,
+        $lighter-gray 10px,
+        transparent 10px,
+        transparent 15px
+      ),
+      repeating-linear-gradient(
+        270deg,
+        $lighter-gray,
+        $lighter-gray 10px,
+        transparent 10px,
+        transparent 15px
+      );
+    &:hover {
+      svg {
+        fill: $yellow;
+      }
+      span {
+        color: $yellow;
+      }
+    }
+    svg {
+      transition: fill 0.1s ease;
+      width: 30%;
+      height: 30%;
+      fill: $lighter-gray;
+    }
+    span {
+      transition: color 0.1s ease;
+      text-align: center;
+      color: $lighter-gray;
+      font-size: 0.65em;
+      font-weight: 700;
+      width: 100%;
+    }
+    .attach-new-card{
+      position: absolute;
+    }
+  }
+  &.mobile{
+    height: 25%;
+    .add-card-zone {
+      margin-bottom: 12%;
+    }
+  }
+}
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 60%;
+  .form-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 25%;
+    width: calc(100% - 2px);
+    height: 100%;
+    filter: drop-shadow(4px 8px 16px rgba(0, 0, 0, 0.3));
+    .row {
+      position: relative;
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      height: 100%;
+      max-height: 40px;
+      .input-title,
+      .min-max-title {
+        position: absolute;
+        left: 0;
+        font-size: 0.7em;
+        color: $smooth-white;
+        padding: 0 20px;
+      }
+      .input-title {
+        top: -15px;
+      }
+      .min-max-title {
+        bottom: -30px;
+      }
+      .wrapper {
+        background: $border-gradient-to-left;
+        border-radius: 20px;
+        border-radius: 20px;
+        padding: 1px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        max-height: 40px;
+        &.success {
+          background: $border-gradient-to-left-success;
+        }
+        &.error {
+          background: $border-gradient-to-left-error;
+        }
+        &--input {
+          border-radius: 20px;
+          background: linear-gradient(#1c1c23 0%, #2d2d37 100%);
+          color: $white;
+          font-size: 14px;
+          font-weight: 700;
+          width: 100%;
+          height: 100%;
+          padding: 0 20px;
+          appearance: textfield;
+          -webkit-appearance: textfield;
+          &::-webkit-outer-spin-button,
+          &::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+          }
+        }
+      }
+      &.mobile {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        max-height: 160px;
+      }
+    }
+    .checkbox-shadow {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      flex-wrap: nowrap;
+      width: 100%;
+      filter: drop-shadow(4px 8px 16px rgba(0, 0, 0, 0.3));
+      span {
+        color: $smooth-white;
+        font-size: 12px;
+        font-weight: 500;
+        width: 100%;
+      }
+      .checkbox-wrapper {
+        @include form-checkbox;
+        margin-right: 10px;
+        width: 100%;
+        height: 100%;
+        max-width: 20px;
+        max-height: 20px;
+        background: $lighter-gray;
+        padding: 1px;
+        &.checked {
+          background: $yellow;
+        }
+        .checkbox {
+          @include form-checkbox;
+          padding: 0;
+          background: $dark-gray;
+          appearance: unset;
+          -webkit-appearance: unset;
+          &:checked:after {
+            content: "\2713";
+            display: flex;
+            color: $yellow;
+          }
+        }
+      }
+    }
+  }
+  .footer {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    width: 100%;
+    height: 100%;
+    max-height: 30px;
+    .send-btn-wrapper {
+      @include squad-small;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: $yellow;
+      height: 100%;
+      max-height: 30px;
+      width: 30%;
+      padding: 1px;
+      &:hover {
+        transform: scale(1.02);
+      }
+      .send-btn-cover {
+        @include squad-small;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        position: relative;
+        background: rgba($layout-bg, 0.5);
+        border: none;
+        color: $white;
+        cursor: pointer;
+      }
+    }
+  }
+}

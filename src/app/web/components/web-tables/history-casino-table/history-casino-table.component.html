@@ -1,4 +1,4 @@
-<app-loader *ngIf="isLoading; else contentModel"></app-loader>
+<gb-loader *ngIf="isLoading; else contentModel"></gb-loader>
 <ng-template #contentModel>
   <div class="content">
     <div class="content__filters">
@@ -39,15 +39,15 @@
         </div>
       </div>
       <div class="options filter">
-        <app-multiselect
+        <gb-multiselect
           [data]="status"
           [keyName]="'id'"
           placeholder="Status"
           class="form-filed margin-right"
           (onSelect)="onSelectStatusFilter($event)"
         >
-        </app-multiselect>
-        <app-multiselect
+        </gb-multiselect>
+        <gb-multiselect
           [cutSide]="'right'"
           [data]="currency"
           [keyName]="'id'"
@@ -55,12 +55,12 @@
           class="form-filed margin-left"
           (onSelect)="onSelectCurrencyFilter($event)"
         >
-        </app-multiselect>
+        </gb-multiselect>
 
-        <app-search
+        <gb-search
           (getSearchedText)="getSearchedText($event)"
           class="search-component"
-        ></app-search>
+        ></gb-search>
       </div>
     </div>
     <div class="content__table">

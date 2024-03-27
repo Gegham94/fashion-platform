@@ -3,7 +3,7 @@ import { TYPE_FILTER, STATUS, METHOD, CURRENCY } from 'src/app/shared/constants/
 import { TYPE_WITHDRAW_STATUS_TABLE_DATA, WITHDRAW_STATUS_TABLE_DATA, TYPE_TABLE_HEADER, WITHDRAW_STATUS_TABLE_HEADER } from 'src/app/shared/constants/tables';
 
 @Component({
-  selector: 'app-withdraw-status-table',
+  selector: 'gb-withdraw-status-table',
   templateUrl: './withdraw-status-table.component.html',
   styleUrls: ['./withdraw-status-table.component.scss'],
 })

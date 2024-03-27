@@ -1,0 +1,51 @@
+<gb-loader *ngIf="isLoading; else contentModel"></gb-loader>
+<ng-template #contentModel>
+  <div class="content">
+    <div class="cover">
+      <div class="header">
+        <span
+          class="title"
+          [class.active]="selectedTab === 'verification'"
+          (click)="selectTab('verification')"
+          >Verification</span
+        >
+        <span
+          class="title"
+          [class.active]="selectedTab === 'protection'"
+          (click)="selectTab('protection')"
+          >Protection</span
+        >
+      </div>
+      <div class="body">
+        <ng-container *ngIf="selectedTab === 'verification'">
+          <div class="streight">
+            <span class="title">Protected:</span>
+            <div class="progress-bar">
+              <div class="cover-bar" [style.width.%]="barWidth"></div>
+            </div>
+          </div>
+          <div class="row">
+            <gb-change-password></gb-change-password>
+          </div>
+          <div class="row">
+            <gb-link-your-phone></gb-link-your-phone>
+          </div>
+          <div class="row">
+            <gb-verification-by-document></gb-verification-by-document>
+          </div>
+          <div class="row">
+            <gb-two-factor-authentication></gb-two-factor-authentication>
+          </div>
+        </ng-container>
+        <ng-container *ngIf="selectedTab === 'protection'">
+          <div class="row">
+            <gb-active-session></gb-active-session>
+          </div>
+          <div class="row">
+            <gb-session-history></gb-session-history>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</ng-template>

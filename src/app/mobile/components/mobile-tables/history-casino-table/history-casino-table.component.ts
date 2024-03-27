@@ -4,7 +4,7 @@ import { TYPE_HISTORY_CASINO_TABLE_DATA, HISTORY_CASINO_TABLE_DATA, TYPE_TABLE_H
 
 
 @Component({
-  selector: 'app-history-casino-table',
+  selector: 'gb-history-casino-table',
   templateUrl: './history-casino-table.component.html',
   styleUrl: './history-casino-table.component.scss',
 })

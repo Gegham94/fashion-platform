@@ -1,0 +1,89 @@
+<div class="card-info-content">
+  <div class="header">
+    <div class="title">
+      <span class="text">Attach New Card</span>
+      <div class="wrapper"></div>
+      <div class="decor"></div>
+    </div>
+  </div>
+  <form [formGroup]="newCardForm">
+    <div class="content" [class.mobile]="isMobile">
+      <div class="row">
+        <span class="input-title">Cardholder Name</span>
+        <div
+          class="wrapper"
+          [class.success]="newCardForm.get('cardHolderName')?.touched && newCardForm.get('cardHolderName')?.valid"
+          [class.error]="newCardForm.get('cardHolderName')?.touched && newCardForm.get('cardHolderName')?.invalid"
+        >
+          <input
+            class="wrapper--input"
+            type="text"
+            autocomplete="off"
+            formControlName="cardHolderName"
+            placeholder="Cardholder Name"
+          />
+        </div>
+      </div>
+      <div class="row">
+        <span class="input-title">Card Number</span>
+        <div
+          class="wrapper"
+          [class.success]="newCardForm.get('cardNumber')?.touched && newCardForm.get('cardNumber')?.valid"
+          [class.error]="newCardForm.get('cardNumber')?.touched && newCardForm.get('cardNumber')?.invalid"
+        >
+          <input
+            class="wrapper--input"
+            type="text"
+            autocomplete="off"
+            formControlName="cardNumber"
+            placeholder="Card Number"
+          />
+        </div>
+      </div>
+      <div class="row" [class.mobile]="isMobile">
+        <span class="input-title">Expiration Date Name</span>
+        <div class="card-date-wrapper">
+          <gb-multiselect-autocomplate
+            [data]="month"
+            [keyName]="'id'"
+            placeholder="Month"
+            class="margin-right"
+            inputColor="dark"
+            [singleSelect]="true"
+            (onSelect)="onSelectValue('month', $event)"
+          ></gb-multiselect-autocomplate>
+          <gb-multiselect-autocomplate
+            [data]="year"
+            [cutSide]="isMobile ? 'right' : 'both'"
+            [keyName]="'id'"
+            placeholder="Year"
+            [singleSelect]="true"
+            inputColor="dark"
+            (onSelect)="onSelectValue('year', $event)"
+          ></gb-multiselect-autocomplate>
+        </div>
+        <div
+          class="wrapper"
+          [class.right]="!isMobile"
+          [class.success]="newCardForm.get('cvc_cvv')?.touched && newCardForm.get('cardHolderName')?.valid"
+          [class.error]="newCardForm.get('cvc_cvv')?.touched && newCardForm.get('cvc_cvv')?.invalid"
+        >
+          <input
+            class="wrapper--input"
+            type="number"
+            autocomplete="off"
+            formControlName="cvc_cvv"
+            placeholder="CVC/CVV"
+          />
+        </div>
+      </div>
+      <span class="digit-title">Please, enter 6 digit code sent to Your Phone Number</span
+      >
+    </div>
+    <div class="footer">
+      <div class="send-btn-wrapper">
+        <button class="send-btn-cover" (click)="onNext()">Next</button>
+      </div>
+    </div>
+  </form>
+</div>

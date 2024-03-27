@@ -10,7 +10,7 @@ import { collapse } from '../../animations/animations';
 import { TYPE_FILTER, CURRENCY } from '../../constants/filters';
 
 @Component({
-  selector: 'app-dropdown',
+  selector: 'gb-dropdown',
   templateUrl: './dropdown.component.html',
   styleUrls: ['./dropdown.component.scss'],
   animations: [collapse],

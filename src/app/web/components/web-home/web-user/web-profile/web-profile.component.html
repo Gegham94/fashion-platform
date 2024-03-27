@@ -1,0 +1,18 @@
+<gb-loader *ngIf="isLoading; else contentModel"></gb-loader>
+<ng-template #contentModel>
+  <div class="content">
+    <div class="content__shadowLive">
+      <gb-live-casino-events></gb-live-casino-events>
+    </div>
+    <div class="content__shadowBody">
+      <div class="content__shadowBody--body">
+        <gb-web-user-info-card [userData]="userData"></gb-web-user-info-card>
+        <gb-slot-games-active-bets></gb-slot-games-active-bets>
+      </div>
+    </div>
+
+    <div class="content__shadowSport">
+      <gb-sport-events></gb-sport-events>
+    </div>
+  </div>
+</ng-template>

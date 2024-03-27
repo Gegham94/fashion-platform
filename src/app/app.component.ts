@@ -5,7 +5,7 @@ import { EDeviceNumber } from './shared/constants/device-number';
 import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
 
 @Component({
-  selector: 'app-root',
+  selector: 'gb-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })

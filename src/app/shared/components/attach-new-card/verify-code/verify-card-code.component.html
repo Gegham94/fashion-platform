@@ -1,0 +1,36 @@
+<div class="verify-code-content" [class.mobile]="isMobile">
+  <div class="header">
+    <div class="title">
+      <span class="text">Verify Code</span>
+      <div class="wrapper"></div>
+      <div class="decor"></div>
+    </div>
+  </div>
+  <form [formGroup]="verifyForm" (ngSubmit)="onVerify()">
+    <div class="content">
+      <div class="verification-title">
+        <span>Ender 6 digits code sent to +374****827</span>
+      </div>
+      <div class="digit-content" id="inputs_list">
+        <div class="digit-wrapper" *ngFor="let value of [1, 2, 3, 4, 5, 6];">
+          <input
+            type="number"
+            class="input"
+            autocomplete="off"
+            [formControlName]="'digit_' + value"
+            (input)="onInputChange(value, $event)"
+            (keydown)="onInputRemove(value, $event)"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+      <div class="verify-btn-wrapper">
+        <button type="submit" class="verify-btn-cover">Verify</button>
+      </div>
+      <div class="resend-btn-wrapper">
+        <button (click)="onResend()" class="resend-btn-cover">Resend</button>
+      </div>
+    </div>
+  </form>
+</div>

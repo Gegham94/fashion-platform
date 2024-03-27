@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-email-number-sender',
+  selector: 'gb-email-number-sender',
   templateUrl: './email-number-sender.component.html',
   styleUrl: './email-number-sender.component.scss',
 })

@@ -1,0 +1,140 @@
+<gb-loader *ngIf="isLoading; else contentModel"></gb-loader>
+<ng-template #contentModel>
+  <div class="contact-us-wrapper">
+    <div class="col-1">
+      <span class="title">About our company</span>
+      <span class="subtitle">What If They Let You Run The Hubble</span>
+      <div class="about-card">
+        <div class="card-cover">
+          <div class="icon-wrapper-2">
+            <div class="icon-cover">
+              <svg>
+                <use xlink:href="assets/icons/global-sprint.svg#gb-mail"></use>
+              </svg>
+            </div>
+          </div>
+          <div class="info">
+            <span class="name">Email</span>
+            <span class="value">example8800fashiontv.com</span>
+          </div>
+        </div>
+      </div>
+      <div class="about-card">
+        <div class="card-cover">
+          <div class="icon-wrapper-3">
+            <div class="icon-cover">
+              <svg>
+                <use xlink:href="assets/icons/global-sprint.svg#gb-phone"></use>
+              </svg>
+            </div>
+          </div>
+          <div class="info">
+            <span class="name">Phone</span>
+            <span class="value">(000) 99 090909</span>
+          </div>
+        </div>
+      </div>
+      <div class="about-card">
+        <div class="card-cover">
+          <div class="icon-wrapper-1">
+            <div class="icon-cover">
+              <svg>
+                <use
+                  xlink:href="assets/icons/global-sprint.svg#gb-location"
+                ></use>
+              </svg>
+            </div>
+          </div>
+          <div class="info">
+            <span class="name">Address</span>
+            <span class="value"
+              >Paris, France 4646 Klocko Estates Apt. 256</span
+            >
+          </div>
+        </div>
+      </div>
+
+      <div class="mapouter">
+        <div class="gmap_canvas">
+          <iframe
+            class="gmap_iframe"
+            frameborder="0"
+            scrolling="no"
+            marginheight="0"
+            marginwidth="0"
+            src="https://maps.google.com/maps?width=568&amp;height=168&amp;hl=en&amp;q=University of Oxford&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
+          ></iframe>
+        </div>
+      </div>
+    </div>
+    <div class="col-2">
+      <form [formGroup]="messageForm" class="form">
+        <div class="row">
+          <label
+            class="label"
+            [class.error]="nameControl.touched && nameControl.invalid"
+          >
+            <input type="text" placeholder="Name" formControlName="name" />
+          </label>
+          <label
+            class="label"
+            [class.error]="surnameControl.touched && surnameControl.invalid"
+          >
+            <input
+              type="text"
+              placeholder="Surname"
+              formControlName="surname"
+            />
+          </label>
+        </div>
+        <div class="row">
+          <label
+            class="label"
+            [class.error]="emailControl.touched && emailControl.invalid"
+          >
+            <input type="text" placeholder="Email" formControlName="email" />
+          </label>
+        </div>
+        <div class="row">
+          <label
+            class="label"
+            [class.error]="phoneControl.touched && phoneControl.invalid"
+          >
+            <input type="text" placeholder="Phone" formControlName="phone" />
+          </label>
+        </div>
+        <div class="row">
+          <label
+            class="label"
+            [class.error]="subjectControl.touched && subjectControl.invalid"
+          >
+            <input
+              type="text"
+              placeholder="Subject"
+              formControlName="subject"
+            />
+          </label>
+        </div>
+        <div class="textarea-wrapper">
+          <textarea
+            class="textarea"
+            [class.error]="
+              descriptionControl.touched && descriptionControl.invalid
+            "
+            (input)="updateCharacterCount($event)"
+            [maxlength]="maxCharacterCount"
+            formControlName="description"
+          ></textarea>
+          <span class="character-count"
+            >{{ characterCount }}/{{ maxCharacterCount }}</span
+          >
+        </div>
+        <div class="send-message">
+          <button (click)="sendMessage()">
+            <div class="button-cover">Send Message</div>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</ng-template>

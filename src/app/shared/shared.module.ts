@@ -37,11 +37,20 @@ import { EmailNumberSenderComponent } from './components/recover-password/email-
 import { VerifyCodeComponent } from './components/recover-password/verify-code/verify-code.component';
 import { CreateNewPasswordComponent } from './components/recover-password/create-new-password/create-new-password.component';
 import { LanguageSwitcherComponent } from './components/language-switcher/language-switcher.component';
+import { AttachNewCardComponent } from './components/attach-new-card/attach-new-card.component';
+import { CardInfoComponent } from './components/attach-new-card/card-info/card-info.component';
+import { VerifyCardCodeComponent } from './components/attach-new-card/verify-code/verify-card-code.component';
+import { DepositModalComponent } from './components/deposit-modal/deposit-modal.component';
+import { BankCardComponent } from './components/deposit-modal/bank-card/bank-card.component';
+import { EWalletComponent } from './components/deposit-modal/e-wallet/e-wallet.component';
+import { CardCarouselComponent } from './components/deposit-modal/card-carousel/card-carousel.component';
+import { ClickOutsideDirective } from './directives/click-outside.directive';
 
 @NgModule({
   declarations: [
     LogoComponent,
     ResizeEndDirective,
+    ClickOutsideDirective,
     LoaderComponent,
     AmountCardComponent,
     PlasticCardComponent,
@@ -74,6 +83,13 @@ import { LanguageSwitcherComponent } from './components/language-switcher/langua
     VerifyCodeComponent,
     CreateNewPasswordComponent,
     LanguageSwitcherComponent,
+    AttachNewCardComponent,
+    CardInfoComponent,
+    VerifyCardCodeComponent,
+    DepositModalComponent,
+    BankCardComponent,
+    EWalletComponent,
+    CardCarouselComponent,
   ],
   imports: [CommonModule, FormsModule, ReactiveFormsModule],
   exports: [
@@ -82,6 +98,7 @@ import { LanguageSwitcherComponent } from './components/language-switcher/langua
     LogoComponent,
     RecaptchaModule,
     ResizeEndDirective,
+    ClickOutsideDirective,
     LoaderComponent,
     AmountCardComponent,
     PlasticCardComponent,
@@ -107,9 +124,12 @@ import { LanguageSwitcherComponent } from './components/language-switcher/langua
     SportsbookCardComponent,
     RecoverPasswordComponent,
     EmailNumberSenderComponent,
+    CardInfoComponent,
     VerifyCodeComponent,
     CreateNewPasswordComponent,
     LanguageSwitcherComponent,
+    AttachNewCardComponent,
+    DepositModalComponent,
   ],
 })
 export class SharedModule {}

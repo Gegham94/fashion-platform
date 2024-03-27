@@ -3,7 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-change-password',
+  selector: 'gb-change-password',
   templateUrl: './change-password.component.html',
   styleUrl: './change-password.component.scss',
 })

@@ -5,12 +5,13 @@ import { ISignin } from 'src/app/shared/interfaces/IAuth';
 import { AuthService } from 'src/app/shared/services/auth.service';
 
 @Component({
-  selector: 'app-mobile-sign-in',
+  selector: 'gb-mobile-sign-in',
   templateUrl: './mobile-sign-in.component.html',
   styleUrls: ['./mobile-sign-in.component.scss'],
 })
 export class MobileSignInComponent {
-  @Output('openRecoverPassword') openRecoverPassword: EventEmitter<any> = new EventEmitter();
+  @Output('openRecoverPassword') openRecoverPassword: EventEmitter<any> =
+    new EventEmitter();
   public isRememberMe: boolean = false;
   public isPasswordVisible: boolean = false;
 
@@ -29,14 +30,26 @@ export class MobileSignInComponent {
 
   constructor(private authService: AuthService) {}
 
-  public get emailControl(): FormControl {
-    return this.signinForm.get('email') as FormControl;
-  }
-  public get passwordControl(): FormControl {
-    return this.signinForm.get('password') as FormControl;
+  public submitForm() {
+    let formData: ISignin;
+    if (this.signinForm.valid) {
+      formData = {
+        ...this.signinForm.value,
+      } as ISignin;
+      this.authService
+        .signIn(formData)
+        .pipe(
+          switchMap((data) => {
+            return data;
+          })
+        )
+        .subscribe();
+    } else {
+      this.signinForm.markAllAsTouched();
+    }
   }
 
-  public closeSignInModal(event: Event){
+  public closeSignInModal(event: Event) {
     this.openRecoverPassword.emit(event);
   }
 
@@ -44,26 +57,9 @@ export class MobileSignInComponent {
     this.isRememberMe = !this.isRememberMe;
   }
 
-  public handlePasswordVisibility(){
+  public handlePasswordVisibility() {
     this.isPasswordVisible = !this.isPasswordVisible;
   }
 
   public forgotPassword() {}
-
-  public submitForm() {
-    let formData: ISignin;
-    if (this.signinForm.valid) {
-      formData = {
-        ...this.signinForm.value,
-      } as ISignin;
-      this.authService.signIn(formData)
-      .pipe(
-        switchMap((data) => {
-          return data;
-        })
-      ).subscribe();
-    } else {
-      this.signinForm.markAllAsTouched();
-    }
-  }
 }

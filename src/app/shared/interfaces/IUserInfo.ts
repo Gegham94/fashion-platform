@@ -8,16 +8,9 @@ export interface IUserInfo {
   dateOfBirth: string;
   location: string;
   loyalPoints: string;
+  image: string | null;
+  verified: boolean;
   api_token: string;
-}
-export interface IUserAmountInfo {
-  title: string;
-  amount: string;
-  played: string;
-  unplayed: string;
-  amountValue: number;
-  playedValue: number;
-  unplayedValue: number;
 }
 export interface IMessagesAndNotifications {
   id: number;

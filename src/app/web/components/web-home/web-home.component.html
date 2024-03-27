@@ -1,0 +1,140 @@
+<div class="content">
+  <div class="header-container">
+    <div class="games">
+      <div class="wrapper" [class.active]="data.type === 'casino-games'" (click)="sendGameTypeToParent('casino-games')">
+        <div class="cover">Casino Games</div>
+      </div>
+      <div class="wrapper" [class.active]="data.type == 'sports-book'" (click)="sendGameTypeToParent('sports-book')">
+        <div class="cover">SportsBook</div>
+      </div>
+    </div>
+    <div class="header-container__wrapper">
+      <div
+        class="button left"
+        [class.active]="data.value === 'slots' || data.value === 'in-play'"
+        
+      >
+        <div *ngIf="data.type === 'casino-games'" class="button-body" (click)="sendGameSubTypeToParent('slots')">Slots</div>
+        <div *ngIf="data.type === 'sports-book'" class="button-body" (click)="sendGameSubTypeToParent('in-play')">In-Play</div>
+      </div>
+      <div class="fashion-tv">
+        <img src="assets/images/fashion-tv.svg" alt="fashion-tv" />
+        <span>fashiontv</span>
+      </div>
+      <div
+        class="button right"
+        [class.active]="data.value === 'live-dealer' || data.value === 'pre-match'"
+        
+      >
+        <div *ngIf="data.type === 'casino-games'" class="button-body" (click)="sendGameSubTypeToParent('live-dealer')">Live Dealer</div>
+        <div *ngIf="data.type === 'sports-book'" class="button-body" (click)="sendGameSubTypeToParent('pre-match')">PreMatch</div>
+      </div>
+    </div>
+    <div class="profile-information">
+      <div class="wallet-dropdown">
+        <div
+          [ngClass]="['squad', showDropdown ? 'opened' : '']"
+          (click)="toggleDropdown($event)"
+        >
+          <div class="dropdown-cover">
+            <div class="squad-wallet">
+              <div class="squad-wallet--cover">
+                <svg class="svg-wallet">
+                  <use xlink:href="assets/icons/global-sprint.svg#gb-wallet"></use>
+                </svg>
+              </div>
+            </div>
+            {{ selectedOption | number:'1.3-3' }}
+            <svg [class.rotate]="showDropdown">
+              <use xlink:href="assets/icons/global-sprint.svg#gb-arrow-down"></use>
+            </svg>
+          </div>
+        </div>
+      
+        <div
+          class="list-squad"
+          @collapse
+          *ngIf="showDropdown"
+        >
+          <div class="list-cover">
+            <span
+              class="option"
+              *ngFor="let item of OPTIONS"
+              >{{ item | number:'1.3-3' }}
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="notifications">
+        <span class="notifications-count"></span>
+        <div class="notifications-wrapper">
+          <div class="notifications-cover">
+            <svg class="svg-notifications">
+              <use xlink:href="assets/icons/global-sprint.svg#gb-notifications"></use>
+            </svg>
+          </div>
+        </div>
+      </div>
+      <div class="profile">
+        <div class="auth-content" (click)="toggleAuth($event)">
+          <div class="auth-content__user">
+            <div class="auth-content__user--head"></div>
+            <div class="auth-content__user--body"></div>
+          </div>
+        </div>
+        <div gbClickOutside class="auth-diamond-wrapper" *ngIf="isUserInfoOpen" (clickOutside)="isUserInfoOpen = false">
+          <div class="auth-diamond-cover">
+            <div class="user-profile" *ngIf="currentUser; else authModel">
+              <span class="user-id">ID {{currentUser.id}}</span>
+              <div class="unverified-error">
+                <svg>
+                  <use xlink:href="assets/icons/global-sprint.svg#gb-error"></use>
+                </svg>
+                Please, Verify your Account
+              </div>
+              <div class="user-image">
+                <div class="img-cover">
+                  <img *ngIf="currentUser.image; else lettersModel" [src]="currentUser.image" alt="User Image">
+                  <ng-template #lettersModel>
+                    <span class="letters">{{currentUser.firstName[0].toUpperCase() + currentUser.lastName[0].toUpperCase()}}</span>
+                  </ng-template>
+                </div>
+              </div>
+              <div class="username">
+                {{currentUser.userName}}
+              </div>
+              <div class="settings" routerLink="user">
+                <svg>
+                  <use xlink:href="assets/icons/global-sprint.svg#gb-settings"></use>
+                </svg>
+              </div>
+            </div>
+            <ng-template #authModel>
+              <div class="user-profile" [class.unsigned]="!currentUser">
+                <div class="auth-button">
+                  <gb-web-forms-modal
+                    [isMobile]="false"
+                    formType="signUp"
+                    title="Sign Up"
+                  ></gb-web-forms-modal>
+                </div>
+                <div class="auth-button">
+                  <gb-web-forms-modal
+                    [isMobile]="false"
+                    formType="signIn"
+                    title="Sign In"
+                  ></gb-web-forms-modal>
+                </div>
+              </div>
+            </ng-template>
+          </div>
+        </div>
+      </div>
+      <div class="language-switcher">
+        <gb-language-switcher [isMobile]="false"></gb-language-switcher>
+      </div>
+    </div>
+  </div>
+  <iframe class="iframe" id="iframe" #iframeRef src="http://192.168.0.117:4200/1" frameborder="0"></iframe>
+  <router-outlet></router-outlet>
+</div>

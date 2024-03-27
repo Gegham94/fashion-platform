@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
-  selector: 'app-edit-profile-notification',
+  selector: 'gb-edit-profile-notification',
   templateUrl: './edit-profile-notification.component.html',
   styleUrl: './edit-profile-notification.component.scss',
 })

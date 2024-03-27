@@ -1,0 +1,46 @@
+<div class="content">
+  <div class="deposit-methods">
+    <div class="deposit-methods--cover">
+      <div class="header">
+        <span class="title">Deposit Methodes</span>
+        <div class="header-dropdown">
+          <gb-dropdown
+            dropdownButtonType="round"
+            (emitedItem)="getSelectedValue($event)"
+            [disableKey_All]="false"
+          ></gb-dropdown>
+        </div>
+        
+      </div>
+      <div class="body">
+        <gb-deposit-method-card></gb-deposit-method-card>
+        <gb-deposit-method-card></gb-deposit-method-card>
+        <gb-deposit-method-card></gb-deposit-method-card>
+        <gb-deposit-method-card></gb-deposit-method-card>
+        <gb-deposit-method-card></gb-deposit-method-card>
+      </div>
+    </div>
+  </div>
+  <div class="all-methods">
+    <div class="all-methods--cover">
+      <div class="header">
+        <span class="title">All Methodes</span>
+        <div class="header-dropdown">
+          <gb-dropdown
+            dropdownButtonType="round"
+            (emitedItem)="getSelectedValue($event)"
+            [disableKey_All]="false"
+          ></gb-dropdown>
+        </div>
+        
+      </div>
+      <div class="body">
+        <gb-all-method-card></gb-all-method-card>
+        <gb-all-method-card></gb-all-method-card>
+        <gb-all-method-card></gb-all-method-card>
+        <gb-all-method-card></gb-all-method-card>
+        <gb-all-method-card></gb-all-method-card>
+      </div>
+    </div>
+  </div>
+</div>

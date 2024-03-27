@@ -1,12 +1,13 @@
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 
 @Component({
-  selector: 'app-table-row',
+  selector: 'gb-table-row',
   templateUrl: './table-row.component.html',
   styleUrl: './table-row.component.scss',
 })
 export class TableRowComponent implements OnInit {
   @ViewChild('frameContainerRef') frameContainerRef!: ElementRef;
+  @ViewChild('iframeRef') iframeRef!: ElementRef<any>;
   @Input('rowData') rowData: any;
 
   public isCollapse: boolean = false;
@@ -14,7 +15,14 @@ export class TableRowComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit(): void {}
+  public ngOnInit(): void {}
+
+  public sendDataToParent() {
+    this.iframeRef.nativeElement.contentWindow.postMessage(
+      { id: 1 },
+      'http://192.168.0.143:4200/historySportbetting'
+    );
+  }
 
   public collapseRow() {
     const frameContainer = this.frameContainerRef.nativeElement;

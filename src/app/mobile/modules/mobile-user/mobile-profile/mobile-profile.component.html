@@ -1,9 +1,0 @@
-<app-loader *ngIf="isLoading; else contentModel"></app-loader>
-<ng-template #contentModel>
-  <div class="content">
-    <app-mobile-user-info-card [userData]="userData"></app-mobile-user-info-card>
-    <app-slot-games-active-bets></app-slot-games-active-bets>
-    <app-live-casino-events></app-live-casino-events>
-    <app-sport-events></app-sport-events>
-  </div>
-</ng-template>

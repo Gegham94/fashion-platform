@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-self-exclusion',
+  selector: 'gb-self-exclusion',
   templateUrl: './self-exclusion.component.html',
   styleUrl: './self-exclusion.component.scss',
 })

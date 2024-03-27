@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-send-money-friends',
+  selector: 'gb-send-money-friends',
   templateUrl: './send-money-friends.component.html',
   styleUrl: './send-money-friends.component.scss',
 })

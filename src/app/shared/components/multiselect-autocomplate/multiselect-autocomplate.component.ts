@@ -17,7 +17,7 @@ import { NG_VALUE_ACCESSOR } from '@angular/forms';
 let uuid = 0;
 
 @Component({
-  selector: 'app-multiselect-autocomplate',
+  selector: 'gb-multiselect-autocomplate',
   templateUrl: './multiselect-autocomplate.component.html',
   styleUrl: './multiselect-autocomplate.component.scss',
   animations: [collapse],
@@ -59,7 +59,7 @@ export class MultiselectAutocomplateComponent implements OnInit {
   public uniqId: string = this.getUniqueId();
 
   public getUniqueId() {
-    return `app-multiselect-${uuid++}`;
+    return `gb-multiselect-${uuid++}`;
   }
 
   public getSelected(item: any) {

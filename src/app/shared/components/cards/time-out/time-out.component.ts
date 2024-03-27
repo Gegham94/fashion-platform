@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-time-out',
+  selector: 'gb-time-out',
   templateUrl: './time-out.component.html',
   styleUrl: './time-out.component.scss',
 })

@@ -1,17 +1,16 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { IUserAmountInfo } from 'src/app/shared/interfaces/IUserInfo';
 
 @Component({
-  selector: 'app-amount-card',
+  selector: 'gb-amount-card',
   templateUrl: './amount-card.component.html',
   styleUrls: ['./amount-card.component.scss'],
 })
 export class AmountCardComponent implements OnInit {
   @Input('buttonType') buttonType: string = '';
   @Input('buttonColor') buttonColor: string = '';
-  @Input('borderColor') borderColor: string = '';
   @Input('dropdownButtonType') dropdownButtonType: string = '';
-  @Input('data') data!: IUserAmountInfo;
+  @Input('isMobile') isMobile: boolean = false;
+  @Input('data') data!: any;
 
   public selectedItem: any;
 

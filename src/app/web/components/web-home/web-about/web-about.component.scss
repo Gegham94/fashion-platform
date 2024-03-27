@@ -1,0 +1,249 @@
+@import "src/mixins/styles-mixin";
+@import "src/styles/colors";
+
+:host {
+  position: absolute;
+  inset: 0;
+  z-index: 9999;
+}
+
+.about {
+  width: 100%;
+  height: 100%;
+  z-index: 99;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $desktop-blur;
+  min-width: 768px;
+  min-height: 502px;
+  &__content {
+    position: relative;
+    width: 80%;
+    height: calc(100% - 125px);
+    margin-right: 50px;
+    .close__shadow {
+      position: absolute;
+      z-index: 1;
+      width: 60px;
+      height: 47px;
+      top: -20px;
+      right: -35px;
+      &__wrapper {
+        @include small-diamond;
+        background: $yellow;
+        padding: 1px;
+        width: 100%;
+        height: 100%;
+        cursor: pointer;
+        transform: scale(1);
+        &:hover{
+          transform: scale(1.06)
+        }
+        &--cover {
+          @include small-diamond;
+          background: $dark-gray;
+          width: 100%;
+          height: 100%;
+          .cross {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            &::before,
+            &::after {
+              content: "";
+              position: absolute;
+              width: 2px;
+              height: 35%;
+              top: 25%;
+              left: 48%;
+              background-color: $yellow;
+            }
+            &::before {
+              transform: rotate(45deg);
+            }
+            &::after {
+              transform: rotate(-45deg);
+            }
+          }
+        }
+      }
+    }
+    &__wrapper {
+      @include user-platform;
+      width: 100%;
+      height: 100%;
+      background: $yellow;
+      padding: 1px;
+      border-radius: 15px 0 15px 0;
+      &--cover {
+        @include user-platform;
+        background: linear-gradient(to top, #1c1c23 0%, #3d404d 100%);
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 100%;
+        border-radius: 15px 0 15px 0;
+        .tabs {
+          width: 100%;
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+          &__header {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            height: 85px;
+            flex-shrink: 0;
+            &--space {
+              $elemLeft: var(--elemLeft);
+              $elemWidth: var(--elemWidth);
+              @include user-platform-tabs-vector($elemLeft, $elemWidth);
+              transition: 0.3s all ease;
+              width: 100%;
+              height: 100%;
+              background: $yellow;
+              border-radius: 15px 0 0 0;
+              padding-bottom: 1px;
+              .space--cover {
+                transition: 0.3s all ease;
+                @include user-platform-tabs-vector($elemLeft, $elemWidth);
+                width: 100%;
+                height: 100%;
+                background: $light-gray;
+                border-radius: 15px 0 0 0;
+              }
+              .space--decor {
+                @include modal-title-decor;
+                position: absolute;
+                background: $yellow;
+                width: 12%;
+                height: 16%;
+                bottom: -1px;
+              }
+            }
+            &--items {
+              display: flex;
+              align-items: flex-start;
+              justify-content: center;
+              width: 100%;
+              height: 50%;
+              position: absolute;
+              bottom: 0;
+              column-gap: 4%;
+              .item {
+                min-width: 50px;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                color: $yellow;
+                cursor: pointer;
+                outline: none;
+                &:hover {
+                  .title {
+                    color: $yellow;
+                  }
+                }
+                &.active {
+                  pointer-events: none;
+                  .title {
+                    color: $yellow;
+                  }
+                  .toz {
+                    display: none;
+                  }
+                }
+                .title {
+                  transition: color 0.15s ease;
+                  font-size: clamp(12px, 1vw, 14px);
+                  color: $smooth-white;
+                  font-weight: 700;
+                }
+                .decor-default {
+                  position: relative;
+                  width: 100%;
+                  height: 100%;
+                  display: flex;
+                  flex-direction: column;
+                  align-items: center;
+                  justify-content: center;
+                  max-width: 50px;
+                  height: 6px;
+                  background: #1c1c2300;
+                  &--vector {
+                    @include user-platform-tabs-title-vector;
+                    background: $yellow;
+                    width: 100%;
+                    height: 100%;
+                    min-height: 6px;
+                  }
+                  &--dot {
+                    position: absolute;
+                    bottom: 0;
+                    background: $yellow;
+                    border-radius: 100%;
+                    width: 2px;
+                    height: 2px;
+                  }
+                }
+                .toz {
+                  position: absolute;
+                  max-width: 50px;
+                  width: 100%;
+                  bottom: 30%;
+                  z-index: -1;
+                  pointer-events: none;
+                }
+                .decor {
+                  @include user-platform-tabs-decor;
+                  max-width: 30px;
+                  max-height: 4px;
+                  width: 100%;
+                  height: 100%;
+                  margin: 5px 0;
+                  background: $yellow;
+                }
+              }
+            }
+          }
+          &__content {
+            color: $white;
+            flex-grow: 1;
+            height: calc(100% - 125px);
+            padding: 20px 20px 0;
+            .wrapper {
+              filter: drop-shadow(3px 6px 3px #00000083);
+              @include lb-side-squad-content;
+              width: 100%;
+              height: 100%;
+              background: $lighter-gray;
+              height: calc(100% - 20px);
+              border-radius: 10px;
+              padding: 1px;
+              width: 100%;
+              .cover {
+                background: linear-gradient(to top, #1c1c23 0%, #3d404d 100%);
+                @include lb-side-squad-content;
+                width: 100%;
+                height: 100%;
+                border-radius: 10px;
+                min-height: 325px;
+                .background-cover {
+                  border-radius: 10px;
+                  width: calc(100% - 30px);
+                  height: calc(100% - 40px);
+                  padding: 20px 10px 20px 20px;
+                  background-image: url(/assets/images/about-background.svg);
+                  background-repeat: no-repeat;
+                  background-size: cover;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,214 @@
+<div class="content">
+  <div class="header-container">
+    <div class="header-container__wrapper">
+      <div class="row">
+        <div #gameTypesElementRef class="games-type-diamond">
+          <div class="diamond-wrapper" (click)="toggleGameTypes($event)">
+            <div class="diamond-cover">
+              <span class="big-line"></span>
+              <span class="short-line"></span>
+              <span class="big-line"></span>
+            </div>
+          </div>
+        </div>
+        <div gbClickOutside class="games-modal" *ngIf="showGameTypes" (clickOutside)="showGameTypes = false">
+          <div class="games-modal-cover">
+            <div class="game-type-btns">
+              <div class="wrapper" [class.active]="data.type === 'casino-games'" (click)="sendGameTypeToParent('casino-games')">
+                <div class="cover">Casino Games</div>
+              </div>
+              <div class="wrapper" [class.active]="data.type == 'sports-book'" (click)="sendGameTypeToParent('sports-book')">
+                <div class="cover">SportsBook</div>
+              </div>
+            </div>
+            <div class="close-wrapper" (click)="toggleGameTypes($event)">
+              <div class="close-cover">
+                <div class="cross"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="fashion-tv-wrapper">
+          <div class="fashion-tv">
+            <img src="assets/images/fashion-tv.svg" alt="fashion-tv" />
+            <span>fashiontv</span>
+          </div>
+        </div>
+        <div class="profile-information">
+          <div class="notifications">
+            <span class="notifications-count"></span>
+            <div class="notifications-wrapper">
+              <div class="notifications-cover">
+                <svg class="svg-notifications">
+                  <use xlink:href="assets/icons/global-sprint.svg#gb-notifications"></use>
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div class="profile">
+            <div class="auth-content" >
+              <div class="auth-content__user" (click)="toggleAuth($event)">
+                <div class="auth-content__user--head"></div>
+                <div class="auth-content__user--body"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row-btns">
+        <div class="button left" [class.active]="data.value === 'slots' || data.value === 'in-play'">
+          <div *ngIf="data.type === 'casino-games'" class="button-body" (click)="sendGameSubTypeToParent('slots')">Slots</div>
+          <div *ngIf="data.type === 'sports-book'" class="button-body" (click)="sendGameSubTypeToParent('in-play')">In-Play</div>
+        </div>
+        <div class="button right" [class.active]="data.value === 'live-dealer' || data.value === 'pre-match'">
+          <div *ngIf="data.type === 'casino-games'" class="button-body" (click)="sendGameSubTypeToParent('live-dealer')">Live Dealer</div>
+          <div *ngIf="data.type === 'sports-book'" class="button-body" (click)="sendGameSubTypeToParent('pre-match')">PreMatch</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div gbClickOutside class="auth-modal" [class.user-signed]="isUserInfoOpen && currentUser" *ngIf="isUserInfoOpen" (clickOutside)="isUserInfoOpen = false">
+    <div class="auth-modal-cover">
+      <div class="auth-btns" [class.signed]="currentUser">
+        <div class="user-profile" *ngIf="currentUser; else authModel">
+          <div class="profile-row header">
+            <div class="language-switcher">
+              <gb-language-switcher [isMobile]="true"></gb-language-switcher>
+            </div>
+            <div class="close-wrapper" (click)="isUserInfoOpen = false">
+              <div class="close-cover">
+                <div class="cross"></div>
+              </div>
+            </div>
+          </div>
+          <div class="profile-row">
+            <div class="wallet">
+              <svg>
+                <use xlink:href="assets/icons/global-sprint.svg#gb-wallet"></use>
+              </svg>
+              {{88.80 | number:'1.3-3'}} USD
+            </div>
+            <div class="wallet">
+              <svg>
+                <use xlink:href="assets/icons/global-sprint.svg#gb-bonuses"></use>
+              </svg>
+              {{88.80 | number:'1.3-3'}} USD
+            </div>
+          </div>
+          <div class="profile-row dropdown">
+            <div class="wallet-dropdown">
+              <div
+                [ngClass]="['squad', showTimeDropdown ? 'opened' : '']"
+                (click)="toggleTimeDropdown($event)"
+              >
+                <div class="dropdown-cover">
+                  {{ selectedTimeOption }}
+                  <svg [class.rotate]="showTimeDropdown">
+                    <use xlink:href="assets/icons/global-sprint.svg#gb-arrow-down"></use>
+                  </svg>
+                </div>
+              </div>
+              <div
+                class="list-squad"
+                @collapse
+                *ngIf="showTimeDropdown"
+              >
+                <div class="list-cover">
+                  <span
+                    class="option"
+                    *ngFor="let item of TIME_OPTIONS"
+                    >{{ item }}
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="decimal-dropdown">
+              <div
+                [ngClass]="['squad', showDecimalDropdown ? 'opened' : '']"
+                (click)="toggleDecimalDropdown($event)"
+              >
+                <div class="dropdown-cover">
+                  {{ selectedDecimalOption }}
+                  <svg [class.rotate]="showDecimalDropdown">
+                    <use xlink:href="assets/icons/global-sprint.svg#gb-arrow-down"></use>
+                  </svg>
+                </div>
+              </div>
+              <div
+                class="list-squad"
+                @collapse
+                *ngIf="showDecimalDropdown"
+              >
+                <div class="list-cover">
+                  <span
+                    class="option"
+                    *ngFor="let item of DECIMAL_OPTIONS"
+                    >{{ item }}
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="profile-row">
+            <div class="user">
+              <div class="user-image">
+                <div class="img-cover">
+                  <img *ngIf="currentUser.image; else lettersModel" [src]="currentUser.image" alt="User Image">
+                  <ng-template #lettersModel>
+                    <span class="letters">{{currentUser.firstName[0].toUpperCase() + currentUser.lastName[0].toUpperCase()}}</span>
+                  </ng-template>
+                </div>
+              </div>
+              <div class="username">
+                {{currentUser.userName}}
+              </div>
+            </div>
+            <div class="user-id">
+              ID {{currentUser.id}}
+            </div>
+          </div>
+          <div class="profile-row">
+            <div class="unverified-error">
+              <svg>
+                <use xlink:href="assets/icons/global-sprint.svg#gb-error"></use>
+              </svg>
+              Please, Verify your Account
+            </div>
+            <div class="profile-btn">
+              <button routerLink="user" (click)="isUserInfoOpen = false">
+                <div class="cover">
+                  <span>Profile</span>
+                </div>
+              </button>
+            </div>
+          </div>
+        </div>
+        <ng-template #authModel>
+          <div class="user-profile">
+            <div class="auth-button">
+              <gb-mobile-forms-modal
+                [isMobile]="true"
+                formType="signUp"
+                title="Sign Up"
+              ></gb-mobile-forms-modal>
+            </div>
+            <div class="auth-button">
+              <gb-mobile-forms-modal
+                [isMobile]="true"
+                formType="signIn"
+                title="Sign In"
+              ></gb-mobile-forms-modal>
+            </div>
+          </div>
+          <div class="close-wrapper" (click)="isUserInfoOpen = false">
+            <div class="close-cover">
+              <div class="cross"></div>
+            </div>
+          </div>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+  <iframe class="iframe" #iframeRef src="http://192.168.0.117:4200/2" frameborder="0"></iframe>
+  <router-outlet></router-outlet>
+</div>

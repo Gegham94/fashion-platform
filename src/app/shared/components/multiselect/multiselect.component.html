@@ -1,6 +1,6 @@
 <div
   #multiselect
-  class="app-multiselect"
+  class="gb-multiselect"
   [id]="uniqId"
   [ngClass]="[cutSide, disabled ? 'disabled' : '', error ? 'error' : '']"
 >
@@ -37,7 +37,7 @@
   </div>
 
   <ng-template #dropdownTemplate>
-    <div #dropdown id="app-multiselect">
+    <div #dropdown id="gb-multiselect">
       <div class="dropdown__list" [class.rotate-content]="isRotate" @collapse *ngIf="isOpen">
         <div
           class="option"

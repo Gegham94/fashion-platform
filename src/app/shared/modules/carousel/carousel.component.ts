@@ -13,7 +13,7 @@ import { BonusesCardComponent } from '../../components/cards/bonuses-card/bonuse
 import { CarouselService } from '../../services/carousel.service';
 
 @Component({
-  selector: 'app-carousel',
+  selector: 'gb-carousel',
   templateUrl: './carousel.component.html',
   styleUrl: './carousel.component.scss',
 })

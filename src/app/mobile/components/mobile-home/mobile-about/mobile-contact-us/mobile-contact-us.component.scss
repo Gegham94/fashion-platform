@@ -1,0 +1,244 @@
+@import "src/mixins/styles-mixin";
+@import "src/styles/colors";
+
+.contact-us-wrapper {
+  @include scroll;
+  overflow-y: auto;
+  overflow-x: hidden;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 20px;
+  padding-right: 5px;
+  .col-1 {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    gap: 10px;
+    .title {
+      color: $white;
+      font-size: clamp(32px, 1vw, 76px);
+      font-weight: 700;
+    }
+    .subtitle {
+      color: $white;
+      font-size: clamp(24px, 1vw, 76px);
+      font-weight: 500;
+    }
+    .about-card {
+      @include squad-big;
+      background: linear-gradient(to right, #dcb567 0%, #44381f 100%);
+      width: calc(100% - 10px);
+      height: 125px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1px;
+      .card-cover {
+        @include squad-big;
+        background: $dark-gray;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        width: calc(100% - 40px);
+        height: calc(100% - 40px);
+        padding: 20px;
+        gap: 10px;
+        .icon-wrapper-1,
+        .icon-wrapper-2,
+        .icon-wrapper-3 {
+          background: $lighter-gray;
+          border-radius: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 60px;
+          height: 60px;
+          padding: 1px;
+          aspect-ratio: 1/1;
+          .icon-cover {
+            background: $light-gray;
+            border-radius: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: calc(100% - 2px);
+            height: calc(100% - 2px);
+            svg {
+              width: 45%;
+              height: 45%;
+              fill: $white;
+              &.call {
+                transform: scaleX(-1);
+              }
+            }
+          }
+        }
+        .info {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          height: 100%;
+          gap: 15%;
+          .name {
+            color: $smooth-white;
+            font-size: clamp(14px, 1vw, 76px);
+            font-weight: 400;
+          }
+          .value {
+            color: $white;
+            font-size: clamp(16px, 1vw, 76px);
+            font-weight: 600;
+          }
+        }
+      }
+    }
+    .mapouter {
+      @include squad-big;
+      position: relative;
+      text-align: right;
+      width: 100%;
+      height: 100%;
+      max-height: 125px;
+      .gmap_canvas {
+        overflow: hidden;
+        background: none;
+        width: 100%;
+        height: 100%;
+        .gmap_iframe {
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
+  }
+  .col-2 {
+    @include squad-big;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: calc(100% - 30px);
+    height: calc(100% - 40px);
+    gap: 10px;
+    background: $light-gray;
+    border-radius: 5px;
+    padding: 20px 15px;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    gap: 15px;
+    .form {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      gap: 20px;
+      .row {
+        display: flex;
+        width: 100%;
+        max-height: 30px;
+        gap: 3%;
+        .label {
+          width: 100%;
+          height: 100%;
+          input {
+            background: $dark-gray;
+            border: solid 1px $yellow;
+            border-radius: 8px;
+            padding: 0 10px;
+            width: calc(100% - 50px);
+            height: calc(100% - 2px);
+            padding: 5px 25px;
+          }
+          &.error {
+            input {
+              border: solid 1px $red;
+            }
+          }
+        }
+      }
+      .textarea-wrapper {
+        width: 100%;
+        min-height: 200px;
+        position: relative;
+        .textarea {
+          @include scroll;
+          overflow-y: auto;
+          background: $dark-gray;
+          border: solid 1px $yellow;
+          border-radius: 5px;
+          outline: none;
+          resize: none;
+          padding: 15px;
+          color: $white;
+          width: calc(100% - 32px);
+          height: calc(100% - 30px);
+          &.error {
+            border: solid 1px $red;
+          }
+        }
+        .character-count {
+          position: absolute;
+          color: $smooth-white;
+          font-size: 0.7em;
+          bottom: 5px;
+          right: 20px;
+        }
+      }
+      .send-message {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        button {
+          @include removed-styles-button;
+          @include squad-small;
+          padding: 1px;
+          background: $yellow;
+          max-width: 124px;
+          max-height: 30px;
+          transition: background-color transform 0.1s ease;
+          transform: scale(1);
+          .button-cover {
+            @include squad-small;
+            background: $light-gray;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.1s ease;
+            font-size: 0.8em;
+            transition: font-size 0.1s ease;
+            white-space: nowrap;
+            color: $smooth-white;
+            padding: 5px 50px;
+          }
+          &:hover {
+            transform: scale(1.02);
+            background: $yellow;
+            .button-cover {
+              background: $smooth-yellow;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 1200px) {
+  .contact-us-wrapper {
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+}

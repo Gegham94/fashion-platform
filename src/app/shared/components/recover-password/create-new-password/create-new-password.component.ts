@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-create-new-password',
+  selector: 'gb-create-new-password',
   templateUrl: './create-new-password.component.html',
   styleUrl: './create-new-password.component.scss'
 })

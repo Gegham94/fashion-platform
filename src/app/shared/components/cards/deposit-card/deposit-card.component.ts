@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-deposit-card',
+  selector: 'gb-deposit-card',
   templateUrl: './deposit-card.component.html',
   styleUrl: './deposit-card.component.scss',
 })

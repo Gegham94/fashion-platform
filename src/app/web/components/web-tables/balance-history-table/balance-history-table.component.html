@@ -37,7 +37,7 @@
       </div>
     </div>
     <div class="options filter">
-      <app-multiselect
+      <gb-multiselect
         [ngStyle]="{ '--index': 0 }"
         [data]="status"
         [keyName]="'id'"
@@ -45,9 +45,9 @@
         class="form-filed margin-right"
         (onSelect)="onSelectStatusFilter($event)"
       >
-      </app-multiselect>
+      </gb-multiselect>
 
-      <app-multiselect
+      <gb-multiselect
         [ngStyle]="{ '--index': 1 }"
         [cutSide]="'both'"
         [data]="method"
@@ -56,9 +56,9 @@
         class="form-filed"
         (onSelect)="onSelectMethodFilter($event)"
       >
-      </app-multiselect>
+      </gb-multiselect>
 
-      <app-multiselect
+      <gb-multiselect
         [ngStyle]="{ '--index': 2 }"
         [cutSide]="'right'"
         [data]="currency"
@@ -67,12 +67,12 @@
         class="form-filed margin-left"
         (onSelect)="onSelectCurrencyFilter($event)"
       >
-      </app-multiselect>
+      </gb-multiselect>
 
-      <app-search
+      <gb-search
         (getSearchedText)="getSearchedText($event)"
         class="search-component"
-      ></app-search>
+      ></gb-search>
     </div>
   </div>
   <div class="content__table">

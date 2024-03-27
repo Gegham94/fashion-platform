@@ -10,12 +10,12 @@
             <input type="text" placeholder="Amount" formControlName="amount" />
           </div>
           <div class="dropdown-wrapper">
-            <app-dropdown
+            <gb-dropdown
               dropdownButtonType="round"
               (emitedItem)="getSelectedValue($event)"
               [borderGradient]="true"
               [disableKey_All]="true"
-            ></app-dropdown>
+            ></gb-dropdown>
           </div>
           <div class="id-wrapper">
             <div class="col">

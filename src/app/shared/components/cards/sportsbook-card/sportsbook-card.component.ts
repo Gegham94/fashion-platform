@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-sportsbook-card',
+  selector: 'gb-sportsbook-card',
   templateUrl: './sportsbook-card.component.html',
   styleUrl: './sportsbook-card.component.scss',
 })

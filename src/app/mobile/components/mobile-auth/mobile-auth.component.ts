@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-mobile-auth',
+  selector: 'gb-mobile-auth',
   templateUrl: './mobile-auth.component.html',
   styleUrls: ['./mobile-auth.component.scss'],
 })

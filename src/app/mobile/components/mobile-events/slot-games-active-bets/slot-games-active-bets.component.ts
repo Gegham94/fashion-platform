@@ -1,8 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 
 @Component({
-  selector: 'app-slot-games-active-bets',
+  selector: 'gb-slot-games-active-bets',
   templateUrl: './slot-games-active-bets.component.html',
   styleUrls: ['./slot-games-active-bets.component.scss'],
 })
-export class SlotGamesActiveBetsComponent {}
+export class SlotGamesActiveBetsComponent {
+  @ViewChild('iframeRef') iframeRef!: ElementRef<any>;
+  public sendDataToParent() {
+    this.iframeRef.nativeElement.contentWindow.postMessage(
+      { id: 1 },
+      'http://192.168.0.117:4200/slotGames'
+    );
+  }
+}

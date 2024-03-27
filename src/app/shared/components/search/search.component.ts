@@ -7,7 +7,7 @@ import {
 } from '@angular/core';
 
 @Component({
-  selector: 'app-search',
+  selector: 'gb-search',
   templateUrl: './search.component.html',
   styleUrl: './search.component.scss',
 })

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-session-history',
+  selector: 'gb-session-history',
   templateUrl: './session-history.component.html',
   styleUrl: './session-history.component.scss',
 })

@@ -5,7 +5,7 @@ import { ISignin } from 'src/app/shared/interfaces/IAuth';
 import { AuthService } from 'src/app/shared/services/auth.service';
 
 @Component({
-  selector: 'app-web-sign-in',
+  selector: 'gb-web-sign-in',
   templateUrl: './web-sign-in.component.html',
   styleUrls: ['./web-sign-in.component.scss'],
 })
@@ -29,25 +29,6 @@ export class WebSignInComponent {
 
   constructor(private authService: AuthService) {}
 
-  public get emailControl(): FormControl {
-    return this.signinForm.get('email') as FormControl;
-  }
-  public get passwordControl(): FormControl {
-    return this.signinForm.get('password') as FormControl;
-  }
-
-  public closeSignInModal(event: Event){
-    this.openRecoverPassword.emit(event);
-  }
-
-  public handleCheckboxChange() {
-    this.isRememberMe = !this.isRememberMe;
-  }
-
-  public handlePasswordVisibility() {
-    this.isPasswordVisible = !this.isPasswordVisible;
-  }
-
   public submitForm() {
     let formData: ISignin;
     if (this.signinForm.valid) {
@@ -65,5 +46,17 @@ export class WebSignInComponent {
     } else {
       this.signinForm.markAllAsTouched();
     }
+  }
+
+  public closeSignInModal(event: Event){
+    this.openRecoverPassword.emit(event);
+  }
+
+  public handleCheckboxChange() {
+    this.isRememberMe = !this.isRememberMe;
+  }
+
+  public handlePasswordVisibility() {
+    this.isPasswordVisible = !this.isPasswordVisible;
   }
 }

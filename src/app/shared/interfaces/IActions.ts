@@ -1,5 +1,7 @@
 export interface IActions {
-  text: string;
+  title: string;
+  type: string;
+  value: string;
   clipPath: string;
   color: string;
   class: string;

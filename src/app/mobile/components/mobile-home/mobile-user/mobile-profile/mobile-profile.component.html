@@ -1,0 +1,9 @@
+<gb-loader *ngIf="isLoading; else contentModel"></gb-loader>
+<ng-template #contentModel>
+  <div class="content">
+    <gb-mobile-user-info-card [userData]="userData"></gb-mobile-user-info-card>
+    <gb-slot-games-active-bets></gb-slot-games-active-bets>
+    <gb-live-casino-events></gb-live-casino-events>
+    <gb-sport-events></gb-sport-events>
+  </div>
+</ng-template>

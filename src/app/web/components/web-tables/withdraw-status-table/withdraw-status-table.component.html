@@ -37,16 +37,16 @@
       </div>
     </div>
     <div class="options filter">
-      <app-multiselect
+      <gb-multiselect
         [data]="status"
         [keyName]="'id'"
         placeholder="Status"
         class="form-filed margin-right"
         (onSelect)="onSelectStatusFilter($event)"
       >
-      </app-multiselect>
+      </gb-multiselect>
 
-      <app-multiselect
+      <gb-multiselect
         [cutSide]="'both'"
         [data]="method"
         [keyName]="'id'"
@@ -54,9 +54,9 @@
         class="form-filed"
         (onSelect)="onSelectMethodFilter($event)"
       >
-      </app-multiselect>
+      </gb-multiselect>
 
-      <app-multiselect
+      <gb-multiselect
         [cutSide]="'right'"
         [data]="currency"
         [keyName]="'id'"
@@ -64,12 +64,12 @@
         class="form-filed margin-left"
         (onSelect)="onSelectCurrencyFilter($event)"
       >
-      </app-multiselect>
+      </gb-multiselect>
 
-      <app-search
+      <gb-search
         (getSearchedText)="getSearchedText($event)"
         class="search-component"
-      ></app-search>
+      ></gb-search>
     </div>
   </div>
   <div class="content__table">
@@ -107,8 +107,8 @@
   </div>
 </div>
 
-<!-- <div class="app-error-wrapper">
-  <app-multiselect
+<!-- <div class="gb-error-wrapper">
+  <gb-multiselect
   [cutSide]="'right'"
     [error]="
       !!(
@@ -123,9 +123,9 @@
     [data]="status"
     [keyName]="'id'"
   >
-  </app-multiselect>
+  </gb-multiselect>
   <span
-    class="app-error"
+    class="gb-error"
     *ngIf="
       filterForm.get('status')?.hasError('required') &&
       filterForm.get('status')?.touched &&

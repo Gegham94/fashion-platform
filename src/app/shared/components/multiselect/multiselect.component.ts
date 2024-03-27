@@ -17,7 +17,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 let uuid = 0;
 @Component({
-  selector: 'app-multiselect',
+  selector: 'gb-multiselect',
   templateUrl: './multiselect.component.html',
   styleUrls: ['./multiselect.component.scss'],
   animations: [collapse],
@@ -60,7 +60,7 @@ export class MultiselectComponent implements OnDestroy, OnInit, ControlValueAcce
   }
 
   public getUniqueId() {
-    return `app-multiselect-${uuid++}`;
+    return `gb-multiselect-${uuid++}`;
   }
 
   public getSelected(item: any) {

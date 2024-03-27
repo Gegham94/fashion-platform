@@ -20,8 +20,8 @@
         <div class="content margin-right">
           <div
             class="content__wrapper--left"
-            [class.success-left]="emailControl.touched && emailControl.valid"
-            [class.error-left]="emailControl.touched && emailControl.invalid"
+            [class.success-left]="signinForm.get('email')?.touched && signinForm.get('email')?.valid"
+            [class.error-left]="signinForm.get('email')?.touched && signinForm.get('email')?.invalid"
           >
             <input
               class="content__wrapper--left--input"
@@ -33,20 +33,16 @@
           </div>
           <span
             class="content__feedback-error"
-            *ngIf="emailControl.touched && emailControl.invalid"
+            *ngIf="signinForm.get('email')?.touched && signinForm.get('email')?.invalid"
             >Error text</span
           >
-          <app-recover-password class="recover" (openRecoverPassword)="closeSignInModal($event)" [isMobile]="false"></app-recover-password>
+          <gb-recover-password class="recover" (openRecoverPassword)="closeSignInModal($event)" [isMobile]="false"></gb-recover-password>
         </div>
         <div class="content margin-right">
           <div
             class="content__wrapper--right"
-            [class.success-right]="
-              passwordControl.touched && passwordControl.valid
-            "
-            [class.error-right]="
-              passwordControl.touched && passwordControl.invalid
-            "
+            [class.success-right]="signinForm.get('password')?.touched && signinForm.get('password')?.valid"
+            [class.error-right]="signinForm.get('password')?.touched && signinForm.get('password')?.invalid"
           >
             <input
               class="content__wrapper--right--input"
@@ -75,7 +71,7 @@
           </div>
           <span
             class="content__feedback-error"
-            *ngIf="passwordControl.touched && passwordControl.invalid"
+            *ngIf="signinForm.get('password')?.touched && signinForm.get('password')?.invalid"
             >Error text</span
           >
         </div>

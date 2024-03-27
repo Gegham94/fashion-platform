@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 
 @Component({
-  selector: 'app-deposit-method-card',
+  selector: 'gb-deposit-method-card',
   templateUrl: './deposit-method-card.component.html',
   styleUrls: ['./deposit-method-card.component.scss']
 })

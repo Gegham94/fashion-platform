@@ -1,0 +1,46 @@
+<div class="card-carousel-content" [class.mobile]="isMobile">
+  <gb-card-carousel class="card-carousel"></gb-card-carousel>
+  <div class="add-card-zone">
+    <svg><use xlink:href="assets/icons/global-sprint.svg#gb-plus"></use></svg>
+    <span>ADD CARD</span>
+    <gb-attach-new-card class="attach-new-card" [isMobile]="isMobile"></gb-attach-new-card>
+  </div>
+</div>
+<form [formGroup]="amountForm">
+  <div class="form-content">
+    <div class="row">
+      <span class="input-title">Amount in USD</span>
+      <div
+        class="wrapper"
+        [class.success]="amountForm.get('amount')?.touched && amountForm.get('amount')?.valid"
+        [class.error]="amountForm.get('amount')?.touched && amountForm.get('amount')?.invalid"
+      >
+        <input
+          class="wrapper--input"
+          type="number"
+          autocomplete="off"
+          formControlName="amount"
+          placeholder="Amount"
+        />
+      </div>
+      <span class="min-max-title">Min Amount: 200, Max Amount: 1000.00</span>
+    </div>
+    <div class="checkbox-shadow">
+      <div class="checkbox-wrapper">
+        <input
+          id="1"
+          type="checkbox"
+          class="checkbox"
+          formControlName="rulesAndBetting"
+          (change)="handleCheckboxChange($event)"
+        >
+      </div>
+      <span>I agree with the Rules of betting, bets accepting and winnings payout </span>
+    </div>
+  </div>
+  <div class="footer">
+    <div class="send-btn-wrapper">
+      <button class="send-btn-cover" (click)="onDeposit()">Deposit</button>
+    </div>
+  </div>
+</form>

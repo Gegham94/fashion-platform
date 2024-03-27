@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-verification-by-document',
+  selector: 'gb-verification-by-document',
   templateUrl: './verification-by-document.component.html',
   styleUrl: './verification-by-document.component.scss',
 })

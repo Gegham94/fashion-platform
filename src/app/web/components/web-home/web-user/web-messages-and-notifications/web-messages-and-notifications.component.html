@@ -1,0 +1,95 @@
+<gb-loader *ngIf="isLoading; else contentModel"></gb-loader>
+<ng-template #contentModel>
+  <div class="content">
+    <div class="content__filters">
+      <div class="favorite">
+        <div class="wrapper-content" (click)="onSelectFavorite()">
+          <div class="cover">
+            <div class="star-shadow">
+              <svg *ngIf="filterForm && filterForm.isFavorite; else favoriteModel">
+                <use xlink:href="assets/icons/global-sprint.svg#gb-star-fill"></use>
+              </svg>
+              <ng-template #favoriteModel>
+                <svg>
+                  <use xlink:href="assets/icons/global-sprint.svg#gb-star-stroke"></use>
+                </svg>
+              </ng-template>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="date filter">
+        <div class="wrapper-content">
+          <label class="label left">
+            <div class="cover">
+              <span>From:</span>
+              <input
+                type="date"
+                autocomplete="off"
+                (change)="onSelectDateFrom($event)"
+              />
+              <svg>
+                <use
+                  xlink:href="assets/icons/global-sprint.svg#gb-calendar-date"
+                ></use>
+              </svg>
+            </div>
+          </label>
+        </div>
+        <div class="wrapper-content">
+          <label class="label right">
+            <div class="cover">
+              <span>To:</span>
+              <input
+                type="date"
+                autocomplete="off"
+                (change)="onSelectDateTo($event)"
+              />
+              <svg>
+                <use
+                  xlink:href="assets/icons/global-sprint.svg#gb-calendar-date"
+                ></use>
+              </svg>
+            </div>
+          </label>
+        </div>
+      </div>
+      <div class="options filter">
+        <gb-multiselect
+          [data]="status"
+          [keyName]="'id'"
+          placeholder="Status"
+          class="form-filed margin-right"
+          (onSelect)="onSelectStatusFilter($event)"
+        >
+        </gb-multiselect>
+        <gb-multiselect
+          [cutSide]="'right'"
+          [data]="betType"
+          [keyName]="'id'"
+          placeholder="Type"
+          class="form-filed margin-left"
+          (onSelect)="onSelectTypeFilter($event)"
+        >
+        </gb-multiselect>
+
+        <gb-search
+          (getSearchedText)="getSearchedText($event)"
+          class="search-component"
+        ></gb-search>
+      </div>
+    </div>
+    <div class="content__table">
+      <div class="content__table--cover">
+        <div class="table-body">
+          <gb-list-message (selectedMessage)="getSelectedMessage($event)" (newMessage)="createNewMessage($event)"></gb-list-message>
+          <gb-new-message *ngIf="createMessage; else viewMessageModel"></gb-new-message>
+          <ng-template #viewMessageModel>
+            <gb-view-message *ngIf="!createMessage" [message]="selectedMessage"></gb-view-message>
+          </ng-template>
+        </div>
+      </div>
+    </div>           
+  </div>
+</ng-template>
+

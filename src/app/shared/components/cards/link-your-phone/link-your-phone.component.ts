@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-link-your-phone',
+  selector: 'gb-link-your-phone',
   templateUrl: './link-your-phone.component.html',
   styleUrl: './link-your-phone.component.scss',
 })

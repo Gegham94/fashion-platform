@@ -1,7 +1,7 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-web-auth',
+  selector: 'gb-web-auth',
   templateUrl: './web-auth.component.html',
   styleUrls: ['./web-auth.component.scss'],
 })

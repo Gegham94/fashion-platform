@@ -1,0 +1,24 @@
+<div class="add-card-zone-btn" (click)="openModal()">
+</div>
+<ng-template #modalTemplate>
+  <div id="attach-new-card">
+    <div class="attach-new-card-content" [class.mobile]="isMobile">
+      <div class="attach-new-card-close-wrapper" (click)="closeModal()">
+        <div class="attach-new-card-cover">
+          <div class="attach-new-card-cross"></div>
+        </div>
+      </div>
+
+      <div class="attach-new-card-body">
+        <div class="attach-new-card-shadow">
+          <div class="attach-new-card-wrapper">
+            <div class="attach-new-card-cover" [ngSwitch]="tab">
+                <gb-card-info *ngSwitchCase="1" (emitTabValue)="getTabValue($event)" [isMobile]="isMobile"></gb-card-info>
+                <gb-verify-card-code *ngSwitchCase="2" (emitTabValue)="getTabValue($event)" (closeAttachNewCard)="closeAttachNewCard($event)" [isMobile]="isMobile"></gb-verify-card-code>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
