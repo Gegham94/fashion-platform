@@ -8,7 +8,6 @@ import {
 } from '@angular/core';
 import { collapse } from 'src/app/shared/animations/animations';
 import { IUserInfo } from 'src/app/shared/interfaces/IUserInfo';
-import { ActionsService } from 'src/app/shared/services/actions.service';
 
 @Component({
   selector: 'gb-mobile-home',
@@ -18,8 +17,8 @@ import { ActionsService } from 'src/app/shared/services/actions.service';
 })
 export class MobileHomeComponent implements AfterViewInit, OnInit {
   @ViewChild('iframeRef') iframeRef!: ElementRef<any>;
-  @ViewChild('gameTypesElementRef') gameTypesElementRef!: ElementRef<any>;
   public data = { type: 'casino-games', value: 'slots' };
+
   public currentUser: IUserInfo | null = null;
   public isUserInfoOpen: boolean = false;
   public showGameTypes: boolean = false;
@@ -32,18 +31,17 @@ export class MobileHomeComponent implements AfterViewInit, OnInit {
   public selectedDecimalOption = this.DECIMAL_OPTIONS[0];
   public showDecimalDropdown: boolean = false;
 
-  constructor(private actionService: ActionsService) {}
+  constructor() {}
 
   @HostListener('window:blur', ['$event'])
   onWindowBlur(): void {
     this.isUserInfoOpen = false;
     this.showGameTypes = false;
+    this.showTimeDropdown = false;
+    this.showDecimalDropdown = false;
   }
 
   public ngOnInit() {
-    this.actionService.data$.subscribe((data) => {
-      this.data = data;
-    });
     this.currentUser = {
       id: 22585455,
       firstName: 'Firstname',
@@ -61,32 +59,39 @@ export class MobileHomeComponent implements AfterViewInit, OnInit {
   }
 
   public ngAfterViewInit() {
-    this.sendGameTypeToParent(this.data.type);
-    this.sendGameSubTypeToParent(this.data.value);
+    this.loadFrameModule(this.data.type);
+    this.setGameType(this.data.value);
   }
 
-  public sendGameTypeToParent(gametype: string) {
+  public loadFrameModule(gametype: string) {
     setTimeout(()=> {this.showGameTypes = false}, 150)
-    this.actionService.setData({ type: gametype, value: this.data.value });
     this.data.type = gametype;
-    if (this.iframeRef) {
-      this.iframeRef.nativeElement.contentWindow.postMessage(
-        { type: this.data.type },
-        'http://192.168.0.117:4200/'
-      );
+    switch(this.data.type) {
+      case 'casino-games':
+        this.data.value = 'slots';
+        this.iframeRef.nativeElement.setAttribute('src', 'http://192.168.0.117:4200/2/slots')
+        break;
+        case 'sports-book':
+          this.data.value = 'in-play';
+          this.iframeRef.nativeElement.setAttribute('src', 'http://192.168.0.117:4200/2/in-play')
+        break;
     }
   }
 
-  public sendGameSubTypeToParent(gameSubType: string) {
+  public setGameType(gameType: string) {
     setTimeout(()=> {this.showGameTypes = false}, 150)
-    this.actionService.setData({ type: this.data.type, value: gameSubType });
-    this.data.value = gameSubType;
-    if (this.iframeRef) {
-      this.iframeRef.nativeElement.contentWindow.postMessage(
-        { type: this.data.value },
-        'http://192.168.0.117:4200/'
-      );
+    this.data.value = gameType;
+    if(gameType === 'slots' || gameType === 'live-dealer'){
+      this.iframeRef.nativeElement.setAttribute('src', `http://192.168.0.117:4200/1/${gameType}`)
     }
+    if(gameType === 'in-play' || gameType === 'pre-match'){
+      this.iframeRef.nativeElement.setAttribute('src', `http://192.168.0.143:4200/1/${gameType}`)
+    }
+  }
+
+  public closeDropdowns(){
+    this.showTimeDropdown = false;
+    this.showDecimalDropdown = false;
   }
 
   public toggleTimeDropdown(event: Event) {

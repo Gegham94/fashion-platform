@@ -9,14 +9,11 @@ const routes: Routes = [
     component: WebHomeComponent,
     children: [
       {
-        path: 'user',
-        loadChildren: () => import('./web-user/web-user.module').then((m) => m.WebUserModule),
+        path: 'user',loadChildren: () => import('./web-user/web-user.module').then((m) => m.WebUserModule),
         canActivate: [AuthGuard],
       },
       {
-        path: 'about',
-        loadChildren: () =>
-          import('./web-about/web-about.module').then((m) => m.WebAboutModule),
+        path: 'about',loadChildren: () =>import('./web-about/web-about.module').then((m) => m.WebAboutModule),
       },
     ],
   },

@@ -175,14 +175,6 @@
           }
         }
       }
-      .search-component {
-        max-height: 40px;
-        height: 100%;
-        width: 100%;
-        border-radius: 20px;
-        background: $dark-gray;
-        margin-left: 10px;
-      }
     }
     .form-filed {
       flex-shrink: 0;
@@ -190,9 +182,6 @@
       width: 30%;
       &.margin-right {
         margin-right: -20px;
-      }
-      &.margin-left {
-        margin-right: -10px;
       }
     }
   }

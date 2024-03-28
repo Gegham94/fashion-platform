@@ -1,10 +1,10 @@
 <div class="content">
   <div class="header-container">
     <div class="games">
-      <div class="wrapper" [class.active]="data.type === 'casino-games'" (click)="sendGameTypeToParent('casino-games')">
+      <div class="wrapper" [class.active]="data.type === 'casino-games'" (click)="loadFrameModule('casino-games')">
         <div class="cover">Casino Games</div>
       </div>
-      <div class="wrapper" [class.active]="data.type == 'sports-book'" (click)="sendGameTypeToParent('sports-book')">
+      <div class="wrapper" [class.active]="data.type == 'sports-book'" (click)="loadFrameModule('sports-book')">
         <div class="cover">SportsBook</div>
       </div>
     </div>
@@ -12,10 +12,9 @@
       <div
         class="button left"
         [class.active]="data.value === 'slots' || data.value === 'in-play'"
-        
       >
-        <div *ngIf="data.type === 'casino-games'" class="button-body" (click)="sendGameSubTypeToParent('slots')">Slots</div>
-        <div *ngIf="data.type === 'sports-book'" class="button-body" (click)="sendGameSubTypeToParent('in-play')">In-Play</div>
+        <div *ngIf="data.type === 'casino-games'" class="button-body" (click)="setGameType('slots')">Slots</div>
+        <div *ngIf="data.type === 'sports-book'" class="button-body" (click)="setGameType('in-play')">In-Play</div>
       </div>
       <div class="fashion-tv">
         <img src="assets/images/fashion-tv.svg" alt="fashion-tv" />
@@ -24,17 +23,39 @@
       <div
         class="button right"
         [class.active]="data.value === 'live-dealer' || data.value === 'pre-match'"
-        
       >
-        <div *ngIf="data.type === 'casino-games'" class="button-body" (click)="sendGameSubTypeToParent('live-dealer')">Live Dealer</div>
-        <div *ngIf="data.type === 'sports-book'" class="button-body" (click)="sendGameSubTypeToParent('pre-match')">PreMatch</div>
+        <div *ngIf="data.type === 'casino-games'" class="button-body" (click)="setGameType('live-dealer')">Live Dealer</div>
+        <div *ngIf="data.type === 'sports-book'" class="button-body" (click)="setGameType('pre-match')">PreMatch</div>
       </div>
     </div>
     <div class="profile-information">
-      <div class="wallet-dropdown">
+      <div class="dropdown">
         <div
-          [ngClass]="['squad', showDropdown ? 'opened' : '']"
-          (click)="toggleDropdown($event)"
+          [ngClass]="['squad', showDecimalDropdown ? 'opened' : '']"
+          (click)="toggleDecimalDropdown($event)"
+        >
+          <div class="dropdown-cover">
+            {{ selectedDecimalOption }}
+            <svg [class.rotate]="showDecimalDropdown">
+              <use xlink:href="assets/icons/global-sprint.svg#gb-arrow-down"></use>
+            </svg>
+          </div>
+        </div>
+      
+        <div
+          class="list-squad"
+          @collapse
+          *ngIf="showDecimalDropdown"
+        >
+          <div class="list-cover">
+            <span class="option" *ngFor="let item of DECIMAL_OPTIONS" (click)="closeDropdowns()">{{ item }}</span>
+          </div>
+        </div>
+      </div>
+      <div class="dropdown">
+        <div
+          [ngClass]="['squad', showWalletDropdown ? 'opened' : '']"
+          (click)="toggleWalletDropdown($event)"
         >
           <div class="dropdown-cover">
             <div class="squad-wallet">
@@ -44,8 +65,8 @@
                 </svg>
               </div>
             </div>
-            {{ selectedOption | number:'1.3-3' }}
-            <svg [class.rotate]="showDropdown">
+            {{ selectedWalletOption | number:'1.3-3' }}
+            <svg [class.rotate]="showWalletDropdown">
               <use xlink:href="assets/icons/global-sprint.svg#gb-arrow-down"></use>
             </svg>
           </div>
@@ -54,14 +75,10 @@
         <div
           class="list-squad"
           @collapse
-          *ngIf="showDropdown"
+          *ngIf="showWalletDropdown"
         >
           <div class="list-cover">
-            <span
-              class="option"
-              *ngFor="let item of OPTIONS"
-              >{{ item | number:'1.3-3' }}
-            </span>
+            <span class="option" *ngFor="let item of WALLET_OPTIONS" (click)="closeDropdowns()">{{ item | number:'1.3-3' }}</span>
           </div>
         </div>
       </div>
@@ -135,6 +152,6 @@
       </div>
     </div>
   </div>
-  <iframe class="iframe" id="iframe" #iframeRef src="http://192.168.0.117:4200/1" frameborder="0"></iframe>
+  <iframe #iframeRef class="iframe" id="iframe" frameborder="0"></iframe>
   <router-outlet></router-outlet>
 </div>

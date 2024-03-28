@@ -2,7 +2,7 @@
   <div class="header-container">
     <div class="header-container__wrapper">
       <div class="row">
-        <div #gameTypesElementRef class="games-type-diamond">
+        <div class="games-type-diamond">
           <div class="diamond-wrapper" (click)="toggleGameTypes($event)">
             <div class="diamond-cover">
               <span class="big-line"></span>
@@ -14,10 +14,10 @@
         <div gbClickOutside class="games-modal" *ngIf="showGameTypes" (clickOutside)="showGameTypes = false">
           <div class="games-modal-cover">
             <div class="game-type-btns">
-              <div class="wrapper" [class.active]="data.type === 'casino-games'" (click)="sendGameTypeToParent('casino-games')">
+              <div class="wrapper" [class.active]="data.type === 'casino-games'" (click)="loadFrameModule('casino-games')">
                 <div class="cover">Casino Games</div>
               </div>
-              <div class="wrapper" [class.active]="data.type == 'sports-book'" (click)="sendGameTypeToParent('sports-book')">
+              <div class="wrapper" [class.active]="data.type == 'sports-book'" (click)="loadFrameModule('sports-book')">
                 <div class="cover">SportsBook</div>
               </div>
             </div>
@@ -57,12 +57,12 @@
       </div>
       <div class="row-btns">
         <div class="button left" [class.active]="data.value === 'slots' || data.value === 'in-play'">
-          <div *ngIf="data.type === 'casino-games'" class="button-body" (click)="sendGameSubTypeToParent('slots')">Slots</div>
-          <div *ngIf="data.type === 'sports-book'" class="button-body" (click)="sendGameSubTypeToParent('in-play')">In-Play</div>
+          <div *ngIf="data.type === 'casino-games'" class="button-body" (click)="setGameType('slots')">Slots</div>
+          <div *ngIf="data.type === 'sports-book'" class="button-body" (click)="setGameType('in-play')">In-Play</div>
         </div>
         <div class="button right" [class.active]="data.value === 'live-dealer' || data.value === 'pre-match'">
-          <div *ngIf="data.type === 'casino-games'" class="button-body" (click)="sendGameSubTypeToParent('live-dealer')">Live Dealer</div>
-          <div *ngIf="data.type === 'sports-book'" class="button-body" (click)="sendGameSubTypeToParent('pre-match')">PreMatch</div>
+          <div *ngIf="data.type === 'casino-games'" class="button-body" (click)="setGameType('live-dealer')">Live Dealer</div>
+          <div *ngIf="data.type === 'sports-book'" class="button-body" (click)="setGameType('pre-match')">PreMatch</div>
         </div>
       </div>
     </div>
@@ -110,15 +110,13 @@
               </div>
               <div
                 class="list-squad"
+                gbClickOutside
                 @collapse
                 *ngIf="showTimeDropdown"
+                (clickOutside)="showTimeDropdown = false"
               >
                 <div class="list-cover">
-                  <span
-                    class="option"
-                    *ngFor="let item of TIME_OPTIONS"
-                    >{{ item }}
-                  </span>
+                  <span class="option" *ngFor="let item of TIME_OPTIONS" (click)="closeDropdowns()">{{ item }}</span>
                 </div>
               </div>
             </div>
@@ -136,15 +134,13 @@
               </div>
               <div
                 class="list-squad"
+                gbClickOutside
                 @collapse
                 *ngIf="showDecimalDropdown"
+                (clickOutside)="showDecimalDropdown = false"
               >
                 <div class="list-cover">
-                  <span
-                    class="option"
-                    *ngFor="let item of DECIMAL_OPTIONS"
-                    >{{ item }}
-                  </span>
+                  <span class="option" *ngFor="let item of DECIMAL_OPTIONS" (click)="closeDropdowns()">{{ item }}</span>
                 </div>
               </div>
             </div>
@@ -209,6 +205,6 @@
       </div>
     </div>
   </div>
-  <iframe class="iframe" #iframeRef src="http://192.168.0.117:4200/2" frameborder="0"></iframe>
+  <iframe #iframeRef class="iframe" frameborder="0"></iframe>
   <router-outlet></router-outlet>
 </div>

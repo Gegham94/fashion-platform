@@ -7,8 +7,12 @@ const routes: Routes = [
     path: '',
     component: MobileHomeComponent,
     children: [
-      {path: 'user', loadChildren: () => import('./mobile-user/mobile-user.module').then(m => m.MobileUserModule)},
-      {path: 'about', loadChildren: () => import('./mobile-about/mobile-about.module').then(m => m.MobileAboutModule)},
+      {
+        path: 'user', loadChildren: () => import('./mobile-user/mobile-user.module').then(m => m.MobileUserModule)
+      },
+      {
+        path: 'about', loadChildren: () => import('./mobile-about/mobile-about.module').then(m => m.MobileAboutModule)
+      },
     ]
   },
 ];

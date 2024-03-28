@@ -68,15 +68,12 @@
           [data]="betType"
           [keyName]="'id'"
           placeholder="Type"
-          class="form-filed margin-left"
+          class="form-filed"
           (onSelect)="onSelectTypeFilter($event)"
         >
         </gb-multiselect>
 
-        <gb-search
-          (getSearchedText)="getSearchedText($event)"
-          class="search-component"
-        ></gb-search>
+        <gb-search (getSearchedText)="getSearchedText($event)"></gb-search>
       </div>
     </div>
     <div class="content__table">
