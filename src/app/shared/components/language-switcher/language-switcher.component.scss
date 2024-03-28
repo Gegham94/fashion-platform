@@ -49,7 +49,7 @@
         justify-content: center;
         width: 25px;
         height: 20px;
-        padding: 7px;
+        padding: 5px;
         background: $dark-gray;
         .selected-flag-cover {
           @include small-diamond;
@@ -64,8 +64,8 @@
         }
         .left-arrow,
         .right-arrow {
-          width: 20px;
-          height: 15px;
+          width: 15px;
+          height: 13px;
           position: absolute;
           fill: $yellow;
           top: 5px;
@@ -147,8 +147,8 @@
         }
         .selected-flag {
           @include small-diamond;
-          min-width: 25px;
-          min-height: 23px;
+          min-width: 20px;
+          min-height: 20px;
           padding: 1px;
           background: $yellow;
           .selected-flag-cover {

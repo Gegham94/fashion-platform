@@ -14,7 +14,7 @@
     @include diamond;
     min-height: 50px;
     min-width: 60px;
-    height: 3.5vw;
+    height: 3.3vw;
     width: 4vw;
     z-index: 1;
     cursor: pointer;
@@ -26,8 +26,8 @@
     &::before {
       content: "";
       @include diamond;
-      width: calc(100% - 20px);
-      height: calc(100% - 18px);
+      width: 75%;
+      height: 70%;
       position: absolute;
       background: $layout-bg;
     }
@@ -63,7 +63,7 @@
       content: "";
       display: flex;
       min-width: 45px;
-      height: 3.5vh;
+      height: 3.3vh;
       width: 4.3vw;
     }
   }
