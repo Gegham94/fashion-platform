@@ -2,6 +2,8 @@
 @import "src/styles/colors";
 
 :host {
+  display: flex;
+  flex-direction: column;
   width: 100%;
   height: 100%;
 }
@@ -11,13 +13,16 @@
   height: 100%;
   min-width: 768px;
   background-color: $layout-bg;
+  position: relative;
   .header-container {
-    padding: 0 6%;
-    padding-bottom: 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    box-sizing: border-box;
+    padding: 0 6% 10px 6%;
     gap: 10px;
+    width: 100%;
+    max-height: 96px;
     .games,
     .profile-information {
       display: flex;
@@ -69,81 +74,78 @@
       justify-content: flex-end;
       gap: 20px;
       position: relative;
-      .dropdown {
-        position: relative;
-        background: transparent;
-        z-index: 999;
+      .dropdowns-container {
         display: flex;
         align-items: center;
         justify-content: center;
-        .squad {
-          @include squad-small;
-          width: calc(100% - 2px);
-          max-width: 126px;
-          height: 26px;
-          padding: 1px;
-          background: $lighter-gray;
-          border-radius: 2px;
-          font-size: 0.9em;
-          font-weight: 700;
-          cursor: pointer;
-          .dropdown-cover {
+        width: 100%;
+        gap: 20px;
+        .dropdown {
+          position: relative;
+          background: transparent;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 100%;
+          .squad {
             @include squad-small;
-            width: calc(100% - 10px);
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            background: $light-gray;
+            width: calc(100% - 2px);
+            max-width: 126px;
+            height: 26px;
+            padding: 1px;
+            background: $lighter-gray;
             border-radius: 2px;
-            padding: 0 5px;
-            gap: 5px;
-            color: $smooth-white;
-            .squad-wallet {
+            font-size: 0.9em;
+            font-weight: 700;
+            cursor: pointer;
+            .dropdown-cover {
               @include squad-small;
+              width: calc(100% - 10px);
+              height: 100%;
               display: flex;
-              width: 20px;
-              height: 20px;
-              background: $lighter-gray;
-              padding: 1px;
-              z-index: 1;
-              &--cover {
+              align-items: center;
+              justify-content: space-between;
+              background: $light-gray;
+              border-radius: 2px;
+              padding: 0 5px;
+              gap: 5px;
+              color: $smooth-white;
+              .squad-wallet {
                 @include squad-small;
                 display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: space-evenly;
-                width: 100%;
-                height: 100%;
+                width: 20px;
+                height: 20px;
                 background: $lighter-gray;
-                .svg-wallet {
-                  width: 70%;
-                  height: 70%;
-                  fill: $white;
+                padding: 1px;
+                z-index: 1;
+                &--cover {
+                  @include squad-small;
+                  display: flex;
+                  flex-direction: column;
+                  align-items: center;
+                  justify-content: space-evenly;
+                  width: 100%;
+                  height: 100%;
+                  background: $lighter-gray;
+                  .svg-wallet {
+                    width: 70%;
+                    height: 70%;
+                    fill: $white;
+                  }
+                }
+              }
+              svg {
+                width: 15px;
+                height: 15px;
+                flex-shrink: 0;
+                fill: $yellow;
+                transition: transform 0.1s ease;
+                &.rotate {
+                  transform: rotate(180deg);
                 }
               }
             }
-            svg {
-              width: 15px;
-              height: 15px;
-              flex-shrink: 0;
-              fill: $yellow;
-              transition: transform 0.1s ease;
-              &.rotate {
-                transform: rotate(180deg);
-              }
-            }
-          }
-          &.opened {
-            clip-path: polygon(
-              0% 0%,
-              calc(100% - 6px) 0%,
-              100% 6px,
-              100% 100%,
-              0% 100%,
-              0% 0%
-            );
-            .dropdown-cover {
+            &.opened {
               clip-path: polygon(
                 0% 0%,
                 calc(100% - 6px) 0%,
@@ -152,37 +154,28 @@
                 0% 100%,
                 0% 0%
               );
+              .dropdown-cover {
+                clip-path: polygon(
+                  0% 0%,
+                  calc(100% - 6px) 0%,
+                  100% 6px,
+                  100% 100%,
+                  0% 100%,
+                  0% 0%
+                );
+              }
             }
           }
-        }
-        .list-squad {
-          position: absolute;
-          top: 100%;
-          width: calc(100% - 2px);
-          max-width: 126px;
-          height: 95px;
-          border-radius: 0px 0px 5px 5px;
-          background: $light-gray;
-          z-index: 999;
-          padding: 1px;
-          clip-path: polygon(
-            0% 0%,
-            100% 0%,
-            100% 100%,
-            6px 100%,
-            0% calc(100% - 6px)
-          );
-          .list-cover {
-            @include scroll;
-            overflow-y: auto;
-            overflow-x: hidden;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            background: $light-gray;
+          .list-squad {
+            position: absolute;
+            top: 100%;
+            width: calc(100% - 2px);
+            max-width: 126px;
+            height: 95px;
             border-radius: 0px 0px 5px 5px;
+            background: $light-gray;
+            z-index: 1;
+            padding: 1px;
             clip-path: polygon(
               0% 0%,
               100% 0%,
@@ -190,20 +183,40 @@
               6px 100%,
               0% calc(100% - 6px)
             );
-            .option {
+            .list-cover {
+              @include scroll;
+              overflow-y: auto;
+              overflow-x: hidden;
               width: 100%;
               height: 100%;
-              padding: 5px;
-              cursor: pointer;
-              font-size: 0.7em;
-              color: $smooth-white;
-              &:hover {
-                background: $lighter-gray;
+              display: flex;
+              flex-direction: column;
+              justify-content: flex-start;
+              background: $light-gray;
+              border-radius: 0px 0px 5px 5px;
+              clip-path: polygon(
+                0% 0%,
+                100% 0%,
+                100% 100%,
+                6px 100%,
+                0% calc(100% - 6px)
+              );
+              .option {
+                width: 100%;
+                height: 100%;
+                padding: 5px;
+                cursor: pointer;
+                font-size: 0.7em;
+                color: $smooth-white;
+                &:hover {
+                  background: $lighter-gray;
+                }
               }
             }
           }
         }
       }
+
       .notifications {
         position: relative;
         background: transparent;
@@ -490,6 +503,11 @@
     height: calc(100% - 118px);
     z-index: 0;
   }
+  .loader {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+  }
 
   @media only screen and (max-width: 986px) {
     .header-container {
@@ -501,6 +519,10 @@
         gap: 10px;
       }
       .profile-information {
+        .dropdowns-container {
+          flex-direction: column;
+          gap: 10px;
+        }
         .profile {
           .auth-diamond-wrapper {
             width: 164px;
@@ -523,10 +545,10 @@
                 .unverified-error {
                   font-size: 0.5em;
                   gap: 2px;
-                svg {
-                  width: 12px;
-                  height: 12px;
-                }
+                  svg {
+                    width: 12px;
+                    height: 12px;
+                  }
                 }
                 .user-image {
                   border-radius: 3px;

@@ -71,9 +71,9 @@ export class MobileHomeComponent implements AfterViewInit, OnInit {
         this.data.value = 'slots';
         this.iframeRef.nativeElement.setAttribute('src', 'http://192.168.0.117:4200/2/slots')
         break;
-        case 'sports-book':
-          this.data.value = 'in-play';
-          this.iframeRef.nativeElement.setAttribute('src', 'http://192.168.0.117:4200/2/in-play')
+      case 'sports-book':
+        this.data.value = 'in-play';
+        this.iframeRef.nativeElement.setAttribute('src', 'http://192.168.0.117:4200/2/in-play')
         break;
     }
   }
@@ -97,11 +97,13 @@ export class MobileHomeComponent implements AfterViewInit, OnInit {
   public toggleTimeDropdown(event: Event) {
     event.stopPropagation();
     this.showTimeDropdown = !this.showTimeDropdown;
+    this.showDecimalDropdown = false;
   }
 
   public toggleDecimalDropdown(event: Event) {
     event.stopPropagation();
     this.showDecimalDropdown = !this.showDecimalDropdown;
+    this.showTimeDropdown = false;
   }
 
   public toggleAuth(event: Event) {

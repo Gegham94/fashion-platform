@@ -29,59 +29,62 @@
       </div>
     </div>
     <div class="profile-information">
-      <div class="dropdown">
-        <div
-          [ngClass]="['squad', showDecimalDropdown ? 'opened' : '']"
-          (click)="toggleDecimalDropdown($event)"
-        >
-          <div class="dropdown-cover">
-            {{ selectedDecimalOption }}
-            <svg [class.rotate]="showDecimalDropdown">
-              <use xlink:href="assets/icons/global-sprint.svg#gb-arrow-down"></use>
-            </svg>
-          </div>
-        </div>
-      
-        <div
-          class="list-squad"
-          @collapse
-          *ngIf="showDecimalDropdown"
-        >
-          <div class="list-cover">
-            <span class="option" *ngFor="let item of DECIMAL_OPTIONS" (click)="closeDropdowns()">{{ item }}</span>
-          </div>
-        </div>
-      </div>
-      <div class="dropdown">
-        <div
-          [ngClass]="['squad', showWalletDropdown ? 'opened' : '']"
-          (click)="toggleWalletDropdown($event)"
-        >
-          <div class="dropdown-cover">
-            <div class="squad-wallet">
-              <div class="squad-wallet--cover">
-                <svg class="svg-wallet">
-                  <use xlink:href="assets/icons/global-sprint.svg#gb-wallet"></use>
-                </svg>
-              </div>
+      <div class="dropdowns-container">
+        <div class="dropdown">
+          <div
+            [ngClass]="['squad', showDecimalDropdown ? 'opened' : '']"
+            (click)="toggleDecimalDropdown($event)"
+          >
+            <div class="dropdown-cover">
+              {{ selectedDecimalOption }}
+              <svg [class.rotate]="showDecimalDropdown">
+                <use xlink:href="assets/icons/global-sprint.svg#gb-arrow-down"></use>
+              </svg>
             </div>
-            {{ selectedWalletOption | number:'1.3-3' }}
-            <svg [class.rotate]="showWalletDropdown">
-              <use xlink:href="assets/icons/global-sprint.svg#gb-arrow-down"></use>
-            </svg>
+          </div>
+        
+          <div
+            class="list-squad"
+            @collapse
+            *ngIf="showDecimalDropdown"
+          >
+            <div class="list-cover">
+              <span class="option" *ngFor="let item of DECIMAL_OPTIONS" (click)="closeDropdowns()">{{ item }}</span>
+            </div>
           </div>
         </div>
-      
-        <div
-          class="list-squad"
-          @collapse
-          *ngIf="showWalletDropdown"
-        >
-          <div class="list-cover">
-            <span class="option" *ngFor="let item of WALLET_OPTIONS" (click)="closeDropdowns()">{{ item | number:'1.3-3' }}</span>
+        <div class="dropdown">
+          <div
+            [ngClass]="['squad', showWalletDropdown ? 'opened' : '']"
+            (click)="toggleWalletDropdown($event)"
+          >
+            <div class="dropdown-cover">
+              <div class="squad-wallet">
+                <div class="squad-wallet--cover">
+                  <svg class="svg-wallet">
+                    <use xlink:href="assets/icons/global-sprint.svg#gb-wallet"></use>
+                  </svg>
+                </div>
+              </div>
+              {{ selectedWalletOption | number:'1.3-3' }}
+              <svg [class.rotate]="showWalletDropdown">
+                <use xlink:href="assets/icons/global-sprint.svg#gb-arrow-down"></use>
+              </svg>
+            </div>
+          </div>
+        
+          <div
+            class="list-squad"
+            @collapse
+            *ngIf="showWalletDropdown"
+          >
+            <div class="list-cover">
+              <span class="option" *ngFor="let item of WALLET_OPTIONS" (click)="closeDropdowns()">{{ item | number:'1.3-3' }}</span>
+            </div>
           </div>
         </div>
       </div>
+
       <div class="notifications">
         <span class="notifications-count"></span>
         <div class="notifications-wrapper">
@@ -155,3 +158,4 @@
   <iframe #iframeRef class="iframe" id="iframe" frameborder="0"></iframe>
   <router-outlet></router-outlet>
 </div>
+ 

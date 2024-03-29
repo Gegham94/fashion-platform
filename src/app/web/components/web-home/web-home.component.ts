@@ -63,25 +63,29 @@ export class WebHomeComponent implements AfterViewInit, OnInit {
 
   public loadFrameModule(gametype: string) {
     this.data.type = gametype;
-    switch(this.data.type) {
-      case 'casino-games':
-        this.data.value = 'slots';
-        this.iframeRef.nativeElement.setAttribute('src', 'http://192.168.0.117:4200/1/slots')
-        break;
+    if(this.iframeRef) {
+      switch(this.data.type) {
+        case 'casino-games':
+          this.data.value = 'slots';
+          this.iframeRef.nativeElement.setAttribute('src', 'http://192.168.0.117:4200/1/slots')
+          break;
         case 'sports-book':
           this.data.value = 'in-play';
           this.iframeRef.nativeElement.setAttribute('src', 'http://192.168.0.143:4200/1/in-play')
-        break;
+          break;
+      }
     }
   }
 
   public setGameType(gameType: string) {
     this.data.value = gameType;
-    if(gameType === 'slots' || gameType === 'live-dealer'){
-      this.iframeRef.nativeElement.setAttribute('src', `http://192.168.0.117:4200/1/${gameType}`)
-    }
-    if(gameType === 'in-play' || gameType === 'pre-match'){
-      this.iframeRef.nativeElement.setAttribute('src', `http://192.168.0.143:4200/1/${gameType}`)
+    if(this.iframeRef) {
+      if(gameType === 'slots' || gameType === 'live-dealer'){
+        this.iframeRef.nativeElement.setAttribute('src', `http://192.168.0.117:4200/1/${gameType}`)
+      }
+      if(gameType === 'in-play' || gameType === 'pre-match'){
+        this.iframeRef.nativeElement.setAttribute('src', `http://192.168.0.143:4200/1/${gameType}`)
+      }
     }
   }
 
@@ -93,11 +97,13 @@ export class WebHomeComponent implements AfterViewInit, OnInit {
   public toggleWalletDropdown(event: Event) {
     event.stopPropagation();
     this.showWalletDropdown = !this.showWalletDropdown;
+    this.showDecimalDropdown = false;
   }
 
   public toggleDecimalDropdown(event: Event) {
     event.stopPropagation();
     this.showDecimalDropdown = !this.showDecimalDropdown;
+    this.showWalletDropdown = false;
   }
 
   public toggleAuth(event: Event) {
