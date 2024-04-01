@@ -4,6 +4,13 @@
 :host {
   width: calc(100% - 2px);
   height: calc(100% - 45px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loader {
+  position: absolute;
 }
 
 .content {

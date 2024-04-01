@@ -37,15 +37,14 @@
   </div>
 
   <div #frameContainerRef class="collapse-frame">
-    <gb-loader *ngIf="isLoading; else contentModel"></gb-loader>
-    <ng-template #contentModel>
+    <gb-loader *ngIf="isLoading" class="loader"></gb-loader>
       <iframe
         *ngIf="isCollapse"
         #iframeRef
         class="iframe"
         src="http://192.168.0.143:4200/historySportbetting"
         frameborder="0"
+        (load)="frameLoadEnd()"
       ></iframe>
-    </ng-template>
   </div>
 </div>

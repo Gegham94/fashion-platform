@@ -205,6 +205,7 @@
       </div>
     </div>
   </div>
-  <iframe #iframeRef class="iframe" frameborder="0"></iframe>
+  <gb-loader *ngIf="isLoading" class="loader"></gb-loader>
+  <iframe #iframeRef class="iframe" frameborder="0" (load)="frameLoadEnd()"></iframe>
   <router-outlet></router-outlet>
 </div>

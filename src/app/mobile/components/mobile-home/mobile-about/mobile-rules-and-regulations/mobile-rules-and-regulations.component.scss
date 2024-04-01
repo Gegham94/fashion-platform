@@ -1,6 +1,13 @@
 @import "src/mixins/styles-mixin";
 @import "src/styles/colors";
 
+.loader {
+  position: fixed;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+}
+
 .rules-notifications-wrapper {
   @include scroll;
   overflow-y: auto;

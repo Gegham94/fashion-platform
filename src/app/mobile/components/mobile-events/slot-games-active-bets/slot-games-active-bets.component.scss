@@ -13,6 +13,11 @@
   min-height: 285px;
   &--cover {
     @include lb-side-squad-content;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     background: $user-platform-section-gradient;
     width: 100%;
     height: 100%;
@@ -37,6 +42,9 @@
     .iframe {
       width: 100%;
       height: calc(100% - 50px);
+    }
+    .loader {
+      position: absolute;
     }
   }
 }

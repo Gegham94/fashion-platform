@@ -23,10 +23,11 @@ export class WebActiveBetsComponent implements OnInit {
   @ViewChild('iframeRef') iframeRef!: ElementRef<any>;
 
   private modalElement: any;
+  public isLoading: boolean = false;
+  
   public status: TYPE_FILTER[] = STATUS;
   public betType: TYPE_FILTER[] = BET_TYPE;
   public currency: TYPE_FILTER[] = CURRENCY;
-  public isLoading = false;
 
   public filterForm = {
     from: [],
@@ -38,7 +39,11 @@ export class WebActiveBetsComponent implements OnInit {
   constructor(private viewContainerRef: ViewContainerRef) {}
 
   public ngOnInit(): void {
-    this.showLoader();
+    this.isLoading = true;
+  }
+
+  public frameLoadEnd(){
+    this.isLoading = false
   }
 
   public sendDataToParent() {
@@ -74,13 +79,6 @@ export class WebActiveBetsComponent implements OnInit {
 
   public onSelectCurrencyFilter(options: any) {
     this.filterForm.currency = options;
-  }
-
-  public showLoader() {
-    this.isLoading = true;
-    setTimeout(() => {
-      this.isLoading = false;
-    }, 500);
   }
 
   //CASH OUT MODAL

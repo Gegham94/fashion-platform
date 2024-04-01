@@ -18,6 +18,7 @@ import { IUserInfo } from 'src/app/shared/interfaces/IUserInfo';
 export class WebHomeComponent implements AfterViewInit, OnInit {
   @ViewChild('iframeRef') iframeRef!: ElementRef<any>;
   public data = { type: 'casino-games', value: 'slots' };
+  public isLoading: boolean = false;
 
   public isUserInfoOpen: boolean = false;
   public currentUser: IUserInfo | null = null;
@@ -40,6 +41,7 @@ export class WebHomeComponent implements AfterViewInit, OnInit {
   }
 
   public ngOnInit() {
+    this.isLoading = true;
     this.currentUser = {
       id: 22585455,
       firstName: 'Firstname',
@@ -59,6 +61,10 @@ export class WebHomeComponent implements AfterViewInit, OnInit {
   public ngAfterViewInit() {
     this.loadFrameModule(this.data.type);
     this.setGameType(this.data.value);
+  }
+
+  public frameLoadEnd(){
+    this.isLoading = false
   }
 
   public loadFrameModule(gametype: string) {

@@ -155,7 +155,8 @@
       </div>
     </div>
   </div>
-  <iframe #iframeRef class="iframe" id="iframe" frameborder="0"></iframe>
+  <gb-loader *ngIf="isLoading" class="loader"></gb-loader>
+  <iframe #iframeRef class="iframe" id="iframe" frameborder="0" (load)="frameLoadEnd()"></iframe>
   <router-outlet></router-outlet>
 </div>
  

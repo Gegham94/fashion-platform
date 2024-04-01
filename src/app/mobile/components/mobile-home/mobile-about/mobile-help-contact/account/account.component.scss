@@ -1,8 +1,16 @@
 @import "src/mixins/styles-mixin";
 @import "src/styles/colors";
+
 :host {
   width: 100%;
   height: calc(100% - 50px);
+}
+
+.loader {
+  position: fixed;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
 }
 
 .account {

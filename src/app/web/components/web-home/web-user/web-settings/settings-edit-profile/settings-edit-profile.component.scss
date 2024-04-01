@@ -4,6 +4,9 @@
 :host {
   width: 100%;
   height: calc(100% - 50px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 input {
@@ -14,6 +17,10 @@ input {
     -webkit-appearance: none;
     margin: 0;
   }
+}
+
+.loader {
+  position: fixed;
 }
 
 .content {

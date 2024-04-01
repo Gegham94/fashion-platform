@@ -41,10 +41,7 @@
               </div>
             </div>
             <div class="tabs__content">
-              <gb-loader *ngIf="isLoading; else contentModel"></gb-loader>
-              <ng-template #contentModel>
-                <router-outlet></router-outlet>
-              </ng-template>
+              <router-outlet></router-outlet>
             </div>
           </div>
         </div>

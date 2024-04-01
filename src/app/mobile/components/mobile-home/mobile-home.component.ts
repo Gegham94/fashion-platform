@@ -18,6 +18,7 @@ import { IUserInfo } from 'src/app/shared/interfaces/IUserInfo';
 export class MobileHomeComponent implements AfterViewInit, OnInit {
   @ViewChild('iframeRef') iframeRef!: ElementRef<any>;
   public data = { type: 'casino-games', value: 'slots' };
+  public isLoading: boolean = false;
 
   public currentUser: IUserInfo | null = null;
   public isUserInfoOpen: boolean = false;
@@ -42,6 +43,7 @@ export class MobileHomeComponent implements AfterViewInit, OnInit {
   }
 
   public ngOnInit() {
+    this.isLoading = true;
     this.currentUser = {
       id: 22585455,
       firstName: 'Firstname',
@@ -56,6 +58,10 @@ export class MobileHomeComponent implements AfterViewInit, OnInit {
       verified: false,
       api_token: 'DcsF4R744fgx45xsst458',
     };
+  }
+
+  public frameLoadEnd(){
+    this.isLoading = false
   }
 
   public ngAfterViewInit() {

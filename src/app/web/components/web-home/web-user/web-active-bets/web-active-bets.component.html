@@ -1,85 +1,83 @@
-<gb-loader *ngIf="isLoading; else contentModel"></gb-loader>
-<ng-template #contentModel>
-  <div class="content">
-    <div class="content__filters">
-      <div class="date filter">
-        <div class="wrapper-content">
-          <label class="label left">
-            <div class="cover">
-              <span>From:</span>
-              <input
-                type="date"
-                autocomplete="off"
-                (change)="onSelectDateFrom($event)"
-              />
-              <svg>
-                <use
-                  xlink:href="assets/icons/global-sprint.svg#gb-calendar-date"
-                ></use>
-              </svg>
-            </div>
-          </label>
-        </div>
-        <div class="wrapper-content">
-          <label class="label right">
-            <div class="cover">
-              <span>To:</span>
-              <input
-                type="date"
-                autocomplete="off"
-                (change)="onSelectDateTo($event)"
-              />
-              <svg>
-                <use
-                  xlink:href="assets/icons/global-sprint.svg#gb-calendar-date"
-                ></use>
-              </svg>
-            </div>
-          </label>
-        </div>
+<div class="content">
+  <div class="content__filters">
+    <div class="date filter">
+      <div class="wrapper-content">
+        <label class="label left">
+          <div class="cover">
+            <span>From:</span>
+            <input
+              type="date"
+              autocomplete="off"
+              (change)="onSelectDateFrom($event)"
+            />
+            <svg>
+              <use
+                xlink:href="assets/icons/global-sprint.svg#gb-calendar-date"
+              ></use>
+            </svg>
+          </div>
+        </label>
       </div>
-      <div class="options filter">
-        <gb-multiselect
-          [data]="status"
-          [keyName]="'id'"
-          placeholder="Status"
-          class="form-filed margin-right"
-          (onSelect)="onSelectStatusFilter($event)"
-        >
-        </gb-multiselect>
-  
-        <gb-multiselect
-          [cutSide]="'both'"
-          [data]="betType"
-          [keyName]="'id'"
-          placeholder="Bet Type"
-          class="form-filed"
-          (onSelect)="onSelectBetTypeFilter($event)"
-        >
-        </gb-multiselect>
-  
-        <gb-multiselect
-          [cutSide]="'right'"
-          [data]="currency"
-          [keyName]="'id'"
-          placeholder="Currency"
-          class="form-filed margin-left"
-          (onSelect)="onSelectCurrencyFilter($event)"
-        >
-        </gb-multiselect>
-
-        <gb-search (getSearchedText)="getSearchedText($event)"></gb-search>
+      <div class="wrapper-content">
+        <label class="label right">
+          <div class="cover">
+            <span>To:</span>
+            <input
+              type="date"
+              autocomplete="off"
+              (change)="onSelectDateTo($event)"
+            />
+            <svg>
+              <use
+                xlink:href="assets/icons/global-sprint.svg#gb-calendar-date"
+              ></use>
+            </svg>
+          </div>
+        </label>
       </div>
     </div>
-    <div class="content__table">
-      <div class="content__table--cover">
-        <div class="table-body">
-          <iframe class="iframe" #iframeRef src="http://192.168.0.143:4200/activeBets" frameborder="0"></iframe>
-        </div>
+    <div class="options filter">
+      <gb-multiselect
+        [data]="status"
+        [keyName]="'id'"
+        placeholder="Status"
+        class="form-filed margin-right"
+        (onSelect)="onSelectStatusFilter($event)"
+      >
+      </gb-multiselect>
+
+      <gb-multiselect
+        [cutSide]="'both'"
+        [data]="betType"
+        [keyName]="'id'"
+        placeholder="Bet Type"
+        class="form-filed"
+        (onSelect)="onSelectBetTypeFilter($event)"
+      >
+      </gb-multiselect>
+
+      <gb-multiselect
+        [cutSide]="'right'"
+        [data]="currency"
+        [keyName]="'id'"
+        placeholder="Currency"
+        class="form-filed margin-left"
+        (onSelect)="onSelectCurrencyFilter($event)"
+      >
+      </gb-multiselect>
+
+      <gb-search (getSearchedText)="getSearchedText($event)"></gb-search>
+    </div>
+  </div>
+  <div class="content__table">
+    <div class="content__table--cover">
+      <div class="table-body">
+        <gb-loader *ngIf="isLoading" class="loader"></gb-loader>
+        <iframe class="iframe" #iframeRef src="http://192.168.0.143:4200/activeBets" frameborder="0" (load)="frameLoadEnd()"></iframe>
       </div>
     </div>
   </div>
-</ng-template>
+</div>
 
 <ng-template #modalTemplate>
   <div id="cash-out-modal">

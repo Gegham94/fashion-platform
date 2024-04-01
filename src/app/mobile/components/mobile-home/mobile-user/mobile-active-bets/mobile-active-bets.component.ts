@@ -37,7 +37,11 @@ export class MobileActiveBetsComponent {
   constructor(private viewContainerRef: ViewContainerRef) {}
 
   public ngOnInit(): void {
-    this.showLoader();
+    this.isLoading = true;
+  }
+
+  public frameLoadEnd(){
+    this.isLoading = false
   }
 
   public sendDataToParent() {
@@ -73,13 +77,6 @@ export class MobileActiveBetsComponent {
 
   public onSelectCurrencyFilter(options: any) {
     this.filterForm.currency = options;
-  }
-
-  public showLoader() {
-    this.isLoading = true;
-    setTimeout(() => {
-      this.isLoading = false;
-    }, 500);
   }
 
   //CASH OUT MODAL

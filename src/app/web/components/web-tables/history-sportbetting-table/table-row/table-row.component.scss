@@ -97,9 +97,16 @@
     height: 0px;
     min-height: 0px;
     transition: min-height 0.3s ease;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     .iframe {
       height: 100%;
       width: 100%;
+    }
+    .loader {
+      position: absolute;
     }
   }
 }

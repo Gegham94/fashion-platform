@@ -7,13 +7,6 @@ import { IUserInfo } from 'src/app/shared/interfaces/IUserInfo';
   styleUrls: ['./web-profile.component.scss'],
 })
 export class WebProfileComponent implements OnInit {
-  // @ViewChild('iframeRef') iframeRef!: ElementRef<any>;
-  // public sendDataToParent() {
-  //   this.iframeRef.nativeElement.contentWindow.postMessage(
-  //     { id: 1 },
-  //     'http://192.168.0.143:4200/recommendedSportEvents'
-  //   );
-  // }
   public isLoading = false;
   public userData: IUserInfo = {
     id: 88234560,
@@ -29,8 +22,6 @@ export class WebProfileComponent implements OnInit {
     verified: true,
     api_token: '',
   };
-
-  constructor() {}
 
   public ngOnInit(): void {
     this.showLoader();

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -6,7 +6,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   templateUrl: './mobile-contact-us.component.html',
   styleUrl: './mobile-contact-us.component.scss',
 })
-export class MobileContactUsComponent {
+export class MobileContactUsComponent implements OnInit {
   public isLoading = false;
   public maxCharacterCount: number = 500;
   public characterCount: number = 0;
@@ -21,7 +21,11 @@ export class MobileContactUsComponent {
   });
 
   public ngOnInit(): void {
-    this.showLoader();
+    this.isLoading = true;
+  }
+
+  public frameLoadEnd(){
+    this.isLoading = false
   }
 
   public get nameControl(): FormControl {
@@ -47,12 +51,5 @@ export class MobileContactUsComponent {
 
   public updateCharacterCount(event: any): void {
     this.characterCount = event.target.value.length;
-  }
-
-  public showLoader() {
-    this.isLoading = true;
-    setTimeout(() => {
-      this.isLoading = false;
-    }, 500);
   }
 }

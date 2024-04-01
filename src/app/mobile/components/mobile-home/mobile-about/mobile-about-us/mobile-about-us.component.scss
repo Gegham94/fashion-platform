@@ -6,6 +6,13 @@
   height: 100%;
 }
 
+.loader {
+  position: fixed;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+}
+
 .about-us-wrapper {
   @include scroll;
   overflow-y: auto;

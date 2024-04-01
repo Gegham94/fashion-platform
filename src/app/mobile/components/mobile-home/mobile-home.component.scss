@@ -690,3 +690,9 @@
   height: calc(100% - 118px);
   z-index: 0;
 }
+.loader {
+  position: fixed;
+  transform: translateX(-50%);
+  top: 50%;
+  left: 50%;
+}

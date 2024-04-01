@@ -15,7 +15,9 @@ export class TableRowComponent implements OnInit {
 
   constructor() {}
 
-  public ngOnInit(): void {}
+  public ngOnInit(): void {
+    this.isLoading = true;
+  }
 
   public sendDataToParent() {
     this.iframeRef.nativeElement.contentWindow.postMessage(
@@ -28,16 +30,16 @@ export class TableRowComponent implements OnInit {
     const frameContainer = this.frameContainerRef.nativeElement;
     if (frameContainer) {
       this.isCollapse = !this.isCollapse;
+      this.isLoading = this.isCollapse;
       if (this.isCollapse) {
         frameContainer.style.setProperty('min-height', '225px');
-        this.isLoading = true;
-        setTimeout(() => {
-          this.isLoading = false;
-        }, 1000);
       } else {
         frameContainer.style.setProperty('min-height', '0px');
-        this.isLoading = false;
       }
     }
+  }
+
+  public frameLoadEnd(){
+    this.isLoading = false
   }
 }
