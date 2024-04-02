@@ -252,6 +252,7 @@ input {
                   display: flex;
                   align-items: center;
                   justify-content: center;
+                  box-sizing: content-box;
                   width: 32px;
                   height: 28px;
                   border-top: 0;
@@ -265,19 +266,15 @@ input {
                   &.dark {
                     background: linear-gradient(#1c1c23 0%, #2d2d37 100%);
                   }
-                  .line {
-                    width: 50%;
-                    height: 2px;
-                    background: $red;
-                    border-radius: 1px;
-                  }
                   svg {
                     fill: $yellow;
                     width: 50%;
                     height: 50%;
                   }
                   &:hover {
-                    transform: scale(1.02);
+                    svg {
+                      transform: scale(1.1);
+                    }
                   }
                 }
               }

@@ -13,6 +13,7 @@ export class WebSignInComponent {
   @Output('openRecoverPassword') openRecoverPassword: EventEmitter<any> = new EventEmitter();
   public isRememberMe: boolean = false;
   public isPasswordVisible: boolean = false;
+  public isDisabled: boolean = false;
 
   public readonly signinForm = new FormGroup({
     email: new FormControl('', [
@@ -22,7 +23,7 @@ export class WebSignInComponent {
     ]),
     password: new FormControl('', [
       Validators.required,
-      Validators.pattern('^[A-Za-z0-9_]\\w{7,15}$'),
+      Validators.pattern('^[A-Za-z0-9_]\\w{7,16}$'),
     ]),
     rememberMe: new FormControl(''),
   });

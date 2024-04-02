@@ -34,9 +34,9 @@ export class MultiselectAutocomplateComponent implements OnInit {
   @Input() placeholder: string = '';
   @Input() keyName: string = 'id';
   @Input() closeOtherDropDowns: boolean = true;
+  @Input() markMultiselectsTouched: boolean = false;
   @Input() singleSelect: boolean = false;
   @Input() inputColor: 'dark' | 'light' = 'light';
-  @Input() setMargin: boolean = true;
   @Input() cutSide: 'left' | 'right' | 'both' | 'squad-small' = 'left';
   @Output() onSelect: EventEmitter<{ options: any[]; option: any }> =
     new EventEmitter();
@@ -54,8 +54,8 @@ export class MultiselectAutocomplateComponent implements OnInit {
 
   public selectetOptions: any[] = [];
   public disabled: boolean = false;
-  public error: boolean = false;
-  public success: boolean = false;
+  public error: boolean | null = false;
+  public success: boolean | null = false;
   public uniqId: string = this.getUniqueId();
 
   public getUniqueId() {
@@ -100,7 +100,10 @@ export class MultiselectAutocomplateComponent implements OnInit {
     if (!multiselectRef?.contains(event.target)) {
       if (this.isOpen && !dropdownRef?.contains(event.target)) {
         this.isOpen = false;
-        setTimeout(() => this.destroyDropDown(), 100);
+        setTimeout(() => {
+          this.destroyDropDown();
+          this.onTouch(this.isOpen);
+        }, 100);
       }
     }
   }
@@ -149,12 +152,12 @@ export class MultiselectAutocomplateComponent implements OnInit {
     }
 
     if (!this.disabled) {
-      this.onTouch();
       this.isOpen = !this.isOpen;
 
       this.isOpen
         ? this.createDropDown()
         : setTimeout(() => this.destroyDropDown(), 100);
+      this.onTouch(this.isOpen);
     }
   }
 
@@ -210,7 +213,9 @@ export class MultiselectAutocomplateComponent implements OnInit {
       this.success = false;
     }
   };
-  onTouch = () => {};
+  onTouch = (isOpen: any) => {
+    this.error = !isOpen;
+  };
 
   writeValue(obj: any): void {
     this.selectetOptions = obj;

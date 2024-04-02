@@ -272,6 +272,14 @@
         &:hover {
           transform: scale(1.02);
         }
+        &.disable {
+          background: $lighter-gray;
+          .send-btn-cover{
+            cursor: not-allowed;
+            background: $light-gray;
+            opacity: 0.6;
+          }
+        }
         .send-btn-cover {
           @include squad-small;
           display: flex;

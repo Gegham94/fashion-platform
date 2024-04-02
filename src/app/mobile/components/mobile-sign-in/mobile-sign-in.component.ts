@@ -23,7 +23,7 @@ export class MobileSignInComponent {
     ]),
     password: new FormControl('', [
       Validators.required,
-      Validators.pattern('^[A-Za-z0-9_]\\w{7,15}$'),
+      Validators.pattern('^[A-Za-z0-9_]\\w{7,16}$'),
     ]),
     rememberMe: new FormControl(''),
   });
@@ -60,6 +60,4 @@ export class MobileSignInComponent {
   public handlePasswordVisibility() {
     this.isPasswordVisible = !this.isPasswordVisible;
   }
-
-  public forgotPassword() {}
 }

@@ -36,6 +36,7 @@ export class MobileSignUpComponent implements OnDestroy {
 
   private modalElement: any;
   public stepId: number = 1;
+  public markMultiselectsTouched: boolean = false;
 
   public country: TYPE_FILTER[] = COUNTRY;
   public city: TYPE_FILTER[] = CITY;
@@ -44,7 +45,7 @@ export class MobileSignUpComponent implements OnDestroy {
   public typeOfDocument: TYPE_FILTER[] = TYPE_OF_DOCUMENT;
   public gender: TYPE_FILTER[] = GENDER;
 
-  public firstStepForm = new FormGroup({
+  public readonly firstStepForm = new FormGroup({
     firstName: new FormControl('', [Validators.required]),
     optional: new FormControl('', [Validators.required]),
     lastName: new FormControl('', [Validators.required]),
@@ -64,7 +65,7 @@ export class MobileSignUpComponent implements OnDestroy {
     documentNumber: new FormControl('', [Validators.required]),
     uploadedDocument: new FormControl([], [Validators.required]),
   });
-  public secondStepForm = new FormGroup(
+  public readonly secondStepForm = new FormGroup(
     {
       userName: new FormControl('', [Validators.required]),
       gender: new FormControl('', [Validators.required]),
@@ -98,21 +99,26 @@ export class MobileSignUpComponent implements OnDestroy {
   }
 
   public signUp(): void {
-    this.openRegistrationDoneModal();
     let formData: ISignup;
-    if (this.signupForm.valid) {
-      formData = {
-        ...this.firstStepForm.value,
-        ...this.secondStepForm.value,
-      } as ISignup;
-      this.authService
-        .signUp(formData)
-        .pipe(
-          switchMap((data) => {
-            return data;
-          })
-        )
-        .subscribe();
+    if (this.secondStepForm && this.secondStepForm.valid) {
+      if (this.signupForm.valid) {
+        formData = {
+          ...this.firstStepForm.value,
+          ...this.secondStepForm.value,
+        } as ISignup;
+        this.authService
+          .signUp(formData)
+          .pipe(
+            switchMap((data) => {
+              this.openRegistrationDoneModal();
+              return data;
+            })
+          )
+          .subscribe();
+      }
+    } else {
+      this.secondStepForm.markAllAsTouched();
+      this.markMultiselectsTouched = true;
     }
   }
 
@@ -126,6 +132,7 @@ export class MobileSignUpComponent implements OnDestroy {
       this.secondStepForm.markAsUntouched();
     } else {
       this.firstStepForm.markAllAsTouched();
+      this.markMultiselectsTouched = true;
     }
   }
 

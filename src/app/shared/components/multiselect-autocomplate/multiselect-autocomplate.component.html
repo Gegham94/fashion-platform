@@ -7,8 +7,8 @@
   <div
     class="wrapper"
     (click)="onChangeIsOpen($event)"
-    [class.error]="error"
-    [class.success]="success"
+    [class.error]="error || (markMultiselectsTouched && selectetOptions.length === 0)"
+    [class.success]="success && (markMultiselectsTouched && selectetOptions.length!== 0)"
   >
     <div class="cover" [class]="inputColor">
       <div class="placeholder">

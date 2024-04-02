@@ -20,8 +20,13 @@
     padding: 1px;
     display: flex;
     align-items: center;
-    background: $border-gradient-to-right;
     justify-content: center;
+    &.error {
+      background: $border-gradient-to-right-error;
+    }
+    &.success {
+      background: $border-gradient-to-right-success;
+    }
     .cover {
       width: 100%;
       height: 100%;
@@ -65,16 +70,16 @@
       @include input-left;
       background: $border-gradient-to-right;
       border-radius: 20px 0 0 20px;
-      .cover {
-        @include input-left-cover;
-        padding: 0 28px 0 16px;
-        border-radius: 20px 0 0 20px;
-      }
       &.error {
         background: $border-gradient-to-right-error;
       }
       &.success {
         background: $border-gradient-to-right-success;
+      }
+      .cover {
+        @include input-left-cover;
+        padding: 0 28px 0 16px;
+        border-radius: 20px 0 0 20px;
       }
     }
   }
@@ -82,15 +87,15 @@
     .wrapper {
       @include input-middle;
       background: $border-gradient-middle;
-      .cover {
-        @include input-middle-cover;
-        padding: 0 20px;
-      }
       &.error {
         background: $border-gradient-middle-error;
       }
       &.success {
         background: $border-gradient-middle-success;
+      }
+      .cover {
+        @include input-middle-cover;
+        padding: 0 20px;
       }
     }
   }
@@ -99,16 +104,16 @@
       @include input-right;
       border-radius: 0 20px 20px 0;
       background: $border-gradient-to-left;
-      .cover {
-        @include input-right-cover;
-        padding: 0 16px 0 28px;
-        border-radius: 0 20px 20px 0;
-      }
       &.error {
         background: $border-gradient-to-left-error;
       }
       &.success {
         background: $border-gradient-to-left-success;
+      }
+      .cover {
+        @include input-right-cover;
+        padding: 0 16px 0 28px;
+        border-radius: 0 20px 20px 0;
       }
     }
   }
@@ -117,16 +122,16 @@
       @include squad-small;
       border-radius: 5px;
       background: $border-gradient-to-left;
-      .cover {
-        @include squad-small;
-        padding: 5px;
-        border-radius: 0 20px 20px 0;
-      }
       &.error {
         background: $border-gradient-to-left-error;
       }
       &.success {
         background: $border-gradient-to-left-success;
+      }
+      .cover {
+        @include squad-small;
+        padding: 5px;
+        border-radius: 0 20px 20px 0;
       }
     }
   }

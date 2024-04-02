@@ -40,9 +40,7 @@
     </div>
   </div>
 
-  <div
-    class="container--form"
-  >
+  <div class="container--form">
     <div class="container--form__firstStepForm" *ngIf="stepId === 1">
       <div class="form-1-content">
         <form [formGroup]="firstStepForm" class="dark">
@@ -106,6 +104,7 @@
               class="margin-right"
               inputColor="dark"
               [singleSelect]="true"
+              [markMultiselectsTouched]="markMultiselectsTouched"
               (onSelect)="onSelectValue('country', $event)"
             ></gb-multiselect-autocomplate>
             <gb-multiselect-autocomplate
@@ -114,8 +113,9 @@
               [keyName]="'id'"
               placeholder="City"
               class="margin-left"
-              [singleSelect]="true"
               inputColor="dark"
+              [singleSelect]="true"
+              [markMultiselectsTouched]="markMultiselectsTouched"
               (onSelect)="onSelectValue('city', $event)"
             ></gb-multiselect-autocomplate>
           </div>
@@ -126,6 +126,7 @@
               placeholder="Currency"
               class="margin-right"
               inputColor="dark"
+              [markMultiselectsTouched]="markMultiselectsTouched"
               (onSelect)="onSelectValue('currency', $event)"
             ></gb-multiselect-autocomplate>
             <label
@@ -150,6 +151,7 @@
               class="phone-code margin-right"
               inputColor="dark"
               [singleSelect]="true"
+              [markMultiselectsTouched]="markMultiselectsTouched"
               (onSelect)="onSelectValue('phoneCode', $event)"
             ></gb-multiselect-autocomplate>
             <label
@@ -172,6 +174,7 @@
               placeholder="Doc. Type"
               inputColor="dark"
               class="margin-right"
+              [markMultiselectsTouched]="markMultiselectsTouched"
               (onSelect)="onSelectValue('typeOfDocument', $event)"
             ></gb-multiselect-autocomplate>
             <div class="upload-wrapper">
@@ -244,9 +247,10 @@
               [keyName]="'id'"
               placeholder="Gender"
               cutSide="right"
-              [singleSelect]="true"
               class="margin-left"
               inputColor="dark"
+              [singleSelect]="true"
+              [markMultiselectsTouched]="markMultiselectsTouched"
               (onSelect)="onSelectValue('gender', $event)"
             ></gb-multiselect-autocomplate>
           </div>
