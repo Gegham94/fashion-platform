@@ -4,7 +4,7 @@
       *ngFor="let action of actionMobileTopButtons"
       [class]="'actions__top--btn--' + action.class"
       [ngStyle]="{ 'clip-path': action.clipPath }"
-      (click)="onAction({ type: action.type, value: action.value })"
+      (click)="onAction({ type: action.type, value: action.value }, $event)"
     >
       <div class="cover" [ngStyle]="{ 'clip-path': action.clipPath }">
         <span class="title" [ngStyle]="{ color: action.color }">{{
@@ -18,7 +18,7 @@
       *ngFor="let action of actionMobileBottomButtons"
       [class]="'actions__bottom--btn--' + action.class"
       [ngStyle]="{ 'clip-path': action.clipPath }"
-      (click)="onAction({ type: action.type, value: action.value })"
+      (click)="onAction({ type: action.type, value: action.value }, $event)"
     >
       <div class="cover" [ngStyle]="{ 'clip-path': action.clipPath }">
         <span class="title" [ngStyle]="{ color: action.color }">{{

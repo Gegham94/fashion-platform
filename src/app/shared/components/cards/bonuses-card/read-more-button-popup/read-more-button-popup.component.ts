@@ -8,17 +8,18 @@ import {
   ViewChild,
   ViewContainerRef,
 } from '@angular/core';
+import { fadeInOut } from 'src/app/shared/animations/animations';
 
 @Component({
   selector: 'gb-read-more-button-popup',
   templateUrl: './read-more-button-popup.component.html',
   styleUrl: './read-more-button-popup.component.scss',
+  animations: [fadeInOut],
 })
 export class ReadMoreButtonPopupComponent implements OnInit, OnDestroy {
   @Input('option') option: any;
   @Input('isMobile') isMobile: boolean = false;
   @ViewChild('popupTemplate') popupTemplate!: TemplateRef<any>;
-  public isOpen: boolean = false;
 
   private popupElement: any;
 
@@ -27,12 +28,10 @@ export class ReadMoreButtonPopupComponent implements OnInit, OnDestroy {
   public ngOnInit(): void {}
 
   public closePopup() {
-    this.isOpen = false;
     this.destroyPopup();
   }
 
   public openPopup() {
-    this.isOpen = true;
     this.createPopup();
   }
 

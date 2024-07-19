@@ -1,6 +1,6 @@
 <div class="deposit-btn" (click)="openModal()"></div>
 <ng-template #modalTemplate>
-  <div id="deposit-modal">
+  <div @fadeInOut id="deposit-modal">
     <div class="deposit-content" [class.mobile]="isMobile">
       <div class="deposit-close-wrapper" (click)="closeModal()">
         <div class="deposit-cover">

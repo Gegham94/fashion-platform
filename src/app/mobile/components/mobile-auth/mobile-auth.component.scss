@@ -20,6 +20,12 @@
     align-items: center;
     justify-content: center;
     background: $yellow;
+    &.jump {
+      animation: jump 1s infinite;
+    }
+    &.slide {
+      animation: slide 1s infinite;
+    }
     &::before {
       content: "";
       @include diamond;
@@ -53,7 +59,7 @@
     width: 0;
     &.active {
       width: 100%;
-      margin-left: -13%;
+      margin-left: -12%;
       padding: 1% 0 1% 0;
     }
     &::before {
@@ -62,5 +68,23 @@
       min-width: 35px;
       height: 3.5vh;
     }
+  }
+}
+
+@keyframes jump {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
+@keyframes slide {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(-3px);
   }
 }

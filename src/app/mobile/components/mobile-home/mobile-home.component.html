@@ -11,7 +11,7 @@
             </div>
           </div>
         </div>
-        <div gbClickOutside class="games-modal" *ngIf="showGameTypes" (clickOutside)="showGameTypes = false">
+        <div @fadeInOut gbClickOutside class="games-modal" *ngIf="showGameTypes" (clickOutside)="showGameTypes = false">
           <div class="games-modal-cover">
             <div class="game-type-btns">
               <div class="wrapper" [class.active]="data.type === 'casino-games'" (click)="loadFrameModule('casino-games')">
@@ -67,7 +67,7 @@
       </div>
     </div>
   </div>
-  <div gbClickOutside class="auth-modal" [class.user-signed]="isUserInfoOpen && currentUser" *ngIf="isUserInfoOpen" (clickOutside)="isUserInfoOpen = false">
+  <div @fadeInOut gbClickOutside class="auth-modal" [class.user-signed]="isUserInfoOpen && currentUser" *ngIf="isUserInfoOpen" (clickOutside)="isUserInfoOpen = false">
     <div class="auth-modal-cover">
       <div class="auth-btns" [class.signed]="currentUser">
         <div class="user-profile" *ngIf="currentUser; else authModel">

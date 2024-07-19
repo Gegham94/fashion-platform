@@ -1,9 +1,11 @@
 import { Component, Input, OnDestroy, TemplateRef, ViewChild, ViewContainerRef } from '@angular/core';
+import { fadeInOut } from 'src/app/shared/animations/animations';
 
 @Component({
   selector: 'gb-deposit-modal',
   templateUrl: './deposit-modal.component.html',
-  styleUrl: './deposit-modal.component.scss'
+  styleUrl: './deposit-modal.component.scss',
+  animations: [fadeInOut]
 })
 export class DepositModalComponent implements OnDestroy {
   @ViewChild('modalTemplate') modalTemplate!: TemplateRef<any>;

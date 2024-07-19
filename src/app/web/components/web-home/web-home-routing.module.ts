@@ -13,7 +13,7 @@ const routes: Routes = [
         canActivate: [AuthGuard],
       },
       {
-        path: 'about',loadChildren: () =>import('./web-about/web-about.module').then((m) => m.WebAboutModule),
+        path: 'about',loadChildren: () => import('./web-about/web-about.module').then((m) => m.WebAboutModule),
       },
     ],
   },

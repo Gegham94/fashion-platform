@@ -8,18 +8,26 @@ import { Component, OnInit } from '@angular/core';
 export class SettingsSecurityComponent implements OnInit {
   public barWidth: number = 0;
   public isLoading = false;
+  private intervalId: any;
 
   public ngOnInit(): void {
-    this.showLoader()
-    // setInterval(() => {
-    //   this.barWidth += 5;
-    // }, 400);
+    this.showLoader();
+  }
+
+  setProtectedProcessBar() {
+    this.intervalId = setInterval(() => {
+      this.barWidth += 10;
+      if (this.barWidth >= 100) {
+        clearInterval(this.intervalId);
+      }
+    }, 100);
   }
 
   public showLoader() {
     this.isLoading = true;
     setTimeout(() => {
       this.isLoading = false;
+      this.setProtectedProcessBar();
     }, 500);
   }
 }

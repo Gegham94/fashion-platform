@@ -9,7 +9,7 @@ import {
 } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { switchMap } from 'rxjs';
-import { collapse } from 'src/app/shared/animations/animations';
+import { collapse, fadeInOut } from 'src/app/shared/animations/animations';
 import {
   CITY,
   COUNTRY,
@@ -27,7 +27,7 @@ import { AuthService } from 'src/app/shared/services/auth.service';
   selector: 'gb-web-sign-up',
   templateUrl: './web-sign-up.component.html',
   styleUrls: ['./web-sign-up.component.scss'],
-  animations: [collapse],
+  animations: [collapse, fadeInOut],
 })
 export class WebSignUpComponent implements OnDestroy {
   @ViewChild('modalTemplate') modalTemplate!: TemplateRef<any>;

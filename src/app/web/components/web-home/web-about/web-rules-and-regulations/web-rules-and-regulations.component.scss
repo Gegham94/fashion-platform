@@ -22,13 +22,13 @@
   padding-right: 5px;
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 10px;
   .col-1 {
     display: flex;
     flex-direction: column;
     width: 100%;
     height: 100%;
-    gap: 10px;
+    gap: 8px;
     .title {
       width: 100%;
       color: $white;
@@ -53,7 +53,7 @@
     justify-content: center;
     flex-direction: column;
     width: 100%;
-    height: calc(100% - 30px);
+    height: calc(100% - 70px);
     .table-wrapper {
       background: $lighter-gray;
       min-height: 215px;
@@ -79,7 +79,6 @@
           height: 50px;
           width: calc(100% - 10px);
           background: $light-gray;
-          padding: 0 5px;
           border-bottom: 1px solid $lighter-gray;
           span {
             display: flex;

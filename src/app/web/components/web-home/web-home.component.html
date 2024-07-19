@@ -102,7 +102,7 @@
             <div class="auth-content__user--body"></div>
           </div>
         </div>
-        <div gbClickOutside class="auth-diamond-wrapper" *ngIf="isUserInfoOpen" (clickOutside)="isUserInfoOpen = false">
+        <div @fadeInOut gbClickOutside class="auth-diamond-wrapper" *ngIf="isUserInfoOpen" (clickOutside)="isUserInfoOpen = false">
           <div class="auth-diamond-cover">
             <div class="user-profile" *ngIf="currentUser; else authModel">
               <span class="user-id">ID {{currentUser.id}}</span>

@@ -79,11 +79,22 @@
               input[type="file"] {
                 display: none;
               }
-              .upload-file{
+              .upload-file {
                 border: 1px solid $yellow;
+                &:hover {
+                  transform: scale(1.02);
+                  svg {
+                    transform: scale(1.15);
+                  }
+                }
               }
-              .doc-remove{
+              .doc-remove {
                 border: 1px solid $red;
+                &:hover {
+                  .line {
+                    transform: scale(1.15);
+                  }
+                }
               }
               .upload-file,
               .doc-remove {
@@ -108,9 +119,6 @@
                   fill: $yellow;
                   width: 50%;
                   height: 50%;
-                }
-                &:hover {
-                  transform: scale(1.02);
                 }
               }
             }

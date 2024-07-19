@@ -1,5 +1,5 @@
 <div class="content">
-  <div class="content__user" (click)="toggleAuth()">
+  <div class="content__user" [ngClass]="isAuthOpen ? 'slide' : 'jump'" (click)="toggleAuth()">
     <div class="content__user--head"></div>
     <div class="content__user--body"></div>
   </div>

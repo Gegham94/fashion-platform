@@ -6,14 +6,14 @@ import {
   OnInit,
   ViewChild,
 } from '@angular/core';
-import { collapse } from 'src/app/shared/animations/animations';
+import { collapse, fadeInOut } from 'src/app/shared/animations/animations';
 import { IUserInfo } from 'src/app/shared/interfaces/IUserInfo';
 
 @Component({
   selector: 'gb-mobile-home',
   templateUrl: './mobile-home.component.html',
   styleUrl: './mobile-home.component.scss',
-  animations: [collapse],
+  animations: [collapse, fadeInOut],
 })
 export class MobileHomeComponent implements AfterViewInit, OnInit {
   @ViewChild('iframeRef') iframeRef!: ElementRef<any>;
@@ -56,7 +56,7 @@ export class MobileHomeComponent implements AfterViewInit, OnInit {
       loyalPoints: '555',
       image: null,
       verified: false,
-      api_token: 'DcsF4R744fgx45xsst458',
+      api_token: 'test-token',
     };
   }
 

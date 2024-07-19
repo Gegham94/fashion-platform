@@ -6,11 +6,13 @@ import {
   ViewChild,
   ViewContainerRef,
 } from '@angular/core';
+import { fadeInOut } from 'src/app/shared/animations/animations'
 
 @Component({
   selector: 'gb-attach-new-card',
   templateUrl: './attach-new-card.component.html',
   styleUrl: './attach-new-card.component.scss',
+  animations: [fadeInOut]
 })
 export class AttachNewCardComponent implements OnDestroy {
   @ViewChild('modalTemplate') modalTemplate!: TemplateRef<any>;

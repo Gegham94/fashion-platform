@@ -14,6 +14,7 @@
     border-radius: 5px;
     background: $dark-gray;
     border: 1px solid $yellow;
+    padding-bottom: 1px;
     box-shadow: 1px 2px 5px 3px rgba(0, 0, 0, 0.5);
     &.rotate-content {
       transform: rotate(180deg);
@@ -88,6 +89,7 @@
     width: 100%;
     max-height: 225px;
     border-radius: 5px;
+    padding-bottom: 1px;
     background: $dark-gray;
     border: 1px solid $yellow;
     box-shadow: 1px 2px 5px 3px rgba(0, 0, 0, 0.5);
@@ -163,7 +165,6 @@
       @include scroll;
       overflow-y: auto;
       overflow-x: hidden;
-      width: calc(100% - 2px);
       height: 100%;
       max-height: 170px;
       border-radius: 5px;

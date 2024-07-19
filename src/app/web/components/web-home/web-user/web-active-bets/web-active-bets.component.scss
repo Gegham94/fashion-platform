@@ -30,6 +30,8 @@
     align-items: center;
     justify-content: space-between;
     overflow-x: auto;
+    box-sizing: border-box;
+    padding-right: 5px;
     .date {
       .wrapper-content {
         &:last-child {

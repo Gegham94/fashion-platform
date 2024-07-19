@@ -6,11 +6,13 @@ import {
   ViewChild,
   ViewContainerRef,
 } from '@angular/core';
+import { fadeInOut } from 'src/app/shared/animations/animations';
 
 @Component({
   selector: 'gb-web-forms-modal',
   templateUrl: './web-forms-modal.component.html',
   styleUrl: './web-forms-modal.component.scss',
+  animations: [fadeInOut],
 })
 export class WebFormsModalComponent implements OnDestroy {
   @ViewChild('modalTemplate') modalTemplate!: TemplateRef<any>;

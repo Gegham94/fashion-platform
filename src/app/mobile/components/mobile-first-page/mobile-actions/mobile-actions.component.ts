@@ -130,8 +130,14 @@ export class MobileActionsComponent {
     }
   }
 
-  public onAction(action: any) {
-    this.actionService.setData(action);
-    this.router.navigate(['../home'], { relativeTo: this.activatedRoute });
+  public onAction(action: any, event: Event) {
+    const target = (event.target as HTMLElement).closest('.cover');
+    if (target) {
+      target.classList.add('active');
+      setTimeout(() => {
+        this.actionService.setData(action);
+        this.router.navigate(['../home'], { relativeTo: this.activatedRoute });
+      }, 500);
+    }
   }
 }

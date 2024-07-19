@@ -7,9 +7,6 @@
   justify-content: center;
   height: 100%;
   &__user {
-    &:hover {
-      opacity: 0.9;
-    }
     position: relative;
     @include diamond;
     min-height: 50px;
@@ -23,6 +20,9 @@
     align-items: center;
     justify-content: center;
     background: $yellow;
+    &.jump {
+      animation: jump 1s infinite;
+    }
     &::before {
       content: "";
       @include diamond;
@@ -66,5 +66,14 @@
       height: 3.3vh;
       width: 4.3vw;
     }
+  }
+}
+
+@keyframes jump {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-3px);
   }
 }

@@ -12,11 +12,13 @@ import {
   BET_TYPE,
   CURRENCY,
 } from 'src/app/shared/constants/filters';
+import { fadeInOut } from 'src/app/shared/animations/animations';
 
 @Component({
   selector: 'gb-web-active-bets',
   templateUrl: './web-active-bets.component.html',
   styleUrls: ['./web-active-bets.component.scss'],
+  animations: [fadeInOut],
 })
 export class WebActiveBetsComponent implements OnInit {
   @ViewChild('modalTemplate') modalTemplate!: TemplateRef<any>;
@@ -24,7 +26,7 @@ export class WebActiveBetsComponent implements OnInit {
 
   private modalElement: any;
   public isLoading: boolean = false;
-  
+
   public status: TYPE_FILTER[] = STATUS;
   public betType: TYPE_FILTER[] = BET_TYPE;
   public currency: TYPE_FILTER[] = CURRENCY;
@@ -42,8 +44,8 @@ export class WebActiveBetsComponent implements OnInit {
     this.isLoading = true;
   }
 
-  public frameLoadEnd(){
-    this.isLoading = false
+  public frameLoadEnd() {
+    this.isLoading = false;
   }
 
   public sendDataToParent() {
@@ -86,14 +88,6 @@ export class WebActiveBetsComponent implements OnInit {
     if (document.body.contains(this.modalElement?.rootNodes?.[0])) {
       document.body.removeChild(this.modalElement.rootNodes[0]);
     }
-  }
-
-  public closeCashOutModal() {
-    this.destroyCashOutModal();
-  }
-
-  public openCashOutModal() {
-    this.createCashOutModal();
   }
 
   public createCashOutModal() {

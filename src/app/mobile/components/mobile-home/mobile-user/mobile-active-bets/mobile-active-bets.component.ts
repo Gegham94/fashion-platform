@@ -5,6 +5,7 @@ import {
   ViewChild,
   ViewContainerRef,
 } from '@angular/core';
+import { fadeInOut } from 'src/app/shared/animations/animations';
 import {
   TYPE_FILTER,
   STATUS,
@@ -16,6 +17,7 @@ import {
   selector: 'gb-mobile-active-bets',
   templateUrl: './mobile-active-bets.component.html',
   styleUrls: ['./mobile-active-bets.component.scss'],
+  animations: [fadeInOut]
 })
 export class MobileActiveBetsComponent {
   @ViewChild('modalTemplate') modalTemplate!: TemplateRef<any>;
@@ -84,14 +86,6 @@ export class MobileActiveBetsComponent {
     if (document.body.contains(this.modalElement?.rootNodes?.[0])) {
       document.body.removeChild(this.modalElement.rootNodes[0]);
     }
-  }
-
-  public closeCashOutModal() {
-    this.destroyCashOutModal();
-  }
-
-  public openCashOutModal() {
-    this.createCashOutModal();
   }
 
   public createCashOutModal() {

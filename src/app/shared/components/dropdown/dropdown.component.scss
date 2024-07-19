@@ -28,7 +28,7 @@
     font-weight: 700;
     .dropdown-cover {
       @include squad-small;
-      width: calc(100% - 10px);
+      width: 100%;
       height: 100%;
       display: flex;
       align-items: center;
@@ -154,7 +154,7 @@
         height: 100%;
         padding: 5px;
         cursor: pointer;
-        font-size: 0.7em;
+        font-size: 0.65em;
         &:hover {
           background: $green;
         }
@@ -191,7 +191,7 @@
         background: $light-gray;
         padding: 5px;
         cursor: pointer;
-        font-size: 0.7em;
+        font-size: 0.65em;
         &:hover {
           background: $lighter-gray;
         }

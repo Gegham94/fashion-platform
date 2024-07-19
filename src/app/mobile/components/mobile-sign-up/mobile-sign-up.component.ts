@@ -7,7 +7,7 @@ import {
   ViewChild,
   ViewContainerRef,
 } from '@angular/core';
-import { collapse } from 'src/app/shared/animations/animations';
+import { collapse, fadeInOut } from 'src/app/shared/animations/animations';
 import { ISignup } from 'src/app/shared/interfaces/IAuth';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { switchMap } from 'rxjs';
@@ -27,7 +27,7 @@ import Validation from 'src/app/shared/password-validation/validation';
   selector: 'gb-mobile-sign-up',
   templateUrl: './mobile-sign-up.component.html',
   styleUrls: ['./mobile-sign-up.component.scss'],
-  animations: [collapse],
+  animations: [collapse, fadeInOut],
 })
 export class MobileSignUpComponent implements OnDestroy {
   @ViewChild('modalTemplate') modalTemplate!: TemplateRef<any>;

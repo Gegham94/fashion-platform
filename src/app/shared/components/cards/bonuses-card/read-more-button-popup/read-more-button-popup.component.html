@@ -4,7 +4,7 @@
   </div>
 </button>
 <ng-template #popupTemplate>
-  <div id="read-more-popup">
+  <div @fadeInOut id="read-more-popup">
     <div class="content" [class.mobile]="isMobile">
       <div class="close-wrapper" (click)="closePopup()">
         <div class="cover">

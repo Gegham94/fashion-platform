@@ -102,7 +102,7 @@
             border-top: 0;
             border-radius: 100%;
             filter: drop-shadow(4px 8px 16px rgba(0, 0, 0, 0.2));
-            transition: transform 0.5ms ease;
+            
             position: relative;
             .add-vertical {
               position: absolute;
@@ -110,6 +110,7 @@
               height: 2px;
               background: $green;
               border-radius: 2px;
+              transition: transform 0.5ms ease;
             }
             .add-horizontal {
               position: absolute;
@@ -117,9 +118,12 @@
               width: 2px;
               background: $green;
               border-radius: 2px;
+              transition: transform 0.5ms ease;
             }
             &:hover {
-              transform: scale(1.02);
+              .add-vertical, .add-horizontal{
+                transform: scale(1.15);
+              }
             }
           }
           .checkbox-wrapper {
@@ -220,15 +224,17 @@
                 border-top: 0;
                 border-radius: 100%;
                 filter: drop-shadow(4px 8px 16px rgba(0, 0, 0, 0.2));
-                transition: transform 0.5ms ease;
                 .line {
                   width: 50%;
                   height: 2px;
                   background: $red;
                   border-radius: 1px;
+                  transition: transform 0.5ms ease;
                 }
                 &:hover {
-                  transform: scale(1.02);
+                  .line {
+                    transform: scale(1.15);
+                  }
                 }
               }
             }

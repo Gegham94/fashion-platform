@@ -80,7 +80,7 @@
 </div>
 
 <ng-template #modalTemplate>
-  <div id="cash-out-modal">
+  <div @fadeInOut id="cash-out-modal">
     <div class="cash-out-content">
       <div class="diamond-wrapper">
         <div class="diamond-cover">
@@ -99,7 +99,7 @@
                 By Proceeding Cash Out we will keep 30% of Your Deposit. Are Your sure You want to Cash Out Bet?
               </div>
               <div class="cash-out-btn">
-                <button (click)="closeCashOutModal()">
+                <button (click)="destroyCashOutModal()">
                   <div class="cover">
                     <span>Aggree</span>
                   </div>

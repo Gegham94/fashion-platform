@@ -16,18 +16,25 @@ export class SettingsSecurityComponent implements OnInit, AfterViewInit {
   public selectedTab: 'verification' | 'protection' = 'verification';
   public barWidth: number = 0;
   public isLoading = false;
+  private intervalId: any;
 
   public ngOnInit(): void {
     this.showLoader();
-    // setInterval(() => {
-    //   this.barWidth += 5;
-    // }, 400);
   }
 
   public ngAfterViewInit(): void {
     setTimeout(() => {
       this.selectTab(this.selectedTab);
     });
+  }
+
+  setProtectedProcessBar() {
+    this.intervalId = setInterval(() => {
+      this.barWidth += 10;
+      if (this.barWidth >= 100) {
+        clearInterval(this.intervalId);
+      }
+    }, 100);
   }
 
   public selectTab(tab: 'verification' | 'protection') {
@@ -38,6 +45,7 @@ export class SettingsSecurityComponent implements OnInit, AfterViewInit {
     this.isLoading = true;
     setTimeout(() => {
       this.isLoading = false;
+      this.setProtectedProcessBar();
     }, 500);
   }
 }

@@ -5,11 +5,13 @@ import {
   ViewChild,
   ViewContainerRef,
 } from '@angular/core';
+import { fadeInOut } from 'src/app/shared/animations/animations';
 
 @Component({
   selector: 'gb-mobile-forms-modal',
   templateUrl: './mobile-forms-modal.component.html',
   styleUrl: './mobile-forms-modal.component.scss',
+  animations: [fadeInOut],
 })
 export class MobileFormsModalComponent {
   @ViewChild('modalTemplate') modalTemplate!: TemplateRef<any>;

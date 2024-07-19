@@ -1,7 +1,7 @@
 <div class="add-card-zone-btn" (click)="openModal()">
 </div>
 <ng-template #modalTemplate>
-  <div id="attach-new-card">
+  <div @fadeInOut id="attach-new-card">
     <div class="attach-new-card-content" [class.mobile]="isMobile">
       <div class="attach-new-card-close-wrapper" (click)="closeModal()">
         <div class="attach-new-card-cover">

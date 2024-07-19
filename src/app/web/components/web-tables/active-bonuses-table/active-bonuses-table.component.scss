@@ -34,6 +34,8 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    box-sizing: border-box;
+    padding-right: 5px;
     .date {
       .wrapper-content {
         &:last-child {
